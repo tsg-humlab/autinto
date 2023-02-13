@@ -7,10 +7,11 @@
 .annotatable {
 	display: inline-block;
 	margin: 0 .3em;
+	min-width: 3em;
 }
 
 .empty {
-	width: 2em;
+	width: 3em;
 	user-select: none;
 }
 
@@ -43,6 +44,7 @@
 }
 
 .dropdown {
+
 	position: relative;
 	left: -50%;
 	background-color: #f2f2f2;
