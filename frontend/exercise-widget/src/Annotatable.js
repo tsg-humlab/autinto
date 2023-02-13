@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 function Dropdown({ open, onSelected, options }) {
   return (
     <div className="dropdown-offset">
-      <div className="dropdown" style={{display: open ? 'block' : 'none'}}>
+      <div className={`dropdown ${open ? 'dropdown-active' : ''}`}>
         <table>
           <tbody>
           {options.map((rowOptions, index) => 
