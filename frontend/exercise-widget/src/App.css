@@ -3,3 +3,18 @@
   text-align: center;
 	font-size: 1.6em;
 }
+
+.annotatable {
+	display: inline-block;
+	margin: 0 .3em;
+}
+
+.box {
+	display: block;
+	margin-top: .1em;
+	position: relative;
+	background-color: lightgreen;
+	height: 1.5em;
+	border-radius: 10%;
+	box-shadow: 2px 1.5px green;
+}

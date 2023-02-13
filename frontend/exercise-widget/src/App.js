@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
+import Annotatable from './Annotatable'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        Dat weet ik ook niet zei de traploper
+        <Annotatable text="Dat"/> weet ik <Annotatable text="ook"/> niet <Annotatable text="zei de"/> traploper
       </div>
     );
   }
