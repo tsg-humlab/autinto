@@ -9,7 +9,13 @@
 	margin: 0 .3em;
 }
 
+.empty {
+	width: 2em;
+	user-select: none;
+}
+
 .box {
+	position: relative;
 	display: block;
 	margin-top: .1em;
 	position: relative;
@@ -17,4 +23,15 @@
 	height: 1.5em;
 	border-radius: 10%;
 	box-shadow: 2px 1.5px green;
+}
+
+.box-content {
+	position: absolute;
+	width: 100%;
+}
+
+.disabled > .box {
+	background-color: lightgray;
+	box-shadow: none;
+	box-shadow: 2px 1.5px gray;
 }

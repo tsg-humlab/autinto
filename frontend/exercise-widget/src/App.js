@@ -6,7 +6,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Annotatable preset="%L"/>
         <Annotatable text="Dat"/> weet ik <Annotatable text="ook"/> niet <Annotatable text="zei de"/> traploper
+        <Annotatable />
       </div>
     );
   }
