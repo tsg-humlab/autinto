@@ -55,6 +55,7 @@
   border-radius: 3%;
   border: 2px solid #cccccc;
   height: 0%;
+	z-index: 5;
 }
 
 .dropdown-active {
