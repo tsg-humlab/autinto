@@ -1,0 +1,149 @@
+<font face="arial,helvetica,swiss,sans-serif"><font color="darkblue">## Transcription of pauses</font> It is sometimes thought that pauses always indicate IP boundaries. This is not the case. Speakers frequently interrupt their production in the middle of the IP, pause to think - apparently about what to say next - and then continue as if there had been no break at all. You may also reread our discussion of [phrasing](about4.htm) in the introduction section of the course. Examples of **hesitation** pauses, pauses that do not indicate phrase boundaries, are given in the following two utterances. In such cases you may use the P symbol, aligned with the beginning of the pause. Pause fillers, like ehhh, are marked E.
+
+<table bgcolor="lightgrey" border="0" cellpadding="4" cellspacing="0" width="40" onclick="play_sound('./audio/050g')">
+
+<tbody>
+
+<tr>
+
+<td rowspan="2">![Audio](audio.gif)</td>
+
+<td>En dan</td>
+
+<td colspan="2">zien ze een</td>
+
+<td>hele</td>
+
+<td>kudde</td>
+
+<td>wilde</td>
+
+<td>zwijnen</td>
+
+<td colspan="2">eeh staan</td>
+
+<td align="center" rowspan="2" width="40"> </td>
+
+<td align="center" rowspan="2"><input type="button" name="help" value=" Contour " onclick="HintsWindow('F0-contour','<IMG SRC= audio/gif/050g.gif>',1,535,200)"></td>
+
+</tr>
+
+<tr>
+
+<td>%L</td>
+
+<td>H*L</td>
+
+<td> </td>
+
+<td>H*L</td>
+
+<td>!H*L</td>
+
+<td>!H*L</td>
+
+<td>!H*L</td>
+
+<td>P-E-P</td>
+
+<td align="RIGHT">L%</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<table bgcolor="lightgrey" border="0" cellpadding="4" cellspacing="0" width="40" onclick="play_sound('./audio/051')">
+
+<tbody>
+
+<tr>
+
+<td rowspan="2" width="40">![Audio](audio.gif)</td>
+
+<td>Hoe</td>
+
+<td>ze van die</td>
+
+<td>zwijnen</td>
+
+<td>af</td>
+
+<td> </td>
+
+<td>kunnen komen</td>
+
+<td align="center" rowspan="2" width="40"> </td>
+
+<td align="center" rowspan="2"><input type="button" name="help" value=" Contour " onclick="HintsWindow('F0-contour','<IMG SRC= audio/gif/051.gif>',1,515,200)"></td>
+
+</tr>
+
+<tr>
+
+<td>%L H*L</td>
+
+<td> </td>
+
+<td>H*</td>
+
+<td>!H*L</td>
+
+<td>P</td>
+
+<td align="RIGHT">L%</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+Here is another example. Listen to the whole utterance first:
+
+<table bgcolor="lightgrey" border="0" cellpadding="4" onclick="play_sound('./audio/044ab')">
+
+<tbody>
+
+<tr>
+
+<td>![Audio](audio.gif)</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+This utterance has a hesitation pause during which the speaker takes a breath:
+
+<table bgcolor="lightgrey" border="0" cellpadding="0" cellspacing="0" onclick="play_sound('./audio/044a')">
+
+<tbody>
+
+<tr>
+
+<td>![Audio](audio.gif) ![Audio](./audio/gif/044a.gif)</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<table bgcolor="lightgrey" border="0" cellpadding="0" cellspacing="0" onclick="play_sound('./audio/044b')">
+
+<tbody>
+
+<tr>
+
+<td>![Audio](audio.gif) ![Audio](./audio/gif/044b.gif)</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+* * * [EXERCISE 2](javascript:Popup('ToDI_2/exerc2.htm','Exercise 2');) (pauses and phrase boundaries) * * * [Proceed with section 3.1](init1.htm)</font>
