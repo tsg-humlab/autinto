@@ -9,3 +9,4 @@
     - [Sameness and difference](./0_about_this_course/05_sameness.md)
       - [Pitch tracks vs auditory impression](./0_about_this_course/051_pitch_tracks.md)
     - [Before we really begin...](./0_about_this_course/06_before_we_really_begin.md)
+- [Delayed peaks](./6_delayed_peaks.md)
