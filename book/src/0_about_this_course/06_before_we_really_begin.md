@@ -1,0 +1,10 @@
+Before we _really_ begin...
+---------------------------
+
+We now begin our discussion of the contours of Dutch. Attempt to learn them per contour. As you go along, you should aim at gradually increasing the number of contour types you know and reducing the number of unknown contour types. Only expect to be able to transcribe contours that have been explicitly dealt with, and don't make up your own transcriptions for new contours.
+
+We will structure the course so as to deal with contours with pitch accents that describe a falling pitch, i.e. H\*L, and then move on to rising and level contours.
+
+* * *
+
+[Proceed with section 1.1](fall1.htm)
