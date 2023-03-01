@@ -9,4 +9,3 @@ After an exercise dealing with the four contours mentioned above, the course con
 
 * * *
 
-[Proceed with section 5.3.1](rise3_1.htm)

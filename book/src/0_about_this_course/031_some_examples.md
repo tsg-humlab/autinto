@@ -16,15 +16,6 @@ Listen to the synthesized utterance transcribed below:
 
 </TABLE>
 
-Daar moeten we nog eens over
-
-praten vind ik
-
-%L
-
-H\*L
-
-L%
 
 In the text, we often provide graphic representations of pitch contours, like the one below. To hear them, just click anywhere in the grey area.
 
@@ -47,4 +38,3 @@ You may also find that the tempo of the human speaker is faster than that of the
 
 * * *
 
-[Proceed with section 0.4](about4.htm)

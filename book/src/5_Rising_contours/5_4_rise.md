@@ -23,4 +23,3 @@ We have come across quite a number of ways in which speakers can indicate that a
 
 * * *
 
-[Proceed with section 5.5](rise5.htm)

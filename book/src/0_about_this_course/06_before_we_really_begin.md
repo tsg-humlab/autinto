@@ -7,4 +7,3 @@ We will structure the course so as to deal with contours with pitch accents that
 
 * * *
 
-[Proceed with section 1.1](fall1.htm)

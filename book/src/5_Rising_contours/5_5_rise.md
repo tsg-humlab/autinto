@@ -7,4 +7,3 @@ In this section, we will look at contours in which the pre-nuclear accent may no
 
 * * *
 
-[Proceed with section 5.5.1](rise5_1.htm)

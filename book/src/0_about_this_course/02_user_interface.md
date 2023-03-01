@@ -35,4 +35,3 @@ A second, and rarer type of exercise ('Part B') provides you with a multiple cho
 
 * * *
 
-[Proceed with section 0.3](about3.htm)

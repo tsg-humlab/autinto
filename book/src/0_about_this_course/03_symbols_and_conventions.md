@@ -60,4 +60,3 @@ The melodic shape of the contour is defined by the consecutive contour shapes de
 
 * * *
 
-[Proceed with section 0.3.1](about3_1.htm)

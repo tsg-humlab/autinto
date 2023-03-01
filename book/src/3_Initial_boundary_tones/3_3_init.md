@@ -24,4 +24,3 @@ A falling prehead is much rarer. It usually only occurs in a particular reading 
 
 * * *
 
-[Proceed with section 4.1](level1.htm)

@@ -18,4 +18,3 @@ Examples:
 
 * * *
 
-[Proceed with section 7](appcon0.htm)

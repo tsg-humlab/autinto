@@ -34,4 +34,3 @@ The following utterance illustrates a high rise in nonfinal position in IP, real
 
 * * *
 
-[Proceed with section 5.3](rise3.htm)

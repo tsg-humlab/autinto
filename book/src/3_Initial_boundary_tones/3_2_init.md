@@ -19,4 +19,3 @@ Initial %H may be followed by !H\*. The following example illustrates the way th
 
 * * *
 
-[Proceed with section 3.3](init3.htm)

@@ -31,4 +31,3 @@ When transcribers come up with different analyses of the same utterance, this ei
 
 * * *
 
-[Proceed with section 0.5.](about5_1.htm)

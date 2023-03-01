@@ -16,62 +16,47 @@ Speech is not simply a continuous string of smoothly concatenated spoken words. 
 There are usually different ways of phrasing a single sentence, i.e., it is not the case that there are rules that uniquely determine a sentence's intonational phrasing. The sentence "En toen ik thuiskwam waren alle vissen dood" may be pronounced as one IP, or as two, in which case the boundary will fall after the subordinate clause, i.e. after "thuiskwam". If an IP-boundary occurs, it may be pronounced in different ways.
 
 Listen to four pronunciations of this sentence. In version 1, it is spoken as a single IP. In version 2, the end of the subordinate clause is marked by a melodic feature, but there is no pause. In version 3, there is a pause as well as a melodic feature. In version 4, there is a hesitation, before the word "vissen". In spite of this discontinuity, version 4 constitutes a single IP.
+<P>
+<TABLE BGCOLOR="lightgrey" BORDER=0 CELLPADDING=4 CELLSPACING=0>
 
-En toen ik thuiskwam, waren alle vissen dood
+<TR><TD COLSPAN=4>En toen ik thuiskwam, waren alle vissen dood</TD></TR>
 
-![Audio](audio.gif)
+<TR>
+<TD ALIGN=CENTER><A><IMG SRC="audio.gif" BORDER=0 ALT="Audio" onclick="play_sound('./audio/058')"></A></TD>
 
-![Audio](audio.gif)
+<TD ALIGN=CENTER><A><IMG SRC="audio.gif" BORDER=0 ALT="Audio" onclick="play_sound('./audio/314')"></A></TD>
 
-![Audio](audio.gif)
+<TD ALIGN=CENTER><A><IMG SRC="audio.gif" BORDER=0 ALT="Audio" onclick="play_sound('./audio/060')"></A></TD>
 
-![Audio](audio.gif)
+<TD ALIGN=CENTER><A><IMG SRC="audio.gif" BORDER=0 ALT="Audio" onclick="play_sound('./audio/061')"></A></TD>
+</TR>
 
-1
+<TR><TD ALIGN=CENTER>1</TD><TD ALIGN=CENTER>2</TD><TD ALIGN=CENTER>3</TD><TD ALIGN=CENTER>4</TD></TR>
 
-2
+</TABLE>
+<P>
 
-3
-
-4
 
 When the end of the IP is marked by a melodic feature, a final boundary tone, L% or H% is transcribed, and if there is just a pause, the symbol % is used to transcribe the IP-end. The beginning of an IP is transcribed by %L or %H.
 
 If we do not transcribe tones, we can still transcribe the phrasing, as shown below for the third example above.
 
-![Audio](audio.gif)
+<P>
 
-En toen ik
+<TABLE BGCOLOR="lightgrey" BORDER=0 CELLPADDING=4 CELLSPACING=0 onclick="play_sound('./audio/060')">
 
-thuiskwam,
+<TR>
+<TD ROWSPAN=2 WIDTH=40>
+<A><IMG SRC="audio.gif" BORDER=0 ALT="Audio"></A>
+</TD>
 
-waren
+<TD>En toen ik</TD><TD COLSPAN=2>thuiskwam,</TD><TD>waren</TD><TD>alle</TD><TD>vissen</TD><TD COLSPAN=2>dood</TD><TD>&nbsp</TD></TR>
 
-alle
+<TR><TD>%</TD><TD>&nbsp</TD><TD ALIGN=RIGHT>%</TD><TD>%</TD><TD>&nbsp</TD><TD>&nbsp</TD><TD>&nbsp</TD><TD ALIGN=RIGHT>%</TD><TD>&nbsp</TD></TR>
 
-vissen
+</TABLE>
+<P>
 
-dood
-
- 
-
-%
-
- 
-
-%
-
-%
-
- 
-
- 
-
- 
-
-%
-
- 
 
 IPs are grouped together in Utterances. We will not mark Utterance boundaries in this course, because all examples begin and end with an Utterance boundary. The symbol "{" can be used to mark beginnings of Utterances, and "}" to mark their ends.
 
@@ -83,61 +68,57 @@ It is useful to make a distinction between "sentence accent" and "pitch accent".
 
 Here are some examples with accented syllables that we think are easily recognised even without knowing the kind of pitch accent that is used. To see if we are right, click the accented words (this does not work with all browsers).
 
-![Audio](audio.gif)
+<P>
+<TABLE BGCOLOR="lightgrey" BORDER=0 CELLPADDING=4 CELLSPACING=0>
 
-Er
+<TR><TD ROWSPAN=2 WIDTH=40>
+<A><IMG SRC="audio.gif" BORDER=0 ALT="Audio" onclick="play_sound('./audio/062')"></A></TD>
 
-moet
+<TD OnClick="alert('No!')">Er</TD>
+<TD OnClick="alert('Wrong!')">moet</TD>
+<TD OnClick="alert('Wrong!')">nog</TD>
+<TD OnClick="alert('Wrong!')">maar</TD>
+<TD OnClick="alert('Very funny...')">'s</TD>
+<TD OnClick="alert('Wrong!')">over</TD>
+<TD OnClick="alert('Correct!')">gesproken</TD>
+<TD OnClick="alert('No!')">worden</TD>
+</TR>
+</TABLE> 
+<P>
+<TABLE BGCOLOR="lightgrey" BORDER=0 CELLPADDING=4 CELLSPACING=0>
 
-nog
+<TR><TD ROWSPAN=2 WIDTH=40>
+<A><IMG SRC="audio.gif" BORDER=0 ALT="Audio" onclick="play_sound('./audio/063')"></A></TD>
 
-maar
+<TD OnClick="alert('No!')">We</TD>
+<TD OnClick="alert('Wrong!')">hebben</TD>
+<TD OnClick="alert('No!')">de</TD>
+<TD OnClick="alert('Bingo!')">hele</TD>
+<TD OnClick="alert('Wrong!')">dag</TD>
+<TD OnClick="alert('Jackpot!')">binnen</TD>
+<TD OnClick="alert('No!')">gezeten</TD>
+</TR>
+</TABLE>
+<P>
+<TABLE BGCOLOR="lightgrey" BORDER=0 CELLPADDING=4 CELLSPACING=0>
 
-'s
+<TR><TD ROWSPAN=2 WIDTH=40>
+<A><IMG SRC="audio.gif" BORDER=0 ALT="Audio" onclick="play_sound('./audio/064')"></A></TD>
 
-over
+<TD OnClick="alert('Wrong!')">Daar</TD>
+<TD OnClick="alert('Wrong!')">gaan</TD>
+<TD OnClick="alert('Excellent!')">deRijcke,</TD>
+<TD OnClick="alert('Yes!')">Meulemeester</TD>
+<TD OnClick="alert('No!')">en</TD>
+<TD OnClick="alert('Right!')">Versmissen</TD>
+<TD OnClick="alert('No!')">door</TD>
+<TD OnClick="alert('pfff...')">de</TD>
+<TD OnClick="alert('Indeed!')">derde</TD>
+<TD OnClick="alert('Absolutely!')">bocht</TD>
+</TR>
+</TABLE>
+<P>
 
-gesproken
-
-worden
-
-![Audio](audio.gif)
-
-We
-
-hebben
-
-de
-
-hele
-
-dag
-
-binnen
-
-gezeten
-
-![Audio](audio.gif)
-
-Daar
-
-gaan
-
-deRijcke,
-
-Meulemeester
-
-en
-
-Versmissen
-
-door
-
-de
-
-derde
-
-bocht
 
 The last pitch accent in an IP is often called the **nuclear** pitch accent, while those before the final pitch accent are called **pre-nuclear** pitch accents.
 
@@ -153,25 +134,23 @@ Here is an example of an intonation contour produced in four versions.
 *   synthesized with Fluent Dutch Text-To-Speech, using the standard values of that program
 *   imitated by another speaker
 
-Er staan me daar een hoop mensen te wachten.
+<P>
 
- 
+<TABLE BGCOLOR="lightgrey" BORDER=0 CELLPADDING=4 CELLSPACING=0>
 
-![Audio](audio.gif)
+<TR><TD COLSPAN=3>Er staan me daar een hoop mensen te wachten.</TD><TD>&nbsp</TD></TR>
 
-![Audio](audio.gif)
+<TR><TD ALIGN=CENTER><A><IMG SRC="audio.gif" BORDER=0 ALT="Audio" onclick="play_sound('./audio/152')"></A></TD>
+<TD ALIGN=CENTER><A><IMG SRC="audio.gif" BORDER=0 ALT="Audio" onclick="play_sound('./audio/282')"></A></TD>
+<TD ALIGN=CENTER><A><IMG SRC="audio.gif" BORDER=0 ALT="Audio" onclick="play_sound('./audio/281')"></A></TD>
+<TD ALIGN=CENTER><A><IMG SRC="audio.gif" BORDER=0 ALT="Audio" onclick="play_sound('./audio/350')"></A></TD></TR>
 
-![Audio](audio.gif)
+<TR><TD ALIGN=CENTER>Original</TD><TD ALIGN=CENTER>Resynthesis</TD><TD ALIGN=CENTER>Text-To-Speech</TD>
+<TD ALIGN=CENTER>Repetition</TD></TR>
 
-![Audio](audio.gif)
+</TABLE>
+<P>
 
-Original
-
-Resynthesis
-
-Text-To-Speech
-
-Repetition
 
 In the same way, we can say that two different sentences have the same intonation pattern. We show this with a fully transcribed example. Recall that the tones that are aligned with the boundaries of the IP are known as **boundary tones** (%T for inital boundary tone and T% for final boundary tone). The tones that are aligned with the accented syllables are the pitch accents, and written T\*. The boundary tone and the pitch accent may consist of just a single tone or of a sequence of two tones.
 
@@ -189,4 +168,3 @@ Learning how to do this is a matter of listening, and recognising the pattern. Y
 
 * * *
 
-[Proceed with section 0.5](about5.htm)

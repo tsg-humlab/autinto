@@ -13,4 +13,3 @@ Example:
 
 * * *
 
-[Proceed with section 5.2](rise2.htm)

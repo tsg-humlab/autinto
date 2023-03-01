@@ -39,4 +39,3 @@ In general, you must train yourself to recognise intonation contours on an audit
 
 * * *
 
-[Proceed with section 0.6](about6.htm)

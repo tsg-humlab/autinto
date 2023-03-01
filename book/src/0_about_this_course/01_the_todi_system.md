@@ -43,4 +43,3 @@ J. 't Hart, R. Collier and A. Cohen (1990). _A perceptual study of intonation._ 
 
 * * *
 
-[Proceed with section 0.2](about2.htm)

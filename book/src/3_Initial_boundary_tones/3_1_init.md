@@ -17,4 +17,3 @@ When the first syllable of the IP is accented, there is no space for the low pre
 
 * * *
 
-[Proceed with section 3.2](init2.htm)
