@@ -28,7 +28,7 @@ export default function Annotatable({
   options = [],
 }) {
   const [menuOpened, setMenuOpened] = useState(false);
-  const [selectedValue, selectValue] = useState(preset);
+  const [selectedLabel, selectLabel] = useState(preset);
 
   return (
     <div
@@ -39,14 +39,16 @@ export default function Annotatable({
     >
       {text ? text : <React.Fragment> &nbsp; </React.Fragment>}
       <div className="box">
-        <div className="box-content">{selectedValue}</div>
+        <div className="box-content">{selectedLabel}</div>
         {preset ? ( // Only allow for a dropdown if the value is editable (no preset).
           ""
         ) : (
           <Dropdown
             options={options}
             open={menuOpened}
-            onSelected={selectValue}
+            // The ∅ button in the dropdown menu should clear the annotation box,
+            // not make ∅ the label.
+            onSelected={val => selectLabel(val === '∅' ? '' : val)}
           />
         )}
       </div>

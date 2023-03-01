@@ -22,9 +22,12 @@ class App extends Component {
         <Annotatable preset="%L" />
         <Annotatable options={wordOptions} text="Dat" /> weet ik{" "}
         <Annotatable options={wordOptions} text="ook" /> niet
-        <Annotatable options={wordOptions} />
-        <Annotatable options={wordOptions} text="zei de" /> traploper
         <Annotatable options={endOptions} />
+        <Annotatable options={[["H", "L"], ["∅", ""]]} text="zei de" />
+        <span style={{whiteSpace: 'nowrap'}}>
+          traploper
+        <Annotatable options={endOptions} />
+        </span>
       </div>
     );
   }
