@@ -1,5 +1,4 @@
 .App {
-  margin-top: 20vh;
   text-align: center;
   font-size: 1.2em;
 }
@@ -54,7 +53,6 @@
   background-color: #f2f2f2;
   border-radius: 3%;
   border: 2px solid #cccccc;
-  height: 0%;
 	z-index: 5;
 }
 
@@ -63,6 +61,7 @@
 }
 
 .dropdown td {
+	background: none;
   padding: 0 10px;
   color: #444;
   transition: background-color 0.15s;
@@ -72,4 +71,8 @@
 .dropdown td:hover {
   background-color: #ffffff;
   color: black;
+}
+
+.dropdown tr {
+	background-color: inherit !important;
 }
