@@ -6,8 +6,8 @@ src = "src"
 title = "Transcription of Dutch intonation"
 
 [output.html]
-additional-js = ["widget/static/js/main.js"]
-additional-css = ["widget/static/css/main.css"]
+additional-js = ["additional-files/main.js"]
+additional-css = ["additional-files/main.css"]
 
 [build]
 build-dir = "./build"
