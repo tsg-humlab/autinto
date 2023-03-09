@@ -1,7 +1,10 @@
 .App {
-  text-align: center;
   font-size: 1.2em;
 	margin-bottom: 150px;
+}
+
+.text {
+	text-align: center;
 }
 
 .annotatable {
