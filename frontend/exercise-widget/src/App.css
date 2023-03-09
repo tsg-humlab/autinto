@@ -80,3 +80,13 @@
 .dropdown tr {
 	background-color: inherit !important;
 }
+
+.button-container {
+	padding-left: 3em;
+}
+
+.button-container > button {
+	border-radius: 0;
+	border: 1px solid gray;
+	margin: 0 .4em;
+}
