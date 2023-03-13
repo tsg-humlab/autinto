@@ -89,7 +89,7 @@
 .button-container > button {
 	border-radius: 10px;
 	border: 1px solid gray;
-	margin: 0 .4em;
-  font-size: 0.8em;
-  padding: 10px;
+	margin: 0 .2em;
+  font-size: 0.6em;
+  padding: 7px;
 }
