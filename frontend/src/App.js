@@ -9,6 +9,7 @@ function fetchExercise(id) {
   return fetch(`exercise${id}.json`).then(res => res.json())
 }
 
+
 function App({ id='' }) {
   const [contourVisible, setContour] = useState(false)
   const [resynthesisId, setResynthesisId] = useState(null)
