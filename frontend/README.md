@@ -7,11 +7,16 @@ You need to install both [mdbook](https://rust-lang.github.io/mdBook/guide/insta
 Run `npm install` inside the `exercise-widget/` folder.
 
 ## Build
-The exercise widget should be built first, by running
+The exercise widget should be built using one of the respective build scripts, so
 ```
-npm run build
+./build-widget.sh
 ```
-inside `exercise-widget/`.
+in the case of linux and
+```
+./build-widget.ps1
+```
+if you are on windows. (Note that you may have to adjust the powershell [execution policy](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.3) to be able to execute it.)
+
 
 Thereafter, we can build the mdbook by running
 ```
