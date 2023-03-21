@@ -4,30 +4,12 @@ import "./App.css"
 import Annotatable from "./Annotatable"
 import { readSpecification } from './specification.js'
 
-function fetchExercise() {
+function fetchExercise(id) {
   // Have the exercise specification hardcoded for now.
-  return Promise.resolve({
-    sentence: "[](%L) [Dat]0 weet ik [ook]0 niet []1 [zei de]2 traploper []1",
-    key: ["%L", "H*L", "H*L", "L%", "L", "L%"],
-    choices: [
-      [
-        ["H*", "!H*"],
-        ["H*L", "!H*L"],
-        ["L*", "L*H"],
-        ["L*HL", "L*!HL"],
-        ["H*LH", "∅"],
-      ],
-      [["L%"], ["H%"], ["%"]],
-      [
-        ["H", "L"],
-        ["∅", ""],
-      ],
-    ],
-    contour: "109.png",
-  })
+  return fetch(`exercise${id}.json`).then(res => res.json())
 }
 
-function App() {
+function App({ id='' }) {
   const [contourVisible, setContour] = useState(false)
   const [resynthesisId, setResynthesisId] = useState(null)
   const [showResynthesisContour, setShowResynthesisContour] = useState(false)
@@ -35,7 +17,7 @@ function App() {
   const [annotations, setAnnotations] = useState(null)
 
   useEffect(() => {
-    fetchExercise().then((data) => {
+    fetchExercise(id).then((data) => {
       // TODO: Validate data!
       const spec = readSpecification(data)
       setExerciseData(spec)

@@ -5,5 +5,6 @@ import "./index.css"
 
 document.querySelectorAll(".exercise").forEach((elem) => {
   const root = createRoot(elem)
-  root.render(<App />)
+  const id = elem.dataset.exerciseId
+  root.render(<App id={id}/>)
 })
