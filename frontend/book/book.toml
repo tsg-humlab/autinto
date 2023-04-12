@@ -1,0 +1,13 @@
+[book]
+authors = ["Rick Litjens"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Transcription of Dutch intonation"
+
+[output.html]
+additional-js = ["additional-files/main.js"]
+additional-css = ["additional-files/main.css"]
+
+[build]
+build-dir = "./build"
