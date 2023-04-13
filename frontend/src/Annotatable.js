@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 
 function Dropdown({ open, onSelected, options }) {
   return (
@@ -19,7 +19,7 @@ function Dropdown({ open, onSelected, options }) {
         </table>
       </div>
     </div>
-  );
+  )
 }
 
 export default function Annotatable({
@@ -29,7 +29,7 @@ export default function Annotatable({
   onSelect = null,
 }) {
   const editable = onSelect !== null
-  const [menuOpened, setMenuOpened] = useState(false);
+  const [menuOpened, setMenuOpened] = useState(false)
 
   return (
     <div
@@ -49,10 +49,10 @@ export default function Annotatable({
             open={menuOpened}
             // The ∅ button in the dropdown menu should clear the annotation box,
             // not make ∅ the label.
-            onSelected={val => onSelect(val === '∅' ? '' : val)}
+            onSelected={(val) => onSelect(val === "∅" ? "" : val)}
           />
         )}
       </div>
     </div>
-  );
+  )
 }

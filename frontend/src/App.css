@@ -1,10 +1,10 @@
 .App {
   font-size: 1.2em;
-	margin-bottom: 150px;
+  margin-bottom: 150px;
 }
 
 .text {
-	text-align: center;
+  text-align: center;
 }
 
 .annotatable {
@@ -32,10 +32,10 @@
 .box-content {
   position: absolute;
   width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .disabled > .box {
@@ -57,7 +57,7 @@
   background-color: #f2f2f2;
   border-radius: 3%;
   border: 2px solid #cccccc;
-	z-index: 5;
+  z-index: 5;
 }
 
 .dropdown-active {
@@ -65,7 +65,7 @@
 }
 
 .dropdown td {
-	background: none;
+  background: none;
   padding: 0 10px;
   color: #444;
   transition: background-color 0.15s;
@@ -78,18 +78,18 @@
 }
 
 .dropdown tr {
-	background-color: inherit !important;
+  background-color: inherit !important;
 }
 
 .button-container {
   margin-top: 1em;
-	padding-left: 3em;
+  padding-left: 3em;
 }
 
 .button-container > button {
-	border-radius: 10px;
-	border: 1px solid gray;
-	margin: 0 .2em;
+  border-radius: 10px;
+  border: 1px solid gray;
+  margin: 0 0.2em;
   font-size: 0.6em;
   padding: 7px;
 }

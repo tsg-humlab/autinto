@@ -1,0 +1,20 @@
+{
+    "sentence": "[](%L) [Dat]0 weet ik [ook]0 niet []1 [zei de]2 traploper []1",
+    "key": ["%L", "H*L", "H*L", "L%", "L", "L%"],
+    "choices": [
+        [
+            [ "H*", "!H*" ],
+            [ "H*L", "!H*L" ],
+            [ "L*", "L*H" ],
+            [ "L*HL", "L*!HL" ],
+            [ "H*LH", "∅" ]
+        ],
+        [
+            ["L%"], ["H%"], ["%"]
+        ],
+        [
+            ["H", "L"], ["∅", ""]
+        ]
+    ],
+    "contour": "109.png"
+}

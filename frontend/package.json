@@ -4,18 +4,23 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^5.2.3",
+    "ramda": "^0.28.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "shx": "^0.3.4"
   },
   "devDependencies": {
     "prettier": "2.8.4"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-widget": "react-scripts build",
+    "copy-dependencies": "shx cp ./build/static/js/main.*.js ./book/additional-files/main.js && shx cp ./build/static/css/main.*.css ./book/additional-files/main.css",
+    "build-book": "cd book && mdbook build",
+    "build": "npm run build-widget && npm run copy-dependencies && npm run build-book"
   },
   "browserslist": {
     "production": [
