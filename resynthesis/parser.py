@@ -11,24 +11,24 @@ tone = ['H*', '!H*', 'L*', 'L', 'H', '!H', '%L', '!%L', 'H%', '!%H', 'H%', 'L%']
 4: There is a rule for % -> % but % is not in the list of tones so I added it.
 """
 
-parse =  {word[0]: tone[0],
-word[1]:tone[1],
+parse =  {word[0]: [tone[0]],
+word[1]:[tone[1]],
 word[2]:[tone[0],tone[3]],
 word[3]:[tone[1],tone[3]],
 word[4]:[tone[0],tone[3],tone[4]],
 word[5]:[tone[2],tone[4]],
-word[6]:tone[2],
+word[6]:[tone[2]],
 word[7]:[tone[2],tone[4],tone[3]],
 word[8]:[tone[2],tone[1],tone[3]],
-word[9]:tone[6],
-word[10]:tone[10],
+word[9]:[tone[6]],
+word[10]:[tone[10]],
 word[11]:[tone[10],tone[6]],
 word[12]:['!', tone[6]],
 word[13]:['!', tone[10]],
 word[14]:['!', tone[10], tone[6]],
-word[15]:tone[6],
-word[16]:tone[8],
-word[17]:'%'}
+word[15]:[tone[6]],
+word[16]:[tone[8]],
+word[17]:['%']}
 
 
 #returns all the tones associated with a word:
