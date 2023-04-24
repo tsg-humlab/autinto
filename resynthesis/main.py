@@ -69,16 +69,18 @@ def next_tone2(WordList, ToneList, IndexI, IndexJ):
     
     
 #return tvpbegin using the index on word    
-def get_Tvpbegin(indexI, WordList, tg):
+def get_Tvpbegin(indexI1, WordList, tg, offset):
+    indexI = indexI1 - offset
     if (indexI == 0 or indexI == len(WordList)-1):
-        return
+        return 0
     index = indexI + indexI-1
     return tg[2][index].minTime
 
 #return tvpend using the index on word
-def get_Tvpend(indexI, WordList, tg):
+def get_Tvpend(indexI1, WordList, tg, offset):
+    indexI = indexI1 - offset
     if (indexI == 0 or indexI == len(WordList)-1):
-        return
+        return 0
     index = indexI + indexI-1
     return tg[2][index].maxTime
 
@@ -97,6 +99,14 @@ def make_tone(WordList):
             tone.append(parser.word_to_tone(WordList[i]))
     return tone
 
+def isBoundary(currentWord):
+    Boundaries = ["%H", "%L", "L%", "H%"]
+    if(currentWord in Boundaries):
+        return True
+    else:
+        return False
+
+
 
 def run(file, word):
     script = ""
@@ -106,10 +116,17 @@ def run(file, word):
 
     #tone = [["%L"], ["L*", "H"], ["H*", "L"], ["H*"], [], ["H*", "L"], ["L*"], [], ["L%"]]
     tone = make_tone(word)
-    print(tone)
+    #print(tone)
+
+    tvpOffset = 0
 
     for i in range(len(word)):
         for j in range(len(tone[i])):
+            
+            if(isBoundary(word[i])):
+                if (not i == 0 and not i == len(word)-1):
+                    tvpOffset+=1
+
             nextWord = next_word2(word, i)
             precWord = prec_word2(word, i)
             nextTone = next_tone2(word, tone, i, j)
@@ -117,8 +134,14 @@ def run(file, word):
 
             #First Parse (Final lengtening)
             Tipend = get_Tipend(tg)
-            Tvpend = get_Tvpend(i, word, tg)
-            Tvpbegin = get_Tvpbegin(i, word, tg)
+            if (i == 0 or i == len(word)-1):
+                #temporary, eigenlijk mag tvpend en begin niet op n boundary tone gecalled worden
+                #dit is namelijk ook nooit nodig.
+                Tvpend = 0
+                Tvpbegin = 0
+            else:
+                Tvpend = get_Tvpend(i, word, tg, tvpOffset)
+                Tvpbegin = get_Tvpbegin(i, word, tg, tvpOffset)
             if Tipend == Tvpend:
                 endtime = Tipend
                 vpduur = Tvpend - Tvpbegin
@@ -133,6 +156,6 @@ def run(file, word):
 
 
 if __name__ == "__main__":
-    word = ["%L","L*H","H*L","H*","---","H*L","L*","---","L%"]
+    word = ["%L","L*H","H*L","H*","L*", "H%", "H%" , "H*L","L*","---","L%"]
     file = "C:/Users/sebas/Documents/Praat-Wavs/147"
     run(file, word)
