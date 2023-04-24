@@ -89,13 +89,25 @@ def get_Tipbegin(tg):
 def get_Tipend(tg):
     return tg[1][1].maxTime
 
+def make_tone(WordList):
+    tone = []
+    for i in range(len(WordList)):
+        if(WordList[i] == "---"):
+            tone.append([])
+        else:
+            tone.append(parser.word_to_tone(WordList[i]))
+    return tone
 
 
 def run(file, word):
-    sound = parselmouth.Sound(file + ".wav")
+    script = ""
     tg = textgrid.TextGrid.fromFile(file + ".TextGrid")
 
-    tone = [["%L"], ["L*", "H"], ["H*", "L"], ["H*"], [], ["H*", "L"], ["L*"], [], ["L%"]]
+    script += "Read from file... {}.wav\n".format(file)
+
+    #tone = [["%L"], ["L*", "H"], ["H*", "L"], ["H*"], [], ["H*", "L"], ["L*"], [], ["L%"]]
+    tone = make_tone(word)
+    print(tone)
 
     for i in range(len(word)):
         for j in range(len(tone[i])):
