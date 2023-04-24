@@ -116,19 +116,21 @@ def run(file, word):
             nextTone = next_tone2(word, tone, i, j)
             precTone = prec_tone(word, tone, i ,j)
 
-            print("Word to work with:", word[i]) 
-            print("Tone to work with:", tone[i][j])
-            print("Next word:", nextWord)
-            print("Previous word:", precWord)
-            print("Next tone:", nextTone)
-            print("previous tone:", precTone)
-            print("Tvpbegin:", get_Tvpbegin(i, word, tg))
-            print("Tvpend:", get_Tvpend(i, word, tg))
-            print("Tipbegin:", get_Tipbegin(tg))
-            print("Tipend:", get_Tipend(tg))
-            #if (len(nextTone) >= 2):
-             #   print(nextTone[0],nextTone[1] )
-            print("\n")
+            #First Parse (Final lengtening)
+            Tipend = get_Tipend(tg)
+            Tvpend = get_Tvpend(i, word, tg)
+            Tvpbegin = get_Tvpbegin(i, word, tg)
+            if Tipend == Tvpend:
+                endtime = Tipend
+                vpduur = Tvpend - Tvpbegin
+                if (word[i] in ["H*L", "!H*L"] and nextWord in ["H%"]) or (word[i] in ["L*H"] and nextWord in ["L%", "H%", "%"]) or (word[i] in ["L*HL", "L!HL"] and nextWord in ["L%", "%"]):
+                    Tipend = endtime - 23 + 11500/vpduur
+                    addtime = Tipend - endtime
+                    Tvpend = Tipend
+            if (word[i] in ["L*HL", "L*!HL"] and nextWord in ["H%"]):
+                Tipend = endtime - 23 + 15000/vpduur
+                addtime = Tipend - endtime
+                Tvpend = Tipend
 
 
 if __name__ == "__main__":
