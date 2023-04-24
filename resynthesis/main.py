@@ -1,7 +1,6 @@
 import parselmouth
 import textgrid
-
-import parser
+import praatparser as parser
 
 #takes the next word even if empty
 def next_word(WordList, IndexI):
@@ -103,7 +102,7 @@ def run(file, word):
     script = ""
     tg = textgrid.TextGrid.fromFile(file + ".TextGrid")
 
-    script += "Read from file... {}.wav\n".format(file)
+    #script += "Read from file... {}.wav\n".format(file)
 
     #tone = [["%L"], ["L*", "H"], ["H*", "L"], ["H*"], [], ["H*", "L"], ["L*"], [], ["L%"]]
     tone = make_tone(word)
@@ -133,5 +132,5 @@ def run(file, word):
 
 if __name__ == "__main__":
     word = ["%L","L*H","H*L","H*","---","H*L","L*","---","L%"]
-    file = "/home/timon/ToDI/todi-webapp/htdocs/ToDI/ToDIpraat_1a/audio/147"
+    file = "C:/Users/sebas/Documents/Praat-Wavs/147"
     run(file, word)
