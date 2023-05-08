@@ -1,0 +1,89 @@
+{
+    "items": [
+        {
+            "sentence": "[](%L) [Nu]0  doen  we  [deze]0 []1",
+            "key": ["%L", "H*", "!H*L",  "L%"],
+            "contour": "1D-1.png", 
+            "audio": "1D-1.mp3"
+        },
+        {
+            "sentence": "[](%L) [Al]0 die  [ingewikkelde]0 [regelingen]0  zijn [afgeschaft]0  []1",
+            "key": ["%L", "H*", "!H*","!H*", "!H*L", "H%"],
+            "contour": "1D-2.png", 
+            "audio": "1D-2.mp3"
+        },
+        {
+            "sentence": "[](%L) [Zo]0  had  ik  het  niet  [bedoeld]0 []1",
+            "key": ["%L", "H*LH", "!H*L", "L%"],
+            "contour": "1D-3.png", 
+            "audio": "1D-3.mp3"
+        },
+        {
+            "sentence": "[](%L) [Al]0 die regelingen zijn [afgeschaft]0  []1",
+            "key": ["%L", "H*L", "H*L", "H%"],
+            "contour": "1D-4.png", 
+            "audio": "1D-4.mp3"
+        },
+        {
+            "sentence": "[](%L) [Dat]0  vind  ik  eigenlijk  wel  [leuk]0 []1",
+            "key": ["%L", "H*LH", "!H*L", "L%"],
+            "contour": "1D-5.png", 
+            "audio": "1D-5.mp3"
+        },
+        {
+            "sentence": "[](%L) Maar daar [moet]0  dus  dan  een  psycholoog  of een  orthopedagoog [werken]0 []1",
+            "key": ["%L", "H*LH","H*L", "%"],
+            "contour": "1D-6.png", 
+            "audio": "1D-6.mp3"
+        },
+        {
+            "sentence": "[](%L) [En]0 ze [ademen]0  []1",
+            "key": ["%L", "∅", "H*L", "%"],
+            "contour": "1D-7.png", 
+            "audio": "1D-7.mp3"
+        },
+        {
+            "sentence": "[](%L) de [Amerikanen]0  [laten]0  nog  even  op  zich  [wachten]0   []1",
+            "key": ["%L","∅", "H*L", "H*", "%"],
+            "contour": "1D-8.png",
+            "audio": "1D-8.mp3"
+        },
+        {
+            "sentence": "[](%L) [hier]0 [spreekt]0 de [economie]0 []1",
+            "key": ["%L", "H*", "∅", "!H*L", "L%"],
+            "contour": "1D-9.png",
+            "audio": "1D-9.mp3"
+        },
+        {
+            "sentence": "[](%L)  ik dank u vriendelijk []1",
+            "key": ["%L", "∅", "H*", "H*L", "L%"],
+            "contour": "1D-10.png",
+            "audio": "1D-10.mp3"
+        },
+        {
+            "sentence": "[](%L) [nou]0  ik  wil  d'r  wel  [harde]0  [afspraken]0  over  [maken]0 []1",
+            "key": ["%L", "H*L", "H*L", "H*L", "∅", "H%"],
+            "contour": "1D-11.png",
+            "audio": "1D-11.mp3"
+        },
+        {
+            "sentence": "[](%L) Met [steeds]0 [weer]0 een [nieuwe]0 [pen]0  gaat 't  [beter]0 []1",
+            "key": ["%L", "∅", "∅", "∅", "∅", "H*L", "H%"],
+            "contour": "1D-12.png",
+            "audio": "1D-12.mp3"
+        }
+        
+ 
+    ],
+    "choices": [
+        [
+            ["H*L","!H*L"],
+            ["H*","!H*"],
+            [ "H*LH", "∅" ]
+        ], 
+        [
+            ["L%","H%"],
+            [ "%","∅" ]
+        ]
+    ]
+}

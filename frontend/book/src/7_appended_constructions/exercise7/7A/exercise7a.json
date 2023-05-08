@@ -1,0 +1,94 @@
+{
+    "items": [
+        {
+            "sentence": "[]2 Maar [ook]0 een [beetje]0 in het [kader]0 van gewoon met [taal]0 [omgaan]0 he []1",
+            "key": ["%L", "H*L", "∅", "∅", "H*L", "∅", "H%"],
+            "contour": "7A-1.png",
+            "audio": "7A-1.mp3"
+        },
+        {
+            "sentence": "[]2 Heb je die [uitgenodigd]0 die [kwast]0 []1",
+            "key": ["%L", "H*L", "∅", "L%"],
+            "contour": "7A-2.png",
+            "audio": "7A-2.mp3"
+        },
+        {
+            "sentence": "[]2 Ja 't was een soort [monopolie]0 was 't []1",
+            "key": ["%L", "H*L", "%"],
+            "contour": "7A-3.png",
+            "audio": "7A-3.mp3"
+        },
+        {
+            "sentence": "[]2 Wil je die nog [zien]0 die [Jantien]0 []1",
+            "key": ["%L", "H*", "∅", "H%"],
+            "contour": "7A-4.png",
+            "audio": "7A-4.mp3"
+        },
+        {
+            "sentence": "[]2 Je [ging]0 een [stukje]0 [](P) [pison]0 [spelen]0 he []1",
+            "key": ["%L", "H*L", "∅", "P", "H*L", "∅", "H%"],
+            "contour": "7A-5.png",
+            "audio": "7A-5.mp3"
+        },
+        {
+            "sentence": "[]2 EH [Patrick]0 []1",
+            "key": ["%L", "H*L", "H%"],
+            "contour": "7A-6.png",
+            "audio": "7A-6.mp3"
+        },
+        {
+            "sentence": "[]2 [Sta]0 nou even [stil]0 voor de [verandering]0 []1",
+            "key": ["%L", "H*L", "H*L", "∅", "L%"],
+            "contour": "7A-7.png",
+            "audio": "7A-7.mp3"
+        },
+        {
+            "sentence": "[]2 [Mag ik]0 je [naam]0 [opschrijven]0, bla bla bla []1",
+            "key": ["%L", "∅", "H*L", "∅", "L%"],
+            "contour": "7A-8.png",
+            "audio": "7A-8.mp3"
+        },
+        {
+            "sentence": "[]2 [Die]0 komt wel een keer [terug]0 dacht ik zo []1",
+            "key": ["%L", "H*L", "H*L", "L%"],
+            "contour": "7A-9.png",
+            "audio": "7A-9.mp3"
+        },
+        {
+            "sentence": "[]2 [Doen]0 we [toch]0 []1",
+            "key": ["%L", "H*L", "∅", "H%"],
+            "contour": "7A-10.png",
+            "audio": "7A-10.mp3"
+        },
+        {
+            "sentence": "[]2 [Grappig]0 [hoor]0 []1",
+            "key": ["%L", "L*HL", "∅", "H%"],
+            "contour": "7A-11.png",
+            "audio": "7A-11.mp3"
+        },
+        {
+            "sentence": "[]2 Of-ik-dat-het [liefste]0 [hoor]0 []1",
+            "key": ["%L", "H*L", "∅", "H%"],
+            "contour": "7A-12.png",
+            "audio": "7A-12.mp3"
+        }
+    ],
+    "choices": [
+        [
+            [ "H*L", "!H*L" ],
+            [ "H*", "!H*" ],
+            [ "H*LH", "L*HL" ],
+            [ "L*!HL", "L*" ],
+            [ "L*H", "H*!H"],
+            [ "∅" ]
+        ],
+        [
+            ["L%", "H%"],
+            ["%", "∅"]
+        ],
+        [
+            ["%L", "%H"],
+            ["%HL", "∅"]
+        ]
+    ]
+}
