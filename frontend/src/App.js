@@ -4,6 +4,10 @@ import "./App.css"
 import Annotatable from "./Annotatable"
 import { readSpecification } from './specification.js'
 
+import { register } from 'swiper/element/bundle'
+
+register()
+
 function fetchExercise(id) {
   // Have the exercise specification hardcoded for now.
   return fetch(`exercise${id}.json`).then(res => res.json())
@@ -125,24 +129,48 @@ function App({ id='' }) {
 
   return (
     <div className="App">
-      <div className="text">
-        {exerciseData !== null &&
-          exerciseData.blocks.map((data, key) =>
-            R.is(String, data) ? (
-              <> {data} </>
-            ) : data.index === null ? (
-              <Annotatable key={key} annotation={data.choices} />
-            ) : (
-              <Annotatable
-                key={key}
-                annotation={annotations[data.index]}
-                options={data.choices}
-                onSelect={updateAnnotation(data.index)}
-                text={data.text}
-              />
-            )
-          )}
-      </div>
+      <swiper-container navigation="true" className="exercise-slider">
+        <swiper-slide>
+          <div className="text">
+            {exerciseData !== null &&
+                exerciseData.blocks.map((data, key) =>
+                  R.is(String, data) ? (
+                    <> {data} </>
+                  ) : data.index === null ? (
+                    <Annotatable key={key} annotation={data.choices} />
+                  ) : (
+                    <Annotatable
+                      key={key}
+                      annotation={annotations[data.index]}
+                      options={data.choices}
+                      onSelect={updateAnnotation(data.index)}
+                      text={data.text}
+                    />
+                  )
+                )}
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div className="text">
+            {exerciseData !== null &&
+                exerciseData.blocks.map((data, key) =>
+                  R.is(String, data) ? (
+                    <> {data} </>
+                  ) : data.index === null ? (
+                    <Annotatable key={key} annotation={data.choices} />
+                  ) : (
+                    <Annotatable
+                      key={key}
+                      annotation={annotations[data.index]}
+                      options={data.choices}
+                      onSelect={updateAnnotation(data.index)}
+                      text={data.text}
+                    />
+                  )
+                )}
+          </div>
+        </swiper-slide>
+      </swiper-container>
       <div className="button-container ml-3">
         <button className="btn btn-primary mt-3 pl-1" onClick={playAudio}>
           Play

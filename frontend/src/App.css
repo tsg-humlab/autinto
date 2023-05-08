@@ -1,10 +1,11 @@
 .App {
   font-size: 1.2em;
-  margin-bottom: 150px;
 }
 
 .text {
   text-align: center;
+	/* position: relative; */
+	margin-bottom: .5em;
 }
 
 .annotatable {
@@ -84,6 +85,8 @@
 .button-container {
   margin-top: 1em;
   padding-left: 3em;
+	position: relative;
+	z-index: -1;
 }
 
 .button-container > button {
@@ -92,4 +95,8 @@
   margin: 0 0.2em;
   font-size: 0.6em;
   padding: 7px;
+}
+
+swiper-container {
+	overflow: visible !important;
 }

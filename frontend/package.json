@@ -8,7 +8,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1",
-    "shx": "^0.3.4"
+    "shx": "^0.3.4",
+    "swiper": "^9.2.2"
   },
   "devDependencies": {
     "prettier": "2.8.4"
