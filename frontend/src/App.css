@@ -100,3 +100,12 @@
 swiper-container {
 	overflow: visible !important;
 }
+
+swiper-slide {
+	opacity: 0;
+	transition: opacity 0.5s;
+}
+
+.swiper-slide-active {
+	opacity: 1;
+}
