@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react"
+import React, { Component, useState, useEffect, useRef } from "react"
 import * as R from "ramda"
 import "./App.css"
 import Annotatable from "./Annotatable"
@@ -21,6 +21,10 @@ function App({ id='' }) {
   const [showResynthesisContour, setShowResynthesisContour] = useState(false)
   const [exerciseData, setExerciseData] = useState(null)
   const [annotations, setAnnotations] = useState(null)
+
+  const swiperRef = useRef(null)
+
+  const activeItemIndex = () => swiperRef.current === null || swiperRef.current.swiper.activeIndex;
 
   console.log('Show contour:', contourVisible)
 
@@ -56,8 +60,8 @@ function App({ id='' }) {
   }
 
 
-  const updateAnnotation = (at) => (val) => {
-    setAnnotations((a) => a.map((e, i) => (i === at ? val : e)))
+  const updateAnnotation = (itemIndex, at) => (val) => {
+    setAnnotations(a => R.adjust(itemIndex, R.update(at, val), a))
   }
 
   function checkAnnotation() {
@@ -73,7 +77,7 @@ function App({ id='' }) {
 
   function showSolution() {
     if (exerciseData !== null) {
-      setAnnotations(exerciseData.key)
+      setAnnotations(R.update(activeItemIndex(), exerciseData[activeItemIndex()].key, annotations))
     }
   }
 
@@ -130,11 +134,12 @@ function App({ id='' }) {
   }
 
   console.log(exerciseData)
+  console.log(activeItemIndex())
   return (
     <div className="App">
-      <swiper-container navigation="true" className="exercise-slider">
+      <swiper-container ref={swiperRef} navigation="true" className="exercise-slider">
         {exerciseData !== null &&
-            exerciseData.map(item => 
+            exerciseData.map((item, itemIndex) => 
             <swiper-slide>
               <div className="text">
                 {item !== null &&
@@ -147,9 +152,9 @@ function App({ id='' }) {
                       ) : (
                         <Annotatable
                           key={key}
-                          annotation={annotations[annotatable.index]}
+                          annotation={annotations[itemIndex][annotatable.index]}
                           options={annotatable.choices}
-                          onSelect={updateAnnotation(annotatable.index)}
+                          onSelect={updateAnnotation(itemIndex, annotatable.index)}
                           text={annotatable.text}
                         />
                       )
@@ -179,7 +184,7 @@ function App({ id='' }) {
         </button>
       </div>
       <img
-        src={exerciseData !== null ? `./${exerciseData[0].contour}` : undefined}
+        src={exerciseData !== null && swiperRef.current !== null ? `./img/${exerciseData[activeItemIndex()].contour}` : undefined}
         alt=""
         style={{ width: "100%", display: contourVisible ? "block" : "none" }}
       />
