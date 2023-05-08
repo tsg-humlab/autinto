@@ -20,8 +20,9 @@
     "eject": "react-scripts eject",
     "build-widget": "react-scripts build",
     "copy-dependencies": "shx cp ./build/static/js/main.*.js ./book/additional-files/main.js && shx cp ./build/static/css/main.*.css ./book/additional-files/main.css",
+		"copy-source-map": "shx cp ./build/static/js/main.*.js.map ./book/build/additional-files/",
     "build-book": "cd book && mdbook build",
-    "build": "npm run build-widget && npm run copy-dependencies && npm run build-book"
+    "build": "npm run build-widget && npm run copy-dependencies && npm run build-book && npm run copy-source-map"
   },
   "browserslist": {
     "production": [

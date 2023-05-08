@@ -3,8 +3,8 @@
         {
             "sentence": "[](%L)  [Waar]0 [hebben]0 we  het  [nou]0 [helemaal]0  [over]0  [](L%)",
             "key": ["%L", "∅", "H*L", "∅", "∅", "∅","L%"],
-            "contour": "1A-1.png", 
-            "audio": "1A-1.mp3"
+            "contour": "exercise1/1A/png-1A/1A-1.png", 
+            "audio": "exercise1/1A/audio-1A/1A-1.mp3"
         },
         {
             "sentence": "[](%L) 't heeft  [toch]0  [allemaal]0  [geen]0  [zin]0  op  die  [manier]0 [](L%)",

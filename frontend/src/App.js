@@ -8,9 +8,10 @@ import { register } from 'swiper/element/bundle'
 
 register()
 
-function fetchExercise(id) {
+function fetchExercise(path) {
   // Have the exercise specification hardcoded for now.
-  return fetch(`exercise${id}.json`).then(res => res.json())
+  console.log('fetching', path)
+  return fetch(path).then(res => res.json())
 }
 
 
@@ -21,12 +22,14 @@ function App({ id='' }) {
   const [exerciseData, setExerciseData] = useState(null)
   const [annotations, setAnnotations] = useState(null)
 
+  console.log('Show contour:', contourVisible)
+
   useEffect(() => {
     fetchExercise(id).then((data) => {
       // TODO: Validate data!
       const spec = readSpecification(data)
       setExerciseData(spec)
-      setAnnotations(spec.key.map(() => ''))
+      setAnnotations(spec.map(item => item.key.map(() => '')))
     })
   }, [])
 
@@ -100,7 +103,6 @@ function App({ id='' }) {
     })
       .then((r) => r.text())
       .then((html) => {
-        console.log(html)
         const el = document.createElement("html")
         el.innerHTML = html
         const xpathSearch = document.evaluate(
@@ -127,49 +129,34 @@ function App({ id='' }) {
       })
   }
 
+  console.log(exerciseData)
   return (
     <div className="App">
       <swiper-container navigation="true" className="exercise-slider">
-        <swiper-slide>
-          <div className="text">
-            {exerciseData !== null &&
-                exerciseData.blocks.map((data, key) =>
-                  R.is(String, data) ? (
-                    <> {data} </>
-                  ) : data.index === null ? (
-                    <Annotatable key={key} annotation={data.choices} />
-                  ) : (
-                    <Annotatable
-                      key={key}
-                      annotation={annotations[data.index]}
-                      options={data.choices}
-                      onSelect={updateAnnotation(data.index)}
-                      text={data.text}
-                    />
-                  )
-                )}
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div className="text">
-            {exerciseData !== null &&
-                exerciseData.blocks.map((data, key) =>
-                  R.is(String, data) ? (
-                    <> {data} </>
-                  ) : data.index === null ? (
-                    <Annotatable key={key} annotation={data.choices} />
-                  ) : (
-                    <Annotatable
-                      key={key}
-                      annotation={annotations[data.index]}
-                      options={data.choices}
-                      onSelect={updateAnnotation(data.index)}
-                      text={data.text}
-                    />
-                  )
-                )}
-          </div>
-        </swiper-slide>
+        {exerciseData !== null &&
+            exerciseData.map(item => 
+            <swiper-slide>
+              <div className="text">
+                {item !== null &&
+                    item.blocks.map((annotatable, key) =>
+                      // JSON.stringify(annotatable)
+                      R.is(String, annotatable) ? (
+                        <> {annotatable} </>
+                      ) : annotatable.index === null ? (
+                        <Annotatable key={key} annotation={annotatable.choices} />
+                      ) : (
+                        <Annotatable
+                          key={key}
+                          annotation={annotations[annotatable.index]}
+                          options={annotatable.choices}
+                          onSelect={updateAnnotation(annotatable.index)}
+                          text={annotatable.text}
+                        />
+                      )
+                    )}
+              </div>
+            </swiper-slide>
+        )}
       </swiper-container>
       <div className="button-container ml-3">
         <button className="btn btn-primary mt-3 pl-1" onClick={playAudio}>
@@ -192,7 +179,7 @@ function App({ id='' }) {
         </button>
       </div>
       <img
-        src={exerciseData !== null ? `./img/${exerciseData.contour}` : undefined}
+        src={exerciseData !== null ? `./${exerciseData[0].contour}` : undefined}
         alt=""
         style={{ width: "100%", display: contourVisible ? "block" : "none" }}
       />
