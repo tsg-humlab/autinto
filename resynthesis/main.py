@@ -120,6 +120,26 @@ def run(file, word):
 
     tvpOffset = 0
 
+    custom = False
+    if(custom):
+        print("hier de code om custom parameters te inputten")
+    else:
+        TOTIME = 90
+        FROMTIME = 100
+        STARTIME = 0.3  # no longer a time
+        da = 0.7
+        dp = 0.9
+        if(tg[0][0].mark == "v"):
+            #print("ITS A WOMAN")
+            Fr = 95
+            N = 120
+            W = 190
+        else:
+            #print("it ain a woman")
+            Fr = 70
+            N = 70
+            W = 110
+
     for i in range(len(word)):
         for j in range(len(tone[i])):
             
@@ -149,13 +169,133 @@ def run(file, word):
                     Tipend = endtime - 23 + 11500/vpduur
                     addtime = Tipend - endtime
                     Tvpend = Tipend
-            if (word[i] in ["L*HL", "L*!HL"] and nextWord in ["H%"]):
-                Tipend = endtime - 23 + 15000/vpduur
-                addtime = Tipend - endtime
-                Tvpend = Tipend
+                if (word[i] in ["L*HL", "L*!HL"] and nextWord in ["H%"]):
+                	Tipend = endtime - 23 + 15000/vpduur
+                	addtime = Tipend - endtime
+                	Tvpend = Tipend
 
+            ###########SECOND PARSE: Create aligned and scaled targets.
+
+            freq_low =  Fr + N - (W * 0.5)
+            freq_high = Fr + N + (W * 0.5)
+            inihigh = freq_high
+
+            #INITIAL BOUNDARY. The rules create the two targets for %L, H% and %HL.
+
+            if tone in ['!']:
+                if word in ['!%L', '!%H', '!%HL']:
+                    freq_high = Fr + (freq_high - Fr) * dp  
+                    freq_low =  Fr + (freq_low - Fr) * dp
+
+            if tone in ['%L', '%H']:
+                if word in ['%L', '!L%']:
+                    B1time = Tipbegin
+                    #align LB1 B1time
+                    #scale LB1 freq_low + 0.3 * W 
+        
+                if word in ['%H', '!H%', '%HL', '!%HL']:
+                    B1time = Tipbegin
+                    #align HB1 B1time
+                    #scale HB1 freq_high - 0.15 * W
+
+            if tone in ['%L']:
+                if word in ['L%', '%HL'] and (next_tone in ['!H*', 'H*', 'L*']) and (get_Tvpbegin(next_tone) - Tipbegin) < TOTIME * 2:
+                    B2time = Tipbegin + (get_Tvpbegin(next_tone) - Tipbegin) * 0.5 
+                else:
+                    B2time = get_Tvpbegin(next_tone) - TOTIME
+                    #align LB2 B2time
+                    #scale LB2 freq_low + (0.2 * W)
+
+            if tone in ['%H']:
+                if (word in ['%H']) and (next_tone in ['!H*', 'H*', 'L*']) and (get_Tvpbegin(next_tone) - Tipbegin) < TOTIME * 2:
+                    B2time = Tipbegin + (get_Tvpbegin(next_tone) - Tipbegin) * 0.5 
+                else:
+                    B2time = get_Tvpbegin(next_tone) - TOTIME
+                    #align HB2 B2time
+                    #scale HB2 freq_high - 0.3 * W
+
+            #ACCENTUAL DOWNSTEP
+            #The rule lowers the upper and lower boundaries of the pitch range.
+    
+            if tone in ['!H*', '!H']:
+                if word in ['!H*', '!H*L', 'L*!HL']:
+                    freq_high = Fr + (freq_high - Fr) * da  
+                    freq_low =  Fr + (freq_low - Fr) * da
+
+            # FLAT-TOP PEAK
+            #This rule creates the alignment and scaling of the first and second targets H* in its vp. 
+
+            if tone in ['H*', '!H*']:
+                if word in ['H*', 'H*L', '!H*', '!H*L']:
+                    vpduur = Tipend - Tvpbegin
+                    if vpduur < 200:
+                        Htime = Tvpbegin + (0.4 * STARTIME * vpduur)
+                    else:
+                        Htime = Tvpbegin + (STARTIME * vpduur)
+                    #align H1 Htime
+                    #align H2 Htime + (0.6 * vpduur)
+                    #scale H1 freq_high - 0.3 * W    
+                    #scale H2 freq_high - 0.3 * W
+
+            #PRE-NUCLEAR FALL
+            #This rule creates a slow fall before another toneword.
+  
+            if tone in ['L']:
+                if (word in ['H*L', 'L*HL', '!H*L', 'L*!HL']) and (next_tone in ['H*', '!H*', 'L*']):
+                    spaceduur = get_Tvpbegin(next_tone) - get_Tvpend(prec_tone)
+                    if spaceduur < TOTIME * 2:
+                        ltime = get_Tvpbegin(next_tone) - (spaceduur * 0.5)
+                        #align l1 ltime
+                        #scale l1 freq_low + 0.4 * W
+                    else:
+                        ltime = get_Tvbegin(next_tone) - TOTIME
+                        #align l1 ltime
+                        #scale l1 freq_low - 0.25 * W
+
+            #NUCLEAR FALL
+            #This rule creates a fast nuclear fall.
+ 
+            if tone in ['L']:
+                if (word in ['H*L', 'L*HL', '!H*L', 'L*!HL']) and (next_word in ['L%'], ['H%']):
+                    if Tipend - time(prec_tone) < TOTIME:
+                        ltime = time(prec_tone) + (Tipend - time(prec_label) * 0.5)
+                    else:
+                        ltime = time(prec_tone) + FROMTIME
+                        #align l1 ltime
+                        #scale l1 freq_low + 0.9 * W
+                        #align l2 Tipend - TOTIME
+                        #scale l2 freq_low + 0.9 * W
+  
+            # FINAL BOUNDARY
+            # This rule aligns and scales the targets of L%, H% and % at the IP-end. 
+            
+            if tone in ['L%']:  
+                if word in ['L%']: 
+                    etime = Tipend
+                    #align LE etime
+                    #scale LE freq_low
+        
+            if tone in ['%']:   
+                if word in ['%']:
+                    etime = Tipend
+                    #align ME etime
+                    #if prec_word in ['H*L', '!H*L', 'L*HL', 'L*!HL']:  
+                        #scale ME freq_low + W * 0.4
+                    #if prec_word in ['H*', 'L*H']:
+                        #scale ME freq_high - W * 0.25   
+                    #if prec_word in ['L*']:
+                        #scale ME freq_low + W * 0.15
+                
+            if tone in ['H%']:
+                if word in ['H%']:
+                    etime = Tipend
+                    #align HE etime
+                    #scale HE freq_inihigh
+        
+     
 
 if __name__ == "__main__":
     word = ["%L","L*H","H*L","H*","L*", "H%", "H%" , "H*L","L*","---","L%"]
-    file = "C:/Users/sebas/Documents/Praat-Wavs/147"
+    #file = "C:/Users/sebas/Documents/Praat-Wavs/147"
+    file = "/home/pim/Documents/todi/147"
     run(file, word)
