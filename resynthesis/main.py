@@ -1,6 +1,8 @@
-import parselmouth
 import textgrid
 import praatparser as parser
+import tgt
+from tgt.core import TextGrid
+
 
 #takes the next word even if empty
 def next_word(WordList, IndexI):
@@ -116,14 +118,14 @@ def isBoundary(currentWord):
 
 def run(file, word):
     script = ""
+    grid = tgt.read_textgrid(file + ".TextGrid")
+    grid.delete_tiers(["Tones", "Targets", "Frequencies"])
+    tgt.io.write_to_file(grid, file + ".TextGrid", format='long')
+
     tg = textgrid.TextGrid.fromFile(file + ".TextGrid")
+    
 
-    #script += "Read from file... {}.wav\n".format(file)
-
-    #tone = [["%L"], ["L*", "H"], ["H*", "L"], ["H*"], [], ["H*", "L"], ["L*"], [], ["L%"]]
     tone = make_tone(word)
-    #print(tone)
-
     tvpOffset = 0
 
     custom = False
@@ -145,14 +147,28 @@ def run(file, word):
             Fr = 70
             N = 70
             W = 110
+    
+    
+    WordTier = tgt.core.PointTier(0.0, grid.end_time, "Tones")
+    TargetTier = tgt.core.PointTier(0.0, grid.end_time, "Targets")
+    FrequencyTier = tgt.core.PointTier(0.0, grid.end_time, "Frequencies")
+    grid.add_tiers([WordTier, TargetTier, FrequencyTier])
+
 
     for i in range(len(word)):
+        
+        # Hier wordt en de offset bepaald, en we voegen de word labels toe aan de juiste tier op de juiste plek.
+        if(isBoundary(word[i])):
+            WordTier.add_point(tgt.core.Point(get_Tipend(i, word, tg, tvpOffset), word[i]))
+            if (not i == 0 and not i == len(word)-1):
+                tvpOffset+=1
+                #print(get_Tipend(i, word, tg, tvpOffset))
+        else:
+            WordTier.add_point(tgt.core.Point(get_Tvpbegin(i, word, tg, tvpOffset), word[i]))
+        
         for j in range(len(tone[i])):
             
-            if(isBoundary(word[i])):
-                if (not i == 0 and not i == len(word)-1):
-                    tvpOffset+=1
-                #print(get_Tipend(i, word, tg, tvpOffset))
+            #rint(tone[i][j])
 
             next_word = next_word2(word, i)
             prec_word = prec_word2(word, i)
@@ -182,29 +198,33 @@ def run(file, word):
             #         addtime = Tipend - endtime
             #         Tvpend = Tipend
                         
-            # ###########SECOND PARSE: Create aligned and scaled targets.
+            ###########SECOND PARSE: Create aligned and scaled targets.
 
-            # freq_low =  Fr + N - (W * 0.5)
-            # freq_high = Fr + N + (W * 0.5)
-            # inihigh = freq_high
+            freq_low =  Fr + N - (W * 0.5)
+            freq_high = Fr + N + (W * 0.5)
+            inihigh = freq_high
 
-            # #INITIAL BOUNDARY. The rules create the two targets for %L, H% and %HL.
+            #INITIAL BOUNDARY. The rules create the two targets for %L, H% and %HL.
 
-            # if tone[j] in ['!']:
-            #     if word[i] in ['!%L', '!%H', '!%HL']:
-            #         freq_high = Fr + (freq_high - Fr) * dp  
-            #         freq_low =  Fr + (freq_low - Fr) * dp
+            # To create phrasal downstep
+            if tone[i][j] in ['!']:
+                if word[i] in ['!%L', '!%H', '!%HL']:
+                    freq_high = Fr + (freq_high - Fr) * dp  
+                    freq_low =  Fr + (freq_low - Fr) * dp
 
-            # if tone[j] in ['%L', '%H']:
-            #     if word[i] in ['%L', '!L%']:
-            #         B1time = Tipbegin
-            #         #align LB1 B1time
-            #         #scale LB1 freq_low + 0.3 * W 
+            # To create the first target of the initial boundary tone
+            if tone[i][j] in ['%L', '%H']:
+                B1time = get_Tipend(i, word, tg, tvpOffset)
+                if word[i] in ['%L', '!L%']:
+                    freq = round(freq_low + 0.3 * W) 
+                    TargetTier.add_point(tgt.core.Point(B1time, "LB1")) #align LB1 B1time
+                    FrequencyTier.add_point(tgt.core.Point(B1time, str(freq))) #scale LB1 freq_low + 0.3 * W 
+                    
         
-            #     if word[i] in ['%H', '!H%', '%HL', '!%HL']:
-            #         B1time = Tipbegin
-            #         #align HB1 B1time
-            #         #scale HB1 freq_high - 0.15 * W
+                if word[i] in ['%H', '!H%', '%HL', '!%HL']:
+                    freq = round(freq_high - 0.15 * W) 
+                    TargetTier.add_point(tgt.core.Point(B1time, "HB1")) #align HB1 B1time
+                    FrequencyTier.add_point(tgt.core.Point(B1time, str(freq))) #scale HB1 freq_high - 0.15 * W
 
             # if tone[j] in ['%L']:
             #     if word[i] in ['L%', '%HL'] and (next_tone in ['!H*', 'H*', 'L*']) and (get_Tvpbegin(next_tone) - Tipbegin) < TOTIME * 2:
@@ -300,12 +320,12 @@ def run(file, word):
             #         #align HE etime
             #         #scale HE freq_inihigh
         
-     
+    tgt.io.write_to_file(grid, file + ".TextGrid", format='long')
 
 if __name__ == "__main__":
-    word1 = ["%L","L*H","H*L","H*","L*", "H*L","L*","---","L%"]
-    word = ["%L", "---", "---", "---", "H*", "---", "---", "H%", "%L", "---", "---", "H*", "H%"]
+    word = ["%L","L*H","H*L","H*","L*", "H*L","L*","---","L%"]
+    #word = ["%L", "---", "---", "---", "H*", "---", "---", "H%", "%L", "---", "---", "H*", "H%"]
     #file = "C:/Users/sebas/Documents/Praat-Wavs/147"
-    file1 = "C:/Users/sebas/Documents/Praat-Wavs/147"
-    file = "C:/Users/sebas/Documents/Software-Engineering/OLD WEBSITE/todi-webapp-master/htdocs/ToDI/ToDIpraat_8a/audio/8a-5"
+    file = "C:/Users/sebas/Documents/Praat-Wavs/147"
+    #file = "C:/Users/sebas/Documents/Software-Engineering/OLD WEBSITE/todi-webapp-master/htdocs/ToDI/ToDIpraat_8a/audio/8a-5"
     run(file, word)
