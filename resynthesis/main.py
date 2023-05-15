@@ -350,9 +350,11 @@ def run(file, word):
             if tone[i][j] in ["H", "!H"]:
                     if word[i] in ["L*HL", "L*!HL"]:
                             delayspace = 0 #temp fix
+
                             if next_word in ["L%", "H%", "%"]:
                                     if (IpTime - Tvp_end) < 0.260: #naar ms gezet
                                         delayspace = IpTime - Tvp_begin
+
                             if next_tone in ["H*", "!H*", "L*"]:
                                     if (Tvp_begin_next - Tvp_end) < 0.360:
                                         delayspace = Tvp_begin_next - Tvp_end
@@ -445,6 +447,7 @@ def run(file, word):
                         l1time = targetList[-1][0] + spreadspace * 0.5
                         TargetTier.add_point(tgt.core.Point(l1time, "L1")) #align l1 get_time(prec_target) + spreadtime * 0.5
                         targetList.append((l1time, "L1"))
+                        l2time = targetList[-1][0] + spreadspace * 0.5 #############################################
                         #align l1 ltime #NOT SURE WAT HIER MOET GEBEUREN
                     else:
                         l1time = targetList[-1][0] + FROMTIME
@@ -584,8 +587,8 @@ def run(file, word):
     tgt.io.write_to_file(grid, file + ".TextGrid", format='long')
 
 if __name__ == "__main__":
-    word = ["%L","---","H*L","H*","L*", "H*L","L*","---","L%"]
-    word2 = ["%L", "---", "H*L", "---", "---", "---", "---", "---", "L%"]
+    word2 = ["%L","---","H*L","H*","L*", "H*L","L*","---","L%"]
+    word = ["%L", "---", "H*L", "---", "---", "---", "---", "---", "L%"]
     #word = ["%L", "---", "---", "---", "H*", "---", "---", "H%", "%L", "---", "---", "H*", "H%"]
     #file = "C:/Users/sebas/Documents/Praat-Wavs/147"
     file = "C:/Users/sebas/Documents/Praat-Wavs/147"
