@@ -3,60 +3,24 @@ import praatparser as parser
 import tgt
 from tgt.core import TextGrid
 
-
-#takes the next word even if empty
-def next_word(WordList, IndexI):
-    if (IndexI + 1 == len(WordList)):
-        return
-    else:
-        return(WordList[IndexI+1])
-
 #takes the next non-empty word
-def next_word2(WordList, IndexI):
+def next_Word(WordList, IndexI):
     if (IndexI + 1 == len(WordList)):
         return
     else:
         while(WordList[IndexI+1] == "---"):
             IndexI+=1
         return(WordList[IndexI+1])
-    
-#takes the preceding word even if empty    
-def prec_word(WordList, IndexI):
-    if (IndexI <= 0):
-        return
-    else:
-        return(WordList[IndexI-1])
+
     
 #takes the preceding non-empty word    
-def prec_word2(WordList, IndexI):
+def prec_Word(WordList, IndexI):
     if (IndexI <= 0):
         return
     else:
         while(WordList[IndexI-1] == "---"):
             IndexI-=1
         return(WordList[IndexI-1])
-    
-#takes the next tone
-def next_tone(WordList, ToneList, IndexI, IndexJ):
-    if(IndexJ+1 == len(ToneList[IndexI])):
-        if(IndexI + 1 == len(WordList)):
-            return
-        while(WordList[IndexI+1] == "---"):
-            IndexI+=1
-        return(ToneList[IndexI+1][0])
-    else:
-        return(ToneList[IndexI][IndexJ+1])
-    
-#takes previous tone
-def prec_tone2(WordList, ToneList, IndexI, IndexJ):
-    if(IndexJ<=0 ):
-        if(IndexI <= 0):
-            return
-        while(WordList[IndexI-1] == "---"):
-            IndexI-=1
-        return(ToneList[IndexI-1][len(ToneList[IndexI-1])-1])
-    else:
-        return(ToneList[IndexI][IndexJ-1])    
 
 #returns the index of the next word
 def next_wordI(WordList, IndexI):
@@ -68,7 +32,7 @@ def next_wordI(WordList, IndexI):
         return(IndexI+1)
 
 #take next tone and gives i index of next tone(i index related to vp?)     
-def next_tone2(WordList, ToneList, IndexI, IndexJ):
+def next_Tone(WordList, ToneList, IndexI, IndexJ):
     if(IndexJ+1 == len(ToneList[IndexI])):
         if(IndexI + 1 == len(WordList)):
             return("")
@@ -82,16 +46,12 @@ def next_tone2(WordList, ToneList, IndexI, IndexJ):
 #return tvpbegin using the index on word    
 def get_Tvpbegin(indexI1, WordList, tg, offset):
     indexI = indexI1 - offset
-    if (indexI == 0 or indexI == len(WordList)-1):
-        return 0
     index = indexI + indexI-1
     return tg[2][index].minTime
 
 #return tvpend using the index on word
 def get_Tvpend(indexI1, WordList, tg, offset):
     indexI = indexI1 - offset
-    if (indexI == 0 or indexI == len(WordList)-1):
-        return 0
     index = indexI + indexI-1
     return tg[2][index].maxTime
 
@@ -112,21 +72,21 @@ def make_tone(WordList):
     return tone
 
 def isBoundary(currentWord):
-    Boundaries = ["%H", "%L", "L%", "H%"]
+    Boundaries = ["%L", "%H", "%HL", "!%L", "!%H", "!%HL", "L%", "H%", "%"]
     if(currentWord in Boundaries):
         return True
     else:
         return False
     
 def isInitialBoundary(currentWord):
-    Boundaries = ["%H", "%L"]
+    Boundaries = ["%L", "%H", "%HL", "!%L", "!%H", "!%HL"]
     if(currentWord in Boundaries):
         return True
     else:
         return False
 
 def isFinalBoundary(currentWord):
-    Boundaries = ["L%", "H%"]
+    Boundaries = ["L%", "H%", "%"]
     if(currentWord in Boundaries):
         return True
     else:
@@ -140,11 +100,6 @@ def createTiers(targetList, TargetTier, FrequencyTier):
 
         TargetTier.add_point(tgt.core.Point(time, label))
         FrequencyTier.add_point(tgt.core.Point(time, frequency))
-    
-
-
-    
-    time = targetList
 
 def run(file, words):
     script = ""
@@ -164,18 +119,18 @@ def run(file, words):
     if(custom):
         print("hier de code om custom parameters te inputten")
     else:
-        TOTIME = 0.09 #from miliseconds to seconds
+        TOTIME = 0.09 
         FROMTIME = 0.10
-        STARTIME = 0.30 # no longer a time
+        STARTIME = 0.30 
         da = 0.7
         dp = 0.9
         if(tg[0][0].mark == "v"):
-            #print("ITS A WOMAN")
+
             Fr = 95
             N = 120
             W = 190
         else:
-            #print("it ain a woman")
+
             Fr = 70
             N = 70
             W = 110
@@ -210,16 +165,16 @@ def run(file, words):
                 
                 ipbegin = get_Tipbegin(ipInterval, tg)
                 Tvp_begin_next = get_Tvpbegin(next_wordI(words, i), words, tg, tvpOffset)
-                next_word = next_word2(words, i)
+                next_word = next_Word(words, i)
 
             elif(isFinalBoundary(word)):
                 ipend = get_Tipend(ipInterval, tg)
-                prec_word = prec_word2(words, i)
+                prec_word = prec_Word(words, i)
 
             else:
-                next_word = next_word2(words, i)
-                next_tone = next_tone2(words, tones, i, j)
-                ipend = get_Tipend(ipInterval, tg) #voor hier mogelijk +1 omdat we altijd naar de toekomst kijken.
+                next_word = next_Word(words, i)
+                next_tone = next_Tone(words, tones, i, j)
+                ipend = get_Tipend(ipInterval, tg)
                 Tvp_begin = get_Tvpbegin(i, words, tg, tvpOffset)
                 Tvp_end = get_Tvpend(i, words, tg, tvpOffset)
             
