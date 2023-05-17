@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Centered Buttons</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    .button-container {
+      text-align: center;
+    }
+
+    .button-container button {
+      display: block;
+      width: 200px;
+      padding: 10px 20px;
+      margin: 10px auto;
+      border: none;
+      border-radius: 4px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="button-container">
+    <button onclick="window.open('/admin/filebrowser/browse', '_blank')">Go to file browser</button>
+    <button onclick="rebuildHtml()">Rebuild HTML</button>
+  </div>
+
+  <script>
+    function rebuildHtml() {
+      fetch('/rebuild-html', { method: 'GET' })
+        .then(response => {
+          if (response.ok) {
+            // Handle successful response
+            console.log('HTML rebuilt successfully!');
+          } else {
+            // Handle error response
+            console.error('Failed to rebuild HTML.');
+          }
+        })
+        .catch(error => {
+          // Handle network error
+          console.error('Network error:', error);
+        });
+    }
+  </script>
+</body>
+</html>
