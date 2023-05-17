@@ -8,7 +8,7 @@
         },
         {
             "sentence": "[]2 [Nee]0 []1 [](P) [zei]3 meneer van de Brandelaar []1",
-            "key": ["%L", "H*L", "L%", "P", "L", "L%"],
+            "key": ["%L", "H*L", "L%", "L", "L%"],
             "contour": "8A-2.png",
             "audio": "8A-2.mp3"
         },
@@ -26,7 +26,7 @@
         },
         {
             "sentence": "[]2 Even over iets [anders]0 dan 't werk []1 [](P) []2 heeft u zelf [hobbies]0 []1",
-            "key": ["%L", "H*", "H%", "P", "%L", "H*", "H%"],
+            "key": ["%L", "H*", "H%", "%L", "H*", "H%"],
             "contour": "8A-5.png",
             "audio": "8A-5.mp3"
         },
@@ -44,7 +44,7 @@
         },
         {
             "sentence": "[](%L) [Stom]0 [](L%) [](%L) dat ik [daar]0 niet aan [gedacht]0 heb [](L%)",
-            "key": ["%L", "H*L", "L%", "%L", "H*L", "H*L", "L%"],
+            "key": ["H*L", "H*L", "H*L"],
             "contour": "8A-8.png",
             "audio": "8A-8.mp3"
         },

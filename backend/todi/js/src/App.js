@@ -68,7 +68,7 @@ function App({ id='' }) {
     // TODO: Nicer equality comparison
     alert(
       `Answer is ${
-        JSON.stringify(annotations) === JSON.stringify(exerciseData && exerciseData.key)
+        JSON.stringify(annotations[activeItemIndex()]) === JSON.stringify(exerciseData && exerciseData[activeItemIndex()].key)
           ? "correct"
           : "not correct"
       }`
