@@ -2,73 +2,73 @@
     "items": [
         {
             "sentence": "[](%L) [Fietsen]0 is in 't  [hele]0 park [verboden]0 [](L%)",
-            "key": ["%L", "H*", "!H*", "!H*L", "L%"],
+            "key": ["H*", "!H*", "!H*L"],
             "contour": "1C-1.png", 
             "audio": "1C-1.mp3"
         },
         {
             "sentence": "[](%L) [Fietsen]0 is in 't  [hele]0 park [verboden]0 [](L%)",
-            "key": ["%L", "H*L", "!H*L", "!H*L", "L%"],
+            "key": ["H*L", "!H*L", "!H*L"],
             "contour": "1C-2.png", 
             "audio": "1C-2.mp3"
         }, 
         {
             "sentence": "[](%L) Dat  moet  je  [straks]0  maar  even  [over]0  doen  [](L%)",
-            "key": ["%L", "H*L", "H*L", "L%"],
+            "key": ["H*L", "H*L"],
             "contour": "1C-3.png", 
             "audio": "1C-3.mp3"
         },
         {
             "sentence": "[](%L) Dat  moet  je  [straks]0  maar  even  [over]0  doen  [](L%)",
-            "key": ["%L", "H*", "!H*L", "L%"],
+            "key": ["H*", "!H*L"],
             "contour": "1C-4.png", 
             "audio": "1C-4.mp3"
         },
         {
             "sentence": "[](%L) [Waar]0  wil  [Marina]0  haar  [mandoline]0  verkopen [](L%)",
-            "key": ["%L", "H*", "∅", "∅", "L%"],
+            "key": ["H*", "∅", "∅"],
             "contour": "1C-5.png", 
             "audio": "1C-5.mp3"
         },
         {
             "sentence": "[](%L) Je  bent  ook  wel  [nieuwsgierig]0  van  wat  [maken]0  ze d'rvan [](L%)",
-            "key": ["%L", "H*L", "H*L", "L%"],
+            "key": ["H*L", "H*L"],
             "contour": "1C-6.png", 
             "audio": "1C-6.mp3"
         },
         {
             "sentence": "[](%L) [zij]0 [heeft]0 [eendjes]0 [](L%)",
-            "key": ["%L", "H*L", "∅", "H*L", "L%"],
+            "key": ["H*L", "∅", "H*L"],
             "contour": "1C-7.png", 
             "audio": "1C-7.mp3"
         },
         {
             "sentence": "[](%L)  de  [kerk]0 laat  je  nog  [even]0  [rechts]0  liggen [](L%)",
-            "key": ["%L", "H*", "!H*L", "L%"],
+            "key": ["H*", "!H*L"],
             "contour": "1C-8.png",
             "audio": "1C-8.mp3"
         },
         {
             "sentence": "[](%L) ik  heb  [eerst]0  heb  ik  een  [boom]0  en  een  [fabriek]0 [](L%)",
-            "key": ["%L", "H*L", "H*L", "!H*L", "L%"],
+            "key": ["H*L", "H*L", "!H*L"],
             "contour": "1C-9.png",
             "audio": "1C-9.mp3"
         },
         {
             "sentence": "[](%L) je  gaat  [rechts]  [langs de]  [fiets] [](L%)",
-            "key": ["%L", "H*","∅", "!H*L", "L%"],
+            "key": ["H*","∅", "!H*L"],
             "contour": "1C-10.png",
             "audio": "1C-10.mp3"
         },
         {
             "sentence": "[](%L) je  [blijft]0  [rechts]0  van  het  [huis]0  [](L%)",
-            "key": ["%L", "∅", "H*", "!H*L", "L%"],
+            "key": ["∅", "H*", "!H*L"],
             "contour": "1C-11.png",
             "audio": "1C-11.mp3"
         },
         {
             "sentence": "[](%L) en dat [betreft]0 dan vooral [mensen]0 die  [geraakt]0  zijn  door [rondvliegend]0  [glas]0 [](L%)",
-            "key": ["%L", "!H*L","!H*L", "!H*L","!H*L", "!H*L", "L%"],
+            "key": ["!H*L","!H*L", "!H*L","!H*L", "!H*L"],
             "contour": "1C-12.png",
             "audio": "1C-12.mp3"
         }

@@ -2,73 +2,73 @@
     "items": [
         {
             "sentence": "[](%L)  [Waar]0 [hebben]0 we  het  [nou]0 [helemaal]0  [over]0  [](L%)",
-            "key": ["%L", "∅", "H*L", "∅", "∅", "∅","L%"],
+            "key": ["∅", "H*L", "∅", "∅", "∅"],
             "contour": "1A-1.png", 
             "audio": "1A-1.mp3"
         },
         {
             "sentence": "[](%L) 't heeft  [toch]0  [allemaal]0  [geen]0  [zin]0  op  die  [manier]0 [](L%)",
-            "key": ["%L", "H*L", "∅", "∅", "∅", "∅","L%"],
+            "key": ["H*L", "∅", "∅", "∅", "∅"],
             "contour": "1A-2.png", 
             "audio": "1A-2.mp3"
         },
         {
             "sentence": "[](%L)  [Stom]0 [](L%) [](%L) dat  ik  [daar]0  niet  aan  [gedacht]0  heb [](L%)",
-            "key": ["%L", "H*L", "L%", "%L", "H*L","H*L","L%"],
+            "key": ["H*L", "L%", "%L", "H*L","H*L"],
             "contour": "1A-3.png", 
             "audio": "1A-3.mp3"
         },
         {
             "sentence": "[](%L)  [Waar]0  wil  [Jan]0  een  [miljoen]0  lenen [](L%)",
-            "key": ["%L", "H*L", "∅", "∅", "L%"],
+            "key": ["H*L", "∅", "∅"],
             "contour": "1A-4.png", 
             "audio": "1A-4.mp3"
         },
         {
             "sentence": "[](%L)  [Je]0  [zegt]0  [steeds]0  iets  [anders]0 [](L%)",
-            "key": ["%L", "∅", "∅", "∅", "H*L","L%"],
+            "key": ["∅", "∅", "∅", "H*L"],
             "contour": "1A-5.png", 
             "audio": "1A-5.mp3"
         },
         {
             "sentence": "[](%L)  Dat  moet  je  [straks]0  maar  even  [over]0  [doen]0 [](L%)",
-            "key": ["%L", "H*L", "H*L", "∅","L%"],
+            "key": ["H*L", "H*L", "∅"],
             "contour": "1A-6.png", 
             "audio": "1A-6.mp3"
         },
         {
             "sentence": "[](%L) Dit is de [eerste]0 [uitzending]0 [](L%)",
-            "key": ["%L", "H*L", "H*L","L%"],
+            "key": ["H*L", "H*L"],
             "contour": "1A-7.png", 
             "audio": "1A-7.mp3"
         },
         {
             "sentence": "[](%L) Om 's te  [kijken]0  hoe 't 'r  in  de  [natuur]0  uitziet  [al]0  die  [sneeuw]0 [](L%)",
-            "key": ["%L", "∅", "H*L", "∅", "∅","L%"],
+            "key": ["∅", "H*L", "∅", "∅"],
             "contour": "1A-8.png", 
             "audio": "1A-8.mp3"
         },
         {
             "sentence": "[](%L) Met  [steeds]0  weer  een  [nieuwe]0  [pen]0  gaat 't  [beter]0 [](L%)",
-            "key": ["%L", "H*L", "H*L", "H*L", "H*L","L%"],
+            "key": ["H*L", "H*L", "H*L", "H*L"],
             "contour": "1A-9.png", 
             "audio": "1A-9.mp3"
         },
         {
             "sentence": "[](%L) 't  [hoeft]0  niet  [altijd]0  op een  [mislukking]0 uit te [lopen]0 [](L%)",
-            "key": ["%L", "∅", "H*L", "∅", "∅","L%"],
+            "key": ["∅", "H*L", "∅", "∅"],
             "contour": "1A-10.png", 
             "audio": "1A-10.mp3"
         },
         {
             "sentence": "[](%L) [Waar]0  wil  [Marina]0  haar  [mandoline]0  [verkopen]0 [](L%)",
-            "key": ["%L", "H*L", "∅", "∅", "∅","L%"],
+            "key": ["H*L", "∅", "∅", "∅"],
             "contour": "1A-11.png", 
             "audio": "1A-11.mp3"
         },
         {
             "sentence": "[](%L) [Dat]0 doet-ie  met  zijn  [slurf]0  [natuurlijk]0 [](L%)",
-            "key": ["%L", "∅", "H*L", "∅","L%"],
+            "key": ["∅", "H*L", "∅"],
             "contour": "1A-12.png", 
             "audio": "1A-12.mp3"
         }
