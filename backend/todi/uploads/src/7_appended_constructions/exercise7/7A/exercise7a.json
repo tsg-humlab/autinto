@@ -26,7 +26,7 @@
         },
         {
             "sentence": "[]2 Je [ging]0 een [stukje]0 [](P) [pison]0 [spelen]0 he []1",
-            "key": ["%L", "H*L", "∅", "P", "H*L", "∅", "H%"],
+            "key": ["%L", "H*L", "∅","H*L", "∅", "H%"],
             "contour": "7A-5.png",
             "audio": "7A-5.mp3"
         },

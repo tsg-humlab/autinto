@@ -38,7 +38,7 @@
         },
         {
             "sentence": "[]2 Ik loop [altijd]0 [heen en]0 [weer]0 over de [trap]0 []1 [](P) []2 [dag en]0 [nacht]0 []1",
-            "key": ["%L", "H*", "!H*", "!H*", "!H*L", "L%", "P", "%L", "H*L", "L*!HL", "%"],
+            "key": ["%L", "H*", "!H*", "!H*", "!H*L", "L%", "%L", "H*L", "L*!HL", "%"],
             "contour": "8B-7.png",
             "audio": "8B-7.mp3"
         },

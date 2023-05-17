@@ -2,73 +2,73 @@
     "items": [
         {
             "sentence": "[](%L) Doe  nou  maar  [gewoon]0  []1  []2  zoals  [Willem](!H*L) [](L%)",
-            "key": ["%L", "H*", "∅", "∅", "!H*L", "L%"],
+            "key": ["H*", "∅", "∅"],
             "contour": "2-1.png", 
             "audio": "2-1.mp3"
         },
         {
             "sentence": "[](%L) En  [nu]0  wou  ik  ermee [eh]1  [](P)  []2  [ophouden](!H*L) [](L%)",
-            "key": ["%L", "H*", "∅", "P" ,"∅", "!H*L", "L%"],
+            "key": ["H*", "∅", "P" ,"∅"],
             "contour": "2-2.png", 
             "audio": "2-2.mp3"
         },
         {
             "sentence": "[](%L) De [hele](H*) [stad](!H*L)  []1  []2  met  [alle](H*)  omliggende  [dorpen](!H*L) [](L%)",
-            "key": ["%L", "H*","!H*L", "L%", "%L", "H*", "!H*L", "L%"],
+            "key": ["L%", "%L"],
             "contour": "2-3.png", 
             "audio": "2-3.mp3"
         },
         {
             "sentence": "[](%L) Waar  het  [gele](H*L)  begint []1 []2 [dat](H*)  is  [woestij]0 [](L%)",
-            "key": ["%L", "H*L", "H%", "%L", "H*", "!H*L", "L%"],
+            "key": ["H%", "%L", "!H*L"],
             "contour": "2-4.png", 
             "audio": "2-4.mp3"
         },
         {
             "sentence": "[](%L) [Misschien](H*L) []1 [](P) []2  [weegt](!H*L)  dat []1 [](P) []2 [nog](!H*L)  wel []1 [](P) []2 [zwaarder](H*L) [](L%)",
-            "key": ["%L", "H*L","∅", "P" ,"∅","!H*L", "∅", "P" ,"∅", "!H*L", "∅", "P" ,"∅", "H*L", "L%"],
+            "key": ["∅", "P" ,"∅","∅", "P" ,"∅", "∅", "P" ,"∅"],
             "contour": "2-5.png", 
             "audio": "2-5.mp3"
         },
         {
             "sentence": "[](%L) Toen  [Daan](H*L)  hier  nog  was []1 []2 kwam  zoiets  niet  [voor](H*L) [](L%)",
-            "key": ["%L", "H*L", "H%", "%L", "H*L", "L%"],
+            "key": [ "H%", "%L"],
             "contour": "2-6.png", 
             "audio": "2-6.mp3"
         },
         {
             "sentence": "[](%L) Ik  zie 'n [pannenset](H*L) []1 []2 of in  ieder  geval  een [keukenuitrusting](H*L) [](L%)",
-            "key": ["%L", "H*L", "L%", "%L", "H*L", "L%"],
+            "key": ["L%", "%L"],
             "contour": "2-7.png", 
             "audio": "2-7.mp3"
         },
         {
             "sentence": "[](%L) [Stom](H*L) []1 []2 dat  ik  [daar](H*L) niet  aan [gedacht](H*L) heb [](L%)",
-            "key": ["%L", "H*L", "%", "%L", "H*L", "H*L", "L%"],
+            "key": ["%", "%L"],
             "contour": "2-8.png", 
             "audio": "2-8.mp3"
         },
         {
             "sentence": "[](%L) Ik ben [bijzonder](H*L)  [blij](H*L)  []1 []2  dat  U  zo [vriendelijk](H*L) bent [](L%)",
-            "key": ["%L", "H*L", "H*L", "H%", "%L", "H*L", "H%"],
+            "key": ["H%", "%L"],
             "contour": "2-9.png", 
             "audio": "2-9.mp3"
         },
         {
             "sentence": "[](%L) In [Vierhouten](H*L) []1 [](P) []2  dat  ligt  op  de  [Veluwe](H*L) [](H%)",
-            "key": ["%L", "H*L", "H%", "P" ,"%L", "H*L", "H%"],
+            "key": ["H%", "P" ,"%L"],
             "contour": "2-10.png", 
             "audio": "2-10.mp3"
         },
         {
             "sentence": "[](%L) Is al  [meer](H*L)  bekend []1 []2  over  het  [aantal](H*L)  [slachtoffers](H*L) [](H%)",
-            "key": ["%L", "H*L", "H*L", "%" ,"%L", "H*L", "H*L","H%"],
+            "key": ["%" ,"%L"],
             "contour": "2-11.png", 
             "audio": "2-11.mp3"
         },
         {
             "sentence": "[](%L) [Illegalen](H*L) []1 [](P) []2 [vindt-ie](H*L) []1 [](P) []2 moeten  [minstens](H*L) het  [minimum-]](H*L)  [loon](!H*L) verdienen [](L%)",
-            "key": ["%L", "H*L", "%", "P" ,"%L", "H*L", "%", "P" ,"%L", "H*L", "H*L", "!H*L", "L%"],
+            "key": ["%", "%L", "%", "%L"],
             "contour": "2-12.png", 
             "audio": "2-12.mp3"
         }

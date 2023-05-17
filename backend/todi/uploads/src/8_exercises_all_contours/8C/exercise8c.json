@@ -68,7 +68,7 @@
         },
         {
             "sentence": "[]2 Ze heeft [grote]0 [belangstelling]0 voor [kunst]0 []1 [](P) []2 en [bezoekt]0 [regelmatig]0 [exposities]0 en [voorstellingen]0 []1",
-            "key": ["%L", "H*L", "!H*L", "H*", "%", "P", "%L", "H*L", "!H*L", "H*", "H*L", "L%"],
+            "key": ["%L", "H*L", "!H*L", "H*", "%", "%L", "H*L", "!H*L", "H*", "H*L", "L%"],
             "contour": "8C-12.png",
             "audio": "8C-12.mp3"
         }
