@@ -114,6 +114,7 @@ def run(file, words):
     tvpOffset = 0
     ipInterval = 0
     targetList = []
+    finalLengthening = False
 
     custom = False
     if(custom):
@@ -147,6 +148,9 @@ def run(file, words):
         if(isBoundary(words[i])):
             if isInitialBoundary(words[i]):
                 ipInterval+=1
+                if i != 0:
+                    ipInterval+=1
+
                 WordTier.add_point(tgt.core.Point(get_Tipbegin(ipInterval, tg), words[i]))
             else:
                 WordTier.add_point(tgt.core.Point(get_Tipend(ipInterval, tg), words[i]))
@@ -161,14 +165,16 @@ def run(file, words):
             word = words[i]
             tone = tones[i][j]
             
-            if(isInitialBoundary(word)):
-                
+            if(isInitialBoundary(word)):     
                 ipbegin = get_Tipbegin(ipInterval, tg)
                 Tvp_begin_next = get_Tvpbegin(next_wordI(words, i), words, tg, tvpOffset)
                 next_word = next_Word(words, i)
 
             elif(isFinalBoundary(word)):
-                ipend = get_Tipend(ipInterval, tg)
+                if finalLengthening:
+                    ipend = finalLengtheningIp
+                else:
+                    ipend = get_Tipend(ipInterval, tg)
                 prec_word = prec_Word(words, i)
 
             else:
@@ -183,19 +189,21 @@ def run(file, words):
             #FINAL LENGTHENING 1
             #voor drie verschillende tonen
             #moet nog wat beter bekeken worden
-            
-            # if ipend == Tvpend:
-            #     endtime = Tipend
-            #     vpduur = Tvpend - Tvp_begin
+            if not isBoundary(word):
+                if ipend == Tvp_end:
+                    finalLengthening = True
+                    endtime = ipend
+                    vpduur = Tvp_end - Tvp_begin
 
-            #     if (word[i] in ["H*L", "!H*L"] and next_word in ["H%"]) or (word[i] in ["L*H"] and next_word in ["L%", "H%", "%"]) or (word[i] in ["L*HL", "L!HL"] and next_word in ["L%", "%"]):
-            #         Tipend = endtime - 0.023 + 11.500/vpduur
-            #         addtime = Tipend - endtime
-            #         Tvpend = Tipend
-            #     if (word[i] in ["L*HL", "L*!HL"] and next_word in ["H%"]):
-            #         Tipend = endtime - 0.023 + 15.000/vpduur
-            #         addtime = Tipend - endtime
-            #         Tvpend = Tipend
+                    if (word[i] in ["H*L", "!H*L"] and next_word in ["H%"]) or (word[i] in ["L*H"] and next_word in ["L%", "H%", "%"]) or (word[i] in ["L*HL", "L!HL"] and next_word in ["L%", "%"]):
+                        ipend = endtime - 0.023 + 11.500/vpduur
+                        finalLengtheningIp = ipend
+                        addtime = ipend - endtime
+
+                    if (word[i] in ["L*HL", "L*!HL"] and next_word in ["H%"]):
+                        ipend = endtime - 0.023 + 15.000/vpduur
+                        finalLengtheningIp = ipend
+                        addtime = ipend - endtime
                         
 
             ###########SECOND PARSE: Create aligned and scaled targets.
@@ -428,7 +436,6 @@ def run(file, words):
             #PRENUCLEAR RISE AND FALL-RISE
             # This rule creates  the fall from (!)H* in (!)H*LH and the rise from L and L* to the next T*.
             # Creating the fall and the rise
-            #BETEKENEN DE GET_TIME(NEXTWORD) HIER DE TVPBEGINS?
 
             if tone in ["L"]:
                 if word in ["H*LH"]:                    
