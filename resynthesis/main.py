@@ -101,7 +101,7 @@ def createTiers(targetList, TargetTier, FrequencyTier):
         TargetTier.add_point(tgt.core.Point(time, label))
         FrequencyTier.add_point(tgt.core.Point(time, frequency))
 
-def run(file, words):
+def run(file, words, FR=120):
     script = ""
     grid = tgt.read_textgrid(file + ".TextGrid")
     grid.delete_tiers(["Tones", "Targets", "Frequencies"])
@@ -533,7 +533,7 @@ def run(file, words):
 
     #print(targetList[-1][0])
     createTiers(targetList, TargetTier, FrequencyTier)    
-    tgt.io.write_to_file(grid, file + ".TextGrid", format='long')
+    return grid
 
 if __name__ == "__main__":
     word2 = ["%L","---","H*L","H*","L*", "H*L","L*","---","L%"]
@@ -542,4 +542,5 @@ if __name__ == "__main__":
     #file = "C:/Users/sebas/Documents/Praat-Wavs/147"
     file = "C:/Users/sebas/Documents/Praat-Wavs/147"
     #file = "C:/Users/sebas/Documents/Software-Engineering/OLD WEBSITE/todi-webapp-master/htdocs/ToDI/ToDIpraat_8a/audio/8a-5"
-    run(file, words)
+    grid = run(file, words)
+    tgt.io.write_to_file(grid, file + ".TextGrid", format='long')
