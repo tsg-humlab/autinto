@@ -1,7 +1,37 @@
 import textgrid
-import praatparser as parser
 import tgt
 from tgt.core import TextGrid
+
+
+#returns all the tones associated with a word:
+def word_to_tone(word):
+    parse = {
+        '%L':    ['%L'],
+        '%H':    ['%H'],
+        '%HL':   ['%H', '%L'],
+        '!%L':   ['!', '%L'],
+        '!%H':   ['!', '%H'],
+        '!%HL':  ['!', '%H', '%L'],
+        'H*':    ['H*'],
+        '!H*':   ['!H*'],
+        'H*L':   ['H*', 'L'],
+        '!H*L':  ['!H*', 'L'],
+        'H*LH':  ['H*', 'L', 'H'],
+        'L*':    ['L*'],
+        'L*H':   ['L*', 'H'],
+        'L*HL':  ['L*', 'H', 'L'],
+        'L*!HL': ['L*', '!H', 'L'],
+        'L%':    ['L%'],
+        'H%':    ['H%'],
+        '%':     ['%']
+    }
+    return parse[word]
+
+
+
+#returns all the words that translate to a certain tone:
+def tone_to_word(tone):
+    return [i[0] for i in parse.items() if tone in i[1]]
 
 #takes the next non-empty word
 def next_Word(WordList, IndexI):
@@ -68,7 +98,7 @@ def make_tone(WordList):
         if(WordList[i] == "---"):
             tone.append([])
         else:
-            tone.append(parser.word_to_tone(WordList[i]))
+            tone.append(word_to_tone(WordList[i]))
     return tone
 
 def isBoundary(currentWord):
@@ -460,7 +490,7 @@ def run(file, words, FR=120):
                     
                     
                 
-	
+
 
             # #NUCLEAR RISE AND SPREAD FINAL L*, H*, !H*, H, !H of NUCLEAR PITCH ACCENT
             
