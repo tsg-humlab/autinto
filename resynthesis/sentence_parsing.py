@@ -28,11 +28,6 @@ def word_to_tone(word):
     return parse[word]
 
 
-
-#returns all the words that translate to a certain tone:
-def tone_to_word(tone):
-    return [i[0] for i in parse.items() if tone in i[1]]
-
 #takes the next non-empty word
 def next_Word(WordList, IndexI):
     if (IndexI + 1 == len(WordList)):
@@ -53,7 +48,7 @@ def prec_Word(WordList, IndexI):
         return(WordList[IndexI-1])
 
 #returns the index of the next word
-def next_wordI(WordList, IndexI):
+def next_word_index(WordList, IndexI):
     if (IndexI + 1 == len(WordList)):
         return
     else:
@@ -85,43 +80,38 @@ def get_Tvpend(indexI1, WordList, tg, offset):
     index = indexI + indexI-1
     return tg[2][index].maxTime
 
+#returns tipbegin
 def get_Tipbegin(ipInterval, tg):
     return tg[1][ipInterval].minTime
 
+#returns tipend
 def get_Tipend(ipInterval, tg):
     return tg[1][ipInterval].maxTime
         
-
-def make_tone(WordList):
-    tone = []
+#makes a list containing the lists of tones for each word in the wordlist
+def make_tones(WordList):
+    tones = []
     for i in range(len(WordList)):
         if(WordList[i] == "---"):
-            tone.append([])
+            tones.append([])
         else:
-            tone.append(word_to_tone(WordList[i]))
-    return tone
+            tones.append(word_to_tone(WordList[i]))
+    return tones
 
+
+#checks if the word is a boundary word
 def isBoundary(currentWord):
-    Boundaries = ["%L", "%H", "%HL", "!%L", "!%H", "!%HL", "L%", "H%", "%"]
-    if(currentWord in Boundaries):
-        return True
-    else:
-        return False
+    return currentWord in ["%L", "%H", "%HL", "!%L", "!%H", "!%HL", "L%", "H%", "%"]
     
+#checks if the word is an initial boundary
 def isInitialBoundary(currentWord):
-    Boundaries = ["%L", "%H", "%HL", "!%L", "!%H", "!%HL"]
-    if(currentWord in Boundaries):
-        return True
-    else:
-        return False
+    return currentWord in ["%L", "%H", "%HL", "!%L", "!%H", "!%HL"]
 
+#checks if the word is a final boundary
 def isFinalBoundary(currentWord):
-    Boundaries = ["L%", "H%", "%"]
-    if(currentWord in Boundaries):
-        return True
-    else:
-        return False
+    return currentWord in ["L%", "H%", "%"]
 
+#adds the targets to the tiers
 def createTiers(targetList, TargetTier, FrequencyTier):
     for i in range(len(targetList)):
         time = targetList[i][0]
@@ -131,6 +121,8 @@ def createTiers(targetList, TargetTier, FrequencyTier):
         TargetTier.add_point(tgt.core.Point(time, label))
         FrequencyTier.add_point(tgt.core.Point(time, frequency))
 
+
+#creates the textgrid
 def run(file, words, FR=120):
     script = ""
     grid = tgt.read_textgrid(file + ".TextGrid")
@@ -140,7 +132,7 @@ def run(file, words, FR=120):
     tg = textgrid.TextGrid.fromFile(file + ".TextGrid")
     
 
-    tones = make_tone(words)
+    tones = make_tones(words)
     tvpOffset = 0
     ipInterval = 0
     targetList = []
@@ -197,7 +189,7 @@ def run(file, words, FR=120):
             
             if(isInitialBoundary(word)):     
                 ipbegin = get_Tipbegin(ipInterval, tg)
-                Tvp_begin_next = get_Tvpbegin(next_wordI(words, i), words, tg, tvpOffset)
+                Tvp_begin_next = get_Tvpbegin(next_word_index(words, i), words, tg, tvpOffset)
                 next_word = next_Word(words, i)
 
             elif(isFinalBoundary(word)):
@@ -271,6 +263,7 @@ def run(file, words, FR=120):
 
                 if word in ["%L", "%HL", "!%L", "!%HL"]:
 
+                    grid.add_tiers([WordTier, TargetTier, FrequencyTier])
                     if ((Tvp_begin_next) - ipbegin < TOTIME * 2):
                         B2time = ipbegin + (Tvp_begin_next - ipbegin) * 0.5 
                     else:
@@ -570,7 +563,9 @@ if __name__ == "__main__":
     words = ["%L", "---", "H*L", "---", "---", "---", "---", "---", "L%"]
     #word = ["%L", "---", "---", "---", "H*", "---", "---", "H%", "%L", "---", "---", "H*", "H%"]
     #file = "C:/Users/sebas/Documents/Praat-Wavs/147"
-    file = "C:/Users/sebas/Documents/Praat-Wavs/147"
+    #file = "C:/Users/sebas/Documents/Praat-Wavs/147"
     #file = "C:/Users/sebas/Documents/Software-Engineering/OLD WEBSITE/todi-webapp-master/htdocs/ToDI/ToDIpraat_8a/audio/8a-5"
+    file = "/home/pim/Documents/todi/147"
     grid = run(file, words)
     tgt.io.write_to_file(grid, file + ".TextGrid", format='long')
+s
