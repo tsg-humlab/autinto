@@ -123,7 +123,7 @@ def createTiers(targetList, TargetTier, FrequencyTier):
 
 
 #creates the textgrid
-def run(file, words, FR=120):
+def run(file, words):
     script = ""
     grid = tgt.read_textgrid(file + ".TextGrid")
     grid.delete_tiers(["Tones", "Targets", "Frequencies"])
