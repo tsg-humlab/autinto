@@ -568,4 +568,3 @@ if __name__ == "__main__":
     file = "/home/pim/Documents/todi/147"
     grid = run(file, words)
     tgt.io.write_to_file(grid, file + ".TextGrid", format='long')
-s
