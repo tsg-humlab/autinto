@@ -1,6 +1,9 @@
 import textgrid
 import tgt
-from tgt.core import TextGrid
+
+
+#a custom version of tgt.core is imported because it otherwise wouldn't work with python 3
+from libraries.core import TextGrid
 
 
 #returns all the tones associated with a word:
@@ -568,4 +571,4 @@ if __name__ == "__main__":
     file = "/home/pim/Documents/todi/147"
     grid = run(file, words)
     tgt.io.write_to_file(grid, file + ".TextGrid", format='long')
-s
+
