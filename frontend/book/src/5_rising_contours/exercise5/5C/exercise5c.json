@@ -1,0 +1,93 @@
+{
+    "items": [
+        {
+            "sentence": "[]2 Zijn er [meloenen]0 [teveel]0 []1",
+            "key": ["%HL", "L*H", "H%"],
+            "contour": "5C-1.png",
+            "audio": "5C-1.mp3"
+        },
+        {
+            "sentence": "[]2 Zijn je [foto's]0 al [afgedrukt]0 []1",
+            "key": ["%H", "H*L", "∅", "H%"],
+            "contour": "5C-2.png",
+            "audio": "5C-2.mp3"
+        },
+        {
+            "sentence": "[]2 Misschien is nu wel [ieder]0 [uur]0 [belangrijk]0 []1",
+            "key": ["%HL", "H*", "∅", "H*L", "%"],
+            "contour": "5C-3.png",
+            "audio": "5C-3.mp3"
+        },
+        {
+            "sentence": "[]2 En [nu]0 is-ie [weer]0 [rood]0 []1",
+            "key": ["%L", "L*H", "∅", "H*L", "L%"],
+            "contour": "5C-4.png",
+            "audio": "5C-4.mp3"
+        },
+        {
+            "sentence": "[]2 Gaan de [lonen]0 [omlaag]0 []1",
+            "key": ["%H", "!H*L", "∅", "L%"],
+            "contour": "5C-5.png",
+            "audio": "5C-5.mp3"
+        },
+        {
+            "sentence": "[]2 Wil je je [mandoline]0 [verkopen]0 []1",
+            "key": ["%H", "H*", "∅", "H%"],
+            "contour": "5C-6.png",
+            "audio": "5C-6.mp3"
+        },
+        {
+            "sentence": "[]2 D'r [moet]0 nog maar's over [gepraat]0 [worden]0 []1",
+            "key": ["%H", "H*", "!H*L", "∅", "L%"],
+            "contour": "5C-7.png",
+            "audio": "5C-7.mp3"
+        },
+        {
+            "sentence": "[]2 't Heeft [toch]0 allemaal geen zin op [die]0 [manier]0 []1",
+            "key": ["%L", "H*L", "∅", "∅", "L%"],
+            "contour": "5C-8.png",
+            "audio": "5C-8.mp3"
+        },
+        {
+            "sentence": "[]2 Ze [helpen]0 om haar [billetjes]0 [prachtig]0 [droog]0 te houden []1",
+            "key": ["%H", "H*L", "∅", "∅", "H*L", "%"],
+            "contour": "5C-9.png",
+            "audio": "5C-9.mp3"
+        },
+        {
+            "sentence": "[]2 Als 't [water]0 [komt]0 []1 []2 [dan]0 [piep]0 je wel [anders]0 []1",
+            "key": ["%L", "H*", "∅", "%", "%L", "L*H", "∅", "!H*L", "L%"],
+            "contour": "5C-10.png",
+            "audio": "5C-10.mp3"
+        },
+        {
+            "sentence": "[]2 En is je [kat]0 nog [teruggekomen]0 []1",
+            "key": ["%L", "H*L", "∅", "H%"],
+            "contour": "5C-11.png",
+            "audio": "5C-11.mp3"
+        },
+        {
+            "sentence": "[]2 Als 't [water]0 [komt]0 []1 []2 [dan]0 [piep]0 je wel [anders]0 []1",
+            "key": ["%L", "H*L", "∅", "H%", "%L", "L*H", "∅", "H*L", "L%"],
+            "contour": "5C-12.png",
+            "audio": "5C-12.mp3"
+        }
+    ],
+    "choices": [
+        [
+            [ "H*L", "!H*L" ],
+            [ "H*", "!H*" ],
+            [ "H*LH", "L*" ],
+            [ "L*H", "H*!H" ],
+            [ "∅" ]
+        ],
+        [
+            ["L%", "H%"],
+            ["%", "∅"]
+        ],
+        [
+            ["%L", "%H"],
+            ["%HL", "∅"]
+        ]
+    ]
+}

@@ -1,12 +1,17 @@
-import React, { Component, useState, useEffect } from "react"
+import React, { Component, useState, useEffect, useRef } from "react"
 import * as R from "ramda"
 import "./App.css"
 import Annotatable from "./Annotatable"
 import { readSpecification } from './specification.js'
 
-function fetchExercise(id) {
+import { register } from 'swiper/element/bundle'
+
+register()
+
+function fetchExercise(path) {
   // Have the exercise specification hardcoded for now.
-  return fetch(`exercise${id}.json`).then(res => res.json())
+  console.log('fetching', path)
+  return fetch(path).then(res => res.json())
 }
 
 
@@ -17,12 +22,18 @@ function App({ id='' }) {
   const [exerciseData, setExerciseData] = useState(null)
   const [annotations, setAnnotations] = useState(null)
 
+  const swiperRef = useRef(null)
+
+  const activeItemIndex = () => swiperRef.current === null || swiperRef.current.swiper.activeIndex;
+
+  console.log('Show contour:', contourVisible)
+
   useEffect(() => {
     fetchExercise(id).then((data) => {
       // TODO: Validate data!
       const spec = readSpecification(data)
       setExerciseData(spec)
-      setAnnotations(spec.key.map(() => ''))
+      setAnnotations(spec.map(item => item.key.map(() => '')))
     })
   }, [])
 
@@ -49,8 +60,8 @@ function App({ id='' }) {
   }
 
 
-  const updateAnnotation = (at) => (val) => {
-    setAnnotations((a) => a.map((e, i) => (i === at ? val : e)))
+  const updateAnnotation = (itemIndex, at) => (val) => {
+    setAnnotations(a => R.adjust(itemIndex, R.update(at, val), a))
   }
 
   function checkAnnotation() {
@@ -66,7 +77,7 @@ function App({ id='' }) {
 
   function showSolution() {
     if (exerciseData !== null) {
-      setAnnotations(exerciseData.key)
+      setAnnotations(R.update(activeItemIndex(), exerciseData[activeItemIndex()].key, annotations))
     }
   }
 
@@ -96,7 +107,6 @@ function App({ id='' }) {
     })
       .then((r) => r.text())
       .then((html) => {
-        console.log(html)
         const el = document.createElement("html")
         el.innerHTML = html
         const xpathSearch = document.evaluate(
@@ -123,26 +133,36 @@ function App({ id='' }) {
       })
   }
 
+  console.log(exerciseData)
+  console.log(activeItemIndex())
   return (
     <div className="App">
-      <div className="text">
+      <swiper-container ref={swiperRef} navigation="true" className="exercise-slider">
         {exerciseData !== null &&
-          exerciseData.blocks.map((data, key) =>
-            R.is(String, data) ? (
-              <> {data} </>
-            ) : data.index === null ? (
-              <Annotatable key={key} annotation={data.choices} />
-            ) : (
-              <Annotatable
-                key={key}
-                annotation={annotations[data.index]}
-                options={data.choices}
-                onSelect={updateAnnotation(data.index)}
-                text={data.text}
-              />
-            )
-          )}
-      </div>
+            exerciseData.map((item, itemIndex) => 
+            <swiper-slide>
+              <div className="text">
+                {item !== null &&
+                    item.blocks.map((annotatable, key) =>
+                      // JSON.stringify(annotatable)
+                      R.is(String, annotatable) ? (
+                        <> {annotatable} </>
+                      ) : annotatable.index === null ? (
+                        <Annotatable key={key} annotation={annotatable.choices} />
+                      ) : (
+                        <Annotatable
+                          key={key}
+                          annotation={annotations[itemIndex][annotatable.index]}
+                          options={annotatable.choices}
+                          onSelect={updateAnnotation(itemIndex, annotatable.index)}
+                          text={annotatable.text}
+                        />
+                      )
+                    )}
+              </div>
+            </swiper-slide>
+        )}
+      </swiper-container>
       <div className="button-container ml-3">
         <button className="btn btn-primary mt-3 pl-1" onClick={playAudio}>
           Play
@@ -164,7 +184,7 @@ function App({ id='' }) {
         </button>
       </div>
       <img
-        src={exerciseData !== null ? `./img/${exerciseData.contour}` : undefined}
+        src={exerciseData !== null && swiperRef.current !== null ? `./img/${exerciseData[activeItemIndex()].contour}` : undefined}
         alt=""
         style={{ width: "100%", display: contourVisible ? "block" : "none" }}
       />
