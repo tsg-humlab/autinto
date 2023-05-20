@@ -6,9 +6,11 @@ list of [pitch accents](/frontend/book/src/0_about_this_course/0_3.md) (where '-
 'no pitch accent'), a WAV file, and a previously prepared TextGrid, and returns the new wave file and an
 image of the resynthesized audio.
 
-To use this project, one needs to install the following things:
+To use this project, you will need to install the following things:
 * [Praat](https://www.github.com/praat/praat); specifically, the ```praat``` executable must be available
   in the path variable. This project is currently being tested on Praat version 6.3.09.
+* The ```pdftocairo``` tool needs to be available. This usually comes from the Poppler package of your
+  distro.
 * [textgrid](https://github.com/kylebgorman/textgrid), a Python library to read TextGrid files. Can be
   installed with ```pip install textgrid``` or [requirements.txt](requirements.txt).
 * [TextGridTools](https://github.com/hbuschme/TextGridTools), which can be installed with ```pip install
