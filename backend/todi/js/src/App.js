@@ -136,7 +136,7 @@ function App({ id='' }) {
 
   return (
     <div className="App">
-      <swiper-container ref={swiperRef} navigation="true" className="exercise-slider">
+      <swiper-container ref={swiperRef} navigation="true" className="exercise-slider" effect="fade" fade-effect-cross-fade="true">
         {exerciseData !== null &&
             exerciseData.map((item, itemIndex) => 
             <swiper-slide>
