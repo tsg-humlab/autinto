@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect, useRef } from "react"
+import React, { Component, useState, useEffect, useRef, useCallback } from "react"
 import * as R from "ramda"
 import "./App.css"
 import Annotatable from "./Annotatable"
@@ -9,8 +9,6 @@ import { register } from 'swiper/element/bundle'
 register()
 
 function fetchExercise(path) {
-  // Have the exercise specification hardcoded for now.
-  console.log('fetching', path)
   return fetch(path).then(res => res.json())
 }
 
@@ -21,12 +19,12 @@ function App({ id='' }) {
   const [showResynthesisContour, setShowResynthesisContour] = useState(false)
   const [exerciseData, setExerciseData] = useState(null)
   const [annotations, setAnnotations] = useState(null)
+  const [selectedItem, setSelectedItem] = useState(0)
 
-  const swiperRef = useRef(null)
+  const swiperRef = useCallback(ref => {
+    ref.swiper.on('activeIndexChange', (e) => setSelectedItem(e.activeIndex))
+  }, [])
 
-  const activeItemIndex = () => swiperRef.current === null || swiperRef.current.swiper.activeIndex;
-
-  console.log('Show contour:', contourVisible)
 
   useEffect(() => {
     fetchExercise(id).then((data) => {
@@ -38,7 +36,7 @@ function App({ id='' }) {
   }, [])
 
   function playAudio() {
-    const item = activeItemIndex()
+    const item = selectedItem
     if (item !== null) {
       const audio = new Audio(`audio/${exerciseData[item].audio}`)
       audio.play()
@@ -71,7 +69,7 @@ function App({ id='' }) {
     // TODO: Nicer equality comparison
     alert(
       `Answer is ${
-        JSON.stringify(annotations[activeItemIndex()]) === JSON.stringify(exerciseData && exerciseData[activeItemIndex()].key)
+        JSON.stringify(annotations[selectedItem]) === JSON.stringify(exerciseData && exerciseData[selectedItem].key)
           ? "correct"
           : "not correct"
       }`
@@ -80,7 +78,7 @@ function App({ id='' }) {
 
   function showSolution() {
     if (exerciseData !== null) {
-      setAnnotations(R.update(activeItemIndex(), exerciseData[activeItemIndex()].key, annotations))
+      setAnnotations(R.update(selectedItem, exerciseData[selectedItem].key, annotations))
     }
   }
 
@@ -136,8 +134,6 @@ function App({ id='' }) {
       })
   }
 
-  console.log(exerciseData)
-  console.log(activeItemIndex())
   return (
     <div className="App">
       <swiper-container ref={swiperRef} navigation="true" className="exercise-slider">
@@ -187,7 +183,7 @@ function App({ id='' }) {
         </button>
       </div>
       <img
-        src={exerciseData !== null && swiperRef.current !== null ? `./img/${exerciseData[activeItemIndex()].contour}` : undefined}
+        src={exerciseData !== null && selectedItem !== null ? `./img/${exerciseData[selectedItem].contour}` : undefined}
         alt=""
         style={{ width: "100%", display: contourVisible ? "block" : "none" }}
       />
