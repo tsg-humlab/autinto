@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from django.conf import settings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -128,3 +129,10 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+FILEBROWSER_EXTENSIONS = getattr(settings, "FILEBROWSER_EXTENSIONS", {
+    'Image': ['.jpg','.jpeg','.gif','.png','.tif','.tiff'],
+    'Document': ['.pdf','.doc','.rtf','.txt','.xls','.csv', '.md', '.json'],
+    'Video': ['.mov','.wmv','.mpeg','.mpg','.avi','.rm'],
+    'Audio': ['.mp3','.mp4','.wav','.aiff','.midi','.m4p']
+})
