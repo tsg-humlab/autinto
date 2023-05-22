@@ -38,8 +38,11 @@ function App({ id='' }) {
   }, [])
 
   function playAudio() {
-    const audio = new Audio("audio/109.mp3")
-    audio.play()
+    const item = activeItemIndex()
+    if (item !== null) {
+      const audio = new Audio(`audio/${exerciseData[item].audio}`)
+      audio.play()
+    }
   }
 
   function playResynthesis() {
