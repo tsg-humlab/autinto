@@ -124,12 +124,10 @@ def createTiers(targetList, TargetTier, FrequencyTier):
 
 #creates the textgrid
 def run(file, words):
-    script = ""
-    grid = tgt.read_textgrid(file)
-    grid.delete_tiers(["Tones", "Targets", "ToDI-F0"])
-    tgt.io.write_to_file(grid, file + ".TextGrid", format='long')
 
-    tg = textgrid.TextGrid.fromFile(file + ".TextGrid")
+    grid = tgt.read_textgrid(file)
+
+    tg = textgrid.TextGrid.fromFile(file)
     
 
     tones = make_tones(words)
@@ -263,7 +261,6 @@ def run(file, words):
 
                 if word in ["%L", "%HL", "!%L", "!%HL"]:
 
-                    grid.add_tiers([WordTier, TargetTier, FrequencyTier])
                     if ((Tvp_begin_next) - ipbegin < TOTIME * 2):
                         B2time = ipbegin + (Tvp_begin_next - ipbegin) * 0.5 
                     else:
@@ -554,7 +551,7 @@ def run(file, words):
                     
 
 
-    #print(targetList[-1][0])
+
     createTiers(targetList, TargetTier, FrequencyTier)    
     return grid
 
