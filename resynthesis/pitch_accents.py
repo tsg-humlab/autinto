@@ -1,24 +1,10 @@
-from typing import Optional
-from enum import Enum
 from dataclasses import dataclass
+from enum import Enum
+from typing import Optional
 import re
 
-__all__ = ['Tone', 'PitchAccent']
-
-Milliseconds = int
-Frequency = int
-FrequencyDifference = int
-
-@dataclass
-class Interval:
-    start_time: Milliseconds
-    end_time:   Milliseconds
-
-@dataclass
-class FrequencyRange:
-    low:   Frequency
-    high:  Frequency
-    width: FrequencyDifference
+from resynthesis.types import Milliseconds, FrequencyPoint
+from resynthesis.abstract_pitch_accents import AbstractWord, AbstractInitialBoundary, AbstractFinalBoundary
 
 class Tone(Enum):
     HIGH = 1
@@ -35,13 +21,11 @@ class Tone(Enum):
                 # TODO Downstep
                 return Tone.HIGH
 
-@dataclass
-class PitchAccent:
+
+class Word(AbstractWord):
     primary_tone: Tone
-    final_tone:   Optional[Tone] = None
     middle_tone:  Optional[Tone] = None
-    ip:           IntonationalPhrase
-    vp:           Interval
+    final_tone:   Optional[Tone] = None
 
     def decode(self, point_list):
         self.decode_primary(point_list)
@@ -66,7 +50,7 @@ class PitchAccent:
 
         # If there is enough time, the VP range plus 360 milliseconds is
         # used:
-        if self.time_to_next_boundary > 360
+        if self.time_to_next_boundary > Milliseconds(360):
             delayspace = self.vp_duration + Milliseconds(360)
             time_L2 = self.vp_start + 0.05 * delayspace
             time_L3 = self.vp_start + 0.70 * delayspace
@@ -75,21 +59,22 @@ class PitchAccent:
         # earlier:
         else:
             delayspace = self.vp_duration + self.time_to_next_boundary
-            time_L2 = self.vp_start + 0.03 * delayspace)
-            time_L3 = self.vp_start + 0.26 * delayspace)
+            time_L2 = self.vp_start + 0.03 * delayspace
+            time_L3 = self.vp_start + 0.26 * delayspace
 
+        # TODO comment here
         point_L1 = FrequencyPoint(
-            label = 'L1'
-            freq  = self.scale_frequency(0.2)
+            label = 'L1',
+            freq  = self.scale_frequency(0.2),
             time  = self.vp_start - Milliseconds(10))
         point_L2 = FrequencyPoint(
-            label = 'L2'
-            freq  = self.scale_frequency(0.15)
-            time  = time_L2
+            label = 'L2',
+            freq  = self.scale_frequency(0.15),
+            time  = time_L2)
         point_L3 = FrequencyPoint(
-            label = 'L3'
-            freq  = self.scale_frequency(0.15)
-            time  = time_L2
+            label = 'L3',
+            freq  = self.scale_frequency(0.15),
+            time  = time_L3)
 
         point_list.append(point_L1)
         point_list.append(point_L2)
@@ -100,8 +85,6 @@ class PitchAccent:
         # This rule creates the first and second targets of H* in its
         # VP.
 
-        STARTIME = 0.3
-
         if self.vp_duration < Milliseconds(250):
             time_H1 = self.vp_start + 0.12 * self.vp_duration
             time_H2 = self.vp_start + 0.42 * self.vp_duration
@@ -110,12 +93,12 @@ class PitchAccent:
             time_H2 = self.vp_start + 0.60 * self.vp_duration
 
         point_H1 = FrequencyPoint(
-            label = 'H1'
-            freq  = self.scale_frequency(0.7)
+            label = 'H1',
+            freq  = self.scale_frequency(0.7),
             time  = time_H1)
         point_H2 = FrequencyPoint(
-            label = 'H2'
-            freq  = self.scale_frequency(0.7)
+            label = 'H2',
+            freq  = self.scale_frequency(0.7),
             time  = time_H2)
 
         point_list.append(point_H1)
@@ -125,7 +108,7 @@ class PitchAccent:
     def decode_middle(self, point_list):
         match self.middle_tone:
             case None:
-                pass
+                return
             case Tone.HIGH:
                 self.decode_middle_high(point_list)
             case Tone.LOW:
@@ -137,20 +120,38 @@ class PitchAccent:
     def decode_middle_low(self, point_list):
         raise NotImplementedError
 
-    def decode_final(self):
+
+    def decode_final(self, point_list):
         if self.final_tone is None:
             return
+        else:
+            raise NotImplementedError
 
+
+    def from_name(self, name: str):
+       result = re.findall(r'!?[HL]\*?', name)
+       # ^ 'L*!HL returns ['L*', '!H', 'L']
+
+       self.primary_tone = Tone.from_name(result[0][:-1])
+       self.final_tone   = Tone.from_name(result[-1]) if len(result) > 1 else None
+       self.middle_tone  = Tone.from_name(result[1])  if len(result) > 2 else None
+
+
+class InitialBoundary(AbstractInitialBoundary):
+    name: str
+
+    def decode(self):
         raise NotImplementedError
 
+    def from_name(self, name: str):
+        self.name = name
 
-    @staticmethod
-    def from_name(name: str):
-        result = re.findall(r'!?[HL]\*?', name)
-        # ^ 'L*!HL' returns ['L*', '!H', 'L']
 
-        primary_tone = Tone.from_name(result[0][:-1])
-        final_tone   = Tone.from_name(result[-1]) if len(result) > 1 else None
-        middle_tone  = Tone.from_name(result[1])  if len(result) > 2 else None
+class FinalBoundary(AbstractFinalBoundary):
+    name: str
 
-        return PitchAccent(primary_tone, final_tone, middle_tone)
+    def decode(self):
+        raise NotImplementedError
+
+    def from_name(self, name: str):
+        self.name = name
