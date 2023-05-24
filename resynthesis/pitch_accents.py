@@ -81,18 +81,52 @@ class Word(AbstractWord):
         point_list.append(point_L3)
 
     def decode_primary_high(self, point_list):
-        raise NotImplementedError
+        # FLAT-TOP PEAK
+        # This rule creates the first and second targets of H* in its
+        # VP.
+
+        if self.vp_duration < Milliseconds(250):
+            time_H1 = self.vp_start + 0.12 * self.vp_duration
+            time_H2 = self.vp_start + 0.42 * self.vp_duration
+        else:
+            time_H1 = self.vp_start + 0.30 * self.vp_duration
+            time_H2 = self.vp_start + 0.60 * self.vp_duration
+
+        point_H1 = FrequencyPoint(
+            label = 'H1',
+            freq  = self.scale_frequency(0.7),
+            time  = time_H1)
+        point_H2 = FrequencyPoint(
+            label = 'H2',
+            freq  = self.scale_frequency(0.7),
+            time  = time_H2)
+
+        point_list.append(point_H1)
+        point_list.append(point_H2)
 
 
     def decode_middle(self, point_list):
-        if self.middle_tone is None:
-            return None
+        match self.middle_tone:
+            case None:
+                return
+            case Tone.HIGH:
+                self.decode_middle_high(point_list)
+            case Tone.LOW:
+                self.decode_middle_low(point_list)
+    
+    def decode_middle_high(self, point_list):
         raise NotImplementedError
+
+    def decode_middle_low(self, point_list):
+        raise NotImplementedError
+
 
     def decode_final(self, point_list):
         if self.final_tone is None:
-            return None
-        raise NotImplementedError
+            return
+        else:
+            raise NotImplementedError
+
 
     def from_name(self, name: str):
        result = re.findall(r'!?[HL]\*?', name)
