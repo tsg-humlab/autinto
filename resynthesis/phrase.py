@@ -3,16 +3,7 @@ from dataclasses import dataclass
 import tgt
 from tgt.core import TextGrid, IntervalTier
 
-Milliseconds = int
-
-@dataclass
-class Interval:
-    start_time: Milliseconds
-    end_time:   Milliseconds
-
-    def __init__(self, start_time: float, end_time: float):
-        self.start_time = Milliseconds(start_time*1000)
-        self.end_time = Milliseconds(end_time*1000)
+from resynthesis.types import Milliseconds, Interval
 
 @dataclass
 class VoicedPortion(Interval):
