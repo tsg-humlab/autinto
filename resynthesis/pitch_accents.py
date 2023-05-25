@@ -48,19 +48,18 @@ class Word(AbstractWord):
         # placed depending on the amount of time available after the
         # current VP.
 
-        # If there is enough time, the VP range plus 360 milliseconds is
-        # used:
+        # If there is enough time, L2 and L3 are placed in the VP
+        # directly:
         if self.time_to_next_boundary > Milliseconds(360):
-            delayspace = self.vp_duration + Milliseconds(360)
-            time_L2 = self.vp_start + 0.05 * delayspace
-            time_L3 = self.vp_start + 0.70 * delayspace
+            time_L2 = self.vp_start + 0.05 * self.vp_duration
+            time_L3 = self.vp_start + 0.75 * self.vp_duration
         # Otherwise, if there is a boundary (either the IP ends or the
-        # next VP starts) within 360 milliseconds, L2 and L3 are placed
-        # earlier:
+        # next VP starts) within 360 milliseconds, the available space
+        # is calculated, and L2 and L3 are placed depending on that:
         else:
             delayspace = self.vp_duration + self.time_to_next_boundary
             time_L2 = self.vp_start + 0.03 * delayspace
-            time_L3 = self.vp_start + 0.26 * delayspace
+            time_L3 = self.vp_start + 0.29 * delayspace
 
         # TODO comment here
         point_L1 = FrequencyPoint(
