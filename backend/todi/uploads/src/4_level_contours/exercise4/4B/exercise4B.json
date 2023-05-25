@@ -19,8 +19,8 @@
             "audio": "4B-3.mp3"
         },
         {
-            "sentence": "[](%L) Maar  we  [hoeven 't]0  niet  eeh  te  [proberen]0 [](L%)",
-            "key": ["H*", "!H*L"],
+            "sentence": "[](%L)  [Stom]0 [](L%) [](%L) dat  ik  [daar]0  niet  aan  [gedacht]0  heb [](L%)",
+            "key": ["H*L", "L%", "%L", "H*L","H*L"],
             "contour": "4B-4.png", 
             "audio": "4B-4.mp3"
         },
