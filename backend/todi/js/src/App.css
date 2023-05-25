@@ -20,6 +20,7 @@
 }
 
 .box {
+  position: relative;
   display: block;
   margin-top: 0.1em;
   background-color: lightgreen;
@@ -50,6 +51,7 @@
 }
 
 .dropdown {
+  position: relative;
   display: none;
   left: -50%;
   background-color: #f2f2f2;
