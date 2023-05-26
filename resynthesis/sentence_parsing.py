@@ -121,7 +121,7 @@ def createTiers(targetList, TargetTier, FrequencyTier):
 
 
 #creates the textgrid
-def run(file, words):
+def run(file, words): 
     tg = textgrid.TextGrid.fromFile(file + ".TextGrid") 
 
     tones = make_tones(words)
