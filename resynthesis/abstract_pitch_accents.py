@@ -6,16 +6,18 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from resynthesis.resynthesized import ResynthesizedIntonationalPhrase
-from resynthesis.types import Milliseconds, Frequency
+from resynthesis.types import Milliseconds, Frequency, FrequencyPoint
 
 
 @dataclass
 class AbstractWord(ABC):
+    name: str
     parent: ResynthesizedIntonationalPhrase
     index: int
     vp: VoicedPortion
 
-    def __init__(self, name: str, parent, index, vp):
+    def __init__(self, name, parent, index, vp):
+        self.name = name
         self.parent = parent
         self.index = index
         self.vp = vp
@@ -23,7 +25,7 @@ class AbstractWord(ABC):
         self.from_name(name)
 
     @abstractmethod
-    def decode():
+    def decode(point_list: list[FrequencyPoint]):
         raise NotImplementedError
 
     @abstractmethod
@@ -67,6 +69,10 @@ class AbstractWord(ABC):
     def frequency_range(self) -> FrequencyRange:
         return self.parent.frequency_range
 
+    @property
+    def final_boundary(self):
+        return self.parent.final_boundary.name
+
 
     def scale_frequency(self, scalar) -> Frequency:
         return self.frequency_range.scale(scalar)
@@ -74,14 +80,16 @@ class AbstractWord(ABC):
 
 @dataclass
 class AbstractInitialBoundary(ABC):
+    name: str
     parent: ResynthesizedIntonationalPhrase
 
-    def __init__(self, name: str, parent):
+    def __init__(self, name, parent):
+        self.name = name
         self.parent = parent
         self.from_name(name)
 
     @abstractmethod
-    def decode():
+    def decode(point_list: list[FrequencyPoint]):
         raise NotImplementedError
 
     @abstractmethod
@@ -109,17 +117,31 @@ class AbstractInitialBoundary(ABC):
 
 @dataclass
 class AbstractFinalBoundary(ABC):
+    name: str
     parent: ResynthesizedIntonationalPhrase
 
-    def __init__(self, name: str, parent):
+    def __init__(self, name, parent):
+        self.name = name
         self.parent = parent
         self.from_name(name)
 
     @abstractmethod
-    def decode():
+    def decode(point_list: list[FrequencyPoint]):
         raise NotImplementedError
 
     @classmethod
     @abstractmethod
     def from_name(cls, name: str, parent: ResynthesizedIntonationalPhrase):
         raise NotImplementedError
+
+
+    @property
+    def last_word(self):
+        return self.parent.words[-1].name
+    @property
+    def frequency_range(self) -> FrequencyRange:
+        return self.parent.frequency_range
+
+    def scale_frequency(self, scalar) -> Frequency:
+        return self.frequency_range.scale(scalar)
+
