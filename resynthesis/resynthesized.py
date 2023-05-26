@@ -72,9 +72,9 @@ class ResynthesizedPhrase:
 
     def decode(self):
         point_list = []
-        for ip in ips:
+        for ip in self.ips:
             ip.decode(point_list)
-        raise NotImplementedError
+        return point_list
 
 
     @cached_property
