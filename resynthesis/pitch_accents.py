@@ -121,10 +121,77 @@ class Word(AbstractWord):
 
 
     def decode_final(self, point_list):
-        if self.final_tone is None:
-            return
+        match self.final_tone:
+            case None:
+                return
+            case Tone.LOW:
+                self.decode_final_low(point_list)
+            case Tone.HIGH:
+                self.decode_final_high(point_list)
+
+    def decode_final_low(self, point_list):
+        if not self.is_last_word:
+            self.decode_pre_nuclear_fall(point_list)
         else:
-            raise NotImplementedError
+            self.decode_nuclear_fall(point_list)
+
+    def decode_pre_nuclear_fall(self, point_list):
+        # PRE-NUCLEAR FALL
+        # This rule creates a slow fall before another toneword.
+
+        if self.time_to_next_word < Milliseconds(200):
+            time = self.vp_end + 0.5*self.time_to_next_word
+            freq = self.scale_frequency(0.40)
+        else:
+            time = self.vp_end + self.time_to_next_word - Milliseconds(100)
+            freq = self.scale_frequency(0.25)
+
+        point_l1 = FrequencyPoint(
+            label = 'l1',
+            freq = freq,
+            time = time)
+
+        point_list.append(point_l1)
+
+    def decode_nuclear_fall(self, point_list):
+        # NUCLEAR FALL
+        # This rule creates a fast nuclear fall after (!)H*L and
+        # (!)L*HL.
+
+        # If the final boundary is %, no points are created, and the
+        # method returns early.
+        if self.final_boundary == '%':
+            return
+
+        # Otherwise, if there is not much time, only one point is
+        # created. We make a variable here to store whether the second
+        # point needs to be made:
+        make_l2 = False
+
+        time_preceding_target = point_list[-1].time
+        spread_space = self.ip_end - time_preceding_target
+        if spread_space < Milliseconds(220):
+            time_l1 = time_preceding_target + 0.5*spread_space
+        else:
+            time_l1 = time_preceding_target + Milliseconds(100)
+            time_l2 = self.ip_end - Milliseconds(100)
+            make_l2 = True
+
+        point_l1 = FrequencyPoint(
+            label = 'l1',
+            freq = self.scale_frequency(0.15),
+            time = time_l1)
+        point_list.append(point_l1)
+
+        if make_l2:
+            point_l2 = FrequencyPoint(
+                label = 'l2',
+                freq = self.scale_frequency(0.15),
+                time = time_l2)
+            point_list.append(point_l2)
+
+    def decode_final_high(self, point_list):
+        raise NotImplementedError
 
 
     def from_name(self, name: str):
@@ -137,20 +204,107 @@ class Word(AbstractWord):
 
 
 class InitialBoundary(AbstractInitialBoundary):
-    name: str
+    first_target_tone: Tone
+    second_target_tone: Tone
 
-    def decode(self):
-        raise NotImplementedError
+    def decode(self, point_list):
+        self.decode_first_target(point_list)
+        self.decode_second_target(point_list)
+
+    def decode_first_target(self, point_list):
+        match self.first_target_tone:
+            case Tone.LOW:
+                label = 'LB1'
+                freq = self.scale_frequency(0.30)
+            case Tone.HIGH:
+                label = 'HB1'
+                freq = self.scale_frequency(0.85)
+
+        first_target = FrequencyPoint(
+            label = label,
+            freq  = freq,
+            time  = self.ip_start)
+
+        point_list.append(first_target)
+
+    def decode_second_target(self, point_list):
+        # If there are less than 100 milliseconds before the first word,
+        # then no second target is created, and the function returns
+        # early.
+        if self.time_to_first_word < Milliseconds(100):
+            return
+
+        # Otherwise, if there are less than 200 milliseconds, the second
+        # target is placed halfway between the IP start and the first
+        # word.
+        elif self.time_to_first_word < Milliseconds(200):
+            time = self.ip_start + 0.5*self.time_to_first_word
+        # Otherwise, if there are more than 200 milliseconds, the second
+        # target is placed 100 milliseconds before the first word.
+        else:
+            time = self.ip_start + self.time_to_first_word - Milliseconds(100)
+
+        match self.second_target_tone:
+            case Tone.LOW:
+                label = 'LB2'
+                freq = self.scale_frequency(0.20)
+            case Tone.HIGH:
+                label = 'HB2'
+                freq = self.scale_frequency(0.70)
+
+        second_target = FrequencyPoint(
+            label = label,
+            freq = freq,
+            time = time)
+
+        point_list.append(second_target)
+        
+
 
     def from_name(self, name: str):
-        self.name = name
+        if name not in ['%L', '%H', '%HL', '!%L', '!%H', '!%HL']:
+            raise ValueError
 
+        if name[0] == '!':
+            # TODO downstep
+            name = name[1:]
+
+        self.first_target_tone = Tone.from_name(name[1])
+        self.second_target_tone = Tone.from_name(name[-1])
 
 class FinalBoundary(AbstractFinalBoundary):
-    name: str
+    tone: Optional[Tone]
 
-    def decode(self):
-        raise NotImplementedError
+    def decode(self, point_list):
+        self.decode_nuclear_rise_and_spread(point_list)
+        self.decode_final_boundary(point_list)
+
+    def decode_nuclear_rise_and_spread(self, point_list):
+        match self.last_word:
+            case 'L%':
+                raise NotImplementedError
+            case 'H*' | '!H*':
+                raise NotImplementedError
+            case 'L*H':
+                raise NotImplementedError
+            case _:
+                pass
+
+    def decode_final_boundary(self, point_list):
+        match self.name:
+            case 'L%':
+                label = 'LE'
+                freq = self.scale_frequency(0.0)
+            case 'H%':
+                label = 'HE'
+                freq = self.scale_frequency(1.0) # TODO handle downstep
+            case '%':
+                raise NotImplementedError
+
 
     def from_name(self, name: str):
-        self.name = name
+        # The final boundary is so simple that we can simply use
+        # self.name in the main logic.
+        if name not in ['L%', 'H%', '%']:
+            raise ValueError
+        pass

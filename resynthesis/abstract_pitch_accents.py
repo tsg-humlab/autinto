@@ -84,10 +84,27 @@ class AbstractInitialBoundary(ABC):
     def decode():
         raise NotImplementedError
 
-    @classmethod
     @abstractmethod
-    def from_name(cls, name: str, parent: ResynthesizedIntonationalPhrase):
+    def from_name(self, name: str):
         raise NotImplementedError
+
+
+    @property
+    def time_to_first_word(self) -> Milliseconds:
+        return self.parent.words[0].vp_start
+
+    @property
+    def ip_start(self) -> Milliseconds:
+        return self.parent.ip_start
+    @property
+    def ip_end(self) -> Milliseconds:
+        return self.parent.ip_end
+    @property
+    def frequency_range(self) -> FrequencyRange:
+        return self.parent.frequency_range
+
+    def scale_frequency(self, scalar) -> Frequency:
+        return self.frequency_range.scale(scalar)
 
 
 @dataclass
