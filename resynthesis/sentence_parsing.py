@@ -1,6 +1,4 @@
 import textgrid
-import tgt
-from tgt.core import TextGrid
 
 
 #returns all the tones associated with a word:
@@ -118,19 +116,13 @@ def createTiers(targetList, TargetTier, FrequencyTier):
         label = targetList[i][1]
         frequency = str(targetList[i][2])
 
-        TargetTier.add_point(tgt.core.Point(time, label))
-        FrequencyTier.add_point(tgt.core.Point(time, frequency))
+        TargetTier.addPoint(textgrid.Point(time, label))
+        FrequencyTier.addPoint(textgrid.Point(time, frequency))
 
 
 #creates the textgrid
 def run(file, words):
-    script = ""
-    grid = tgt.read_textgrid(file)
-    grid.delete_tiers(["Tones", "Targets", "ToDI-F0"])
-    tgt.io.write_to_file(grid, file + ".TextGrid", format='long')
-
-    tg = textgrid.TextGrid.fromFile(file + ".TextGrid")
-    
+    tg = textgrid.TextGrid.fromFile(file + ".TextGrid") 
 
     tones = make_tones(words)
     tvpOffset = 0
@@ -158,11 +150,12 @@ def run(file, words):
             N = 70
             W = 110
     
-    
-    WordTier = tgt.core.PointTier(0.0, grid.end_time, "Tones")
-    TargetTier = tgt.core.PointTier(0.0, grid.end_time, "Targets")
-    FrequencyTier = tgt.core.PointTier(0.0, grid.end_time, "ToDI-F0")
-    grid.add_tiers([WordTier, TargetTier, FrequencyTier])
+    WordTier = textgrid.PointTier("tones",0.0, tg.maxTime)
+    TargetTier = textgrid.PointTier("targets",0.0, tg.minTime)
+    FrequencyTier = textgrid.PointTier("ToDi-f0",0.0, tg.maxTime)
+    tg.append(WordTier) 
+    tg.append(TargetTier)
+    tg.append(FrequencyTier)
 
     for i in range(len(words)):
         
@@ -173,14 +166,14 @@ def run(file, words):
                 if i != 0:
                     ipInterval+=1
 
-                WordTier.add_point(tgt.core.Point(get_Tipbegin(ipInterval, tg), words[i]))
+                WordTier.addPoint(textgrid.Point(get_Tipbegin(ipInterval, tg), words[i]))
             else:
-                WordTier.add_point(tgt.core.Point(get_Tipend(ipInterval, tg), words[i]))
+                WordTier.addPoint(textgrid.Point(get_Tipend(ipInterval, tg), words[i]))
 
             if (not i == 0 and not i == len(words)-1):
                 tvpOffset+=1
         else:
-            WordTier.add_point(tgt.core.Point(get_Tvpbegin(i, words, tg, tvpOffset), words[i]))
+            WordTier.addPoint(textgrid.Point(get_Tvpbegin(i, words, tg, tvpOffset), words[i]))
         
         for j in range(len(tones[i])):
 
@@ -263,7 +256,10 @@ def run(file, words):
 
                 if word in ["%L", "%HL", "!%L", "!%HL"]:
 
-                    grid.add_tiers([WordTier, TargetTier, FrequencyTier])
+                    tg.append(WordTier) 
+                    tg.append(TargetTier)
+                    tg.append(FrequencyTier)
+
                     if ((Tvp_begin_next) - ipbegin < TOTIME * 2):
                         B2time = ipbegin + (Tvp_begin_next - ipbegin) * 0.5 
                     else:
@@ -556,13 +552,13 @@ def run(file, words):
 
     #print(targetList[-1][0])
     createTiers(targetList, TargetTier, FrequencyTier)    
-    return grid
+    return tg 
 
 if __name__ == "__main__":
     word2 = ["%L","---","H*L","H*","L*", "H*L","L*","---","L%"]
     words = ["%L", "---", "H*L", "---", "---", "---", "---", "---", "L%"]
     #word = ["%L", "---", "---", "---", "H*", "---", "---", "H%", "%L", "---", "---", "H*", "H%"]
     #file = "C:/Users/sebas/Documents/Praat-Wavs/147.TextGrid"
-    file = "/home/pim/Documents/todi/147.TextGrid"
+    file = "/home/pim/Documents/todi/147"
     grid = run(file, words)
-    tgt.io.write_to_file(grid, file, format='long')
+    grid.write(file)
