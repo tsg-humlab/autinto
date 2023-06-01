@@ -61,9 +61,9 @@ def next_Tone(WordList, ToneList, IndexI, IndexJ):
             return("")
         while(WordList[IndexI+1] == "---"):
             IndexI = IndexI + 1
-        return(ToneList[IndexI+1][0], IndexI+1)
+        return(ToneList[IndexI+1][0])
     else:
-        return(ToneList[IndexI][IndexJ+1], IndexI)
+        return(ToneList[IndexI][IndexJ+1])
     
     
 #return tvpbegin using the index on word    
@@ -196,7 +196,7 @@ def run(file, words):
 
             else:
                 next_word = next_Word(words, i)
-                next_tone = next_Tone(words, tones, i, j)[0]
+                next_tone = next_Tone(words, tones, i, j)
                 ipend = get_Tipend(ipInterval, tg)
                 Tvp_begin = get_Tvpbegin(i, words, tg, tvpOffset)
                 Tvp_end = get_Tvpend(i, words, tg, tvpOffset)
@@ -212,8 +212,6 @@ def run(file, words):
                 if ipend == Tvp_end:
                     endtime = ipend
                     vpduur = Tvp_end - Tvp_begin
-                    #print(ipend)
-                    #print(next_word)
 
                     if (word in ["H*L", "!H*L"] and next_word in ["H%"]) or (word in ["L*H"] and next_word in ["L%", "H%", "%"]) or (word in ["L*HL", "L!HL"] and next_word in ["L%", "%"]):
                         finalLengthening = True
