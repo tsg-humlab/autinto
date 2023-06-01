@@ -13,7 +13,7 @@ class VoicedPortion(Interval):
 class IntonationalPhrase(Interval):
     vps: list[VoicedPortion]
 
-    def __init__(self, start_time, end_time, textgrid_vps: IntervalTier):
+    def __init__(self, start_time, end_time, textgrid_vps):
         super().__init__(start_time, end_time)
 
         self.vps: list[VoicedPortion] = []

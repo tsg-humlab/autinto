@@ -117,12 +117,12 @@ class Word(AbstractWord):
     def decode_middle_high(self, point_list):
         if self.has_downstep:
             freq_high = Fr + (freq_high - Fr) * da
-		    freq_low =  Fr + (freq_low - Fr) * da
+            freq_low =  Fr + (freq_low - Fr) * da
         else:
             freq_high = self.inihigh
-		    freq_low = self.inilow
+            freq_low = self.inilow
 
-		W = freq_high - freq_low 
+        W = freq_high - freq_low 
 
         #Hi Timon I used the same logic as you did in primary low
         if self.time_to_next_boundary > Milliseconds(360):
@@ -150,12 +150,12 @@ class Word(AbstractWord):
         
     def decode_middle_low(self, point_list):        
         if get_Tvpbegin(next_word) - get_time(prec_target) < FROMTIME * 2:
-            ltime = get_time(prec_target) + (get_time(next_word) - time(prec_target) * 0.3
+            ltime = get_time(prec_target) + get_time(next_word) - time(prec_target) * 0.3
         else:
             ltime = get_time(prec_target) + TOTIME
 
 
-        point_+l = FrequencyPoint(
+        point_l = FrequencyPoint(
             label = '+l',
             freq  = freq_low + 0.4 * W,
             time  = ltime)
