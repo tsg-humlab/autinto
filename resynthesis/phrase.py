@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-import textgrid
+import textgrid as tg
 
 from resynthesis.types import Milliseconds, Interval
 
@@ -19,7 +19,7 @@ class IntonationalPhrase(Interval):
         self.vps: list[VoicedPortion] = []
 
         for textgrid_vp in textgrid_vps:
-            vp = VoicedPortion(textgrid_vp.start_time, textgrid_vp.end_time)
+            vp = VoicedPortion(textgrid_vp.minTime, textgrid_vp.maxTime)
             if (vp.start_time > self.start_time
                     and vp.end_time < self.end_time):
                 self.vps.append(vp)
@@ -30,15 +30,16 @@ class IntonationalPhrase(Interval):
 class Phrase(Interval):
     ips: list[IntonationalPhrase]
 
-    def __init__(self, textgrid: str):
-        textgrid = textgrid.TextGrid.fromFile(file) 
-        super().__init__(textgrid.start_time, textgrid.end_time)
+    def __init__(self, file: str):
+        print(file)
+        textgrid = tg.TextGrid.fromFile(file) 
+        super().__init__(textgrid.minTime, textgrid.maxTime)
 
-        textgrid_ips = textgrid.get_tier_by_name("IP's")
-        textgrid_vps = textgrid.get_tier_by_name('vp')
+        textgrid_ips = textgrid.getList("IP's")
+        textgrid_vps = textgrid.getList('vp')
 
         self.ips: list[IntonationalPhrase] = []
 
         for textgrid_ip in textgrid_ips:
-            ip = IntonationalPhrase(textgrid_ip.start_time, textgrid_ip.end_time, textgrid_vps)
+            ip = IntonationalPhrase(textgrid_ip.minTime, textgrid_ip.maxTime, textgrid_vps)
             self.ips.append(ip)
