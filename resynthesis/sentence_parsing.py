@@ -1,6 +1,4 @@
 import textgrid
-import tgt
-from tgt.core import TextGrid
 
 
 #returns all the tones associated with a word:
@@ -118,23 +116,20 @@ def createTiers(targetList, TargetTier, FrequencyTier):
         label = targetList[i][1]
         frequency = str(targetList[i][2])
 
-        TargetTier.add_point(tgt.core.Point(time, label))
-        FrequencyTier.add_point(tgt.core.Point(time, frequency))
+        TargetTier.addPoint(textgrid.Point(time, label))
+        FrequencyTier.addPoint(textgrid.Point(time, frequency))
 
 
 #creates the textgrid
-def run(file, words):
-
-    grid = tgt.read_textgrid(file)
-
-    tg = textgrid.TextGrid.fromFile(file)
-    
+def run(file, words): 
+    tg = textgrid.TextGrid.fromFile(file) 
 
     tones = make_tones(words)
     tvpOffset = 0
     ipInterval = 0
     targetList = []
     finalLengthening = False
+    finalLengtheningIp = 0
 
     custom = False
     if(custom):
@@ -156,11 +151,12 @@ def run(file, words):
             N = 70
             W = 110
     
-    
-    WordTier = tgt.core.PointTier(0.0, grid.end_time, "Tones")
-    TargetTier = tgt.core.PointTier(0.0, grid.end_time, "Targets")
-    FrequencyTier = tgt.core.PointTier(0.0, grid.end_time, "ToDI-F0")
-    grid.add_tiers([WordTier, TargetTier, FrequencyTier])
+    WordTier = textgrid.PointTier("tones",0.0, tg.maxTime)
+    TargetTier = textgrid.PointTier("targets",0.0, tg.minTime)
+    FrequencyTier = textgrid.PointTier("ToDi-f0",0.0, tg.maxTime)
+    tg.append(WordTier) 
+    tg.append(TargetTier)
+    tg.append(FrequencyTier)
 
     for i in range(len(words)):
         
@@ -171,14 +167,14 @@ def run(file, words):
                 if i != 0:
                     ipInterval+=1
 
-                WordTier.add_point(tgt.core.Point(get_Tipbegin(ipInterval, tg), words[i]))
+                WordTier.addPoint(textgrid.Point(get_Tipbegin(ipInterval, tg), words[i]))
             else:
-                WordTier.add_point(tgt.core.Point(get_Tipend(ipInterval, tg), words[i]))
+                WordTier.addPoint(textgrid.Point(get_Tipend(ipInterval, tg), words[i]))
 
             if (not i == 0 and not i == len(words)-1):
                 tvpOffset+=1
         else:
-            WordTier.add_point(tgt.core.Point(get_Tvpbegin(i, words, tg, tvpOffset), words[i]))
+            WordTier.addPoint(textgrid.Point(get_Tvpbegin(i, words, tg, tvpOffset), words[i]))
         
         for j in range(len(tones[i])):
 
@@ -193,13 +189,14 @@ def run(file, words):
             elif(isFinalBoundary(word)):
                 if finalLengthening:
                     ipend = finalLengtheningIp
+                    print(ipend)
                 else:
                     ipend = get_Tipend(ipInterval, tg)
                 prec_word = prec_Word(words, i)
 
             else:
                 next_word = next_Word(words, i)
-                next_tone = next_Tone(words, tones, i, j)
+                next_tone = next_Tone(words, tones, i, j)[0]
                 ipend = get_Tipend(ipInterval, tg)
                 Tvp_begin = get_Tvpbegin(i, words, tg, tvpOffset)
                 Tvp_end = get_Tvpend(i, words, tg, tvpOffset)
@@ -210,17 +207,21 @@ def run(file, words):
             #voor drie verschillende tonen
             #moet nog wat beter bekeken worden
             if not isBoundary(word):
+                print(word)
                 if ipend == Tvp_end:
-                    finalLengthening = True
                     endtime = ipend
                     vpduur = Tvp_end - Tvp_begin
+                    #print(ipend)
+                    #print(next_word)
 
-                    if (word[i] in ["H*L", "!H*L"] and next_word in ["H%"]) or (word[i] in ["L*H"] and next_word in ["L%", "H%", "%"]) or (word[i] in ["L*HL", "L!HL"] and next_word in ["L%", "%"]):
+                    if (word in ["H*L", "!H*L"] and next_word in ["H%"]) or (word in ["L*H"] and next_word in ["L%", "H%", "%"]) or (word in ["L*HL", "L!HL"] and next_word in ["L%", "%"]):
+                        finalLengthening = True
                         ipend = endtime - 0.023 + 11.500/vpduur
                         finalLengtheningIp = ipend
                         addtime = ipend - endtime
 
-                    if (word[i] in ["L*HL", "L*!HL"] and next_word in ["H%"]):
+                    if (word in ["L*HL", "L*!HL"] and next_word in ["H%"]):
+                        finalLengthening = True
                         ipend = endtime - 0.023 + 15.000/vpduur
                         finalLengtheningIp = ipend
                         addtime = ipend - endtime
@@ -229,6 +230,7 @@ def run(file, words):
             ###########SECOND PARSE: Create aligned and scaled targets.
 
             freq_low =  Fr + N - (W * 0.5)
+            inilow = freq_low
             freq_high = Fr + N + (W * 0.5)
             inihigh = freq_high
 
@@ -239,6 +241,9 @@ def run(file, words):
                 if word in ['!%L', '!%H', '!%HL']:
                     freq_high = Fr + (freq_high - Fr) * dp  
                     freq_low =  Fr + (freq_low - Fr) * dp
+                    inihigh = freq_high
+                    inilow = freq_low
+                    W = freq_high - freq_low
 
             # To create the first target of the initial boundary tone
             if tone in ['%L', '%H']:
@@ -288,6 +293,13 @@ def run(file, words):
                 if word in ['!H*', '!H*L', 'L*!HL']:
                     freq_high = Fr + (freq_high - Fr) * da  
                     freq_low =  Fr + (freq_low - Fr) * da
+                    W = freq_high - freq_low
+            
+            if tone in ["H*", "H"]:
+                if word in ["H*", "H*L", "L*HL"] and next_word in ["L%", "H%", "%"]:
+                    freq_high = inihigh
+                    freq_low = inilow
+                    W = freq_high - freq_low
 
 
             #LOW TRAY FOR L*, PLUS DELAYED PEAK
@@ -329,7 +341,7 @@ def run(file, words):
                         
                     else:
 
-                        delayspace = Tvp_end + 0.360 
+                        delayspace = Tvp_end - Tvp_begin + 0.360 
 
                         L1time = Tvp_begin - 0.010 
                         freq1 = freq_low + 0.2 * W 
@@ -371,14 +383,14 @@ def run(file, words):
                         targetList.append((H2time, "H2", freq2)) #align H2 get_time(prec_target + delayspace * 0.1
                     
                     else:
-                        delayspace = Tvp_end + 0.360 
+                        delayspace = Tvp_end - Tvp_begin + 0.360 
 
                         H1time = targetList[-1][0] + delayspace * 0.5
                         freq1 = freq_high - 0.3 * W 
                         targetList.append((H1time, "H1", freq1)) #align H1 get_time(prec_target) + delayspace * 0.5
 
                         H2time = targetList[-1][0] + delayspace * 0.2
-                        freq2 = freq_high + 0.3 * W 
+                        freq2 = freq_high - 0.3 * W 
                         targetList.append((H2time, "H2", freq2)) #align H2 get_time(prec_target) + delayspace * 0.2
 
 
@@ -388,7 +400,7 @@ def run(file, words):
             if tone in ["H*", "!H*"]:
                 if word in ["H*", "H*L", "!H*", "!H*L", "H*LH", "!H*LH"]:
                     
-                    vpduur = ipend - Tvp_end
+                    vpduur = Tvp_end - Tvp_begin
                     freq = freq_high - 0.3 * W
 
                     if vpduur < 0.250: 
@@ -413,7 +425,7 @@ def run(file, words):
             #This rule creates a slow fall before another toneword.
   
             if tone in ["L"]:
-                if (word in ["H*L", "!H*L"] ) and (next_tone in ["H*", "!H*", "L*"]):
+                if (word in ["H*L", "L*HL", "!H*L", "L*!HL"] ) and (next_tone in ["H*", "!H*", "L*"]):
                     
                     spaceduur = Tvp_begin_next - Tvp_end
                     
@@ -426,8 +438,8 @@ def run(file, words):
                     else:
 
                         ltime = Tvp_begin_next - TOTIME
-                        freq = freq_low - 0.25 * W
-                        targetList.append((ltime, "L1", freq))  #align l1 ltime ### scale l1 freq_low - 0.25 * W
+                        freq = freq_low + 0.25 * W
+                        targetList.append((ltime, "L1", freq))  #align l1 ltime ### scale l1 freq_low + 0.25 * W
 
 
             #NUCLEAR FALL
@@ -487,7 +499,7 @@ def run(file, words):
             if next_word in ["L%", "H%", "%"]:
                 if word in ["L*"]:
                     if ipend - Tvp_end > 0.350: #naar ms gezet
-                        L4time = targetList[-1][0] + 8
+                        L4time = targetList[-1][0] + 0.008
                         l2time = ipend - TOTIME
                         freq = freq_low + 0.2 * W
 
@@ -497,10 +509,10 @@ def run(file, words):
 
                 if word in ["H*", "!H*"]:
                     if ipend - Tvp_end > 0.350: #naar ms gezet
-                        H3time = targetList[-1][0] + 8
+                        H3time = targetList[-1][0] + 0.008
                         H2time = ipend - TOTIME
                         freq3 = freq_high - 0.33 * W
-                        freq2 = freq_high + 0.33 * W
+                        freq2 = freq_high - 0.33 * W
 
                         targetList.append((H3time, "H3", freq3)) #align H3 get_time prec_target) + 8 ### scale H3 high_freq - 0.33 * W
                         targetList.append((H2time, "h2", freq2)) #align h2 Tipend - TOTIME ### scale h2 high_freq + 0.33 * W
@@ -536,7 +548,7 @@ def run(file, words):
                         freq = freq_low + W * 0.4
                         targetList.append((ipend, "ME", freq)) #align ME Tipend ### scale ME freq_low + W * 0.4
 
-                    if prec_word in ["H*", "L*H"]:
+                    if prec_word in ["H*", "!H*", "L*H"]:
                         freq = freq_high - W * 0.25 
                         targetList.append((ipend, "ME", freq)) #align ME Tipend ### scale ME freq_high - W * 0.25   
 
@@ -551,15 +563,15 @@ def run(file, words):
                     
 
 
-
+    #print(targetList[-1][0])
     createTiers(targetList, TargetTier, FrequencyTier)    
-    return grid
+    return tg 
 
 if __name__ == "__main__":
     word2 = ["%L","---","H*L","H*","L*", "H*L","L*","---","L%"]
-    words = ["%L", "---", "H*L", "---", "---", "---", "---", "---", "L%"]
-    #word = ["%L", "---", "---", "---", "H*", "---", "---", "H%", "%L", "---", "---", "H*", "H%"]
-    #file = "C:/Users/sebas/Documents/Praat-Wavs/147.TextGrid"
-    file = "/home/pim/Documents/todi/147.TextGrid"
+    #words = ["%L", "---", "H*L", "---", "---", "---", "---", "H*L", "L%"]
+    words = ["%L", "---", "---", "H*L", "---", "---", "H*", "H%", "%H", "---", "---", "---", "---" , "---", "H*", "!H*L" ,"L%"]
+    file = "C:/Users/sebas/Documents/Praat-Wavs/091.TextGrid"
+    #file = "/home/pim/Documents/todi/147"
     grid = run(file, words)
-    tgt.io.write_to_file(grid, file, format='long')
+    grid.write(file + "out.TextGrid")
