@@ -1,0 +1,207 @@
+{
+    "items": [
+        {
+            "sentence": "[]2 D'r [staan]0 daar geen auto's []1",
+            "key": [
+                "%L",
+                "H*L",
+                "%"
+            ],
+            "contour": "5B-1.png",
+            "audio": "5B-1.mp3",
+            "wav": "5B-1.wav",
+            "textgrid": "5B-1.TextGrid"
+        },
+        {
+            "sentence": "[](%L) Het [leeft]0 []1 []2 het is [natuurlijk]0 []1 []2 't [ademt]0 []1",
+            "key": [
+                "L*H",
+                "H%",
+                "%L",
+                "L*H",
+                "H%",
+                "%L",
+                "L*H",
+                "H%"
+            ],
+            "contour": "5B-2.png",
+            "audio": "5B-2.mp3",
+            "wav": "5B-2.wav",
+            "textgrid": "5B-2.TextGrid"
+        },
+        {
+            "sentence": "[](%L) Hij is bang dat de [echte]0 schuldigen []1 []2 buiten [schot]0 blijven []1",
+            "key": [
+                "H*L",
+                "H%",
+                "%H",
+                "H*L",
+                "L%"
+            ],
+            "contour": "5B-3.png",
+            "audio": "5B-3.mp3",
+            "wav": "5B-3.wav",
+            "textgrid": "5B-3.TextGrid"
+        },
+        {
+            "sentence": "[](%L) Het [koninklijk]0 [gezin]0 []1 []2 [woonde]0 op paleis [Soestdijk]0 in [Baarn]0 []1",
+            "key": [
+                "H*L",
+                "H*",
+                "%",
+                "%L",
+                "H*L",
+                "H*",
+                "!H*L",
+                "L%"
+            ],
+            "contour": "5B-4.png",
+            "audio": "5B-4.mp3",
+            "wav": "5B-4.wav",
+            "textgrid": "5B-4.TextGrid"
+        },
+        {
+            "sentence": "[](%L) Dan verkoop je toch gewoon de [boot]0 []1",
+            "key": [
+                "H*L",
+                "H%"
+            ],
+            "contour": "5B-5.png",
+            "audio": "5B-5.mp3",
+            "wav": "5B-5.wav",
+            "textgrid": "5B-5.TextGrid"
+        },
+        {
+            "sentence": "[](%L) Als 't water tot [hier]0 [komt]0 []1 [](P) []2 [dan]0 moet je [hozen]0 []1",
+            "key": [
+                "H*",
+                "%",
+                "P",
+                "%L",
+                "L*H",
+                "!H*L",
+                "L%"
+            ],
+            "contour": "5B-6.png",
+            "audio": "5B-6.mp3",
+            "wav": "5B-6.wav",
+            "textgrid": "5B-6.TextGrid"
+        },
+        {
+            "sentence": "[](%L) D'r is geen [enkele]0 dag dat alles [lukt]0 []1",
+            "key": [
+                "L*H",
+                "H*L",
+                "%"
+            ],
+            "contour": "5B-7.png",
+            "audio": "5B-7.mp3",
+            "wav": "5B-7.wav",
+            "textgrid": "5B-7.TextGrid"
+        },
+        {
+            "sentence": "[](%L) En [niet]0 de platgetreden [paden]0 []1",
+            "key": [
+                "H*",
+                "!H*L",
+                "L%"
+            ],
+            "contour": "5B-8.png",
+            "audio": "5B-8.mp3",
+            "wav": "5B-8.wav",
+            "textgrid": "5B-8.TextGrid"
+        },
+        {
+            "sentence": "[](%L) Of in een [cafe]0 []1 [](%L) waar [niemand](H*L) [is]0 op dat ogenblik []1",
+            "key": [
+                "L*H",
+                "H%",
+                "L*H",
+                "H%"
+            ],
+            "contour": "5B-9.png",
+            "audio": "5B-9.mp3",
+            "wav": "5B-9.wav",
+            "textgrid": "5B-9.TextGrid"
+        },
+        {
+            "sentence": "[](%L) Waar als je bij een [hek]0 komt []1",
+            "key": [
+                "H*",
+                "H%"
+            ],
+            "contour": "5B-10.png",
+            "audio": "5B-10.mp3",
+            "wav": "5B-10.wav",
+            "textgrid": "5B-10.TextGrid"
+        },
+        {
+            "sentence": "[](%H) Voorzitter [Lodewijk]0 de [Waal]0 []1",
+            "key": [
+                "H*L",
+                "H*",
+                "H%"
+            ],
+            "contour": "5B-11.png",
+            "audio": "5B-11.mp3",
+            "wav": "5B-11.wav",
+            "textgrid": "5B-11.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [Probeer]0 er maar aan de [linkerkant]0 [langs]0 te komen []1",
+            "key": [
+                "H*L",
+                "H*L",
+                "H*",
+                "H%"
+            ],
+            "contour": "5B-12.png",
+            "audio": "5B-12.mp3",
+            "wav": "5B-12.wav",
+            "textgrid": "5B-12.TextGrid"
+        }
+    ],
+    "choices": [
+        [
+            [
+                "H*L",
+                "!H*L"
+            ],
+            [
+                "H*",
+                "!H*"
+            ],
+            [
+                "H*LH",
+                "L*"
+            ],
+            [
+                "L*H",
+                "H*!H"
+            ],
+            [
+                "∅"
+            ]
+        ],
+        [
+            [
+                "L%",
+                "H%"
+            ],
+            [
+                "%",
+                "∅"
+            ]
+        ],
+        [
+            [
+                "%L",
+                "%H"
+            ],
+            [
+                "%HL",
+                "∅"
+            ]
+        ]
+    ]
+}

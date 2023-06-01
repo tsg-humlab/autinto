@@ -1,0 +1,227 @@
+{
+    "items": [
+        {
+            "sentence": "[](%L) [Dat]0 weet ik [ook]0 niet []1 [zei de]2 traploper []1",
+            "key": [
+                "H*L",
+                "H*L",
+                "L%",
+                "L",
+                "L%"
+            ],
+            "contour": "7B-1.png",
+            "audio": "7B-1.mp3",
+            "wav": "7B-1.wav",
+            "textgrid": "7B-1.TextGrid"
+        },
+        {
+            "sentence": "[](%L) Vind je dat [gek]0 []1 [die]2 balonnen langs de leuningen []1",
+            "key": [
+                "L*H",
+                "H%",
+                "H",
+                "H%"
+            ],
+            "contour": "7B-2.png",
+            "audio": "7B-2.mp3",
+            "wav": "7B-2.wav",
+            "textgrid": "7B-2.TextGrid"
+        },
+        {
+            "sentence": "[](%L) 't gaat [niet]0 alleen om [mij]0 []1 [protesteerde]2 Atreeoe []1",
+            "key": [
+                "H*L",
+                "H*L",
+                "H%",
+                "L",
+                "L%"
+            ],
+            "contour": "7B-3.png",
+            "audio": "7B-3.mp3",
+            "wav": "7B-3.wav",
+            "textgrid": "7B-3.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [Nee]0 []1 [zei]2 meneer van de Brandelaar []1",
+            "key": [
+                "H*L",
+                "H%",
+                "H",
+                "H%"
+            ],
+            "contour": "7B-4.png",
+            "audio": "7B-4.mp3",
+            "wav": "7B-4.wav",
+            "textgrid": "7B-4.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [Nee]0 []1 [zei]2 meneer van de Brandelaar []1",
+            "key": [
+                "L*H",
+                "H%",
+                "H",
+                "H%"
+            ],
+            "contour": "7B-5.png",
+            "audio": "7B-5.mp3",
+            "wav": "7B-5.wav",
+            "textgrid": "7B-5.TextGrid"
+        },
+        {
+            "sentence": "[](%L) Er-is [geen]0 [verweer]0 [mogelijk]0 []1 [bedacht]2 Jan []1",
+            "key": [
+                "H*L",
+                "H*L",
+                "H*L",
+                "L%",
+                "L",
+                "L%"
+            ],
+            "contour": "7B-6.png",
+            "audio": "7B-6.mp3",
+            "wav": "7B-6.wav",
+            "textgrid": "7B-6.TextGrid"
+        },
+        {
+            "sentence": "[](%L) Daar [gaat-ie]0 [dan]0 []1 [onze]2 luchtballon []1",
+            "key": [
+                "H*L",
+                "∅",
+                "L%",
+                "L",
+                "L%"
+            ],
+            "contour": "7B-7.png",
+            "audio": "7B-7.mp3",
+            "wav": "7B-7.wav",
+            "textgrid": "7B-7.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [Is-ze]0 daar []1 [onze]2 redder in-de nood []1",
+            "key": [
+                "H*L",
+                "H%",
+                "L",
+                "H%"
+            ],
+            "contour": "7B-8.png",
+            "audio": "7B-8.mp3",
+            "wav": "7B-8.wav",
+            "textgrid": "7B-8.TextGrid"
+        },
+        {
+            "sentence": "[](%L) Is [zij]0 dat []1 []3 onze [redder]0 in-de [nood]0 []1",
+            "key": [
+                "L*H",
+                "H%",
+                "%L",
+                "∅",
+                "L*H",
+                "H%"
+            ],
+            "contour": "7B-9.png",
+            "audio": "7B-9.mp3",
+            "wav": "7B-9.wav",
+            "textgrid": "7B-9.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [Behoorlijk]0 [grappig]0 []1 [maar]2 niet heus []1",
+            "key": [
+                "H*",
+                "!H*L",
+                "L%",
+                "L",
+                "L%"
+            ],
+            "contour": "7B-10.png",
+            "audio": "7B-10.mp3",
+            "wav": "7B-10.wav",
+            "textgrid": "7B-10.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [Heel]0 [grappig]0 []1 []3 maar [niet]0 [nu]0 []1",
+            "key": [
+                "H*",
+                "!H*L",
+                "L%",
+                "%L",
+                "H*",
+                "!H*L",
+                "L%"
+            ],
+            "contour": "7B-11.png",
+            "audio": "7B-11.mp3",
+            "wav": "7B-11.wav",
+            "textgrid": "7B-11.TextGrid"
+        },
+        {
+            "sentence": "[](%L) Maar [waarom]0 []1 [schreeuwde]2 Jan []1",
+            "key": [
+                "H*L",
+                "L%",
+                "L",
+                "L%"
+            ],
+            "contour": "7B-12.png",
+            "audio": "7B-12.mp3",
+            "wav": "7B-12.wav",
+            "textgrid": "7B-12.TextGrid"
+        }
+    ],
+    "choices": [
+        [
+            [
+                "H*L",
+                "!H*L"
+            ],
+            [
+                "H*",
+                "!H*"
+            ],
+            [
+                "H*LH",
+                "L*HL"
+            ],
+            [
+                "L*!HL",
+                "L*"
+            ],
+            [
+                "L*H",
+                "H*!H"
+            ],
+            [
+                "∅"
+            ]
+        ],
+        [
+            [
+                "L%",
+                "H%"
+            ],
+            [
+                "%",
+                "∅"
+            ]
+        ],
+        [
+            [
+                "L",
+                "H"
+            ],
+            [
+                "∅"
+            ]
+        ],
+        [
+            [
+                "%L",
+                "%H"
+            ],
+            [
+                "%HL",
+                "∅"
+            ]
+        ]
+    ]
+}

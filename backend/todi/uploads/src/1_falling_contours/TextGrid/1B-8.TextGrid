@@ -1,0 +1,122 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 1.323 
+tiers? <exists> 
+size = 3 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "words" 
+        xmin = 0 
+        xmax = 1.323 
+        intervals: size = 8 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.11692861088725401 
+            text = "m" 
+        intervals [2]:
+            xmin = 0.11692861088725401 
+            xmax = 0.284601193880469 
+            text = "maar" 
+        intervals [3]:
+            xmin = 0.284601193880469 
+            xmax = 0.5164267651493488 
+            text = "weet" 
+        intervals [4]:
+            xmin = 0.5164267651493488 
+            xmax = 0.5805797534250137 
+            text = "je" 
+        intervals [5]:
+            xmin = 0.5805797534250137 
+            xmax = 0.6928474829074272 
+            text = "dan" 
+        intervals [6]:
+            xmin = 0.6928474829074272 
+            xmax = 0.8998866723425273 
+            text = "geen" 
+        intervals [7]:
+            xmin = 0.8998866723425273 
+            xmax = 1.2800167618960552 
+            text = "betere" 
+        intervals [8]:
+            xmin = 1.2800167618960552 
+            xmax = 1.323 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "IP's" 
+        xmin = 0 
+        xmax = 1.323 
+        intervals: size = 3 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.11692861088725401 
+            text = "" 
+        intervals [2]:
+            xmin = 0.11692861088725401 
+            xmax = 1.2800167618960552 
+            text = "ipf" 
+        intervals [3]:
+            xmin = 1.2800167618960552 
+            xmax = 1.323 
+            text = "" 
+    item [3]:
+        class = "IntervalTier" 
+        name = "vp" 
+        xmin = 0 
+        xmax = 1.323 
+        intervals: size = 13 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.17670753178048715 
+            text = "" 
+        intervals [2]:
+            xmin = 0.17670753178048715 
+            xmax = 0.28055921287196595 
+            text = "vp" 
+        intervals [3]:
+            xmin = 0.28055921287196595 
+            xmax = 0.3385480249304599 
+            text = "" 
+        intervals [4]:
+            xmin = 0.3385480249304599 
+            xmax = 0.43769355226557827 
+            text = "vp" 
+        intervals [5]:
+            xmin = 0.43769355226557827 
+            xmax = 0.5193428100709699 
+            text = "" 
+        intervals [6]:
+            xmin = 0.5193428100709699 
+            xmax = 0.5645415063560975 
+            text = "vp" 
+        intervals [7]:
+            xmin = 0.5645415063560975 
+            xmax = 0.599534045415551 
+            text = "" 
+        intervals [8]:
+            xmin = 0.599534045415551 
+            xmax = 0.6891489280980023 
+            text = "vp" 
+        intervals [9]:
+            xmin = 0.6891489280980023 
+            xmax = 0.7759547631736292 
+            text = "" 
+        intervals [10]:
+            xmin = 0.7759547631736292 
+            xmax = 0.8970279060200209 
+            text = "vp" 
+        intervals [11]:
+            xmin = 0.8970279060200209 
+            xmax = 0.9305051440195491 
+            text = "" 
+        intervals [12]:
+            xmin = 0.9305051440195491 
+            xmax = 1.0588111205708788 
+            text = "vp" 
+        intervals [13]:
+            xmin = 1.0588111205708788 
+            xmax = 1.323 
+            text = "" 

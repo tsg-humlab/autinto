@@ -1,0 +1,137 @@
+{
+    "items": [
+        {
+            "sentence": "[](%L) Iets voorbij [Hengelo](H*L) []0",
+            "key": [
+                "H%"
+            ],
+            "contour": "1B-1.png",
+            "audio": "1B-1.mp3",
+            "wav": "1B-1.wav",
+            "textgrid": "1B-1.TextGrid"
+        },
+        {
+            "sentence": "[](%L) En  is  je  [kat](H*L)  nog  teruggekomen  []0",
+            "key": [
+                "H%"
+            ],
+            "contour": "1B-2.png",
+            "audio": "1B-2.mp3",
+            "wav": "1B-2.wav",
+            "textgrid": "1B-2.TextGrid"
+        },
+        {
+            "sentence": "[](%L) We  hebben  de  [hele](H*L)  dag  [binnen](H*L)  gezeten  []0",
+            "key": [
+                "%"
+            ],
+            "contour": "1B-3.png",
+            "audio": "1B-3.mp3",
+            "wav": "1B-3.wav",
+            "textgrid": "1B-3.TextGrid"
+        },
+        {
+            "sentence": "[](%L) Zijn  er  [meloenen](H*L)   teveel   []0",
+            "key": [
+                "L%"
+            ],
+            "contour": "1B-4.png",
+            "audio": "1B-4.mp3",
+            "wav": "1B-4.wav",
+            "textgrid": "1B-4.TextGrid"
+        },
+        {
+            "sentence": "[](%L) Ze  [hebben](H*L)  zoveel  []0",
+            "key": [
+                "%"
+            ],
+            "contour": "1B-5.png",
+            "audio": "1B-5.mp3",
+            "wav": "1B-5.wav",
+            "textgrid": "1B-5.TextGrid"
+        },
+        {
+            "sentence": "[](%L) Je  kan  ook  gewoon van  Carlos  [gouddeeltjes](H*L)  vragen  van-die-en-die  grootte   []0",
+            "key": [
+                "L%"
+            ],
+            "contour": "1B-6.png",
+            "audio": "1B-6.mp3",
+            "wav": "1B-6.wav",
+            "textgrid": "1B-6.TextGrid"
+        },
+        {
+            "sentence": "[](%L)  Wat  zullen we  [nu](H*L)  krijgen   []0",
+            "key": [
+                "%"
+            ],
+            "contour": "1B-7.png",
+            "audio": "1B-7.mp3",
+            "wav": "1B-7.wav",
+            "textgrid": "1B-7.TextGrid"
+        },
+        {
+            "sentence": "[](%L)  Maar [weet](H*L)  je  dan  geen  betere  []0",
+            "key": [
+                "H%"
+            ],
+            "contour": "1B-8.png",
+            "audio": "1B-8.mp3",
+            "wav": "1B-8.wav",
+            "textgrid": "1B-8.TextGrid"
+        },
+        {
+            "sentence": "[](%L) Dat  vindt  ze  [heerlijk](H*L)  []0",
+            "key": [
+                "L%"
+            ],
+            "contour": "1B-9.png",
+            "audio": "1B-9.mp3",
+            "wav": "1B-9.wav",
+            "textgrid": "1B-9.TextGrid"
+        },
+        {
+            "sentence": "[](%L)  Ik [zit](H*L) op  [muziekles](H*L) []0",
+            "key": [
+                "L%"
+            ],
+            "contour": "1B-10.png",
+            "audio": "1B-10.mp3",
+            "wav": "1B-10.wav",
+            "textgrid": "1B-10.TextGrid"
+        },
+        {
+            "sentence": "[](%L) Hoe [gaat](H*L) 't  met  jullie?  []0",
+            "key": [
+                "H%"
+            ],
+            "contour": "1B-11.png",
+            "audio": "1B-11.mp3",
+            "wav": "1B-11.wav",
+            "textgrid": "1B-11.TextGrid"
+        },
+        {
+            "sentence": "[](%L)  Is  de  [hond](H*L)  al  uitgelaten  []0",
+            "key": [
+                "%"
+            ],
+            "contour": "1B-12.png",
+            "audio": "1B-12.mp3",
+            "wav": "1B-12.wav",
+            "textgrid": "1B-12.TextGrid"
+        }
+    ],
+    "choices": [
+        [
+            [
+                "L%"
+            ],
+            [
+                "H%"
+            ],
+            [
+                "%"
+            ]
+        ]
+    ]
+}

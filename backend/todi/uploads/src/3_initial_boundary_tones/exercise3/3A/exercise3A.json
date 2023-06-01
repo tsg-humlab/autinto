@@ -1,0 +1,137 @@
+{
+    "items": [
+        {
+            "sentence": "[]0 Wat  zullen  we  [nu](H*L)  krijgen [](%)",
+            "key": [
+                "%L"
+            ],
+            "contour": "3A-1.png",
+            "audio": "3A-1.mp3",
+            "wav": "3A-1.wav",
+            "textgrid": "3A-1.TextGrid"
+        },
+        {
+            "sentence": "[]0 Hij  [doet 't](H*L)  niet [](%)",
+            "key": [
+                "%L"
+            ],
+            "contour": "3A-2.png",
+            "audio": "3A-2.mp3",
+            "wav": "3A-2.wav",
+            "textgrid": "3A-2.TextGrid"
+        },
+        {
+            "sentence": "[]0 Om 's te kijken  hoe 't  er  in  de  [natuur](H*L) uitziet  al  die sneeuw [](L%)",
+            "key": [
+                "%HL"
+            ],
+            "contour": "3A-3.png",
+            "audio": "3A-3.mp3",
+            "wav": "3A-3.wav",
+            "textgrid": "3A-3.TextGrid"
+        },
+        {
+            "sentence": "[]0 We  kunnen  wel  [ophouden](!H*L) [](L%)",
+            "key": [
+                "%H"
+            ],
+            "contour": "3A-4.png",
+            "audio": "3A-4.mp3",
+            "wav": "3A-4.wav",
+            "textgrid": "3A-4.TextGrid"
+        },
+        {
+            "sentence": "[]0 Ze  hebben  weer  eens [sneeuw](H*L)  op  de  rails  gevonden [](L%)",
+            "key": [
+                "%HL"
+            ],
+            "contour": "3A-5.png",
+            "audio": "3A-5.mp3",
+            "wav": "3A-5.wav",
+            "textgrid": "3A-5.TextGrid"
+        },
+        {
+            "sentence": "[]0 De  [partij](L*)  [weet](L*) wat  ze  [doet](L*) [](L%)",
+            "key": [
+                "%L"
+            ],
+            "contour": "3A-6.png",
+            "audio": "3A-6.mp3",
+            "wav": "3A-6.wav",
+            "textgrid": "3A-6.TextGrid"
+        },
+        {
+            "sentence": "[]0 Van [oude](H*L) [mensen](H*) [](H%) []0 en  [dingen](!H*) die [voorbij](!H*L) gaan [](L%)",
+            "key": [
+                "%L",
+                "H%"
+            ],
+            "contour": "3A-7.png",
+            "audio": "3A-7.mp3",
+            "wav": "3A-7.wav",
+            "textgrid": "3A-7.TextGrid"
+        },
+        {
+            "sentence": "[]0 De [groentetuin](H*L) is leeggevreten [](L%)",
+            "key": [
+                "%H"
+            ],
+            "contour": "3A-8.png",
+            "audio": "3A-8.mp3",
+            "wav": "3A-8.wav",
+            "textgrid": "3A-8.TextGrid"
+        },
+        {
+            "sentence": "[]0 De  [partij](L*H) [weet](L*H) wat  ze  [doet](!H*L) [](L%)",
+            "key": [
+                "%L"
+            ],
+            "contour": "3A-9.png",
+            "audio": "3A-9.mp3",
+            "wav": "3A-9.wav",
+            "textgrid": "3A-9.TextGrid"
+        },
+        {
+            "sentence": "[]0 De [beste](H*) [stuurlui](!H*) staan  aan  [wal](!H*L) [](L%)",
+            "key": [
+                "%L"
+            ],
+            "contour": "3A-10.png",
+            "audio": "3A-10.mp3",
+            "wav": "3A-10.wav",
+            "textgrid": "3A-10.TextGrid"
+        },
+        {
+            "sentence": "[]0 Je  moet  er  [niet](H*)  steeds  een  [slaatje](!H*L) uit  willen  slaan [](L%)",
+            "key": [
+                "%L"
+            ],
+            "contour": "3A-11.png",
+            "audio": "3A-11.mp3",
+            "wav": "3A-11.wav",
+            "textgrid": "3A-11.TextGrid"
+        },
+        {
+            "sentence": "[]0  Bedenk  [jij](!H*L)  nou  maar 's  een  paar  zinnetjes [](H%)",
+            "key": [
+                "%H"
+            ],
+            "contour": "3A-12.png",
+            "audio": "3A-12.mp3",
+            "wav": "3A-12.wav",
+            "textgrid": "3A-12.TextGrid"
+        }
+    ],
+    "choices": [
+        [
+            [
+                "%L",
+                "%H"
+            ],
+            [
+                "%HL",
+                "∅"
+            ]
+        ]
+    ]
+}
