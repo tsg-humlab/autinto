@@ -3,7 +3,7 @@ import os
 import time
 from sys import stderr
 
-import tgt
+import textgrid
 
 from . import sentence_parsing
 
@@ -23,7 +23,7 @@ def send_to_praat(audio_file, textgrid):
     praat_script = os.path.join(resynthesis_dir, 'resynth.praat')
 
     #Praat won't accept input as a pipe, so we make a temp file for the TextGrid
-    tgt.io.write_to_file(textgrid, '{}.TextGrid'.format(prefix))
+    textgrid.write('{}.TextGrid'.format(prefix))
     
     praat_exec = subprocess.Popen(['praat', '--run', praat_script, audio_file, prefix+'.TextGrid', prefix+'.wav', prefix+'.pdf'])
 

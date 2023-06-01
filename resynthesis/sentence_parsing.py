@@ -122,13 +122,14 @@ def createTiers(targetList, TargetTier, FrequencyTier):
 
 #creates the textgrid
 def run(file, words): 
-    tg = textgrid.TextGrid.fromFile(file + ".TextGrid") 
+    tg = textgrid.TextGrid.fromFile(file) 
 
     tones = make_tones(words)
     tvpOffset = 0
     ipInterval = 0
     targetList = []
     finalLengthening = False
+    finalLengtheningIp = 0
 
     custom = False
     if(custom):
@@ -188,6 +189,7 @@ def run(file, words):
             elif(isFinalBoundary(word)):
                 if finalLengthening:
                     ipend = finalLengtheningIp
+                    print(ipend)
                 else:
                     ipend = get_Tipend(ipInterval, tg)
                 prec_word = prec_Word(words, i)
@@ -205,17 +207,21 @@ def run(file, words):
             #voor drie verschillende tonen
             #moet nog wat beter bekeken worden
             if not isBoundary(word):
+                print(word)
                 if ipend == Tvp_end:
-                    finalLengthening = True
                     endtime = ipend
                     vpduur = Tvp_end - Tvp_begin
+                    #print(ipend)
+                    #print(next_word)
 
-                    if (word[i] in ["H*L", "!H*L"] and next_word in ["H%"]) or (word[i] in ["L*H"] and next_word in ["L%", "H%", "%"]) or (word[i] in ["L*HL", "L!HL"] and next_word in ["L%", "%"]):
+                    if (word in ["H*L", "!H*L"] and next_word in ["H%"]) or (word in ["L*H"] and next_word in ["L%", "H%", "%"]) or (word in ["L*HL", "L!HL"] and next_word in ["L%", "%"]):
+                        finalLengthening = True
                         ipend = endtime - 0.023 + 11.500/vpduur
                         finalLengtheningIp = ipend
                         addtime = ipend - endtime
 
-                    if (word[i] in ["L*HL", "L*!HL"] and next_word in ["H%"]):
+                    if (word in ["L*HL", "L*!HL"] and next_word in ["H%"]):
+                        finalLengthening = True
                         ipend = endtime - 0.023 + 15.000/vpduur
                         finalLengtheningIp = ipend
                         addtime = ipend - endtime
@@ -563,9 +569,9 @@ def run(file, words):
 
 if __name__ == "__main__":
     word2 = ["%L","---","H*L","H*","L*", "H*L","L*","---","L%"]
-    words = ["%L", "---", "H*L", "---", "---", "---", "---", "H*L", "L%"]
-    #word = ["%L", "---", "---", "---", "H*", "---", "---", "H%", "%L", "---", "---", "H*", "H%"]
-    file = "C:/Users/sebas/Documents/Praat-Wavs/147"
+    #words = ["%L", "---", "H*L", "---", "---", "---", "---", "H*L", "L%"]
+    words = ["%L", "---", "---", "H*L", "---", "---", "H*", "H%", "%H", "---", "---", "---", "---" , "---", "H*", "!H*L" ,"L%"]
+    file = "C:/Users/sebas/Documents/Praat-Wavs/091.TextGrid"
     #file = "/home/pim/Documents/todi/147"
     grid = run(file, words)
     grid.write(file + "out.TextGrid")
