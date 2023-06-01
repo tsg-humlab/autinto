@@ -9,6 +9,6 @@ app.use('/additional-files/main.js', createProxyMiddleware({
   ignorePath: true,
 }))
 
-app.use(express.static('book/build'))
+app.use(express.static('../static'))
 
 app.listen(port, () => console.log(`Proxy running on port ${port}`))
