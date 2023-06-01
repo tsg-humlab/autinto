@@ -40,6 +40,25 @@ class Word(AbstractWord):
             case Tone.HIGH:
                 self.decode_primary_high(point_list)
 
+    def decode_middle(self, point_list):
+        match self.middle_tone:
+            case None:
+                return
+            case Tone.HIGH:
+                self.decode_middle_high(point_list)
+            case Tone.LOW:
+                self.decode_middle_low(point_list)
+
+    def decode_final(self, point_list):
+        match self.final_tone:
+            case None:
+                return
+            case Tone.LOW:
+                self.decode_final_low(point_list)
+            case Tone.HIGH:
+                self.decode_final_high(point_list)
+    
+
     def decode_primary_low(self, point_list):
         # LOW TRAY FOR L*, PLUS DELAYED PEAK
         # This rule creates an extended dip for L*.
@@ -78,40 +97,6 @@ class Word(AbstractWord):
         point_list.append(point_L2)
         point_list.append(point_L3)
 
-    def decode_primary_high(self, point_list):
-        # FLAT-TOP PEAK
-        # This rule creates the first and second targets of H* in its
-        # VP.
-
-        if self.vp_duration < Milliseconds(250):
-            time_H1 = self.vp_start + 0.12 * self.vp_duration
-            time_H2 = self.vp_start + 0.42 * self.vp_duration
-        else:
-            time_H1 = self.vp_start + 0.30 * self.vp_duration
-            time_H2 = self.vp_start + 0.60 * self.vp_duration
-
-        point_H1 = FrequencyPoint(
-            label = 'H1',
-            freq  = self.scale_frequency(0.7),
-            time  = time_H1)
-        point_H2 = FrequencyPoint(
-            label = 'H2',
-            freq  = self.scale_frequency(0.7),
-            time  = time_H2)
-
-        point_list.append(point_H1)
-        point_list.append(point_H2)
-
-
-    def decode_middle(self, point_list):
-        match self.middle_tone:
-            case None:
-                return
-            case Tone.HIGH:
-                self.decode_middle_high(point_list)
-            case Tone.LOW:
-                self.decode_middle_low(point_list)
-    
 
     def decode_middle_high(self, point_list):
         #LOW TRAY FOR L*, PLUS DELAYED PEAK
@@ -143,31 +128,52 @@ class Word(AbstractWord):
 
         point_list.append(point_H1)
         point_list.append(point_H2)
-        
-        
-    def decode_middle_low(self, point_list):        
-        if get_Tvpbegin(next_word) - get_time(prec_target) < FROMTIME * 2:
-            ltime = get_time(prec_target) + get_time(next_word) - time(prec_target) * 0.3
+
+
+
+    def decode_primary_high(self, point_list):
+        # FLAT-TOP PEAK
+        # This rule creates the first and second targets of H* in its
+        # VP.
+
+        if self.vp_duration < Milliseconds(250):
+            time_H1 = self.vp_start + 0.12 * self.vp_duration
+            time_H2 = self.vp_start + 0.42 * self.vp_duration
         else:
-            ltime = get_time(prec_target) + TOTIME
+            time_H1 = self.vp_start + 0.30 * self.vp_duration
+            time_H2 = self.vp_start + 0.60 * self.vp_duration
+
+        point_H1 = FrequencyPoint(
+            label = 'H1',
+            freq  = self.scale_frequency(0.7),
+            time  = time_H1)
+        point_H2 = FrequencyPoint(
+            label = 'H2',
+            freq  = self.scale_frequency(0.7),
+            time  = time_H2)
+
+        point_list.append(point_H1)
+        point_list.append(point_H2)
+
+
+    def decode_middle_low(self, point_list):        
+        # PRENUCLEAR RISE AND FALL-RISE
+        # This rule creates  the fall from H* in H*LH.
+
+        last_target_time = point_list[-1].time
+        if self.next_boundary - last_target_time < Milliseconds(200):
+            time_l = last_target_time + 0.30 * (self.next_vp_start - last_target_time)
+        else:
+            time_l = last_target_time + Millisecoonds(100)
 
 
         point_l = FrequencyPoint(
             label = '+l',
-            freq  = freq_low + 0.4 * W,
-            time  = ltime)
+            freq  = self.scale_frequency(0.4),
+            time  = time_l)
         
-        point_list.append(point_+l)
+        point_list.append(point_l)
 
-
-    def decode_final(self, point_list):
-        match self.final_tone:
-            case None:
-                return
-            case Tone.LOW:
-                self.decode_final_low(point_list)
-            case Tone.HIGH:
-                self.decode_final_high(point_list)
 
     def decode_final_low(self, point_list):
         if not self.is_last_word:

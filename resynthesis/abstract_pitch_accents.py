@@ -52,7 +52,11 @@ class AbstractWord(ABC):
         if self.is_last_word:
             return self.ip_end
         else:
-            return self.parent.ips[self.index+1].vp_start
+            return self.next_vp_start
+
+    @property
+    def next_vp_start(self) -> Milliseconds:
+        return self.parent.ips[self.index+1].vp_start
 
     @property
     def is_last_word(self) -> bool:
