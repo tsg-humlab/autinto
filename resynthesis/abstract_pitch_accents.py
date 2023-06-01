@@ -56,7 +56,7 @@ class AbstractWord(ABC):
 
     @property
     def next_vp_start(self) -> Milliseconds:
-        return self.parent.ips[self.index+1].vp_start
+        return self.parent.words[self.index+1].vp_start
 
     @property
     def is_last_word(self) -> bool:
@@ -151,7 +151,7 @@ class AbstractFinalBoundary(ABC):
 
     @property
     def last_word(self):
-        return self.parent.words[-1].name
+        return self.parent.words[-1]
     @property
     def frequency_range(self) -> FrequencyRange:
         return self.parent.frequency_range
@@ -159,3 +159,9 @@ class AbstractFinalBoundary(ABC):
     def scale_frequency(self, scalar) -> Frequency:
         return self.frequency_range.scale(scalar)
 
+    @property
+    def ip_start(self) -> Milliseconds:
+        return self.parent.ip_start
+    @property
+    def ip_end(self) -> Milliseconds:
+        return self.parent.ip_end
