@@ -239,17 +239,17 @@ class Word(AbstractWord):
 
     def decode_final_high(self, point_list):
         time_preceding_target = point_list[-1].time
-        if get_Tvpbegin(next_word) - time_preceding_target < FROMTIME * 2:
-            htime = time_preceding_target + get_time(next_word) - time_preceding_target * 0.5
+        if self.next_boundary - time_preceding_target < Milliseconds(200):
+            time_h1 = time_preceding_target + 0.30 * (self.next_boundary - time_preceding_target)
         else:
-            htime = get_time(next_word) - TOTIME
+            time_h1 = self.next_boundary - Milliseconds(100)
 
         point_h1 = FrequencyPoint(
             label = 'h1',
-            freq  = freq_high - 0.3 * W,
-            time  = htime)
+            freq  = self.scale_frequency(0.70),
+            time  = time_h1)
 
-        point_list.append(point_+l)
+        point_list.append(point_h1)
 
 
     def from_name(self, name: str):
@@ -321,7 +321,7 @@ class InitialBoundary(AbstractInitialBoundary):
 
     def from_name(self, name: str):
         if name not in ['%L', '%H', '%HL', '!%L', '!%H', '!%HL']:
-            raise ValueError
+            raise ValueError('Expected initial boundary, found {}'.format(name))
 
         if name[0] == '!':
             # TODO downstep
@@ -364,5 +364,5 @@ class FinalBoundary(AbstractFinalBoundary):
         # The final boundary is so simple that we can simply use
         # self.name in the main logic.
         if name not in ['L%', 'H%', '%']:
-            raise ValueError
+            raise ValueError('Expected final boundary, found {}'.format(name))
         pass
