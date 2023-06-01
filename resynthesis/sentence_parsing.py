@@ -174,7 +174,11 @@ def run(file, words):
             if (not i == 0 and not i == len(words)-1):
                 tvpOffset+=1
         else:
-            WordTier.addPoint(textgrid.Point(get_Tvpbegin(i, words, tg, tvpOffset), words[i]))
+            try:
+                WordTier.addPoint(textgrid.Point(get_Tvpbegin(i, words, tg, tvpOffset), words[i]))
+            except:
+                WordTier.addPoint(textgrid.Point(get_Tvpbegin(i, words, tg, tvpOffset)+0.001, words[i]))
+                
         
         for j in range(len(tones[i])):
 
