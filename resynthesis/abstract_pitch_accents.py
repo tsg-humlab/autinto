@@ -74,6 +74,16 @@ class AbstractWord(ABC):
         return self.parent.final_boundary.name
 
 
+    """
+    The delayspace is the duration of the current VP, plus the time from
+    there to the next accented VP start or IP end; or, said differently,
+    the full available time.
+    """
+    @property
+    def delayspace(self):
+        return self.vp_duration + self.time_to_next_boundary
+
+
     def scale_frequency(self, scalar) -> Frequency:
         return self.frequency_range.scale(scalar)
 

@@ -57,9 +57,8 @@ class Word(AbstractWord):
         # next VP starts) within 360 milliseconds, the available space
         # is calculated, and L2 and L3 are placed depending on that:
         else:
-            delayspace = self.vp_duration + self.time_to_next_boundary
-            time_L2 = self.vp_start + 0.03 * delayspace
-            time_L3 = self.vp_start + 0.29 * delayspace
+            time_L2 = self.vp_start + 0.03 * self.delayspace
+            time_L3 = self.vp_start + 0.30 * self.delayspace
 
         # TODO comment here
         point_L1 = FrequencyPoint(
@@ -115,33 +114,31 @@ class Word(AbstractWord):
     
 
     def decode_middle_high(self, point_list):
-        if self.has_downstep:
-            freq_high = Fr + (freq_high - Fr) * da
-            freq_low =  Fr + (freq_low - Fr) * da
-        else:
-            freq_high = self.inihigh
-            freq_low = self.inilow
+        #LOW TRAY FOR L*, PLUS DELAYED PEAK
+        # This rule creates a delayed peak after L*
 
-        W = freq_high - freq_low 
+        # TODO downstep
 
-        #Hi Timon I used the same logic as you did in primary low
         if self.time_to_next_boundary > Milliseconds(360):
-            time_H1 = get_time_prec + delayspace * 0.5
-            time_H2  = get_time_prec + delayspace * 0.2
+            # Since there is enough space, the last point, L3, has been
+            # placed at 0.75 into the VP.
+            last_point_time = self.vp_start + 0.75*self.vp_duration
+
+            time_H1 = last_point_time + 0.5 * self.delayspace
+            time_H2 = last_point_time + 0.7 * self.delayspace
         else:
-            delayspace = self.time_to_next_boundary
-            time_H1 = get_time_prec + 1 + delayspace * 0.3
-            time_H2  = get_time_prec + delayspace * 0.1
+            time_H1 = self.vp_start + 0.60 * self.delayspace
+            time_H2 = self.vp_start + 0.70 * self.delayspace
 
 
 
-        point_L1 = FrequencyPoint(
+        point_H1 = FrequencyPoint(
             label = 'H1',
-            freq  = freq_high - 0.3 * W,
+            freq  = self.scale_frequency(0.70),
             time  = time_H1)
-        point_L2 = FrequencyPoint(
+        point_H2 = FrequencyPoint(
             label = 'H2',
-            freq  = freq_high - 0.3 * W,
+            freq  = self.scale_frequency(0.70),
             time  = time_H2)
 
         point_list.append(point_H1)
