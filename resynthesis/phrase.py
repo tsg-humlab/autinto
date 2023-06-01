@@ -31,15 +31,13 @@ class Phrase(Interval):
     ips: list[IntonationalPhrase]
 
     def __init__(self, file: str):
-        print(file)
         textgrid = tg.TextGrid.fromFile(file) 
         super().__init__(textgrid.minTime, textgrid.maxTime)
 
-        textgrid_ips = textgrid.getList("IP's")
-        textgrid_vps = textgrid.getList('vp')
+        textgrid_ips = textgrid.getFirst("IP's")
+        textgrid_vps = textgrid.getFirst('vp')
 
         self.ips: list[IntonationalPhrase] = []
-
         for textgrid_ip in textgrid_ips:
             ip = IntonationalPhrase(textgrid_ip.minTime, textgrid_ip.maxTime, textgrid_vps)
             self.ips.append(ip)
