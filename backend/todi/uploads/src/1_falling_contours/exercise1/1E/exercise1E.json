@@ -2,88 +2,206 @@
     "items": [
         {
             "sentence": "[](%L) [Onze]0  [poes]0  moet  wat  [eten]0  [hebben]0 []1",
-            "key": ["%L", "∅", "H*L", "H*L", "∅", "L%"],
-            "contour": "1E-1.png", 
-            "audio": "1E-1.mp3"
+            "key": [
+                "%L",
+                "∅",
+                "H*L",
+                "H*L",
+                "∅",
+                "L%"
+            ],
+            "contour": "1E-1.png",
+            "audio": "1E-1.mp3",
+            "wav": "1E-1.wav",
+            "textgrid": "1E-1.TextGrid"
         },
         {
             "sentence": "[](%L) Ze zijn [heel]0 [zacht]0 []1",
-            "key": ["%L", "H*", "!H*L", "L%"],
-            "contour": "1E-2.png", 
-            "audio": "1E-2.mp3"
+            "key": [
+                "%L",
+                "H*",
+                "!H*L",
+                "L%"
+            ],
+            "contour": "1E-2.png",
+            "audio": "1E-2.mp3",
+            "wav": "1E-2.wav",
+            "textgrid": "1E-2.TextGrid"
         },
         {
             "sentence": "[](%L) Op  de  [trap]0  had  ze  [weer]0  het  [gevoel]0 dat er  [iemand]0  achter  haar  [aankwam]0  []1",
-            "key": ["%L", "H*L", "!H*L", "!H*L", "!H*L", "!H*L", "L%"],
-            "contour": "1E-3.png", 
-            "audio": "1E-3.mp3"
+            "key": [
+                "%L",
+                "H*L",
+                "!H*L",
+                "!H*L",
+                "!H*L",
+                "!H*L",
+                "L%"
+            ],
+            "contour": "1E-3.png",
+            "audio": "1E-3.mp3",
+            "wav": "1E-3.wav",
+            "textgrid": "1E-3.TextGrid"
         },
         {
             "sentence": "[](%L) U  hoeft  immers  [geen]0  [belasting]0  te  [betalen]0 []1",
-            "key": ["%L", "∅", "H*L", "∅", "H%"],
-            "contour": "1E-4.png", 
-            "audio": "1E-4.mp3"
+            "key": [
+                "%L",
+                "∅",
+                "H*L",
+                "∅",
+                "H%"
+            ],
+            "contour": "1E-4.png",
+            "audio": "1E-4.mp3",
+            "wav": "1E-4.wav",
+            "textgrid": "1E-4.TextGrid"
         },
         {
             "sentence": "[](%L) Maar  [waarom]0  vraag je  [mij]0  in het [bijzonder]0 []1",
-            "key": ["%L", "∅", "H*L", "∅", "L%"],
-            "contour": "1E-5.png", 
-            "audio": "1E-5.mp3"
+            "key": [
+                "%L",
+                "∅",
+                "H*L",
+                "∅",
+                "L%"
+            ],
+            "contour": "1E-5.png",
+            "audio": "1E-5.mp3",
+            "wav": "1E-5.wav",
+            "textgrid": "1E-5.TextGrid"
         },
         {
             "sentence": "[](%L) [Fietsen]0  is  in  't  [hele]0  [park]0 [verboden]0 []1",
-            "key": ["%L", "H*L", "!H*L", "∅", "!H*L", "L%"],
-            "contour": "1E-6.png", 
-            "audio": "1E-6.mp3"
+            "key": [
+                "%L",
+                "H*L",
+                "!H*L",
+                "∅",
+                "!H*L",
+                "L%"
+            ],
+            "contour": "1E-6.png",
+            "audio": "1E-6.mp3",
+            "wav": "1E-6.wav",
+            "textgrid": "1E-6.TextGrid"
         },
         {
             "sentence": "[](%L) D'r  [moet]0  nog  maar 'ns  over  [gepraat]0  [worden]0  []1",
-            "key": ["%L", "∅", "H*L", "∅", "%"],
-            "contour": "1E-7.png", 
-            "audio": "1E-7.mp3"
+            "key": [
+                "%L",
+                "∅",
+                "H*L",
+                "∅",
+                "%"
+            ],
+            "contour": "1E-7.png",
+            "audio": "1E-7.mp3",
+            "wav": "1E-7.wav",
+            "textgrid": "1E-7.TextGrid"
         },
         {
             "sentence": "[](%L) Bij  [oma]0  kun  je de  [hele]0  [tijd]0  [taartjes]0  eten []1",
-            "key": ["%L", "H*", "!H", "∅", "!H*L", "L%"],
+            "key": [
+                "%L",
+                "H*",
+                "!H",
+                "∅",
+                "!H*L",
+                "L%"
+            ],
             "contour": "1E-8.png",
-            "audio": "1E-8.mp3"
+            "audio": "1E-8.mp3",
+            "wav": "1E-8.wav",
+            "textgrid": "1E-8.TextGrid"
         },
         {
             "sentence": "[](%L) Hoe  [ver]0  [ben]0  je  met  de  [verjaardag]0  van  [Arnoutje]0 []1",
-            "key": ["%L", "∅", "H*L", "∅", "H*L", "%"],
+            "key": [
+                "%L",
+                "∅",
+                "H*L",
+                "∅",
+                "H*L",
+                "%"
+            ],
             "contour": "1E-9.png",
-            "audio": "1E-9.mp3"
+            "audio": "1E-9.mp3",
+            "wav": "1E-9.wav",
+            "textgrid": "1E-9.TextGrid"
         },
         {
             "sentence": "[](%L)  Ze  [helpen]0  om  haar [billetjes]0  [prachtig]0  [droog]0  te houden  []1",
-            "key": ["%L", "H*L", "∅", "∅", "H*L", "%"],
+            "key": [
+                "%L",
+                "H*L",
+                "∅",
+                "∅",
+                "H*L",
+                "%"
+            ],
             "contour": "1E-10.png",
-            "audio": "1E-10.mp3"
+            "audio": "1E-10.mp3",
+            "wav": "1E-10.wav",
+            "textgrid": "1E-10.TextGrid"
         },
         {
             "sentence": "[](%L) De  [meesten]0  waren [heel]0 [slecht]0  daarop [voorbereid]0 []1",
-            "key": ["%L", "H*L", "h*", "!H*", "!H*L", "L%"],
+            "key": [
+                "%L",
+                "H*L",
+                "h*",
+                "!H*",
+                "!H*L",
+                "L%"
+            ],
             "contour": "1E-11.png",
-            "audio": "1E-11.mp3"
+            "audio": "1E-11.mp3",
+            "wav": "1E-11.wav",
+            "textgrid": "1E-11.TextGrid"
         },
         {
             "sentence": "[](%L) Van  [dat]0 [soort]0  [dingen]0  heb  ik  [geen]0 [verstand]0 []1",
-            "key": ["%L", "H*LH", "∅", "∅", "∅", "H*L", "L%"],
+            "key": [
+                "%L",
+                "H*LH",
+                "∅",
+                "∅",
+                "∅",
+                "H*L",
+                "L%"
+            ],
             "contour": "1E-12.png",
-            "audio": "1E-12.mp3"
+            "audio": "1E-12.mp3",
+            "wav": "1E-12.wav",
+            "textgrid": "1E-12.TextGrid"
         }
-        
- 
     ],
     "choices": [
         [
-            ["H*L","!H*L"],
-            ["H*","!H*"],
-            [ "H*LH", "∅" ]
-        ], 
+            [
+                "H*L",
+                "!H*L"
+            ],
+            [
+                "H*",
+                "!H*"
+            ],
+            [
+                "H*LH",
+                "∅"
+            ]
+        ],
         [
-            ["L%","H%"],
-            [ "%","∅" ]
+            [
+                "L%",
+                "H%"
+            ],
+            [
+                "%",
+                "∅"
+            ]
         ]
     ]
 }

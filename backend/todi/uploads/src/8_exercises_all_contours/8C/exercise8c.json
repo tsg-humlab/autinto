@@ -2,93 +2,244 @@
     "items": [
         {
             "sentence": "[]2 Het [leukste]0 [onderdeel]0 vond ik eigenlijk het [lesgeven]0 []1",
-            "key": ["%L", "H*", "∅", "!H*L", "L%"],
+            "key": [
+                "%L",
+                "H*",
+                "∅",
+                "!H*L",
+                "L%"
+            ],
             "contour": "8C-1.png",
-            "audio": "8C-1.mp3"
+            "audio": "8C-1.mp3",
+            "wav": "8C-1.wav",
+            "textgrid": "8C-1.TextGrid"
         },
         {
             "sentence": "[]2 [Examenwerk]0 is [niet]0 het [allerberoerdste]0 om [na]0 te [kijken]0 []1",
-            "key": ["%L", "H*L", "H*L", "H*L", "H*L", "∅", "L%"],
+            "key": [
+                "%L",
+                "H*L",
+                "H*L",
+                "H*L",
+                "H*L",
+                "∅",
+                "L%"
+            ],
             "contour": "8C-2.png",
-            "audio": "8C-2.mp3"
+            "audio": "8C-2.mp3",
+            "wav": "8C-2.wav",
+            "textgrid": "8C-2.TextGrid"
         },
         {
             "sentence": "[]2 Dat ze dus zich [minder]0 [goed]0 kunnen [concentreren]0 []1 []2 waar [zou 'm]0 dat dan in [zitten]0 []1",
-            "key": ["%L", "H*L", "∅", "H*L", "L%", "%L", "∅", "H*", "H%"],
+            "key": [
+                "%L",
+                "H*L",
+                "∅",
+                "H*L",
+                "L%",
+                "%L",
+                "∅",
+                "H*",
+                "H%"
+            ],
             "contour": "8C-3.png",
-            "audio": "8C-3.mp3"
+            "audio": "8C-3.mp3",
+            "wav": "8C-3.wav",
+            "textgrid": "8C-3.TextGrid"
         },
         {
             "sentence": "[]2 [Dan]0 gaat 't je [toch]0 wel [boeien]0 []1",
-            "key": ["%L", "H*L", "H*L", "H*L", "L%"],
+            "key": [
+                "%L",
+                "H*L",
+                "H*L",
+                "H*L",
+                "L%"
+            ],
             "contour": "8C-4.png",
-            "audio": "8C-4.mp3"
+            "audio": "8C-4.mp3",
+            "wav": "8C-4.wav",
+            "textgrid": "8C-4.TextGrid"
         },
         {
             "sentence": "[]2 Nou dat wordt [haast]0 [onmenselijk]0 []1",
-            "key": ["%L", "H*L", "H*L", "%"],
+            "key": [
+                "%L",
+                "H*L",
+                "H*L",
+                "%"
+            ],
             "contour": "8C-5.png",
-            "audio": "8C-5.mp3"
+            "audio": "8C-5.mp3",
+            "wav": "8C-5.wav",
+            "textgrid": "8C-5.TextGrid"
         },
         {
             "sentence": "[]2 [Ja]0 hoe zeg je dat je [morgenavond]0 met je [neefje]0 [om]0 [half]0 [tien]0 naar de [bioscoop]0 [wil]0 []1",
-            "key": ["%L", "∅", "H*L", "H*L", "∅", "H*L", "∅", "H*L", "∅", "L%"],
+            "key": [
+                "%L",
+                "∅",
+                "H*L",
+                "H*L",
+                "∅",
+                "H*L",
+                "∅",
+                "H*L",
+                "∅",
+                "L%"
+            ],
             "contour": "8C-6.png",
-            "audio": "8C-6.mp3"
+            "audio": "8C-6.mp3",
+            "wav": "8C-6.wav",
+            "textgrid": "8C-6.TextGrid"
         },
         {
             "sentence": "[]2 [Ik weet]0 niet of ik dat [kan]0 []1",
-            "key": ["%L", "∅", "H*L", "%"],
+            "key": [
+                "%L",
+                "∅",
+                "H*L",
+                "%"
+            ],
             "contour": "8C-7.png",
-            "audio": "8C-7.mp3"
+            "audio": "8C-7.mp3",
+            "wav": "8C-7.wav",
+            "textgrid": "8C-7.TextGrid"
         },
         {
             "sentence": "[]2 Dus die [ene]0 wil natuurlijk die [armband]0 []1 []2 en die [ander]0 wil die [collier]0 []1",
-            "key": ["%L", "H*L", "H*L", "H%", "%L", "H*L", "H*L", "L%"],
+            "key": [
+                "%L",
+                "H*L",
+                "H*L",
+                "H%",
+                "%L",
+                "H*L",
+                "H*L",
+                "L%"
+            ],
             "contour": "8C-8.png",
-            "audio": "8C-8.mp3"
+            "audio": "8C-8.mp3",
+            "wav": "8C-8.wav",
+            "textgrid": "8C-8.TextGrid"
         },
         {
             "sentence": "[]2 [Hai]0 ik ben [moe]0 []1",
-            "key": ["%L", "H*L", "H*L", "%"],
+            "key": [
+                "%L",
+                "H*L",
+                "H*L",
+                "%"
+            ],
             "contour": "8C-9.png",
-            "audio": "8C-9.mp3"
+            "audio": "8C-9.mp3",
+            "wav": "8C-9.wav",
+            "textgrid": "8C-9.TextGrid"
         },
         {
             "sentence": "[]2 Maar [toch]0 []1 []2 als ik dat [zie]0 []1 []2 dan denk ik [ja]0 []1 []2 dat is [toch]0 wel heel [goed]0 []1",
-            "key": ["%L", "H*", "H%", "%L", "H*", "H%", "%H", "H*L", "L%", "%L", "H*", "!H*L", "L%"],
+            "key": [
+                "%L",
+                "H*",
+                "H%",
+                "%L",
+                "H*",
+                "H%",
+                "%H",
+                "H*L",
+                "L%",
+                "%L",
+                "H*",
+                "!H*L",
+                "L%"
+            ],
             "contour": "8C-10.png",
-            "audio": "8C-10.mp3"
+            "audio": "8C-10.mp3",
+            "wav": "8C-10.wav",
+            "textgrid": "8C-10.TextGrid"
         },
         {
             "sentence": "[]2 Zeg maar net zo [groot]0 als dat [kristal]0 dat ik [zelf]0 [heb]0 []1",
-            "key": ["%L", "∅", "∅", "H*L", "∅", "L%"],
+            "key": [
+                "%L",
+                "∅",
+                "∅",
+                "H*L",
+                "∅",
+                "L%"
+            ],
             "contour": "8C-11.png",
-            "audio": "8C-11.mp3"
+            "audio": "8C-11.mp3",
+            "wav": "8C-11.wav",
+            "textgrid": "8C-11.TextGrid"
         },
         {
             "sentence": "[]2 Ze heeft [grote]0 [belangstelling]0 voor [kunst]0 []1 [](P) []2 en [bezoekt]0 [regelmatig]0 [exposities]0 en [voorstellingen]0 []1",
-            "key": ["%L", "H*L", "!H*L", "H*", "%", "%L", "H*L", "!H*L", "H*", "H*L", "L%"],
+            "key": [
+                "%L",
+                "H*L",
+                "!H*L",
+                "H*",
+                "%",
+                "%L",
+                "H*L",
+                "!H*L",
+                "H*",
+                "H*L",
+                "L%"
+            ],
             "contour": "8C-12.png",
-            "audio": "8C-12.mp3"
+            "audio": "8C-12.mp3",
+            "wav": "8C-12.wav",
+            "textgrid": "8C-12.TextGrid"
         }
     ],
     "choices": [
         [
-            [ "H*L", "!H*L" ],
-            [ "H*", "!H*" ],
-            [ "H*LH", "L*HL" ],
-            [ "L*!HL", "L*" ],
-            [ "L*H", "H*!H"],
-            [ "∅" ]
+            [
+                "H*L",
+                "!H*L"
+            ],
+            [
+                "H*",
+                "!H*"
+            ],
+            [
+                "H*LH",
+                "L*HL"
+            ],
+            [
+                "L*!HL",
+                "L*"
+            ],
+            [
+                "L*H",
+                "H*!H"
+            ],
+            [
+                "∅"
+            ]
         ],
         [
-            ["L%", "H%"],
-            ["%", "∅"]
+            [
+                "L%",
+                "H%"
+            ],
+            [
+                "%",
+                "∅"
+            ]
         ],
         [
-            ["%L", "%H"],
-            ["%HL", "∅"]
+            [
+                "%L",
+                "%H"
+            ],
+            [
+                "%HL",
+                "∅"
+            ]
         ]
     ]
 }

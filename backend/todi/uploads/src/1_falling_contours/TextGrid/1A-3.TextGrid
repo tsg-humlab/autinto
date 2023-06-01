@@ -1,0 +1,158 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 1.71675 
+tiers? <exists> 
+size = 3 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "words" 
+        xmin = 0 
+        xmax = 1.71675 
+        intervals: size = 11 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.11386387727272727 
+            text = "m" 
+        intervals [2]:
+            xmin = 0.11386387727272727 
+            xmax = 0.4855350500000001 
+            text = "stom" 
+        intervals [3]:
+            xmin = 0.4855350500000001 
+            xmax = 0.6047503318181819 
+            text = "" 
+        intervals [4]:
+            xmin = 0.6047503318181819 
+            xmax = 0.6832221229110745 
+            text = "dat" 
+        intervals [5]:
+            xmin = 0.6832221229110745 
+            xmax = 0.7473884201937191 
+            text = "ik" 
+        intervals [6]:
+            xmin = 0.7473884201937191 
+            xmax = 0.9298040367543803 
+            text = "daar" 
+        intervals [7]:
+            xmin = 0.9298040367543803 
+            xmax = 1.0466944573084043 
+            text = "niet" 
+        intervals [8]:
+            xmin = 1.0466944573084043 
+            xmax = 1.161511008723648 
+            text = "aan" 
+        intervals [9]:
+            xmin = 1.161511008723648 
+            xmax = 1.5005898922098446 
+            text = "gedacht" 
+        intervals [10]:
+            xmin = 1.5005898922098446 
+            xmax = 1.634515681120276 
+            text = "heb" 
+        intervals [11]:
+            xmin = 1.634515681120276 
+            xmax = 1.71675 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "IP's" 
+        xmin = 0 
+        xmax = 1.71675 
+        intervals: size = 5 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.11386387727272727 
+            text = "" 
+        intervals [2]:
+            xmin = 0.11386387727272727 
+            xmax = 0.4855350500000001 
+            text = "ipi" 
+        intervals [3]:
+            xmin = 0.4855350500000001 
+            xmax = 0.6047503318181819 
+            text = "" 
+        intervals [4]:
+            xmin = 0.6047503318181819 
+            xmax = 1.6118082906705673 
+            text = "ipf" 
+        intervals [5]:
+            xmin = 1.6118082906705673 
+            xmax = 1.71675 
+            text = "" 
+    item [3]:
+        class = "IntervalTier" 
+        name = "vp" 
+        xmin = 0 
+        xmax = 1.71675 
+        intervals: size = 17 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.2738165493156965 
+            text = "" 
+        intervals [2]:
+            xmin = 0.2738165493156965 
+            xmax = 0.4451161756639393 
+            text = "vp" 
+        intervals [3]:
+            xmin = 0.4451161756639393 
+            xmax = 0.6219896021719256 
+            text = "" 
+        intervals [4]:
+            xmin = 0.6219896021719256 
+            xmax = 0.6389991929548898 
+            text = "vp" 
+        intervals [5]:
+            xmin = 0.6389991929548898 
+            xmax = 0.6832221229110745 
+            text = "" 
+        intervals [6]:
+            xmin = 0.6832221229110745 
+            xmax = 0.7255723392019016 
+            text = "vp" 
+        intervals [7]:
+            xmin = 0.7255723392019016 
+            xmax = 0.8121082526132157 
+            text = "" 
+        intervals [8]:
+            xmin = 0.8121082526132157 
+            xmax = 0.9297284981233382 
+            text = "vp" 
+        intervals [9]:
+            xmin = 0.9297284981233382 
+            xmax = 0.9439248024797994 
+            text = "" 
+        intervals [10]:
+            xmin = 0.9439248024797994 
+            xmax = 1.0053411155860685 
+            text = "vp" 
+        intervals [11]:
+            xmin = 1.0053411155860685 
+            xmax = 1.0466944573084043 
+            text = "" 
+        intervals [12]:
+            xmin = 1.0466944573084043 
+            xmax = 1.1607330467376447 
+            text = "vp" 
+        intervals [13]:
+            xmin = 1.1607330467376447 
+            xmax = 1.3006797502633207 
+            text = "" 
+        intervals [14]:
+            xmin = 1.3006797502633207 
+            xmax = 1.3620960633695902 
+            text = "vp" 
+        intervals [15]:
+            xmin = 1.3620960633695902 
+            xmax = 1.5005898922098446 
+            text = "" 
+        intervals [16]:
+            xmin = 1.5005898922098446 
+            xmax = 1.584099304689756 
+            text = "vp" 
+        intervals [17]:
+            xmin = 1.584099304689756 
+            xmax = 1.71675 
+            text = "" 
