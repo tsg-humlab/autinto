@@ -200,6 +200,8 @@ def run(file, words):
                 ipend = get_Tipend(ipInterval, tg)
                 Tvp_begin = get_Tvpbegin(i, words, tg, tvpOffset)
                 Tvp_end = get_Tvpend(i, words, tg, tvpOffset)
+                if not isBoundary(next_word):
+                    Tvp_begin_next = get_Tvpbegin(next_word_index(words, i), words, tg, tvpOffset)
             
             
             ##########FIRST PARSE: FINAL LENGTHENING for ip-final syllable with many tones
@@ -207,7 +209,6 @@ def run(file, words):
             #voor drie verschillende tonen
             #moet nog wat beter bekeken worden
             if not isBoundary(word):
-                print(word)
                 if ipend == Tvp_end:
                     endtime = ipend
                     vpduur = Tvp_end - Tvp_begin
