@@ -113,11 +113,54 @@ class Word(AbstractWord):
             case Tone.LOW:
                 self.decode_middle_low(point_list)
     
-    def decode_middle_high(self, point_list):
-        raise NotImplementedError
 
-    def decode_middle_low(self, point_list):
-        raise NotImplementedError
+    def decode_middle_high(self, point_list):
+        if self.has_downstep:
+            freq_high = Fr + (freq_high - Fr) * da
+		    freq_low =  Fr + (freq_low - Fr) * da
+        else:
+            freq_high = self.inihigh
+		    freq_low = self.inilow
+
+		W = freq_high - freq_low 
+
+        #Hi Timon I used the same logic as you did in primary low
+        if self.time_to_next_boundary > Milliseconds(360):
+            time_H1 = get_time_prec + delayspace * 0.5
+            time_H2  = get_time_prec + delayspace * 0.2
+        else:
+            delayspace = self.time_to_next_boundary
+            time_H1 = get_time_prec + 1 + delayspace * 0.3
+            time_H2  = get_time_prec + delayspace * 0.1
+
+
+
+        point_L1 = FrequencyPoint(
+            label = 'H1',
+            freq  = freq_high - 0.3 * W,
+            time  = time_H1)
+        point_L2 = FrequencyPoint(
+            label = 'H2',
+            freq  = freq_high - 0.3 * W,
+            time  = time_H2)
+
+        point_list.append(point_H1)
+        point_list.append(point_H2)
+        
+        
+    def decode_middle_low(self, point_list):        
+        if get_Tvpbegin(next_word) - get_time(prec_target) < FROMTIME * 2:
+            ltime = get_time(prec_target) + (get_time(next_word) - time(prec_target) * 0.3
+        else:
+            ltime = get_time(prec_target) + TOTIME
+
+
+        point_+l = FrequencyPoint(
+            label = '+l',
+            freq  = freq_low + 0.4 * W,
+            time  = ltime)
+        
+        point_list.append(point_+l)
 
 
     def decode_final(self, point_list):
@@ -190,8 +233,20 @@ class Word(AbstractWord):
                 time = time_l2)
             point_list.append(point_l2)
 
+
     def decode_final_high(self, point_list):
-        raise NotImplementedError
+        time_preceding_target = point_list[-1].time
+        if get_Tvpbegin(next_word) - time_preceding_target < FROMTIME * 2:
+            htime = time_preceding_target + get_time(next_word) - time_preceding_target * 0.5
+        else:
+            htime = get_time(next_word) - TOTIME
+
+        point_h1 = FrequencyPoint(
+            label = 'h1',
+            freq  = freq_high - 0.3 * W,
+            time  = htime)
+
+        point_list.append(point_+l)
 
 
     def from_name(self, name: str):
