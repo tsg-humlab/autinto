@@ -28,14 +28,12 @@ def send_to_praat(audio_file, textgrid):
     praat_exec = subprocess.Popen(['praat', '--run', praat_script, audio_file, prefix+'.TextGrid', prefix+'.wav', prefix+'.pdf'])
 
 
-    #tg_pipe = os.open(prefix+'.TextGrid', os.O_WRONLY)
-    #os.write(tg_pipe, textgrid)
-    #os.close(tg_pipe)
+
+    praat_exec.wait(timeout=10)
 
     wav_pipe = open(prefix+'.wav', 'rb', buffering=500_000)
     pdf_pipe = open(prefix+'.pdf', 'rb', buffering=500_000)
 
-    praat_exec.wait(timeout=10)
 
     wav_out = wav_pipe.read()
     wav_pipe.close()
@@ -60,8 +58,8 @@ def pdf_to_svg(pdf_bytes):
 suffixes = ['wav', 'pdf'] #, 'TextGrid']
 def make_pipes():
     tmp_prefix = '/tmp/todi-resynth-{}'.format(time.time_ns())
-    for suffix in suffixes:
-        os.mkfifo('{}.{}'.format(tmp_prefix, suffix))
+    #for suffix in suffixes:
+        #os.mkfifo('{}.{}'.format(tmp_prefix, suffix))
     return tmp_prefix
 
 def cleanup_pipes(prefix: str):

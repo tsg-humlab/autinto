@@ -153,7 +153,7 @@ def run(file, words):
     
     WordTier = textgrid.PointTier("tones",0.0, tg.maxTime)
     TargetTier = textgrid.PointTier("targets",0.0, tg.minTime)
-    FrequencyTier = textgrid.PointTier("ToDi-f0",0.0, tg.maxTime)
+    FrequencyTier = textgrid.PointTier("ToDI-F0",0.0, tg.maxTime)
     tg.append(WordTier) 
     tg.append(TargetTier)
     tg.append(FrequencyTier)
