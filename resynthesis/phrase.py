@@ -19,11 +19,12 @@ class IntonationalPhrase(Interval):
         self.vps: list[VoicedPortion] = []
 
         for textgrid_vp in textgrid_vps:
-            vp = VoicedPortion(textgrid_vp.minTime, textgrid_vp.maxTime)
-            if (vp.start_time > self.start_time
-                    and vp.end_time < self.end_time):
-                self.vps.append(vp)
-                
+            if textgrid_vp.mark:
+                vp = VoicedPortion(textgrid_vp.minTime, textgrid_vp.maxTime)
+                if (vp.start_time > self.start_time
+                        and vp.end_time < self.end_time):
+                    self.vps.append(vp)
+                    
 
 
 @dataclass
@@ -39,5 +40,6 @@ class Phrase(Interval):
 
         self.ips: list[IntonationalPhrase] = []
         for textgrid_ip in textgrid_ips:
-            ip = IntonationalPhrase(textgrid_ip.minTime, textgrid_ip.maxTime, textgrid_vps)
-            self.ips.append(ip)
+            if textgrid_ip.mark:
+                ip = IntonationalPhrase(textgrid_ip.minTime, textgrid_ip.maxTime, textgrid_vps)
+                self.ips.append(ip)
