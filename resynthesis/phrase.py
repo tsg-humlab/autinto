@@ -1,7 +1,5 @@
 from dataclasses import dataclass
-
-import tgt
-from tgt.core import TextGrid, IntervalTier
+import textgrid
 
 from resynthesis.types import Milliseconds, Interval
 
@@ -33,7 +31,7 @@ class Phrase(Interval):
     ips: list[IntonationalPhrase]
 
     def __init__(self, textgrid: str):
-        textgrid = tgt.read_textgrid(textgrid)
+        textgrid = textgrid.TextGrid.fromFile(file) 
         super().__init__(textgrid.start_time, textgrid.end_time)
 
         textgrid_ips = textgrid.get_tier_by_name("IP's")
