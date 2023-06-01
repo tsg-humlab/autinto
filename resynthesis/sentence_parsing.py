@@ -224,6 +224,7 @@ def run(file, words):
             ###########SECOND PARSE: Create aligned and scaled targets.
 
             freq_low =  Fr + N - (W * 0.5)
+            inilow = freq_low
             freq_high = Fr + N + (W * 0.5)
             inihigh = freq_high
 
@@ -234,6 +235,9 @@ def run(file, words):
                 if word in ['!%L', '!%H', '!%HL']:
                     freq_high = Fr + (freq_high - Fr) * dp  
                     freq_low =  Fr + (freq_low - Fr) * dp
+                    inihigh = freq_high
+                    inilow = freq_low
+                    W = freq_high - freq_low
 
             # To create the first target of the initial boundary tone
             if tone in ['%L', '%H']:
@@ -256,9 +260,9 @@ def run(file, words):
 
                 if word in ["%L", "%HL", "!%L", "!%HL"]:
 
-                    tg.append(WordTier) 
-                    tg.append(TargetTier)
-                    tg.append(FrequencyTier)
+                    #tg.append(WordTier) 
+                    #tg.append(TargetTier)
+                    #tg.append(FrequencyTier)
 
                     if ((Tvp_begin_next) - ipbegin < TOTIME * 2):
                         B2time = ipbegin + (Tvp_begin_next - ipbegin) * 0.5 
@@ -287,6 +291,13 @@ def run(file, words):
                 if word in ['!H*', '!H*L', 'L*!HL']:
                     freq_high = Fr + (freq_high - Fr) * da  
                     freq_low =  Fr + (freq_low - Fr) * da
+                    W = freq_high - freq_low
+            
+            if tone in ["H*", "H"]:
+                if word in ["H*", "H*L", "L*HL"] and next_word in ["L%", "H%", "%"]:
+                    freq_high = inihigh
+                    freq_low = inilow
+                    W = freq_high - freq_low
 
 
             #LOW TRAY FOR L*, PLUS DELAYED PEAK
@@ -328,7 +339,7 @@ def run(file, words):
                         
                     else:
 
-                        delayspace = Tvp_end + 0.360 
+                        delayspace = Tvp_end - Tvp_begin + 0.360 
 
                         L1time = Tvp_begin - 0.010 
                         freq1 = freq_low + 0.2 * W 
@@ -370,14 +381,14 @@ def run(file, words):
                         targetList.append((H2time, "H2", freq2)) #align H2 get_time(prec_target + delayspace * 0.1
                     
                     else:
-                        delayspace = Tvp_end + 0.360 
+                        delayspace = Tvp_end - Tvp_begin + 0.360 
 
                         H1time = targetList[-1][0] + delayspace * 0.5
                         freq1 = freq_high - 0.3 * W 
                         targetList.append((H1time, "H1", freq1)) #align H1 get_time(prec_target) + delayspace * 0.5
 
                         H2time = targetList[-1][0] + delayspace * 0.2
-                        freq2 = freq_high + 0.3 * W 
+                        freq2 = freq_high - 0.3 * W 
                         targetList.append((H2time, "H2", freq2)) #align H2 get_time(prec_target) + delayspace * 0.2
 
 
@@ -387,7 +398,7 @@ def run(file, words):
             if tone in ["H*", "!H*"]:
                 if word in ["H*", "H*L", "!H*", "!H*L", "H*LH", "!H*LH"]:
                     
-                    vpduur = ipend - Tvp_end
+                    vpduur = Tvp_end - Tvp_begin
                     freq = freq_high - 0.3 * W
 
                     if vpduur < 0.250: 
@@ -425,8 +436,8 @@ def run(file, words):
                     else:
 
                         ltime = Tvp_begin_next - TOTIME
-                        freq = freq_low - 0.25 * W
-                        targetList.append((ltime, "L1", freq))  #align l1 ltime ### scale l1 freq_low - 0.25 * W
+                        freq = freq_low + 0.25 * W
+                        targetList.append((ltime, "L1", freq))  #align l1 ltime ### scale l1 freq_low + 0.25 * W
 
 
             #NUCLEAR FALL
@@ -499,7 +510,7 @@ def run(file, words):
                         H3time = targetList[-1][0] + 8
                         H2time = ipend - TOTIME
                         freq3 = freq_high - 0.33 * W
-                        freq2 = freq_high + 0.33 * W
+                        freq2 = freq_high - 0.33 * W
 
                         targetList.append((H3time, "H3", freq3)) #align H3 get_time prec_target) + 8 ### scale H3 high_freq - 0.33 * W
                         targetList.append((H2time, "h2", freq2)) #align h2 Tipend - TOTIME ### scale h2 high_freq + 0.33 * W
@@ -556,9 +567,9 @@ def run(file, words):
 
 if __name__ == "__main__":
     word2 = ["%L","---","H*L","H*","L*", "H*L","L*","---","L%"]
-    words = ["%L", "---", "H*L", "---", "---", "---", "---", "---", "L%"]
+    words = ["%L", "---", "H*L", "---", "---", "---", "---", "H*L", "L%"]
     #word = ["%L", "---", "---", "---", "H*", "---", "---", "H%", "%L", "---", "---", "H*", "H%"]
-    #file = "C:/Users/sebas/Documents/Praat-Wavs/147.TextGrid"
-    file = "/home/pim/Documents/todi/147"
+    file = "C:/Users/sebas/Documents/Praat-Wavs/147"
+    #file = "/home/pim/Documents/todi/147"
     grid = run(file, words)
-    grid.write(file)
+    grid.write(file + "out.TextGrid")
