@@ -24,5 +24,6 @@ urlpatterns = [
     path('admin/filebrowser/', site.urls),
     path('grappelli/', include('grappelli.urls')),
     path('admin/', admin.site.urls),
-    path('rebuild-html/', views.rebuild_html)
+    path('rebuild-html/', views.rebuild_html),
+    path('resynthesize/', include('resynthesis.urls')),
 ]
