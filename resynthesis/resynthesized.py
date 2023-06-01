@@ -37,6 +37,12 @@ class ResynthesizedIntonationalPhrase:
         str_final_boundary = sentence.popleft()
         self.final_boundary = FinalBoundary(str_final_boundary, self)
 
+    def decode(self, point_list):
+        self.initial_boundary.decode(point_list)
+        for word in self.words:
+            word.decode(point_list)
+        self.final_boundary.decode(point_list)
+
     @property
     def ip_start(self):
         return self.ip.start_time
@@ -63,6 +69,12 @@ class ResynthesizedPhrase:
         for phrase_ip in phrase.ips:
             ip = ResynthesizedIntonationalPhrase(phrase_ip, sentence, self)
             self.ips.append(ip)
+
+    def decode(self):
+        point_list = []
+        for ip in self.ips:
+            ip.decode(point_list)
+        return point_list
 
 
     @cached_property
