@@ -2,6 +2,7 @@ import React, { Component, useState, useEffect, useRef, useCallback } from "reac
 import * as R from "ramda"
 import "./App.css"
 import Annotatable from "./Annotatable"
+import Parameters from "./Parameters"
 import { readSpecification } from './specification.js'
 
 import { register } from 'swiper/element/bundle'
@@ -20,6 +21,8 @@ function App({ id='' }) {
   const [exerciseData, setExerciseData] = useState(null)
   const [annotations, setAnnotations] = useState(null)
   const [selectedItem, setSelectedItem] = useState(0)
+  const [customSettingsEnabled, setCustomSettingsEnabled] = useState(false)
+  const [parameterSettings, setParameterSettings] = useState({ starTime: 0.09, toTime: 0.10, fromTime: 0.30, Fr: 70, N: 70, W: 110, DA: 0.7, DP: 0.9 })
 
   const swiperRef = useCallback(ref => {
     ref.swiper.on('activeIndexChange', (e) => setSelectedItem(e.activeIndex))
@@ -181,7 +184,13 @@ function App({ id='' }) {
         >
           {showResynthesisContour ? "Hide" : "Show"} resynthesis contour
         </button>
+        <button onClick={() => setCustomSettingsEnabled(b => !b)}>
+          {customSettingsEnabled ? "Disable" : "Enable"} custom parameters
+        </button>
       </div>
+      { customSettingsEnabled &&
+      <Parameters settings={parameterSettings} onChangeSettings={setParameterSettings} />
+      }
       <img
         src={exerciseData !== null && selectedItem !== null ? `./img/${exerciseData[selectedItem].contour}` : undefined}
         alt=""
