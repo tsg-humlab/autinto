@@ -194,7 +194,7 @@ def run(file, words):
 
             else:
                 next_word = next_Word(words, i)
-                next_tone = next_Tone(words, tones, i, j)
+                next_tone = next_Tone(words, tones, i, j)[0]
                 ipend = get_Tipend(ipInterval, tg)
                 Tvp_begin = get_Tvpbegin(i, words, tg, tvpOffset)
                 Tvp_end = get_Tvpend(i, words, tg, tvpOffset)
@@ -259,10 +259,6 @@ def run(file, words):
             if (word in ["%L", "%H", "%HL", "!%L", "!%H", "!%HL"] and Tvp_begin_next - ipbegin > TOTIME):
 
                 if word in ["%L", "%HL", "!%L", "!%HL"]:
-
-                    #tg.append(WordTier) 
-                    #tg.append(TargetTier)
-                    #tg.append(FrequencyTier)
 
                     if ((Tvp_begin_next) - ipbegin < TOTIME * 2):
                         B2time = ipbegin + (Tvp_begin_next - ipbegin) * 0.5 
@@ -423,7 +419,7 @@ def run(file, words):
             #This rule creates a slow fall before another toneword.
   
             if tone in ["L"]:
-                if (word in ["H*L", "!H*L"] ) and (next_tone in ["H*", "!H*", "L*"]):
+                if (word in ["H*L", "L*HL", "!H*L", "L*!HL"] ) and (next_tone in ["H*", "!H*", "L*"]):
                     
                     spaceduur = Tvp_begin_next - Tvp_end
                     
@@ -497,7 +493,7 @@ def run(file, words):
             if next_word in ["L%", "H%", "%"]:
                 if word in ["L*"]:
                     if ipend - Tvp_end > 0.350: #naar ms gezet
-                        L4time = targetList[-1][0] + 8
+                        L4time = targetList[-1][0] + 0.008
                         l2time = ipend - TOTIME
                         freq = freq_low + 0.2 * W
 
@@ -507,7 +503,7 @@ def run(file, words):
 
                 if word in ["H*", "!H*"]:
                     if ipend - Tvp_end > 0.350: #naar ms gezet
-                        H3time = targetList[-1][0] + 8
+                        H3time = targetList[-1][0] + 0.008
                         H2time = ipend - TOTIME
                         freq3 = freq_high - 0.33 * W
                         freq2 = freq_high - 0.33 * W
@@ -546,7 +542,7 @@ def run(file, words):
                         freq = freq_low + W * 0.4
                         targetList.append((ipend, "ME", freq)) #align ME Tipend ### scale ME freq_low + W * 0.4
 
-                    if prec_word in ["H*", "L*H"]:
+                    if prec_word in ["H*", "!H*", "L*H"]:
                         freq = freq_high - W * 0.25 
                         targetList.append((ipend, "ME", freq)) #align ME Tipend ### scale ME freq_high - W * 0.25   
 
