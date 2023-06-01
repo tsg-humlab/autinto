@@ -94,3 +94,7 @@
   font-size: 0.6em;
   padding: 7px;
 }
+
+swiper-container {
+  overflow: visible !important;
+}
