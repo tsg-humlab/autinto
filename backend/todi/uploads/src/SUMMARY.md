@@ -1,14 +1,14 @@
 # Summary
 
 - [About this course]()
-    - [The ToDI system](./0_about_this_course/0_1.md)
+    - [The analysis](./0_about_this_course/0_1.md)
     - [User interface](./0_about_this_course/0_2.md)
     - [Symbols and conventions](./0_about_this_course/0_3.md)
       - [Some examples](./0_about_this_course/0_3_1.md)
     - [Phrasing, accentuation and melody](./0_about_this_course/0_4.md)
     - [Sameness and difference](./0_about_this_course/0_5.md)
       - [Pitch tracks vs auditory impression](./0_about_this_course/0_5_1.md)
-    - [Before we really begin...](./0_about_this_course/0_6.md)
+    - [Before we _really_ begin...](./0_about_this_course/0_6.md)
 - [Falling contours]()
     - [H*L pitch accent](./1_falling_contours/1_1.md)
     - [Pre-nuclear H*L](./1_falling_contours/1_2.md)
@@ -44,4 +44,4 @@
 - [Appended constructions](./7_appended_constructions/7_0.md)
     - [Tagged constructions](./7_appended_constructions/7_1.md)
     - [Unaccented IPs](./7_appended_constructions/7_2.md)
-- [Exercises All Contours]()
+- [Exercises All Contours](./8_exercises_all_contours/8.md)
