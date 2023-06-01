@@ -3,7 +3,7 @@ import * as R from "ramda"
 export function readSpecification(data) {
   const { items, choices } = data
   return items.map(item => {
-    const { sentence, key, contour } = item
+    const { sentence, key, contour, audio } = item
     const foundMatches = Array.from(sentence.matchAll(/\[(.*?)\](\d+|\(.*?\))/g))
     // Gather all the strings between the matches (i.e. non-annotatable text).
     const inbetweenTexts = R.pipe(
@@ -43,6 +43,7 @@ export function readSpecification(data) {
       blocks: combined,
       key: key,
       contour: contour,
+      audio: audio,
     }
   })
 }

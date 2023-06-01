@@ -18,7 +18,7 @@
     "prettier": "2.8.4"
   },
   "scripts": {
-		"start": "concurrently npm:proxy npm:serve-js npm:watch-mdbook",
+		"start": "concurrently --raw npm:proxy npm:serve-js npm:watch-mdbook",
 		"proxy": "node proxy.js",
 		"serve-js": "PORT=3001 BROWSER=none react-scripts start",
     "test": "react-scripts test --env=jsdom",

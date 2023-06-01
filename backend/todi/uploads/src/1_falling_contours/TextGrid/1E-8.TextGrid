@@ -1,0 +1,138 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 2.142 
+tiers? <exists> 
+size = 3 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "Words" 
+        xmin = 0 
+        xmax = 2.142 
+        intervals: size = 10 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.05984103260869565 
+            text = "v" 
+        intervals [2]:
+            xmin = 0.05984103260869565 
+            xmax = 0.19037792968750003 
+            text = "bij" 
+        intervals [3]:
+            xmin = 0.19037792968750003 
+            xmax = 0.5352270833333334 
+            text = "oma" 
+        intervals [4]:
+            xmin = 0.5352270833333334 
+            xmax = 0.6923406385027241 
+            text = "kun" 
+        intervals [5]:
+            xmin = 0.6923406385027241 
+            xmax = 0.8162128073770493 
+            text = "je de" 
+        intervals [6]:
+            xmin = 0.8162128073770493 
+            xmax = 1.1184623805732483 
+            text = "hele" 
+        intervals [7]:
+            xmin = 1.1184623805732483 
+            xmax = 1.3644589934634546 
+            text = "tijd" 
+        intervals [8]:
+            xmin = 1.3644589934634546 
+            xmax = 1.773157690092166 
+            text = "taartjes" 
+        intervals [9]:
+            xmin = 1.773157690092166 
+            xmax = 2.117173021895141 
+            text = "eten" 
+        intervals [10]:
+            xmin = 2.117173021895141 
+            xmax = 2.142 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "IP's" 
+        xmin = 0 
+        xmax = 2.142 
+        intervals: size = 3 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.05984103260869565 
+            text = "" 
+        intervals [2]:
+            xmin = 0.05984103260869565 
+            xmax = 2.117173021895141 
+            text = "ipf" 
+        intervals [3]:
+            xmin = 2.117173021895141 
+            xmax = 2.142 
+            text = "" 
+    item [3]:
+        class = "IntervalTier" 
+        name = "vp" 
+        xmin = 0 
+        xmax = 2.142 
+        intervals: size = 15 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.09343999608457322 
+            text = "" 
+        intervals [2]:
+            xmin = 0.09343999608457322 
+            xmax = 0.19037792968750003 
+            text = "vp" 
+        intervals [3]:
+            xmin = 0.19037792968750003 
+            xmax = 0.33710749045801525 
+            text = "vp" 
+        intervals [4]:
+            xmin = 0.33710749045801525 
+            xmax = 0.566681362725451 
+            text = "" 
+        intervals [5]:
+            xmin = 0.566681362725451 
+            xmax = 0.6923406385027241 
+            text = "vp" 
+        intervals [6]:
+            xmin = 0.6923406385027241 
+            xmax = 0.742988672586521 
+            text = "vp" 
+        intervals [7]:
+            xmin = 0.742988672586521 
+            xmax = 0.8501593069514238 
+            text = "" 
+        intervals [8]:
+            xmin = 0.8501593069514238 
+            xmax = 0.9571859590182141 
+            text = "vp" 
+        intervals [9]:
+            xmin = 0.9571859590182141 
+            xmax = 1.1489544311396676 
+            text = "" 
+        intervals [10]:
+            xmin = 1.1489544311396676 
+            xmax = 1.27965625 
+            text = "vp" 
+        intervals [11]:
+            xmin = 1.27965625 
+            xmax = 1.3872340567746058 
+            text = "" 
+        intervals [12]:
+            xmin = 1.3872340567746058 
+            xmax = 1.5199553958785248 
+            text = "vp" 
+        intervals [13]:
+            xmin = 1.5199553958785248 
+            xmax = 1.773157690092166 
+            text = "" 
+        intervals [14]:
+            xmin = 1.773157690092166 
+            xmax = 1.9560192749343832 
+            text = "vp" 
+        intervals [15]:
+            xmin = 1.9560192749343832 
+            xmax = 2.142 
+            text = "" 
