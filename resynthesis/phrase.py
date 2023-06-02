@@ -20,14 +20,15 @@ class IntonationalPhrase(Interval):
 
 @dataclass
 class Phrase(Interval):
+    textgrid: tg.TextGrid
     ips: list[IntonationalPhrase]
 
     def __init__(self, file: str):
-        textgrid = tg.TextGrid.fromFile(file) 
-        super().__init__(textgrid.minTime, textgrid.maxTime)
+        self.textgrid = tg.TextGrid.fromFile(file) 
+        super().__init__(self.textgrid.minTime, self.textgrid.maxTime)
 
-        textgrid_ips = textgrid.getFirst("IP's")
-        textgrid_vps = textgrid.getFirst('vp')
+        textgrid_ips = self.textgrid.getFirst("IP's")
+        textgrid_vps = self.textgrid.getFirst('vp')
 
         self.ips: list[IntonationalPhrase] = []
         for textgrid_ip in textgrid_ips:
