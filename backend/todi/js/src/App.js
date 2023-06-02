@@ -146,8 +146,10 @@ function App({ id='' }) {
                       // JSON.stringify(annotatable)
                       R.is(String, annotatable) ? (
                         <> {annotatable} </>
-                      ) : annotatable.index === null ? (
-                        <Annotatable key={key} annotation={annotatable.choices} />
+                      ) : annotatable.choices === null ?
+                        <> {annotatable.text} </>
+                        : annotatable.index === null ? (
+                        <Annotatable text={annotatable.text} key={key} annotation={annotatable.choices} />
                       ) : (
                         <Annotatable
                           key={key}

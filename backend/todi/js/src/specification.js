@@ -17,7 +17,11 @@ function parseToken(match, choices) {
       }
     }
   } else {
-    return null
+    return {
+      text: match[1],
+      choices: null,
+      index: null,
+    }
   }
 }
 
@@ -44,7 +48,7 @@ function splitMatches(sentence, regex) {
 }
 
 export function parseSentence(sentence, choices) {
-  const parsed = splitMatches(sentence, /\[(.*?)\](\d+|\(.*?\))/g)
+  const parsed = splitMatches(sentence, /\[(.*?)\](\d+|\(.*?\))?/g)
     .map((t) => (R.is(Object, t) ? parseToken(t, choices) : t))
     .filter(R.test(/\S/))
 

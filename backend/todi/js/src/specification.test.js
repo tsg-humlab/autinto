@@ -98,3 +98,21 @@ test('Parse sentence choice annotations', () => {
     ' zoals Willem',
   ])
 })
+
+test('Parse sentence blank markings', () => {
+  const parsed = parseSentence(
+    '[Doe] [nou] [maar] [gewoon] [] [] [zoals] [Willem] []'
+  )
+
+  expect(parsed).toEqual([
+    { text: 'Doe', choices: null, index: null },
+    { text: 'nou', choices: null, index: null },
+    { text: 'maar', choices: null, index: null },
+    { text: 'gewoon', choices: null, index: null },
+    { text: '', choices: null, index: null },
+    { text: '', choices: null, index: null },
+    { text: 'zoals', choices: null, index: null },
+    { text: 'Willem', choices: null, index: null },
+    { text: '', choices: null, index: null },
+  ])
+})
