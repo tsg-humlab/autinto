@@ -113,7 +113,7 @@ class AbstractInitialBoundary(ABC):
 
     @property
     def time_to_first_word(self) -> Milliseconds:
-        return self.parent.words[0].vp_start
+        return self.parent.words[0].vp_start - self.ip_start
 
     @property
     def ip_start(self) -> Milliseconds:
