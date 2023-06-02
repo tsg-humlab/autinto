@@ -1,4 +1,4 @@
-import { readSpecification } from './specification'
+import { readSpecification, parseSentence } from './specification'
 
 test('One item specification', () => {
   const spec = readSpecification({
@@ -33,7 +33,6 @@ test('One item specification', () => {
   expect(spec).toEqual([
     {
       blocks: [
-        '',
         { text: '', choices: '%L', index: null },
         ' Doe nou maar ',
         {
@@ -45,7 +44,6 @@ test('One item specification', () => {
           ],
           index: 0,
         },
-        ' ',
         {
           text: '',
           choices: [
@@ -54,7 +52,6 @@ test('One item specification', () => {
           ],
           index: 1,
         },
-        ' ',
         {
           text: '',
           choices: [
@@ -65,13 +62,39 @@ test('One item specification', () => {
         },
         ' zoals ',
         { text: 'Willem', choices: '!H*L', index: null },
-        ' ',
         { text: '', choices: 'L%', index: null },
-        '',
       ],
       key: ['H*', '∅', '∅'],
       contour: '2-1.png',
       audio: '2-1.mp3',
     },
+  ])
+})
+
+test('Parse sentence fixed annotations', () => {
+  const parsed = parseSentence(
+    '[](%L) Doe nou maar gewoon zoals [Willem](!H*L) [](L%)'
+  )
+
+  expect(parsed).toEqual([
+    { text: '', choices: '%L', index: null },
+    ' Doe nou maar gewoon zoals ',
+    { text: 'Willem', choices: '!H*L', index: null },
+    { text: '', choices: 'L%', index: null },
+  ])
+})
+
+test('Parse sentence choice annotations', () => {
+  const parsed = parseSentence(
+    'Doe nou maar [gewoon]0 []1 []2 zoals Willem',
+    ['a', 'b', 'c']
+  )
+
+  expect(parsed).toEqual([
+    'Doe nou maar ',
+    { text: 'gewoon', choices: 'a', index: 0 },
+    { text: '', choices: 'b', index: 1 },
+    { text: '', choices: 'c', index: 2 },
+    ' zoals Willem',
   ])
 })

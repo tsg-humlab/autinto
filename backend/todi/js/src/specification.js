@@ -43,9 +43,10 @@ function splitMatches(sentence, regex) {
   return R.append(sentence.slice(endOfLastMatch), R.unnest(tokensSoFar))
 }
 
-function parseSentence(sentence, choices) {
+export function parseSentence(sentence, choices) {
   const parsed = splitMatches(sentence, /\[(.*?)\](\d+|\(.*?\))/g)
     .map((t) => (R.is(Object, t) ? parseToken(t, choices) : t))
+    .filter(R.test(/\S/))
 
   return assignIndices(parsed)
 }
