@@ -58,12 +58,14 @@ export function parseSentence(sentence, choices) {
 export function readSpecification(data) {
   const { items, choices } = data
   return items.map((item) => {
-    const { sentence, key, contour, audio } = item
+    const { sentence, key, contour, audio, wav, textgrid } = item
     return {
       blocks: parseSentence(sentence, choices),
       key: key,
       contour: contour,
       audio: audio,
+      wav,
+      textgrid,
     }
   })
 }

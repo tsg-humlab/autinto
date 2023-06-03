@@ -33,8 +33,8 @@ def handle(request):
 
         (audio, img) = resynthesize(sentence, textgrid_path, wav_path)
 
-        audio = str(base64.b64encode(audio))
-        img = str(img)
+        audio = base64.b64encode(audio).decode('ascii')
+        img = img.decode('ascii')
 
         retval = {'audio': audio, 'image': img}
 

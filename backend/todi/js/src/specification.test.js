@@ -67,6 +67,8 @@ test('One item specification', () => {
       key: ['H*', '∅', '∅'],
       contour: '2-1.png',
       audio: '2-1.mp3',
+      wav: '2-1.wav',
+      textgrid: '2-1.TextGrid',
     },
   ])
 })
