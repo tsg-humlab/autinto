@@ -1,7 +1,7 @@
 {
     "items": [
         {
-            "sentence": "[](%L) [Nu]0  doen  we  [deze]0 []1",
+            "sentence": "[](%L) [Nu]0 [doen] [we] [deze]0 []1",
             "key": [
                 "H*",
                 "!H*L",
@@ -13,7 +13,7 @@
             "textgrid": "1D-1.TextGrid"
         },
         {
-            "sentence": "[](%L) [Al]0 die  [ingewikkelde]0 [regelingen]0  zijn [afgeschaft]0  []1",
+            "sentence": "[](%L) [Al]0 [die] [ingewikkelde]0 [regelingen]0 [zijn] [afgeschaft]0 []1",
             "key": [
                 "H*",
                 "!H*",
@@ -27,7 +27,7 @@
             "textgrid": "1D-2.TextGrid"
         },
         {
-            "sentence": "[](%L) [Zo]0  had  ik  het  niet  [bedoeld]0 []1",
+            "sentence": "[](%L) [Zo]0 [had] [ik] [het] [niet] [bedoeld]0 []1",
             "key": [
                 "H*LH",
                 "!H*L",
@@ -39,7 +39,7 @@
             "textgrid": "1D-3.TextGrid"
         },
         {
-            "sentence": "[](%L) [Al]0 die regelingen zijn [afgeschaft]0  []1",
+            "sentence": "[](%L) [Al]0 [die] [regelingen] [zijn] [afgeschaft]0 []1",
             "key": [
                 "H*L",
                 "H*L",
@@ -51,7 +51,7 @@
             "textgrid": "1D-4.TextGrid"
         },
         {
-            "sentence": "[](%L) [Dat]0  vind  ik  eigenlijk  wel  [leuk]0 []1",
+            "sentence": "[](%L) [Dat]0 [vind] [ik] [eigenlijk] [wel] [leuk]0 []1",
             "key": [
                 "H*LH",
                 "!H*L",
@@ -63,7 +63,7 @@
             "textgrid": "1D-5.TextGrid"
         },
         {
-            "sentence": "[](%L) Maar daar [moet]0  dus  dan  een  psycholoog  of een  orthopedagoog [werken]0 []1",
+            "sentence": "[](%L) [Maar] [daar] [moet]0 [dus] [dan] [een] [psycholoog] [of] [een] [orthopedagoog] [werken]0 []1",
             "key": [
                 "H*LH",
                 "H*L",
@@ -75,9 +75,9 @@
             "textgrid": "1D-6.TextGrid"
         },
         {
-            "sentence": "[](%L) [En]0 ze [ademen]0  []1",
+            "sentence": "[](%L) [En]0 [ze] [ademen]0 []1",
             "key": [
-                "∅",
+                "\u2205",
                 "H*L",
                 "%"
             ],
@@ -87,9 +87,9 @@
             "textgrid": "1D-7.TextGrid"
         },
         {
-            "sentence": "[](%L) de [Amerikanen]0  [laten]0  nog  even  op  zich  [wachten]0   []1",
+            "sentence": "[](%L) [de] [Amerikanen]0 [laten]0 [nog] [even] [op] [zich] [wachten]0 []1",
             "key": [
-                "∅",
+                "\u2205",
                 "H*L",
                 "H*",
                 "%"
@@ -100,10 +100,10 @@
             "textgrid": "1D-8.TextGrid"
         },
         {
-            "sentence": "[](%L) [hier]0 [spreekt]0 de [economie]0 []1",
+            "sentence": "[](%L) [hier]0 [spreekt]0 [de] [economie]0 []1",
             "key": [
                 "H*",
-                "∅",
+                "\u2205",
                 "!H*L",
                 "L%"
             ],
@@ -113,9 +113,9 @@
             "textgrid": "1D-9.TextGrid"
         },
         {
-            "sentence": "[](%L)  ik dank u vriendelijk []1",
+            "sentence": "[](%L) [ik] [dank] [u] [vriendelijk] []1",
             "key": [
-                "∅",
+                "\u2205",
                 "H*",
                 "H*L",
                 "L%"
@@ -126,12 +126,12 @@
             "textgrid": "1D-10.TextGrid"
         },
         {
-            "sentence": "[](%L) [nou]0  ik  wil  d'r  wel  [harde]0  [afspraken]0  over  [maken]0 []1",
+            "sentence": "[](%L) [nou]0 [ik] [wil] [d'r] [wel] [harde]0 [afspraken]0 [over] [maken]0 []1",
             "key": [
                 "H*L",
                 "H*L",
                 "H*L",
-                "∅",
+                "\u2205",
                 "H%"
             ],
             "contour": "1D-11.png",
@@ -140,12 +140,12 @@
             "textgrid": "1D-11.TextGrid"
         },
         {
-            "sentence": "[](%L) Met [steeds]0 [weer]0 een [nieuwe]0 [pen]0  gaat 't  [beter]0 []1",
+            "sentence": "[](%L) [Met] [steeds]0 [weer]0 [een] [nieuwe]0 [pen]0 [gaat] 't [beter]0 []1",
             "key": [
-                "∅",
-                "∅",
-                "∅",
-                "∅",
+                "\u2205",
+                "\u2205",
+                "\u2205",
+                "\u2205",
                 "H*L",
                 "H%"
             ],
@@ -167,7 +167,7 @@
             ],
             [
                 "H*LH",
-                "∅"
+                "\u2205"
             ]
         ],
         [
@@ -177,7 +177,7 @@
             ],
             [
                 "%",
-                "∅"
+                "\u2205"
             ]
         ]
     ]

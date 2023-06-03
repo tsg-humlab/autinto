@@ -1,7 +1,7 @@
 {
     "items": [
         {
-            "sentence": "[]2 Zijn er [meloenen]0 [teveel]0 []1",
+            "sentence": "[]2 [Zijn] [er] [meloenen]0 [teveel]0 []1",
             "key": [
                 "%HL",
                 "L*H",
@@ -13,11 +13,11 @@
             "textgrid": "5C-1.TextGrid"
         },
         {
-            "sentence": "[]2 Zijn je [foto's]0 al [afgedrukt]0 []1",
+            "sentence": "[]2 [Zijn] [je] [foto's]0 [al] [afgedrukt]0 []1",
             "key": [
                 "%H",
                 "H*L",
-                "∅",
+                "\u2205",
                 "H%"
             ],
             "contour": "5C-2.png",
@@ -26,11 +26,11 @@
             "textgrid": "5C-2.TextGrid"
         },
         {
-            "sentence": "[]2 Misschien is nu wel [ieder]0 [uur]0 [belangrijk]0 []1",
+            "sentence": "[]2 [Misschien] [is] [nu] [wel] [ieder]0 [uur]0 [belangrijk]0 []1",
             "key": [
                 "%HL",
                 "H*",
-                "∅",
+                "\u2205",
                 "H*L",
                 "%"
             ],
@@ -40,11 +40,11 @@
             "textgrid": "5C-3.TextGrid"
         },
         {
-            "sentence": "[]2 En [nu]0 is-ie [weer]0 [rood]0 []1",
+            "sentence": "[]2 [En] [nu]0 [is-ie] [weer]0 [rood]0 []1",
             "key": [
                 "%L",
                 "L*H",
-                "∅",
+                "\u2205",
                 "H*L",
                 "L%"
             ],
@@ -54,11 +54,11 @@
             "textgrid": "5C-4.TextGrid"
         },
         {
-            "sentence": "[]2 Gaan de [lonen]0 [omlaag]0 []1",
+            "sentence": "[]2 [Gaan] [de] [lonen]0 [omlaag]0 []1",
             "key": [
                 "%H",
                 "!H*L",
-                "∅",
+                "\u2205",
                 "L%"
             ],
             "contour": "5C-5.png",
@@ -67,11 +67,11 @@
             "textgrid": "5C-5.TextGrid"
         },
         {
-            "sentence": "[]2 Wil je je [mandoline]0 [verkopen]0 []1",
+            "sentence": "[]2 [Wil] [je] [je] [mandoline]0 [verkopen]0 []1",
             "key": [
                 "%H",
                 "H*",
-                "∅",
+                "\u2205",
                 "H%"
             ],
             "contour": "5C-6.png",
@@ -80,12 +80,12 @@
             "textgrid": "5C-6.TextGrid"
         },
         {
-            "sentence": "[]2 D'r [moet]0 nog maar's over [gepraat]0 [worden]0 []1",
+            "sentence": "[]2 [D'r] [moet]0 [nog] [maar's] [over] [gepraat]0 [worden]0 []1",
             "key": [
                 "%H",
                 "H*",
                 "!H*L",
-                "∅",
+                "\u2205",
                 "L%"
             ],
             "contour": "5C-7.png",
@@ -94,12 +94,12 @@
             "textgrid": "5C-7.TextGrid"
         },
         {
-            "sentence": "[]2 't Heeft [toch]0 allemaal geen zin op [die]0 [manier]0 []1",
+            "sentence": "[]2 't [Heeft] [toch]0 [allemaal] [geen] [zin] [op] [die]0 [manier]0 []1",
             "key": [
                 "%L",
                 "H*L",
-                "∅",
-                "∅",
+                "\u2205",
+                "\u2205",
                 "L%"
             ],
             "contour": "5C-8.png",
@@ -108,12 +108,12 @@
             "textgrid": "5C-8.TextGrid"
         },
         {
-            "sentence": "[]2 Ze [helpen]0 om haar [billetjes]0 [prachtig]0 [droog]0 te houden []1",
+            "sentence": "[]2 [Ze] [helpen]0 [om] [haar] [billetjes]0 [prachtig]0 [droog]0 [te] [houden] []1",
             "key": [
                 "%H",
                 "H*L",
-                "∅",
-                "∅",
+                "\u2205",
+                "\u2205",
                 "H*L",
                 "%"
             ],
@@ -123,15 +123,15 @@
             "textgrid": "5C-9.TextGrid"
         },
         {
-            "sentence": "[]2 Als 't [water]0 [komt]0 []1 []2 [dan]0 [piep]0 je wel [anders]0 []1",
+            "sentence": "[]2 [Als] 't [water]0 [komt]0 []1 []2 [dan]0 [piep]0 [je] [wel] [anders]0 []1",
             "key": [
                 "%L",
                 "H*",
-                "∅",
+                "\u2205",
                 "%",
                 "%L",
                 "L*H",
-                "∅",
+                "\u2205",
                 "!H*L",
                 "L%"
             ],
@@ -141,11 +141,11 @@
             "textgrid": "5C-10.TextGrid"
         },
         {
-            "sentence": "[]2 En is je [kat]0 nog [teruggekomen]0 []1",
+            "sentence": "[]2 [En] [is] [je] [kat]0 [nog] [teruggekomen]0 []1",
             "key": [
                 "%L",
                 "H*L",
-                "∅",
+                "\u2205",
                 "H%"
             ],
             "contour": "5C-11.png",
@@ -154,15 +154,15 @@
             "textgrid": "5C-11.TextGrid"
         },
         {
-            "sentence": "[]2 Als 't [water]0 [komt]0 []1 []2 [dan]0 [piep]0 je wel [anders]0 []1",
+            "sentence": "[]2 [Als] 't [water]0 [komt]0 []1 []2 [dan]0 [piep]0 [je] [wel] [anders]0 []1",
             "key": [
                 "%L",
                 "H*L",
-                "∅",
+                "\u2205",
                 "H%",
                 "%L",
                 "L*H",
-                "∅",
+                "\u2205",
                 "H*L",
                 "L%"
             ],
@@ -191,7 +191,7 @@
                 "H*!H"
             ],
             [
-                "∅"
+                "\u2205"
             ]
         ],
         [
@@ -201,7 +201,7 @@
             ],
             [
                 "%",
-                "∅"
+                "\u2205"
             ]
         ],
         [
@@ -211,7 +211,7 @@
             ],
             [
                 "%HL",
-                "∅"
+                "\u2205"
             ]
         ]
     ]
