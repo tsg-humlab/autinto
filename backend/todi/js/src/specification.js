@@ -61,7 +61,7 @@ export function readSpecification(data) {
     const { sentence, key, contour, audio, wav, textgrid } = item
     return {
       blocks: parseSentence(sentence, choices),
-      key: key,
+      key: R.map(R.replace('∅', ''), key),
       contour: contour,
       audio: audio,
       wav,

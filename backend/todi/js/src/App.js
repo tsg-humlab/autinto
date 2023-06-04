@@ -70,8 +70,7 @@ function App({ id = '' }) {
     // TODO: Nicer equality comparison
     alert(
       `Answer is ${
-        JSON.stringify(annotations[selectedItem]) ===
-        JSON.stringify(exerciseData && exerciseData[selectedItem].key)
+      R.equals(annotations[selectedItem], exerciseData && exerciseData[selectedItem].key)
           ? 'correct'
           : 'not correct'
       }`
@@ -119,10 +118,9 @@ function App({ id = '' }) {
       >
         {exerciseData !== null &&
           exerciseData.map((item, itemIndex) => (
-            <swiper-slide>
+            <swiper-slide key={itemIndex}>
               <div className="text">
-                {item !== null &&
-                  item.blocks.map((annotatable, key) =>
+                {item.blocks.map((annotatable, key) =>
                     R.is(String, annotatable) ? (
                       <> {annotatable} </>
                     ) : annotatable.choices === null ? (
