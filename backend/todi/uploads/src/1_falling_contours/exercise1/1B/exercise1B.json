@@ -1,7 +1,7 @@
 {
     "items": [
         {
-            "sentence": "[](%L) Iets voorbij [Hengelo](H*L) []0",
+            "sentence": "[](%L) [Iets] [voorbij] [Hengelo](H*L) []0",
             "key": [
                 "H%"
             ],
@@ -11,7 +11,7 @@
             "textgrid": "1B-1.TextGrid"
         },
         {
-            "sentence": "[](%L) En  is  je  [kat](H*L)  nog  teruggekomen  []0",
+            "sentence": "[](%L) [En] [is] [je] [kat](H*L) [nog] [teruggekomen] []0",
             "key": [
                 "H%"
             ],
@@ -21,7 +21,7 @@
             "textgrid": "1B-2.TextGrid"
         },
         {
-            "sentence": "[](%L) We  hebben  de  [hele](H*L)  dag  [binnen](H*L)  gezeten  []0",
+            "sentence": "[](%L) [We] [hebben] [de] [hele](H*L) [dag] [binnen](H*L) [gezeten] []0",
             "key": [
                 "%"
             ],
@@ -31,7 +31,7 @@
             "textgrid": "1B-3.TextGrid"
         },
         {
-            "sentence": "[](%L) Zijn  er  [meloenen](H*L)   teveel   []0",
+            "sentence": "[](%L) [Zijn] [er] [meloenen](H*L) [teveel] []0",
             "key": [
                 "L%"
             ],
@@ -41,7 +41,7 @@
             "textgrid": "1B-4.TextGrid"
         },
         {
-            "sentence": "[](%L) Ze  [hebben](H*L)  zoveel  []0",
+            "sentence": "[](%L) [Ze] [hebben](H*L) [zoveel] []0",
             "key": [
                 "%"
             ],
@@ -51,7 +51,7 @@
             "textgrid": "1B-5.TextGrid"
         },
         {
-            "sentence": "[](%L) Je  kan  ook  gewoon van  Carlos  [gouddeeltjes](H*L)  vragen  van-die-en-die  grootte   []0",
+            "sentence": "[](%L) [Je] [kan] [ook] [gewoon] [van] [Carlos] [gouddeeltjes](H*L) [vragen] [van-die-en-die] [grootte] []0",
             "key": [
                 "L%"
             ],
@@ -61,7 +61,7 @@
             "textgrid": "1B-6.TextGrid"
         },
         {
-            "sentence": "[](%L)  Wat  zullen we  [nu](H*L)  krijgen   []0",
+            "sentence": "[](%L) [Wat] [zullen] [we] [nu](H*L) [krijgen] []0",
             "key": [
                 "%"
             ],
@@ -71,7 +71,7 @@
             "textgrid": "1B-7.TextGrid"
         },
         {
-            "sentence": "[](%L)  Maar [weet](H*L)  je  dan  geen  betere  []0",
+            "sentence": "[](%L) [Maar] [weet](H*L) [je] [dan] [geen] [betere] []0",
             "key": [
                 "H%"
             ],
@@ -81,7 +81,7 @@
             "textgrid": "1B-8.TextGrid"
         },
         {
-            "sentence": "[](%L) Dat  vindt  ze  [heerlijk](H*L)  []0",
+            "sentence": "[](%L) [Dat] [vindt] [ze] [heerlijk](H*L) []0",
             "key": [
                 "L%"
             ],
@@ -91,7 +91,7 @@
             "textgrid": "1B-9.TextGrid"
         },
         {
-            "sentence": "[](%L)  Ik [zit](H*L) op  [muziekles](H*L) []0",
+            "sentence": "[](%L) [Ik] [zit](H*L) [op] [muziekles](H*L) []0",
             "key": [
                 "L%"
             ],
@@ -101,7 +101,7 @@
             "textgrid": "1B-10.TextGrid"
         },
         {
-            "sentence": "[](%L) Hoe [gaat](H*L) 't  met  jullie?  []0",
+            "sentence": "[](%L) [Hoe] [gaat](H*L) 't [met] [jullie?] []0",
             "key": [
                 "H%"
             ],
@@ -111,7 +111,7 @@
             "textgrid": "1B-11.TextGrid"
         },
         {
-            "sentence": "[](%L)  Is  de  [hond](H*L)  al  uitgelaten  []0",
+            "sentence": "[](%L) [Is] [de] [hond](H*L) [al] [uitgelaten] []0",
             "key": [
                 "%"
             ],
