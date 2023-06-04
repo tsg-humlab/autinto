@@ -261,11 +261,29 @@ class Word(AbstractWord):
 
 
 class InitialBoundary(AbstractInitialBoundary):
+    """
+    This class handles the decoding of an Initial Boundary into
+    frequency targets.
+
+    It implements the two methods required from it by the rest of the
+    program: decode() and from_name().
+    """
+
+    # The word is decoded into a first target tone and a second target
+    # tone, each of which can be LOW or HIGH, and a boolean storing
+    # whether the IP is downstepped.
+    #
+    # See from_name() for the implementation of this decoding.
     first_target_tone: Tone
     second_target_tone: Tone
     has_downstep: bool
 
     def decode(self, point_list):
+        """
+        Decode an initial boundary into FrequencyPoints, and append them
+        to point_list.
+        """
+
         if self.has_downstep:
             # Phrasal downsteps apply to the whole rest of the phrase,
             # not just the IP itself
@@ -287,11 +305,17 @@ class InitialBoundary(AbstractInitialBoundary):
         first_target = FrequencyPoint(
             label = label,
             freq  = freq,
+            # The first target always appears on the IP start.
             time  = self.ip_start)
 
         point_list.append(first_target)
 
     def decode_second_target(self, point_list):
+        """
+        Creates a second target, if there is enough space before the
+        first word.
+        """
+
         # If there are less than 100 milliseconds before the first word,
         # then no second target is created, and the function returns
         # early.
@@ -303,11 +327,13 @@ class InitialBoundary(AbstractInitialBoundary):
         # word.
         elif self.time_to_first_word < Milliseconds(200):
             time = self.ip_start + 0.5*self.time_to_first_word
-        # Otherwise, if there are more than 200 milliseconds, the second
-        # target is placed 100 milliseconds before the first word.
+        # Finally, if there are more than 200 milliseconds, then the
+        # second target is placed 100 milliseconds before the first
+        # word.
         else:
             time = self.first_word.vp_start - Milliseconds(100)
 
+        # Next, the label and frequency are dependent on the tone.
         match self.second_target_tone:
             case Tone.LOW:
                 label = 'LB2'
@@ -326,17 +352,25 @@ class InitialBoundary(AbstractInitialBoundary):
 
 
     def from_name(self, name: str):
+        """
+        Decodes an initial boundary string into class variables
+        first_target_tone, second_target_tone, and has_downstep.
+        """
+
+        # Create a nice error for unrecognised words.
         if name not in ['%L', '%H', '%HL', '!%L', '!%H', '!%HL']:
             raise ValueError('Expected initial boundary, found {}'.format(name))
 
         if name[0] == '!':
+            # We remove the '!' from the word here.
             name = name[1:]
             self.has_downstep = True
         else:
             self.has_downstep = False
 
         # The first tone is decided by the character directly after the
-        # '%' sign.
+        # '%' sign, which is always the second character, since we
+        # removed the '!' if it existed.
         self.first_target_tone = Tone.from_name(name[1])
 
         # The second target tone is decided by the final character.
