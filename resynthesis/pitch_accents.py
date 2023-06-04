@@ -263,8 +263,15 @@ class Word(AbstractWord):
 class InitialBoundary(AbstractInitialBoundary):
     first_target_tone: Tone
     second_target_tone: Tone
+    has_downstep: bool
 
     def decode(self, point_list):
+        if self.has_downstep:
+            # Phrasal downsteps apply to the whole rest of the phrase,
+            # not just the IP itself
+            self.phrase.downstep(0.9)
+
+        # Then decode the targets.
         self.decode_first_target(point_list)
         self.decode_second_target(point_list)
 
@@ -299,7 +306,7 @@ class InitialBoundary(AbstractInitialBoundary):
         # Otherwise, if there are more than 200 milliseconds, the second
         # target is placed 100 milliseconds before the first word.
         else:
-            time = self.ip_start + self.time_to_first_word - Milliseconds(100)
+            time = self.first_word.vp_start - Milliseconds(100)
 
         match self.second_target_tone:
             case Tone.LOW:
@@ -323,11 +330,20 @@ class InitialBoundary(AbstractInitialBoundary):
             raise ValueError('Expected initial boundary, found {}'.format(name))
 
         if name[0] == '!':
-            # TODO downstep
             name = name[1:]
+            self.has_downstep = True
+        else:
+            self.has_downstep = False
 
+        # The first tone is decided by the character directly after the
+        # '%' sign.
         self.first_target_tone = Tone.from_name(name[1])
+
+        # The second target tone is decided by the final character.
+        # For words '%L', '%H', '!%H', this means that the first and
+        # second tone will be the same.
         self.second_target_tone = Tone.from_name(name[-1])
+
 
 class FinalBoundary(AbstractFinalBoundary):
     tone: Optional[Tone]
