@@ -294,6 +294,8 @@ class InitialBoundary(AbstractInitialBoundary):
         self.decode_second_target(point_list)
 
     def decode_first_target(self, point_list):
+        """Creates a first target."""
+
         match self.first_target_tone:
             case Tone.LOW:
                 label = 'LB1'
@@ -327,7 +329,7 @@ class InitialBoundary(AbstractInitialBoundary):
         # word.
         elif self.time_to_first_word < Milliseconds(200):
             time = self.ip_start + 0.5*self.time_to_first_word
-        # Finally, if there are more than 200 milliseconds, then the
+        # Finally, if there *are* at least 200 milliseconds, then the
         # second target is placed 100 milliseconds before the first
         # word.
         else:
@@ -348,7 +350,6 @@ class InitialBoundary(AbstractInitialBoundary):
             time = time)
 
         point_list.append(second_target)
-        
 
 
     def from_name(self, name: str):
@@ -359,7 +360,7 @@ class InitialBoundary(AbstractInitialBoundary):
 
         # Create a nice error for unrecognised words.
         if name not in ['%L', '%H', '%HL', '!%L', '!%H', '!%HL']:
-            raise ValueError('Expected initial boundary, found {}'.format(name))
+            raise ValueError("Expected initial boundary, found '{}'".format(name))
 
         if name[0] == '!':
             # We remove the '!' from the word here.
@@ -380,13 +381,29 @@ class InitialBoundary(AbstractInitialBoundary):
 
 
 class FinalBoundary(AbstractFinalBoundary):
-    tone: Optional[Tone]
+    """
+    This class handles the decoding of a Final Boundary into frequency
+    targets.
+
+    It implements the two methods required from it by the rest of the
+    program: decode() and from_name().
+    """
 
     def decode(self, point_list):
+        """
+        Decode the final boundary into frequency points and put them in
+        point_list.
+        """
+
         self.decode_nuclear_rise_and_spread(point_list)
         self.decode_final_boundary(point_list)
 
     def decode_nuclear_rise_and_spread(self, point_list):
+        """
+        If the last word in the IP was 'L*', 'H*', '!H*', or 'L*H', then
+        one or two extra points are created to spread the final tone.
+        """
+
         match self.last_word.name:
             case 'L*':
                 # If there is not enough time, don't create extra points
@@ -434,7 +451,12 @@ class FinalBoundary(AbstractFinalBoundary):
                 else:
                     time_h1 = point_list[-1].time + Milliseconds(100)
                     time_h2 = self.ip_end - Milliseconds(100)
-                    make_h2 = True
+                    if (time_h2 - time_h1) >= Milliseconds(1):
+                        # Praat does not like multiple points on the same
+                        # millisecond, and as these are the same frequency
+                        # anyway, we can simply drop the second if it would
+                        # otherwise cause conflicts.
+                        make_h2 = True
 
                 point_h1 = FrequencyPoint(
                     label = 'h1',
@@ -449,10 +471,14 @@ class FinalBoundary(AbstractFinalBoundary):
                         time = time_h2)
                     point_list.append(point_h2)
 
+            # For any other words, no final lengthening happens.
             case _:
                 pass
 
+
     def decode_final_boundary(self, point_list):
+        """Creates the final target at the IP end border."""
+
         match self.name:
             case 'L%':
                 label = 'LE'
@@ -470,7 +496,9 @@ class FinalBoundary(AbstractFinalBoundary):
                     case 'L*':
                         freq = self.scale_frequency(0.20)
                     case _:
-                        # Shouldn't be allowed, let's just not add an ME in this case
+                        # This case should not happen. For stability
+                        # we will simply not create an ME point instead
+                        # of raising an error.
                         return
 
         point = FrequencyPoint(
@@ -483,7 +511,9 @@ class FinalBoundary(AbstractFinalBoundary):
 
     def from_name(self, name: str):
         # The final boundary is so simple that we can simply use
-        # self.name in the main logic.
+        # self.name in the main logic (which is always available).
+
+        # We do still check for illegal words:
         if name not in ['L%', 'H%', '%']:
-            raise ValueError('Expected final boundary, found {}'.format(name))
+            raise ValueError("Expected final boundary, found '{}'".format(name))
         pass
