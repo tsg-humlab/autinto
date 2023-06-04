@@ -164,7 +164,7 @@ class Word(AbstractWord):
         if self.next_boundary - last_target_time < Milliseconds(200):
             time_l = last_target_time + 0.30 * (self.next_vp_start - last_target_time)
         else:
-            time_l = last_target_time + Millisecoonds(100)
+            time_l = last_target_time + Milliseconds(100)
 
 
         point_l = FrequencyPoint(
@@ -185,17 +185,17 @@ class Word(AbstractWord):
         # PRE-NUCLEAR FALL
         # This rule creates a slow fall before another toneword.
 
-        if self.time_to_next_word < Milliseconds(200):
-            time = self.vp_end + 0.5*self.time_to_next_word
-            freq = self.scale_frequency(0.40)
+        if self.time_to_next_boundary < Milliseconds(200):
+            time_l1 = self.vp_end + 0.5*self.time_to_next_word
+            freq_l1 = self.scale_frequency(0.40)
         else:
-            time = self.vp_end + self.time_to_next_word - Milliseconds(100)
-            freq = self.scale_frequency(0.25)
+            time_l1 = self.vp_end + self.time_to_next_boundary - Milliseconds(100)
+            freq_l1 = self.scale_frequency(0.25)
 
         point_l1 = FrequencyPoint(
             label = 'l1',
-            freq = freq,
-            time = time)
+            freq = freq_l1,
+            time = time_l1)
 
         point_list.append(point_l1)
 
@@ -209,9 +209,8 @@ class Word(AbstractWord):
         if self.final_boundary == '%':
             return
 
-        # Otherwise, if there is not much time, only one point is
-        # created. We make a variable here to store whether the second
-        # point needs to be made:
+        # Otherwise, one or two points are created. We make a variable
+        # here to store whether the second point needs to be made:
         make_l2 = False
 
         time_preceding_target = point_list[-1].time
@@ -338,13 +337,68 @@ class FinalBoundary(AbstractFinalBoundary):
         self.decode_final_boundary(point_list)
 
     def decode_nuclear_rise_and_spread(self, point_list):
-        match self.last_word:
-            case 'L%':
-                raise NotImplementedError
+        match self.last_word.name:
+            case 'L*':
+                # If there is not enough time, don't create extra points
+                if (self.ip_end - self.last_word.vp_end) < Milliseconds(350):
+                    return
+
+                # Otherwise, create two points:
+                point_L4 = FrequencyPoint(
+                    label = 'L4',
+                    freq = self.scale_frequency(0.2),
+                    time = point_list[-1].time + Milliseconds(8))
+                point_l2 = FrequencyPoint(
+                    label = 'l2',
+                    freq = self.scale_frequency(0.2),
+                    time = self.ip_end - Milliseconds(100))
+
+                point_list.append(point_L4)
+                point_list.append(point_l2)
+
             case 'H*' | '!H*':
-                raise NotImplementedError
+                # If there is not enough time, don't create extra points
+                if (self.ip_end - self.last_word.vp_end) < Milliseconds(350):
+                    return
+
+                # Otherwise, create two points:
+                point_H3 = FrequencyPoint(
+                    label = 'H3',
+                    freq = self.scale_frequency(0.67),
+                    time = point_list[-1].time + Milliseconds(8))
+                point_h2 = FrequencyPoint(
+                    label = 'h2',
+                    freq = self.scale_frequency(0.67),
+                    time = self.ip_end - Milliseconds(100))
+
+                point_list.append(point_H3)
+                point_list.append(point_h2)
+
             case 'L*H':
-                raise NotImplementedError
+                # With a last word L*H, we create one or two extra
+                # points, depending on available time.
+                make_h2 = False
+
+                if (self.ip_end - point_list[-1].time) < Milliseconds(200):
+                    time_h1 = point_list[-1].time + Milliseconds(50)
+                else:
+                    time_h1 = point_list[-1].time + Milliseconds(100)
+                    time_h2 = self.ip_end - Milliseconds(100)
+                    make_h2 = True
+
+                point_h1 = FrequencyPoint(
+                    label = 'h1',
+                    freq = self.scale_frequency(0.60),
+                    time = time_h1)
+                point_list.append(point_h1)
+
+                if make_h2:
+                    point_h2 = FrequencyPoint(
+                        label = 'h2',
+                        freq = self.scale_frequency(0.60),
+                        time = time_h2)
+                    point_list.append(point_h2)
+
             case _:
                 pass
 
@@ -357,7 +411,24 @@ class FinalBoundary(AbstractFinalBoundary):
                 label = 'HE'
                 freq = self.scale_frequency(1.0) # TODO handle downstep
             case '%':
-                raise NotImplementedError
+                label = 'ME'
+                match self.last_word.name:
+                    case 'H*L' | '!H*L' | 'L*HL' | 'L*!HL':
+                        freq = self.scale_frequency(0.40)
+                    case 'H*' | '!H*' | 'L*H':
+                        freq = self.scale_frequency(0.60)
+                    case 'L*':
+                        freq = self.scale_frequency(0.20)
+                    case _:
+                        # Shouldn't be allowed, let's just not add an ME in this case
+                        return
+
+        point = FrequencyPoint(
+            label = label,
+            freq = freq,
+            time = self.ip_end)
+
+        point_list.append(point)
 
 
     def from_name(self, name: str):

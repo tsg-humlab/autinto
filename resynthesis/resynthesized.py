@@ -3,6 +3,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 from collections import deque
 from functools import cached_property
+import copy
+
+import textgrid as tg
 
 from resynthesis.phrase import Phrase, IntonationalPhrase
 from resynthesis.pitch_accents import Word, InitialBoundary, FinalBoundary
@@ -58,12 +61,14 @@ class ResynthesizedIntonationalPhrase:
 
 @dataclass
 class ResynthesizedPhrase:
+    textgrid: tg.TextGrid
     ips:  list[ResynthesizedIntonationalPhrase]
     vars: ResynthesizeVariables
 
     def __init__(self, phrase: Phrase, sentence: list[str], **kwargs):
         self.ips: list[ResynthesizedIntonationalPhrase] = []
         self.vars = ResynthesizeVariables()
+        self.textgrid = phrase.textgrid
 
         sentence = deque(sentence)
         for phrase_ip in phrase.ips:
@@ -75,6 +80,33 @@ class ResynthesizedPhrase:
         for ip in self.ips:
             ip.decode(point_list)
         return point_list
+
+
+    def decode_into_textgrid(self):
+        textgrid = copy.deepcopy(self.textgrid)
+
+        # Add word labels
+        word_tier = tg.PointTier('tones', self.textgrid.minTime, self.textgrid.maxTime)
+        for ip in self.ips:
+            word_tier.addPoint(tg.Point(ip.ip.start_time/1000, ip.initial_boundary.name))
+            for word in ip.words:
+                word_tier.addPoint(tg.Point(word.vp_start/1000, word.name))
+            word_tier.addPoint(tg.Point(ip.ip.end_time/1000, ip.final_boundary.name))
+        textgrid.append(word_tier)
+
+        # Generate the new frequency points
+        point_list = self.decode()
+
+        target_tier = tg.PointTier('targets', self.textgrid.minTime, self.textgrid.maxTime)
+        frequency_tier = tg.PointTier('ToDI-F0', self.textgrid.minTime, self.textgrid.maxTime)
+
+        for frequency_point in point_list:
+            target_tier.addPoint(tg.Point(frequency_point.time/1000, frequency_point.label))
+            frequency_tier.addPoint(tg.Point(frequency_point.time/1000, str(int(frequency_point.freq))))
+        textgrid.append(target_tier)
+        textgrid.append(frequency_tier)
+
+        return textgrid
 
 
     @cached_property
