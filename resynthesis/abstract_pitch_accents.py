@@ -6,20 +6,21 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from resynthesis.resynthesized import ResynthesizedIntonationalPhrase
-from resynthesis.types import Milliseconds, Frequency, FrequencyPoint
+    from datetime import timedelta
+from resynthesis.types import Frequency, FrequencyPoint
 
 
 @dataclass
 class AbstractWord(ABC):
     name: str
-    parent: ResynthesizedIntonationalPhrase
-    index: int
+    _parent: ResynthesizedIntonationalPhrase
+    _index: int
     vp: VoicedPortion
 
     def __init__(self, name, parent, index, vp):
         self.name = name
-        self.parent = parent
-        self.index = index
+        self._parent = parent
+        self._index = index
         self.vp = vp
 
         self.from_name(name)
@@ -34,58 +35,66 @@ class AbstractWord(ABC):
 
 
     @property
-    def vp_start(self) -> Milliseconds:
-        return self.vp.start_time
-    @property
-    def vp_end(self) -> Milliseconds:
-        return self.vp.end_time
-    @property
-    def vp_duration(self) -> Milliseconds:
-        return self.vp_end - self.vp_start
+    def ip(self) -> ResynthesizedIntonationalPhrase:
+        return self._parent
 
     @property
-    def time_to_next_boundary(self) -> Milliseconds:
-        return self.next_boundary - self.vp_end
+    def initial_boundary(self) -> AbstractInitialBoundary:
+        return self._parent.initial_boundary
+    @property
+    def final_boundary(self) -> AbstractFinalBoundary:
+        return self._parent.final_boundary
 
     @property
-    def next_boundary(self) -> Milliseconds:
-        if self.is_last_word:
-            return self.ip_end
-        else:
-            return self.next_vp_start
-
-    @property
-    def next_vp_start(self) -> Milliseconds:
-        return self.parent.words[self.index+1].vp_start
-
+    def is_first_word(self) -> bool:
+        return self._index == 0
     @property
     def is_last_word(self) -> bool:
-        return self.index + 1 == len(self.parent.words)
+        return self._index == len(self._parent.words) - 1
+
 
     @property
-    def ip_start(self) -> Milliseconds:
-        return self.parent.ip_start
+    def next_boundary(self) -> timedelta:
+        """
+        Returns either the start of the next VP, or the IP end if this
+        is the last word.
+        """
+
+        if self.is_last_word:
+            return self.ip.end
+        else:
+            return self.next_word.vp.start
+
+
     @property
-    def ip_end(self) -> Milliseconds:
-        return self.parent.ip_end
+    def prev_word(self) -> AbstractWord:
+        if self.is_first_word:
+           raise AssertionError(
+                'Tried to call prev_word on the first word in an IP')
+
+        return self._parent.words[self._index-1]
+
+    @property
+    def next_word(self) -> AbstractWord:
+        if self.is_last_word:
+            raise AssertionError(
+                'Tried to call next_word on the last word in an IP')
+
+        return self._parent.words[self._index+1]
 
     @property
     def frequency_range(self) -> FrequencyRange:
-        return self.parent.frequency_range
-
-    @property
-    def final_boundary(self):
-        return self.parent.final_boundary.name
+        return self._parent.frequency_range
 
 
-    """
-    The delayspace is the duration of the current VP, plus the time from
-    there to the next accented VP start or IP end; or, said differently,
-    the full available time.
-    """
     @property
     def delayspace(self):
-        return self.vp_duration + self.time_to_next_boundary
+        """
+        The delayspace is the duration of the current VP, plus the time from
+        there to the next accented VP start or IP end; or, said differently,
+        the full available time.
+        """
+        return self.vp.duration + self.time_to_next_boundary
 
 
     def scale_frequency(self, scalar) -> Frequency:
@@ -95,11 +104,11 @@ class AbstractWord(ABC):
 @dataclass
 class AbstractInitialBoundary(ABC):
     name: str
-    parent: ResynthesizedIntonationalPhrase
+    _parent: ResynthesizedIntonationalPhrase
 
     def __init__(self, name, parent):
         self.name = name
-        self.parent = parent
+        self._parent = parent
         self.from_name(name)
 
     @abstractmethod
@@ -112,18 +121,20 @@ class AbstractInitialBoundary(ABC):
 
 
     @property
-    def time_to_first_word(self) -> Milliseconds:
-        return self.parent.words[0].vp_start - self.ip_start
+    def ip(self) -> IntonationalPhrase:
+        return self._parent
 
     @property
-    def ip_start(self) -> Milliseconds:
-        return self.parent.ip_start
+    def phrase(self) -> Phrase:
+        return self._parent.parent
+
     @property
-    def ip_end(self) -> Milliseconds:
-        return self.parent.ip_end
+    def first_word(self) -> timedelta:
+        return self._parent.words[0]
+
     @property
     def frequency_range(self) -> FrequencyRange:
-        return self.parent.frequency_range
+        return self._parent.frequency_range
 
     def scale_frequency(self, scalar) -> Frequency:
         return self.frequency_range.scale(scalar)
@@ -132,11 +143,11 @@ class AbstractInitialBoundary(ABC):
 @dataclass
 class AbstractFinalBoundary(ABC):
     name: str
-    parent: ResynthesizedIntonationalPhrase
+    _parent: ResynthesizedIntonationalPhrase
 
     def __init__(self, name, parent):
         self.name = name
-        self.parent = parent
+        self._parent = parent
         self.from_name(name)
 
     @abstractmethod
@@ -148,20 +159,17 @@ class AbstractFinalBoundary(ABC):
     def from_name(cls, name: str, parent: ResynthesizedIntonationalPhrase):
         raise NotImplementedError
 
+    @property
+    def ip(self) -> IntonationalPhrase:
+        return self._parent
 
     @property
     def last_word(self):
-        return self.parent.words[-1]
+        return self._parent.words[-1]
+
     @property
     def frequency_range(self) -> FrequencyRange:
-        return self.parent.frequency_range
+        return self._parent.frequency_range
 
     def scale_frequency(self, scalar) -> Frequency:
         return self.frequency_range.scale(scalar)
-
-    @property
-    def ip_start(self) -> Milliseconds:
-        return self.parent.ip_start
-    @property
-    def ip_end(self) -> Milliseconds:
-        return self.parent.ip_end

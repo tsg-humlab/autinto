@@ -20,6 +20,7 @@ class ResynthesizedIntonationalPhrase:
     initial_boundary: InitialBoundary
     words: list[Word]
     final_boundary: FinalBoundary
+    _frequency_range: FrequencyRange
 
     def __init__(self, phrase_ip: IntonationalPhrase, sentence: deque[str], parent: ResynthesizedPhrase):
         self.ip = phrase_ip
@@ -40,23 +41,41 @@ class ResynthesizedIntonationalPhrase:
         str_final_boundary = sentence.popleft()
         self.final_boundary = FinalBoundary(str_final_boundary, self)
 
+        # We only set this when the decoding starts
+        self._frequency_range = None
+
     def decode(self, point_list):
+        # Reset frequency_range
+        self.reset_downstep()
+
         self.initial_boundary.decode(point_list)
         for word in self.words:
             word.decode(point_list)
         self.final_boundary.decode(point_list)
 
+        self.parent._frequency_range = self.frequency_range
+
     @property
-    def ip_start(self):
+    def start(self):
         return self.ip.start_time
     @property
-    def ip_end(self):
+    def end(self):
         return self.ip.end_time
 
     @property
     def frequency_range(self):
-        return self.parent.frequency_range
+        if self._frequency_range:
+            return self._frequency_range
+        else:
+            return self.parent.frequency_range
 
+    def downstep(self, scalar):
+        freq_low = self.parent.vars.fr + scalar*(self.frequency_range.low - self.parent.vars.fr)
+        freq_high = self.parent.vars.fr + scalar*(self.frequency_range.high - self.parent.vars.fr)
+        self._frequency_range = FrequencyRange(freq_low, freq_high)
+
+    def reset_downstep(self):
+        self._frequency_range = None
 
 
 @dataclass
@@ -75,6 +94,10 @@ class ResynthesizedPhrase:
             ip = ResynthesizedIntonationalPhrase(phrase_ip, sentence, self)
             self.ips.append(ip)
 
+        freq_low = self.vars.fr + self.vars.n - 0.5*self.vars.w
+        freq_high = self.vars.fr + self.vars.n + 0.5*self.vars.w
+        self._frequency_range = FrequencyRange(freq_low, freq_high)
+
     def decode(self):
         point_list = []
         for ip in self.ips:
@@ -88,10 +111,10 @@ class ResynthesizedPhrase:
         # Add word labels
         word_tier = tg.PointTier('tones', self.textgrid.minTime, self.textgrid.maxTime)
         for ip in self.ips:
-            word_tier.addPoint(tg.Point(ip.ip.start_time/1000, ip.initial_boundary.name))
+            word_tier.addPoint(tg.Point(ip.ip.start.total_seconds(), ip.initial_boundary.name))
             for word in ip.words:
-                word_tier.addPoint(tg.Point(word.vp_start/1000, word.name))
-            word_tier.addPoint(tg.Point(ip.ip.end_time/1000, ip.final_boundary.name))
+                word_tier.addPoint(tg.Point(word.vp.start.total_seconds(), word.name))
+            word_tier.addPoint(tg.Point(ip.ip.end.total_seconds(), ip.final_boundary.name))
         textgrid.append(word_tier)
 
         # Generate the new frequency points
@@ -101,17 +124,21 @@ class ResynthesizedPhrase:
         frequency_tier = tg.PointTier('ToDI-F0', self.textgrid.minTime, self.textgrid.maxTime)
 
         for frequency_point in point_list:
-            target_tier.addPoint(tg.Point(frequency_point.time/1000, frequency_point.label))
-            frequency_tier.addPoint(tg.Point(frequency_point.time/1000, str(int(frequency_point.freq))))
+            target_tier.addPoint(tg.Point(frequency_point.time.total_seconds(), frequency_point.label))
+            frequency_tier.addPoint(tg.Point(frequency_point.time.total_seconds(), str(int(frequency_point.freq))))
         textgrid.append(target_tier)
         textgrid.append(frequency_tier)
 
         return textgrid
 
 
-    @cached_property
+    @property
     def frequency_range(self):
-        freq_low = self.vars.fr + self.vars.n - 0.5*self.vars.w
-        freq_high = self.vars.fr + self.vars.n + 0.5*self.vars.w
+        return self._frequency_range
 
-        return FrequencyRange(freq_low, freq_high)
+    def downstep(self, scalar):
+        print(self.frequency_range.scale(0.5))
+        freq_low = self.vars.fr + scalar*(self.frequency_range.low - self.vars.fr)
+        freq_high = self.vars.fr + scalar*(self.frequency_range.high - self.vars.fr)
+        self._frequency_range = FrequencyRange(freq_low, freq_high)
+        print(self.frequency_range.scale(0.5))
