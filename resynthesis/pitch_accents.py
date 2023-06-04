@@ -7,8 +7,13 @@ from resynthesis.types import Milliseconds, FrequencyPoint
 from resynthesis.abstract_pitch_accents import AbstractWord, AbstractInitialBoundary, AbstractFinalBoundary
 
 class Tone(Enum):
-    HIGH = 1
-    LOW  = 2
+    """
+    Helper class for the pitch accents. It is simply used to store a
+    variable as Tone.HIGH or Tone.LOW
+    """
+
+    LOW  = 1
+    HIGH = 2
 
     @staticmethod
     def from_name(name: str):
@@ -23,17 +28,39 @@ class Tone(Enum):
 
 
 class Word(AbstractWord):
+    """
+    This class interprets words, or all pitch accents that are not
+    initial or final boundaries. It implements the two required methods:
+    decode() and from_name().
+
+    (For more information on implementing your own Word class, or for
+     under-the-hood details, take a look at abstract_pitch_accents.py in
+     this same folder.)
+    """
+
+    # A word consists of up to three tones.
+    # All words start with L*, H*, or !H*; this is the primary tone.
     primary_tone: Tone
+    # Middle tones are only present in words with three tones, like L*HL
+    # and H*LH.
     middle_tone:  Optional[Tone] = None
+    # The final tone is present in all words with at least two tones.
     final_tone:   Optional[Tone] = None
 
     def decode(self, point_list):
+        """
+        Decode an word into FrequencyPoints, and append them to
+        point_list.
+        """
+
         self.decode_primary(point_list)
         self.decode_middle(point_list)
         self.decode_final(point_list)
 
 
     def decode_primary(self, point_list):
+        # We call decode_primary_low() on 'L*'- words,
+        # and decode_primary_high() on '(!)H*'- words.
         match self.primary_tone:
             case Tone.LOW:
                 self.decode_primary_low(point_list)
@@ -41,30 +68,35 @@ class Word(AbstractWord):
                 self.decode_primary_high(point_list)
 
     def decode_middle(self, point_list):
+        # Same as decode_primary, but because the middle tone is
+        # optional, we add a (technically redundant) case for handling
+        # a lack of a middle tone, in which case we do nothing.
         match self.middle_tone:
-            case None:
-                return
-            case Tone.HIGH:
-                self.decode_middle_high(point_list)
             case Tone.LOW:
                 self.decode_middle_low(point_list)
+            case Tone.HIGH:
+                self.decode_middle_high(point_list)
+            case None:
+                pass
 
     def decode_final(self, point_list):
         match self.final_tone:
-            case None:
-                return
             case Tone.LOW:
                 self.decode_final_low(point_list)
             case Tone.HIGH:
                 self.decode_final_high(point_list)
-    
+            case None:
+                return
+
 
     def decode_primary_low(self, point_list):
-        # LOW TRAY FOR L*, PLUS DELAYED PEAK
-        # This rule creates an extended dip for L*.
+        """
+        LOW TRAY FOR L*
+        This rule creates an extended dip for L*.
+        """
 
         # Point L1 always comes just before the VP. Points L2 and L3 are
-        # placed depending on the amount of time available after the
+        # placed depending on the amount of time available *after* the
         # current VP.
 
         # If there is enough time, L2 and L3 are placed in the VP
@@ -73,13 +105,14 @@ class Word(AbstractWord):
             time_L2 = self.vp_start + 0.05 * self.vp_duration
             time_L3 = self.vp_start + 0.75 * self.vp_duration
         # Otherwise, if there is a boundary (either the IP ends or the
-        # next VP starts) within 360 milliseconds, the available space
-        # is calculated, and L2 and L3 are placed depending on that:
+        # next VP starts) within 360 milliseconds, L2 and L3 are placed
+        # depending on the available space from the VP start to the
+        # boundary.
         else:
             time_L2 = self.vp_start + 0.03 * self.delayspace
             time_L3 = self.vp_start + 0.30 * self.delayspace
 
-        # TODO comment here
+        # Then the frequency points are created.
         point_L1 = FrequencyPoint(
             label = 'L1',
             freq  = self.scale_frequency(0.2),
@@ -99,19 +132,23 @@ class Word(AbstractWord):
 
 
     def decode_middle_high(self, point_list):
-        #LOW TRAY FOR L*, PLUS DELAYED PEAK
-        # This rule creates a delayed peak after L*
+        """
+        DELAYED PEAK
+        This rule creates a delayed peak after L*.
+        """
 
         # TODO downstep
 
+        # Cases are split the same way they were in decode_primary_low().
         if self.time_to_next_boundary > Milliseconds(360):
-            # Since there is enough space, the last point, L3, has been
-            # placed at 0.75 into the VP.
-            last_point_time = self.vp_start + 0.75*self.vp_duration
+            # Here we use the preceding point's time to place H1 and H2.
+            last_point_time = point_list[-1].time
 
             time_H1 = last_point_time + 0.5 * self.delayspace
             time_H2 = last_point_time + 0.7 * self.delayspace
+
         else:
+            # But if time is short it's only dependent on the delayspace.
             time_H1 = self.vp_start + 0.60 * self.delayspace
             time_H2 = self.vp_start + 0.70 * self.delayspace
 
@@ -132,11 +169,13 @@ class Word(AbstractWord):
 
 
     def decode_primary_high(self, point_list):
-        # FLAT-TOP PEAK
-        # This rule creates the first and second targets of H* in its
-        # VP.
+        """
+        FLAT-TOP PEAK
+        This rule creates the first and second targets of H* in its VP.
+        """
 
         if self.vp_duration < Milliseconds(250):
+            # The points are placed a little earlier if the VP is short.
             time_H1 = self.vp_start + 0.12 * self.vp_duration
             time_H2 = self.vp_start + 0.42 * self.vp_duration
         else:
@@ -156,12 +195,22 @@ class Word(AbstractWord):
         point_list.append(point_H2)
 
 
-    def decode_middle_low(self, point_list):        
-        # PRENUCLEAR RISE AND FALL-RISE
-        # This rule creates  the fall from H* in H*LH.
+    def decode_middle_low(self, point_list):
+        """
+        PRENUCLEAR RISE
+        This rule creates  the fall from H* in H*LH.
+        """
+
+        # Note that this method will not be called in the word H*L,
+        # because there L is the final tone, so it will call
+        # decode_final_low() instead.
 
         last_target_time = point_list[-1].time
-        if self.next_boundary - last_target_time < Milliseconds(200):
+
+        # The timing of this point is, again, dependent on the available
+        # window. Here it depends on the window between the preceding
+        # target and the next boundary (IP end or next VP start).
+        if (self.next_boundary - last_target_time) < Milliseconds(200):
             time_l = last_target_time + 0.30 * (self.next_vp_start - last_target_time)
         else:
             time_l = last_target_time + Milliseconds(100)
@@ -171,20 +220,32 @@ class Word(AbstractWord):
             label = '+l',
             freq  = self.scale_frequency(0.4),
             time  = time_l)
-        
+
         point_list.append(point_l)
 
 
     def decode_final_low(self, point_list):
+        """
+        Decodes a final low tone. Applicable to words 'H*L', '!H*L',
+        'L*HL', and 'L*!HL'.
+
+        Timing depends on whether another word follows in this IP or
+        not.
+        """
+
         if not self.is_last_word:
             self.decode_pre_nuclear_fall(point_list)
         else:
             self.decode_nuclear_fall(point_list)
 
     def decode_pre_nuclear_fall(self, point_list):
-        # PRE-NUCLEAR FALL
-        # This rule creates a slow fall before another toneword.
+        """
+        PRE-NUCLEAR FALL
+        This rule creates a slow fall before another toneword.
+        """
 
+        # This time both the timing and the frequency of the point are
+        # dependent on the available time.
         if self.time_to_next_boundary < Milliseconds(200):
             time_l1 = self.vp_end + 0.5*self.time_to_next_word
             freq_l1 = self.scale_frequency(0.40)
@@ -200,9 +261,10 @@ class Word(AbstractWord):
         point_list.append(point_l1)
 
     def decode_nuclear_fall(self, point_list):
-        # NUCLEAR FALL
-        # This rule creates a fast nuclear fall after (!)H*L and
-        # (!)L*HL.
+        """
+        NUCLEAR FALL
+        This rule creates a fast nuclear fall after (!)H*L and L*(!)HL.
+        """
 
         # If the final boundary is %, no points are created, and the
         # method returns early.
@@ -210,7 +272,7 @@ class Word(AbstractWord):
             return
 
         # Otherwise, one or two points are created. We make a variable
-        # here to store whether the second point needs to be made:
+        # here to determine whether the second point needs to be made:
         make_l2 = False
 
         time_preceding_target = point_list[-1].time
@@ -237,6 +299,12 @@ class Word(AbstractWord):
 
 
     def decode_final_high(self, point_list):
+        """
+        PRE-NUCLEAR FALLRISE
+        This rule creates the rise from L and L* to the next primary
+        tone.
+        """
+
         time_preceding_target = point_list[-1].time
         if self.next_boundary - time_preceding_target < Milliseconds(200):
             time_h1 = time_preceding_target + 0.30 * (self.next_boundary - time_preceding_target)
@@ -252,12 +320,16 @@ class Word(AbstractWord):
 
 
     def from_name(self, name: str):
-       result = re.findall(r'!?[HL]\*?', name)
-       # ^ 'L*!HL returns ['L*', '!H', 'L']
+        # Error if we see an unrecognised word
+        if name not in ['H*', '!H*', 'H*L', '!H*L', 'H*LH', 'L*H', 'L*', 'L*HL']:
+            raise ValueError("'{}' is not a valid word.".format(name))
 
-       self.primary_tone = Tone.from_name(result[0][:-1])
-       self.final_tone   = Tone.from_name(result[-1]) if len(result) > 1 else None
-       self.middle_tone  = Tone.from_name(result[1])  if len(result) > 2 else None
+        result = re.findall(r'!?[HL]\*?', name)
+        # ^ 'L*!HL returns ['L*', '!H', 'L']
+
+        self.primary_tone = Tone.from_name(result[0][:-1])
+        self.final_tone   = Tone.from_name(result[-1]) if len(result) > 1 else None
+        self.middle_tone  = Tone.from_name(result[1])  if len(result) > 2 else None
 
 
 class InitialBoundary(AbstractInitialBoundary):
@@ -360,7 +432,7 @@ class InitialBoundary(AbstractInitialBoundary):
 
         # Create a nice error for unrecognised words.
         if name not in ['%L', '%H', '%HL', '!%L', '!%H', '!%HL']:
-            raise ValueError("Expected initial boundary, found '{}'".format(name))
+            raise ValueError("'{}' is not a valid initial boundary.".format(name))
 
         if name[0] == '!':
             # We remove the '!' from the word here.
@@ -497,7 +569,7 @@ class FinalBoundary(AbstractFinalBoundary):
                         freq = self.scale_frequency(0.20)
                     case _:
                         # This case should not happen. For stability
-                        # we will simply not create an ME point instead
+                        # we will simply not create an ME point, instead
                         # of raising an error.
                         return
 
@@ -515,5 +587,5 @@ class FinalBoundary(AbstractFinalBoundary):
 
         # We do still check for illegal words:
         if name not in ['L%', 'H%', '%']:
-            raise ValueError("Expected final boundary, found '{}'".format(name))
+            raise ValueError("'{}' is not a valid final boundary.".format(name))
         pass
