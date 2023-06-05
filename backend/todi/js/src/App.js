@@ -138,7 +138,7 @@ function App({ id = '' }) {
       if (R.is(Number, toTime)) {
         formData.append('TOTIME', String(toTime))
       }
-      if (R.is(Number, starTime)) {
+      if (starTime !== null && R.test(/^\d+(\.\d*)?$/, starTime)) {
         formData.append('STARTIME', String(starTime))
       }
       if (R.is(Number, Fr)) {

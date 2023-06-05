@@ -8,7 +8,7 @@ export default function Parameters({settings, onChangeSettings}) {
     <div className="settings-container">
       <div>
         <label>
-          STARTIME <input type="number" value={starTime} onChange={e => onChangeSettings(R.assoc('starTime', e.target.valueAsNumber))}/>
+          STARTIME <input type="number" step="any" value={starTime} onChange={e => onChangeSettings(R.assoc('starTime', e.target.value))}/>
         </label>
         <label>
           TOTIME <input type="number" value={toTime} onChange={e => onChangeSettings(R.assoc('toTime', e.target.valueAsNumber))}/>
