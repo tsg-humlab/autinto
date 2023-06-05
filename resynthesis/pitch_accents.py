@@ -9,7 +9,7 @@ from resynthesis.abstract_pitch_accents import AbstractWord, AbstractInitialBoun
 class Tone(Enum):
     """
     Helper class for the pitch accents. It is simply used to store a
-    variable as Tone.HIGH or Tone.LOW
+    variable as Tone.HIGH or Tone.LOW (or Tone.HIGH_DOWNSTEPPED)
     """
 
     LOW  = 'L'
@@ -37,6 +37,7 @@ class Word(AbstractWord):
     # The final tone is present in all words with at least two tones.
     final_tone:   Optional[Tone] = None
 
+
     def decode(self, point_list):
         """
         Decode an word into FrequencyPoints, and append them to
@@ -49,12 +50,20 @@ class Word(AbstractWord):
 
 
     def decode_primary(self, point_list):
+        """
+        Decode the primary tone of the word. This is the first tone:
+        'L*', 'H*', or '!H*'.
+        """
+
         # We call decode_primary_low() on 'L*'- words,
         # and decode_primary_high() on '(!)H*'- words.
         match self.primary_tone:
             case Tone.LOW:
                 self.decode_primary_low(point_list)
             case Tone.HIGH | Tone.HIGH_DOWNSTEPPED as tone:
+                # We treat HIGH and HIGH_DOWNSTEPPED identically here.
+                # The downstepping logic is then handled in
+                # decode_downstep()
                 self.decode_downstep(tone)
                 self.decode_primary_high(point_list)
 
@@ -88,18 +97,17 @@ class Word(AbstractWord):
         The rule lowers the upper and lower boundaries of the pitch
         range.
 
-        This method also undoes accentual downsteps in the case of a
-        high tone in the final word in the IP.
+        decode_downstep() also undoes accentual downsteps in the case of
+        a high tone in the final word in the IP.
         """
 
         match tone:
             case Tone.HIGH_DOWNSTEPPED:
                 # This downstep applies to the rest of the phrase if
-                # they are not cancelled, but they can still be
-                # cancelled in the final word of the IP. For now, the
-                # downstep is applied only to the IP, and in the
-                # FinalBoundary handling, any remaining downsteps are
-                # applied to the phrase.
+                # it is not cancelled, but they can still be cancelled
+                # in the final word of the IP.
+                # If the downstep is not cancelled, it automatically
+                # carries over to any later IPs.
                 self.ip.downstep(self.vars.accentual_downstep)
 
             case Tone.HIGH:
@@ -110,14 +118,15 @@ class Word(AbstractWord):
                     self.ip.reset_downstep()
 
             # Create nice errors for unexpected values:
+
+            # Error for unexpected tone
             case unexpected_tone if isinstance(unexpected_tone, Tone):
-                # Error for unexpected tone
                 raise ValueError('Expected {} or {}, found {}'.format(
                     Tone.HIGH,
                     Tone.HIGH_DOWNSTEPPED,
                     unexpected_tone))
+            # Error for unexpected other value
             case _ as unexpected_value:
-                # Error for unexpected different value
                 raise TypeError('Expected {}, found {}'.format(
                     Tone,
                     type(unexpected_value)))
@@ -289,8 +298,8 @@ class Word(AbstractWord):
         Only executed if this is the final word in the IP.
         """
 
-        # If the final boundary is %, no points are created, and the
-        # method returns early.
+        # If the final boundary is %, no points are created for this tone,
+        # and the method returns early.
         if self.final_boundary == '%':
             return
 
@@ -326,8 +335,8 @@ class Word(AbstractWord):
         This rule creates a slow fall before another toneword.
         """
 
-        # This time both the timing and the frequency of the point are
-        # dependent on the available time.
+        # This time the frequency of the point is also dependent on the
+        # available time.
         vp_end_to_next = Interval(self.vp.end, self.next_boundary)
         if vp_end_to_next.duration < 2*self.vars.to_time:
             time_l1 = vp_end_to_next.scale(0.50)
@@ -367,16 +376,24 @@ class Word(AbstractWord):
 
 
     def from_name(self, name: str):
-        # Error if we see an unrecognised word
+        """Decode a non-boundary pitch accent string into tones."""
+
+        # Error if we see an unrecognised word:
         if name not in ['H*', '!H*', 'H*L', '!H*L', 'H*LH', 'L*H', 'L*',
                         'L*HL', 'L*!HL']:
             raise ValueError("'{}' is not a valid word.".format(name))
 
+        # Then we extract the tones with a regular expression:
         result = re.findall(r'!?[HL]', name)
-        # ^ 'L*!HL returns ['L', '!H', 'L']
+        # ^ 'L*!HL' would return ['L', '!H', 'L']
 
         self.primary_tone = Tone(result[0])
-        self.middle_tone  = Tone(result[1])  if len(result) > 2 else None
+        # If there are more than two tones, then create a middle_tone
+        # from the second match:
+        self.middle_tone  = Tone(result[1])  if len(result) == 3 else None
+
+        # And if there are two or three tones, create a final_tone from
+        # the last match:
         self.final_tone   = Tone(result[-1]) if len(result) > 1 else None
 
 
@@ -391,9 +408,12 @@ class InitialBoundary(AbstractInitialBoundary):
 
     # The word is decoded into a first target tone and a second target
     # tone, each of which can be LOW or HIGH, and a boolean storing
-    # whether the IP is downstepped.
+    # whether the IP is downstepped. A boolean is also creating in the
+    # IP that this boundary belongs to, storing whether this is an
+    # unaccented IP.
     #
     # See from_name() for the implementation of this decoding.
+
     first_target_tone: Tone
     second_target_tone: Tone
     has_downstep: bool
@@ -406,33 +426,38 @@ class InitialBoundary(AbstractInitialBoundary):
 
         if self.has_downstep:
             # Phrasal downsteps apply to the entire rest of the phrase,
-            # not just the IP itself
+            # not just the IP itself, so we call self.phrase.downstep()
             self.phrase.downstep(self.vars.phrasal_downstep)
 
         # Then decode the targets.
-        self.decode_first_target(point_list)
-        if not self.ip.unaccented:
+        if self.ip.unaccented:
+            self.decode_unaccented(point_list)
+        else:
+            self.decode_first_target(point_list)
             self.decode_second_target(point_list)
 
-    def decode_first_target(self, point_list):
-        """Creates a first target."""
+    def decode_unaccented(self, point_list):
+        """Decode the target for an unaccented IP initial boundary."""
 
-        if self.ip.unaccented:
-            match self.first_target_tone:
-                case Tone.LOW:
-                    label = 'l1'
-                    freq = self.scale_frequency(0.15)
-                case Tone.HIGH:
-                    label = 'h1'
-                    freq = self.scale_frequency(0.6)
-        else:
-            match self.first_target_tone:
-                case Tone.LOW:
-                    label = 'LB1'
-                    freq = self.scale_frequency(0.30)
-                case Tone.HIGH:
-                    label = 'HB1'
-                    freq = self.scale_frequency(0.85)
+        match self.first_target_tone:
+            case Tone.LOW:
+                label = 'l1'
+                freq = self.scale_frequency(0.15)
+            case Tone.HIGH:
+                label = 'h1'
+                freq = self.scale_frequency(0.6)
+
+
+    def decode_first_target(self, point_list):
+        """Creates a first target for a normal initial boundary."""
+
+        match self.first_target_tone:
+            case Tone.LOW:
+                label = 'LB1'
+                freq = self.scale_frequency(0.30)
+            case Tone.HIGH:
+                label = 'HB1'
+                freq = self.scale_frequency(0.85)
 
         first_target = FrequencyPoint(
             label = label,
@@ -442,28 +467,27 @@ class InitialBoundary(AbstractInitialBoundary):
 
         point_list.append(first_target)
 
+
     def decode_second_target(self, point_list):
         """
-        Creates a second target, if there is enough space before the
-        first word.
+        Creates a second target for a normal initial boundary, if there
+        is enough space before the first word.
         """
 
-        # If there are less than 100 milliseconds before the first word,
-        # then no second target is created, and the function returns
-        # early.
+        # If the time before the first word is less than `to_time`, then
+        # no second target is created, and the function returns early.
         time_to_first_vp = Interval(self.ip.start, self.first_word.vp.start)
 
         if time_to_first_vp.duration < self.vars.to_time:
             return
 
-        # Otherwise, if there are less than 200 milliseconds, the second
-        # target is placed halfway between the IP start and the first
-        # word.
+        # Otherwise, if there is enough space, but still less than two
+        # times `to_time`, the second target is placed halfway between
+        # the IP start and the first word.
         elif time_to_first_vp.duration < 2*self.vars.to_time:
             time = time_to_first_vp.scale(0.50)
-        # Finally, if there *are* at least 200 milliseconds, then the
-        # second target is placed 100 milliseconds before the first
-        # word.
+        # Finally, if there is even more space, then the second target is
+        # placed `to_time` before the first word.
         else:
             time = self.first_word.vp.start - self.vars.to_time
 
@@ -494,19 +518,20 @@ class InitialBoundary(AbstractInitialBoundary):
         if name not in ['%L', '%H', '%HL', '!%L', '!%H', '!%HL', 'H', 'L']:
             raise ValueError("'{}' is not a valid initial boundary.".format(name))
 
-        if name[0] == '!':
-            # We remove the '!' from the word here.
-            name = name[1:]
-            self.has_downstep = True
-        else:
-            self.has_downstep = False
-
+        # Handle unaccented IPs immediately.
         if name in {'H', 'L'}:
             self.ip.unaccented = True
             self.first_target_tone = Tone(name)
         else:
             self.ip.unaccented = False
 
+            if name[0] == '!':
+                # We remove the '!' from the word here, and store that
+                # the IP is downstepped.
+                name = name[1:]
+                self.has_downstep = True
+            else:
+                self.has_downstep = False
 
             # The first tone is decided by the character directly after the
             # '%' sign, which is always the second character, since we
@@ -515,7 +540,7 @@ class InitialBoundary(AbstractInitialBoundary):
 
             # The second target tone is decided by the final character.
             # For words '%L', '%H', '!%H', this means that the first and
-            # second tone will be the same.
+            # second tone will be the same!
             self.second_target_tone = Tone(name[-1])
 
 
@@ -530,17 +555,19 @@ class FinalBoundary(AbstractFinalBoundary):
 
     def decode(self, point_list):
         """
-        Decode the final boundary into frequency points and put them in
-        point_list.
+        Handle final lengthening, final word spread, and decode the
+        final boundary into frequency points and put them in point_list.
         """
+
         if not self.ip.unaccented:
             self.decode_final_lengthening(point_list)
             self.decode_nuclear_rise_and_spread(point_list)
+
         self.decode_final_boundary(point_list)
 
     def decode_final_lengthening(self, point_list):
         # If there is already time left after the VP, we don't do any
-        # final lengthening
+        # final lengthening.
         if self.last_word.vp.end < self.ip.end:
             return
 
@@ -549,16 +576,23 @@ class FinalBoundary(AbstractFinalBoundary):
             or self.last_word == 'L*H'
             or (self.last_word == ['L*HL', 'L*!HL'] and self.name in ['L%', '%'])):
 
-            time_to_add = Milliseconds(Seconds(11.5) / self.last_word.vp.duration) - Milliseconds(23)
+            # Usually only a few ms
+            time_to_add = (
+                Milliseconds(11.5/self.last_word.vp.duration.total_seconds())
+                - Milliseconds(23)
+                )
 
         elif self.last_word.name in ['L*HL', 'L*!HL'] and self.name == 'H%':
-            time_to_add = Milliseconds(Seconds(15) / self.last_word.vp.duration) - Milliseconds(23)
+            time_to_add = (
+                Milliseconds(15.0/self.last_word.vp.duration.total_seconds())
+                - Milliseconds(23)
+                )
 
         # And if none of these are the case, then no final lengthening happens.
         else:
             return
 
-        # Also exit if it turns out we're not adding any time
+        # Also exit if it turns out we're not adding any time!
         if time_to_add <= Milliseconds(0):
             return
 
