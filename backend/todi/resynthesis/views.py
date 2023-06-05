@@ -1,3 +1,4 @@
+import datetime
 import os
 import json
 import base64
@@ -26,9 +27,9 @@ def handle(request):
         if 'da' in request.POST:
             kwargs['accentual_downstep'] = float(request.POST['da'])
         if 'FROMTIME' in request.POST:
-            kwargs['from_time'] = float(request.POST['FROMTIME'])
+            kwargs['from_time'] = datetime.timedelta(milliseconds=float(request.POST['FROMTIME']))
         if 'TOTIME' in request.POST:
-            kwargs['to_time'] = float(request.POST['TOTIME'])
+            kwargs['to_time'] = datetime.timedelta(milliseconds=float(request.POST['TOTIME']))
         if 'STARTIME' in request.POST:
             kwargs['star_time'] = float(request.POST['STARTIME'])
         if 'Fr' in request.POST:

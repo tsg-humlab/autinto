@@ -55,6 +55,10 @@ class AbstractWord(ABC):
     def is_last_word(self) -> bool:
         return self._index == len(self._parent.words) - 1
 
+    @property
+    def vars(self):
+        return self._parent.vars
+
 
     @property
     def next_boundary(self) -> timedelta:
@@ -125,6 +129,9 @@ class AbstractInitialBoundary(ABC):
     def from_name(self, name: str):
         raise NotImplementedError
 
+    @property
+    def vars(self):
+        return self._parent.vars
 
     @property
     def ip(self) -> IntonationalPhrase:
@@ -167,6 +174,10 @@ class AbstractFinalBoundary(ABC):
     @abstractmethod
     def from_name(cls, name: str, parent: ResynthesizedIntonationalPhrase):
         raise NotImplementedError
+
+    @property
+    def vars(self):
+        return self._parent.vars
 
     @property
     def ip(self) -> IntonationalPhrase:

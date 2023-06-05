@@ -100,7 +100,7 @@ class Word(AbstractWord):
                 # downstep is applied only to the IP, and in the
                 # FinalBoundary handling, any remaining downsteps are
                 # applied to the phrase.
-                self.ip.downstep(0.7)
+                self.ip.downstep(self.vars.accentual_downstep)
 
             case Tone.HIGH:
                 # The cancellation happens right here, if this is the
@@ -215,11 +215,11 @@ class Word(AbstractWord):
 
         if self.vp.duration < Milliseconds(250):
             # The points are placed a little earlier if the VP is short.
-            time_H1 = self.vp.scale(0.12)
-            time_H2 = self.vp.scale(0.42)
+            time_H1 = self.vp.scale(0.4*self.vars.star_time)
+            time_H2 = self.vp.scale(0.4*self.vars.star_time + 0.3)
         else:
-            time_H1 = self.vp.scale(0.30)
-            time_H2 = self.vp.scale(0.60)
+            time_H1 = self.vp.scale(self.vars.star_time)
+            time_H2 = self.vp.scale(2*self.vars.star_time)
 
         point_H1 = FrequencyPoint(
             label = 'H1',
@@ -251,13 +251,13 @@ class Word(AbstractWord):
         # target and the next boundary (IP end or next VP start).
         interval = Interval(last_target_time, self.next_boundary)
 
-        if interval.duration < Milliseconds(200):
+        if interval.duration < 2 * self.vars.from_time:
             # If there is not enough time, place it 30% into the
             # remaining time.
             time_l = interval.scale(0.30)
         else:
             # Otherwise it's 100 ms after the previous target.
-            time_l = last_target_time + Milliseconds(100)
+            time_l = last_target_time + self.vars.to_time
 
         point_l = FrequencyPoint(
             label = '+l',
@@ -300,11 +300,11 @@ class Word(AbstractWord):
 
         time_preceding_target = point_list[-1].time
         spread_space = Interval(time_preceding_target, self.ip.end)
-        if spread_space.duration < Milliseconds(220):
+        if spread_space.duration < 2.2 * self.vars.from_time:
             time_l1 = spread_space.scale(0.50)
         else:
-            time_l1 = time_preceding_target + Milliseconds(100)
-            time_l2 = self.ip.end - Milliseconds(100)
+            time_l1 = time_preceding_target + self.vars.from_time
+            time_l2 = self.ip.end - self.vars.to_time
             make_l2 = True
 
         point_l1 = FrequencyPoint(
@@ -329,11 +329,11 @@ class Word(AbstractWord):
         # This time both the timing and the frequency of the point are
         # dependent on the available time.
         vp_end_to_next = Interval(self.vp.end, self.next_boundary)
-        if vp_end_to_next.duration < Milliseconds(200):
+        if vp_end_to_next.duration < 2*self.vars.to_time:
             time_l1 = vp_end_to_next.scale(0.50)
             freq_l1 = self.scale_frequency(0.40)
         else:
-            time_l1 = self.next_boundary - Milliseconds(100)
+            time_l1 = self.next_boundary - self.vars.to_time
             freq_l1 = self.scale_frequency(0.25)
 
         point_l1 = FrequencyPoint(
@@ -353,10 +353,10 @@ class Word(AbstractWord):
 
         time_preceding_target = point_list[-1].time
         prev_target_to_next = Interval(time_preceding_target, self.next_boundary)
-        if prev_target_to_next.duration < Milliseconds(200):
+        if prev_target_to_next.duration < 2*self.vars.from_time:
             time_h1 = prev_target_to_next.scale(0.30)
         else:
-            time_h1 = self.next_boundary - Milliseconds(100)
+            time_h1 = self.next_boundary - self.vars.to_time
 
         point_h1 = FrequencyPoint(
             label = 'h1',
@@ -407,7 +407,7 @@ class InitialBoundary(AbstractInitialBoundary):
         if self.has_downstep:
             # Phrasal downsteps apply to the entire rest of the phrase,
             # not just the IP itself
-            self.phrase.downstep(0.9)
+            self.phrase.downstep(self.vars.phrasal_downstep)
 
         # Then decode the targets.
         self.decode_first_target(point_list)
@@ -453,19 +453,19 @@ class InitialBoundary(AbstractInitialBoundary):
         # early.
         time_to_first_vp = Interval(self.ip.start, self.first_word.vp.start)
 
-        if time_to_first_vp.duration < Milliseconds(100):
+        if time_to_first_vp.duration < self.vars.to_time:
             return
 
         # Otherwise, if there are less than 200 milliseconds, the second
         # target is placed halfway between the IP start and the first
         # word.
-        elif time_to_first_vp.duration < Milliseconds(200):
+        elif time_to_first_vp.duration < 2*self.vars.to_time:
             time = time_to_first_vp.scale(0.50)
         # Finally, if there *are* at least 200 milliseconds, then the
         # second target is placed 100 milliseconds before the first
         # word.
         else:
-            time = self.first_word.vp.start - Milliseconds(100)
+            time = self.first_word.vp.start - self.vars.to_time
 
         # Next, the label and frequency are dependent on the tone.
         match self.second_target_tone:
@@ -589,7 +589,7 @@ class FinalBoundary(AbstractFinalBoundary):
                 point_l2 = FrequencyPoint(
                     label = 'l2',
                     freq = self.scale_frequency(0.2),
-                    time = self.ip.end - Milliseconds(100))
+                    time = self.ip.end - self.vars.to_time)
 
                 point_list.append(point_L4)
                 point_list.append(point_l2)
@@ -607,7 +607,7 @@ class FinalBoundary(AbstractFinalBoundary):
                 point_h2 = FrequencyPoint(
                     label = 'h2',
                     freq = self.scale_frequency(0.67),
-                    time = self.ip.end - Milliseconds(100))
+                    time = self.ip.end - self.vars.to_time)
 
                 point_list.append(point_H3)
                 point_list.append(point_h2)
@@ -617,11 +617,11 @@ class FinalBoundary(AbstractFinalBoundary):
                 # points, depending on available time.
                 make_h2 = False
 
-                if Duration(point_list[-1].time, self.ip.end) < Milliseconds(200):
-                    time_h1 = point_list[-1].time + Milliseconds(50)
+                if Duration(point_list[-1].time, self.ip.end) < 2*self.vars.from_time:
+                    time_h1 = point_list[-1].time + 0.5*self.vars.to_time
                 else:
-                    time_h1 = point_list[-1].time + Milliseconds(100)
-                    time_h2 = self.ip.end - Milliseconds(100)
+                    time_h1 = point_list[-1].time + self.vars.from_time
+                    time_h2 = self.ip.end - self.vars.to_time
                     if time_h1 != time_h2:
                         # Praat does not like multiple points on the same
                         # millisecond, and as these are the same frequency
