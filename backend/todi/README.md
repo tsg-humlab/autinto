@@ -9,7 +9,7 @@ Run `npm install` to install all necessary javascript dependencies.
 To install all necessary Python dependencies run `pip install -r requirements.txt`
 
 Lastly, the project needs a Praat executable. This project has been tested with Praat version [6.3.10](https://github.com/praat/praat/releases/v6.3.10/). In particular, it *will not work* on Praat version 6.2.
-When installing, be sure to put the **nogui** version of Praat in the [resynthesis](resynthesis/) folder, with the name `praat_nogui`. The executable used in testing can be found [here](https://github.com/praat/praat/releases/download/v6.3.10/praat6310_linux64nogui.tar.gz).
+When installing, be sure to put the **nogui** version of Praat in the [resynthesis](resynthesis/) folder, with the name `praat_nogui`. The executable used in development can be found [here](https://github.com/praat/praat/releases/download/v6.3.10/praat6310_linux64nogui.tar.gz).
 
 ## Build
 To build the entire project, run `npm run build` in `js/`.
