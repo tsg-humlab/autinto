@@ -1,7 +1,7 @@
 {
     "items": [
         {
-            "sentence": "[](%L) Ga [direct]0 naar de [gevangenis]0 []1",
+            "sentence": "[](%L) [Ga] [direct]0 [naar] [de] [gevangenis]0 []1",
             "key": [
                 "H*L",
                 "!H*",
@@ -13,7 +13,7 @@
             "textgrid": "5A-1.TextGrid"
         },
         {
-            "sentence": "[](%L) Pas als er [cijfers](H*L) bekend zijn over de [instroom](H*L) van [asielzoekers]0 in de [eerste]0 [drie](H*L) maanden van het [jaar]0 []1",
+            "sentence": "[](%L) [Pas] [als] [er] [cijfers](H*L) [bekend] [zijn] [over] [de] [instroom](H*L) [van] [asielzoekers]0 [in] [de] [eerste]0 [drie](H*L) [maanden] [van] [het] [jaar]0 []1",
             "key": [
                 "H*L",
                 "H*L",
@@ -26,7 +26,7 @@
             "textgrid": "5A-2.TextGrid"
         },
         {
-            "sentence": "[](%L) De [middagtemperatuur]0 ligt tussen de [vijf]0 []1 []2 en [negen]0 [graden]0 []1",
+            "sentence": "[](%L) [De] [middagtemperatuur]0 [ligt] [tussen] [de] [vijf]0 []1 []2 [en] [negen]0 [graden]0 []1",
             "key": [
                 "H*L",
                 "H*",
@@ -42,7 +42,7 @@
             "textgrid": "5A-3.TextGrid"
         },
         {
-            "sentence": "[](%L) Het aantal [ontvoeringen]0 []1 [](%L) door guerillastrijders in [Colombia]0 []1 [](%L) is de [laatste](H*L) jaren [sterk](H*) [toegenomen]0 [](L%)",
+            "sentence": "[](%L) [Het] [aantal] [ontvoeringen]0 []1 [](%L) [door] [guerillastrijders] [in] [Colombia]0 []1 [](%L) [is] [de] [laatste](H*L) [jaren] [sterk](H*) [toegenomen]0 [](L%)",
             "key": [
                 "H*",
                 "H%",
@@ -56,7 +56,7 @@
             "textgrid": "5A-4.TextGrid"
         },
         {
-            "sentence": "[](%L) En dan bij [Rotterdam]0 []1 [](%L) files in [beide](H*L) richtingen voor de [Beneluxtunnel]0 []1",
+            "sentence": "[](%L) [En] [dan] [bij] [Rotterdam]0 []1 [](%L) [files] [in] [beide](H*L) [richtingen] [voor] [de] [Beneluxtunnel]0 []1",
             "key": [
                 "H*",
                 "%",
@@ -69,7 +69,7 @@
             "textgrid": "5A-5.TextGrid"
         },
         {
-            "sentence": "[](%L) Of [Jan]0 zijn nieuwe [auto]0 al heeft []1",
+            "sentence": "[](%L) [Of] [Jan]0 [zijn] [nieuwe] [auto]0 [al] [heeft] []1",
             "key": [
                 "H*L",
                 "H*",
@@ -81,7 +81,7 @@
             "textgrid": "5A-6.TextGrid"
         },
         {
-            "sentence": "[](%L) Ik [lees]0 wel [veel]0 []1 [](%L) maar ik lees [momenteel]0 vrij [oppervlakkig]0 []1",
+            "sentence": "[](%L) [Ik] [lees]0 [wel] [veel]0 []1 [](%L) [maar] [ik] [lees] [momenteel]0 [vrij] [oppervlakkig]0 []1",
             "key": [
                 "H*L",
                 "H*",
@@ -96,7 +96,7 @@
             "textgrid": "5A-7.TextGrid"
         },
         {
-            "sentence": "[](%L) En [was]0 het zoals je [verwacht]0 had []1",
+            "sentence": "[](%L) [En] [was]0 [het] [zoals] [je] [verwacht]0 [had] []1",
             "key": [
                 "H*L",
                 "H*",
@@ -108,7 +108,7 @@
             "textgrid": "5A-8.TextGrid"
         },
         {
-            "sentence": "[](%L) Hoe [oud]0 zijn uw zoons []1",
+            "sentence": "[](%L) [Hoe] [oud]0 [zijn] [uw] [zoons] []1",
             "key": [
                 "H*",
                 "H%"
@@ -119,7 +119,7 @@
             "textgrid": "5A-9.TextGrid"
         },
         {
-            "sentence": "[](%L) De [premie]0 []1 [](%L) zal bij [ongewijzigd](H*L) [beleid]0 []1 []2 de komende [vijf](H*L) jaar [toenemen](H*L) []1 []2 van [zes]0 []1 [](%L) tot [elf](H*L) [procent]0 van het brutoloon [](L%)",
+            "sentence": "[](%L) [De] [premie]0 []1 [](%L) [zal] [bij] [ongewijzigd](H*L) [beleid]0 []1 []2 [de] [komende] [vijf](H*L) [jaar] [toenemen](H*L) []1 []2 [van] [zes]0 []1 [](%L) [tot] [elf](H*L) [procent]0 [van] [het] [brutoloon] [](L%)",
             "key": [
                 "H*L",
                 "H%",
@@ -131,7 +131,7 @@
                 "H*",
                 "%",
                 "%L",
-                "∅"
+                "\u2205"
             ],
             "contour": "5A-10.png",
             "audio": "5A-10.mp3",
@@ -139,7 +139,7 @@
             "textgrid": "5A-10.TextGrid"
         },
         {
-            "sentence": "[](%L) [Daarvoor]0 was [niet]0 gewaarschuwd []1",
+            "sentence": "[](%L) [Daarvoor]0 [was] [niet]0 [gewaarschuwd] []1",
             "key": [
                 "H*L",
                 "H*",
@@ -151,7 +151,7 @@
             "textgrid": "5A-11.TextGrid"
         },
         {
-            "sentence": "[](%L) Op een gegeven moment zie je daar een [meisje]0 staan []1",
+            "sentence": "[](%L) [Op] [een] [gegeven] [moment] [zie] [je] [daar] [een] [meisje]0 [staan] []1",
             "key": [
                 "H*",
                 "H%"
@@ -181,7 +181,7 @@
                 "H*!H"
             ],
             [
-                "∅"
+                "\u2205"
             ]
         ],
         [
@@ -191,7 +191,7 @@
             ],
             [
                 "%",
-                "∅"
+                "\u2205"
             ]
         ],
         [
@@ -201,7 +201,7 @@
             ],
             [
                 "%HL",
-                "∅"
+                "\u2205"
             ]
         ]
     ]

@@ -1,7 +1,7 @@
 {
     "items": [
         {
-            "sentence": "[]2 Maar [hier]0 hoeven we 't niet te [proberen]0 []1",
+            "sentence": "[]2 [Maar] [hier]0 [hoeven] [we] 't [niet] [te] [proberen]0 []1",
             "key": [
                 "%L",
                 "H*LH",
@@ -14,7 +14,7 @@
             "textgrid": "8A-1.TextGrid"
         },
         {
-            "sentence": "[]2 [Nee]0 []1 [](P) [zei]3 meneer van de Brandelaar []1",
+            "sentence": "[]2 [Nee]0 []1 [](P) [zei]3 [meneer] [van] [de] [Brandelaar] []1",
             "key": [
                 "%L",
                 "H*L",
@@ -28,7 +28,7 @@
             "textgrid": "8A-2.TextGrid"
         },
         {
-            "sentence": "[]2 De [eerste]0 der [Mohanikanen]0 []1",
+            "sentence": "[]2 [De] [eerste]0 [der] [Mohanikanen]0 []1",
             "key": [
                 "%L",
                 "L*H",
@@ -41,11 +41,11 @@
             "textgrid": "8A-3.TextGrid"
         },
         {
-            "sentence": "[]2 Maar dat is [uberhaupt]0 niet 't [geval]0 []1",
+            "sentence": "[]2 [Maar] [dat] [is] [uberhaupt]0 [niet] 't [geval]0 []1",
             "key": [
                 "%L",
                 "H*L",
-                "∅",
+                "\u2205",
                 "L%"
             ],
             "contour": "8A-4.png",
@@ -54,7 +54,7 @@
             "textgrid": "8A-4.TextGrid"
         },
         {
-            "sentence": "[]2 Even over iets [anders]0 dan 't werk []1 [](P) []2 heeft u zelf [hobbies]0 []1",
+            "sentence": "[]2 [Even] [over] [iets] [anders]0 [dan] 't [werk] []1 [](P) []2 [heeft] [u] [zelf] [hobbies]0 []1",
             "key": [
                 "%L",
                 "H*",
@@ -69,7 +69,7 @@
             "textgrid": "8A-5.TextGrid"
         },
         {
-            "sentence": "[]2 't Is [zeer]0 [interessant]0 []1",
+            "sentence": "[]2 't [Is] [zeer]0 [interessant]0 []1",
             "key": [
                 "%L",
                 "H*",
@@ -82,11 +82,11 @@
             "textgrid": "8A-6.TextGrid"
         },
         {
-            "sentence": "[]2 Ja ik vond dat je het [echt]0 [goed]0 [gedaan]0 hebt []1",
+            "sentence": "[]2 [Ja] [ik] [vond] [dat] [je] [het] [echt]0 [goed]0 [gedaan]0 [hebt] []1",
             "key": [
                 "%L",
                 "H*",
-                "∅",
+                "\u2205",
                 "!H*L",
                 "L%"
             ],
@@ -96,7 +96,7 @@
             "textgrid": "8A-7.TextGrid"
         },
         {
-            "sentence": "[](%L) [Stom]0 [](L%) [](%L) dat ik [daar]0 niet aan [gedacht]0 heb [](L%)",
+            "sentence": "[](%L) [Stom]0 [](L%) [](%L) [dat] [ik] [daar]0 [niet] [aan] [gedacht]0 [heb] [](L%)",
             "key": [
                 "H*L",
                 "H*L",
@@ -108,7 +108,7 @@
             "textgrid": "8A-8.TextGrid"
         },
         {
-            "sentence": "[]2 Ze lopen [helemaal]0 de [keuken]0 door []1",
+            "sentence": "[]2 [Ze] [lopen] [helemaal]0 [de] [keuken]0 [door] []1",
             "key": [
                 "%L",
                 "H*",
@@ -121,12 +121,12 @@
             "textgrid": "8A-9.TextGrid"
         },
         {
-            "sentence": "[]2 Wat heb [ik]0 [nou]0 aan m'n [fiets]0 hangen []1",
+            "sentence": "[]2 [Wat] [heb] [ik]0 [nou]0 [aan] [m'n] [fiets]0 [hangen] []1",
             "key": [
                 "%L",
-                "∅",
+                "\u2205",
                 "L*HL",
-                "∅",
+                "\u2205",
                 "L%"
             ],
             "contour": "8A-10.png",
@@ -135,10 +135,10 @@
             "textgrid": "8A-10.TextGrid"
         },
         {
-            "sentence": "[]2 Is er [geen]0 [tafelkleedje]0 []1",
+            "sentence": "[]2 [Is] [er] [geen]0 [tafelkleedje]0 []1",
             "key": [
                 "%L",
-                "∅",
+                "\u2205",
                 "H*",
                 "H%"
             ],
@@ -148,7 +148,7 @@
             "textgrid": "8A-11.TextGrid"
         },
         {
-            "sentence": "[]2 Ga [direct]0 naar de [gevangenis]0 []1 []2 ga [niet]0 langs [af]0 []1",
+            "sentence": "[]2 [Ga] [direct]0 [naar] [de] [gevangenis]0 []1 []2 [ga] [niet]0 [langs] [af]0 []1",
             "key": [
                 "%L",
                 "H*L",
@@ -188,7 +188,7 @@
                 "H*!H"
             ],
             [
-                "∅"
+                "\u2205"
             ]
         ],
         [
@@ -198,7 +198,7 @@
             ],
             [
                 "%",
-                "∅"
+                "\u2205"
             ]
         ],
         [
@@ -208,7 +208,7 @@
             ],
             [
                 "%HL",
-                "∅"
+                "\u2205"
             ]
         ],
         [
@@ -217,7 +217,7 @@
                 "H"
             ],
             [
-                "∅"
+                "\u2205"
             ]
         ]
     ]

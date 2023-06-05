@@ -1,0 +1,379 @@
+Documentatie audiovoorbeelden ToDI cursus
+
+filenaam	spreker/bron	beschr./orig.naam
+001.wav		Arthur		chanted call
+002.wav		Arthur		downst.+ spread
+003.wav		Arthur		"'n beetje.."
+004.wav		Carlos		1 H*L (tobi2)
+005.wav		Judith		2 H*L (dic107b)
+006.wav		Judith		mich136
+007.wav		Judith		H*H% (mich137)
+008.wav		Judith		H*H% (edi137)
+009.wav		Carlos		H*H% (Btobi16)
+010.wav		Carlos		idem (Btobi13)
+011.wav		Carlos		idem (Btobi17)
+012.wav		Judith		L*+H (flo133)
+013.wav		Judith		idem (flo238)
+014.wav		Carlos		H*H% (Ctobi1)
+015.wav		Carlos		L*+H (Ctobi2)
+016.wav		Carlos		combi (Btobi11)
+017.wav		Carlos		delay (Ctobi8)
+018.wav		Carlos		level (Btobi16)
+019.wav		Carlos		idem (Btobi5)
+020.wav		Carlos		L* (Ctobi6)
+021.wav		Carlos		L* (Ctobi7)
+022.wav		Carlos		L* (Ctobi8)
+023.wav		Carlos		L* (Ctobi9)
+024.wav		Carlos		L* (Ctobi10)
+025.wav		Carlos		L* (Ctobi11)
+026.wav		Judith		H*+L (Roo239)
+027.wav		Carlos		H*+L (Btobi7)
+028.wav		Carlos		H*L (Btobi8)
+029.wav		Carlos		H*^L (Btobi9)
+030.wav		Carlos		!H*> (tobi4)
+031.wav		Carlos		ambigu (tobi1)
+032.wav		Judith		4 H*L (dic107)
+032a.wav	Judith		1e deel dic107
+032b.wav	Judith		2e deel dic107
+033.wav		Carlos		!H*L (tobi12)
+034.wav		Judith		!H*L (hen207a)
+035.wav		Carlos		Ctobi13
+036.wav		Carlos		Ctobi5
+037.wav		Carlos		Ctobi14
+038.wav		Carlos		Ctobi12
+039.wav		Carlos		H* (Btobi18)
+040.wav		Carlos		H* (Btobi20)
+041.wav		Carlos		H* (Btobi19)
+042.wav		Carlos		H* (Ctobi3)
+043.wav		Carlos		H* (Ctobi4)
+044.wav		Carlos		neelie1 (Btobi3)
+045.wav		Carlos		neelie2 (Btobi4)
+046.wav		CNI		H*+L (Btobi21)
+047.wav		Carlos		ambi (Btobi2)
+048.wav		Carlos		ambi (Btobi1)
+049.wav		Carlos		ambi (Btobi14)
+050.wav		Carlos		pauze (tobi5)
+051.wav		Carlos		pauze (tobi9)
+052.wav		TTS		ttsvb1
+053.wav		TTS		ttsvb2
+054.wav		TTS		ttsvb3
+055.wav		Carlos		atobi1
+056.wav		Carlos		atobi2
+057.wav		Carlos		atobi3
+058.wav		Arthur		phrasing1
+059.wav		Arthur		phrasing2
+060.wav		Arthur		phrasing3
+061.wav		Arthur		phrasing4
+062.wav		Arthur		accent1
+063.wav		Arthur		accent2
+064.wav		Arthur		accent3
+065.wav		Arthur		natural2
+066.wav		Fluency		synthetic1
+067.wav		Fluency		synthetic2
+068.wav		TTS		tts1
+069.wav		TTS		tts2
+070.wav		Fluency		synthetic3a
+071.wav		Fluency		synthetic3b
+072.wav		Carlos		dtobi1
+073.wav		Carlos		dtobi10
+074.wav		Carlos		dtobi11
+075.wav		Carlos		dtobi12
+076.wav		Carlos		dtobi13
+077.wav		Carlos		dtobi14
+078.wav		Carlos		dtobi15
+079.wav		Carlos		dtobi16
+080.wav		Carlos		dtobi17
+081.wav		Carlos		dtobi18
+082.wav		Carlos		dtobi19
+083.wav		Carlos		dtobi2
+084.wav		Carlos		dtobi20
+085.wav		Carlos		dtobi21
+086.wav		Carlos		dtobi22
+087.wav		Carlos		dtobi23
+088.wav		Carlos		dtobi24
+089.wav		Carlos		dtobi25
+090.wav		Carlos		dtobi26
+091.wav		Carlos		dtobi27
+092.wav		Carlos		dtobi28
+093.wav		Carlos		dtobi29
+094.wav		Carlos		dtobi30
+095.wav		Carlos		dtobi31
+096.wav		Carlos		dtobi32
+097.wav		Carlos		dtobi33
+098.wav		Carlos		dtobi34
+099.wav		Carlos		dtobi35
+100.wav		Carlos		dtobi36
+101.wav		Carlos		dtobi37
+102.wav		Carlos		dtobi39
+103.wav		Carlos		dtobi40
+104.wav		Carlos		dtobi3
+105.wav		Carlos		dtobi4
+106.wav		Carlos		dtobi41
+107.wav		Carlos		dtobi42
+108.wav		Carlos		dtobi43
+109.wav		Carlos		dtobi5
+110.wav		Carlos		dtobi6
+111.wav		Carlos		dtobi7
+112.wav		Carlos		dtobi8
+113.wav		Carlos		dtobi9
+114.wav		Carlos		etobi1
+115.wav		Carlos		etobi2
+116.wav		Carlos		etobi3
+117.wav		Carlos		etobi4
+118.wav		Carlos		etobi5
+119.wav		Carlos		etobi6
+120.wav		Carlos		etobi7
+121.wav		Carlos		etobi8
+122.wav		Carlos		etobi9
+123.wav		Carlos		etobi10
+124.wav		Carlos		etobi11
+125.wav		Carlos		etobi12
+126.wav		Carlos		etobi13
+127.wav		Carlos		etobi14
+128.wav		Carlos		etobi15
+129.wav		Carlos		etobi16
+130.wav		Carlos		etobi17
+131.wav		Carlos		etobi18
+132.wav		Carlos		etobi19
+133.wav		Carlos		etobi20
+134.wav		Carlos		etobi21
+135.wav		Carlos		etobi22
+136.wav		Carlos		etobi23
+137.wav		Carlos		etobi24
+138.wav		Carlos		etobi25
+139.wav		Carlos		etobi26
+140.wav		Carlos		etobi27
+141.wav		Carlos		etobi28
+142.wav		Carlos		etobi29
+143.wav		Carlos		etobi30
+144.wav		Carlos		etobi31
+145.wav		Carlos		etobi32
+146.wav		Carlos		etobi33
+147.wav		Carlos		etobi34
+148.wav		Carlos		etobi35
+149.wav		Carlos		etobi36
+150.wav		Carlos		etobi37
+151.wav		Carlos		etobi38
+152.wav		Carlos		etobi39
+153.wav		Carlos		etobi40
+154.wav		Carlos		etobi41
+155.wav		Carlos		etobi42
+156.wav		Carlos		etobi43
+157.wav		Carlos		etobi44
+158.wav		Carlos		etobi45
+159.wav		Carlos		etobi46
+160.wav		Carlos		etobi47
+161.wav		Carlos		etobi48
+162.wav		Carlos		etobi49
+163.wav		Carlos		etobi50
+164.wav		Carlos		etobi51
+165.wav		Carlos		etobi52
+166.wav		Carlos		etobi53
+167.wav		Carlos		etobi54
+168.wav		Carlos		etobi55
+169.wav		Carlos		etobi56
+170.wav		Carlos		etobi57
+171.wav		Carlos		etobi58
+172.wav		Carlos		etobi59
+173.wav		Carlos		etobi60
+174.wav		Carlos		etobi61
+175.wav		Carlos		etobi62
+176.wav		Carlos		etobi63
+177.wav		Carlos		etobi64
+178.wav		Carlos		etobi65
+179.wav		Carlos		etobi66
+180.wav		Carlos		etobi67
+181.wav		Carlos		etobi68
+182.wav		Carlos		etobi69
+183.wav		Carlos		etobi70
+184.wav		Carlos		etobi71
+185.wav		Carlos		etobi72
+186.wav		Carlos		etobi73
+187.wav		Carlos		etobi74
+188.wav		Carlos		etobi75
+189.wav		Carlos		etobi76
+190.wav		Carlos		etobi77
+191.wav		Carlos		etobi78
+192.wav		Carlos		etobi79
+193.wav		Carlos		etobi80
+194.wav		Carlos		etobi81
+195.wav		Carlos		etobi82
+196.wav		Carlos		etobi83
+197.wav		Carlos		etobi84
+198.wav		Carlos		etobi85
+199.wav		Carlos		etobi86
+200.wav		Carlos		etobi87
+201.wav		Carlos		etobi88
+202.wav		Carlos		etobi89
+203.wav		Carlos		etobi90
+204.wav		Carlos		etobi91
+205.wav		Carlos		etobi92
+206.wav		Carlos		etobi93
+207.wav		Carlos		etobi94
+208.wav		Carlos		etobi95
+209.wav		Carlos		etobi96
+210.wav		Carlos		etobi97
+211.wav		Carlos		etobi98
+212.wav		Carlos		etobi99
+213.wav		Carlos		etobi100
+214.wav		Carlos		etobi101
+215.wav		Carlos		etobi102
+216.wav		Carlos		etobi103
+217.wav		Carlos		etobi104 kapot!
+218.wav		Carlos		etobi105
+219.wav		Carlos		etobi106
+220.wav		Carlos		etobi107
+221.wav		Carlos		etobi108
+222.wav		Carlos		etobi109
+223.wav		Carlos		etobi110
+224.wav		Carlos		etobi111
+225.wav		Carlos		etobi112
+226.wav		Carlos		etobi113
+227.wav		Carlos		etobi114
+228.wav		Carlos		etobi115
+229.wav		Carlos		etobi116
+230.wav		Carlos		etobi117
+231.wav		Carlos		etobi118 kapot!
+232.wav		Carlos		etobi119
+233.wav		Carlos		etobi120
+234.wav		Carlos		etobi121
+235.wav		Carlos		etobi122
+236.wav		Carlos		etobi123
+237.wav		Carlos		etobi124
+238.wav		Carlos		etobi125
+239.wav		Carlos		etobi126
+240.wav		Carlos		etobi127
+241.wav		Carlos		etobi128
+242.wav		Carlos		etobi129
+243.wav		Carlos		etobi130
+244.wav		Carlos		etobi131
+245.wav		Carlos		etobi132
+246.wav		Carlos		etobi133
+247.wav		Carlos		etobi134
+248.wav		Carlos		etobi135
+249.wav		Carlos		etobi136
+250.wav		Carlos		etobi137
+251.wav		Carlos		etobi138
+252.wav		Carlos		etobi139
+253.wav		Carlos		etobi140
+254.wav		Carlos		etobi141
+255.wav		Carlos		etobi142
+256.wav		Carlos		etobi143
+257.wav		Carlos		etobi144
+258.wav		Carlos		etobi145
+259.wav		Carlos		etobi146
+260.wav		Carlos		etobi147
+261.wav		Carlos		etobi148
+262.wav		Carlos		etobi149
+263.wav		Carlos		etobi150
+264.wav		Carlos		etobi151
+265.wav		Carlos		etobi152
+266.wav		Carlos		etobi153
+267.wav		Carlos		etobi154
+268.wav		Carlos		etobi155
+269.wav		Carlos		etobi156
+270.wav		Carlos		etobi157
+271.wav		Arthur		"rood"
+272.wav		Carlos		etobires (Rijke en Versmissen)
+273.wav		Carlos		btobi12 
+274.wav		Carlos		todiarbeid (Neelie)
+275.wav		Carlos		todibinnen (hele dag binnen)
+276.wav		Carlos		todihalf1 (hij doet't niet)
+277.wav		Carlos		todihalf2 (staan geen auto's)
+278.wav		Carlos		todihalf3 (niet meer smaken)
+279.wav		Carlos		todisneeuw 
+280.wav		Arthur		new1 (Heb jij dat gedaan)
+281.wav		Fluency		TTS Er stAAN me daar een hoop
+282.wav		Fluency		Psola res. 152.wav
+283.wav		Carlos		ftobi22
+284.wav		Carlos		ftobi6
+285.wav		Carlos		ftobi5
+286.wav		Carlos		ftobi21
+287.wav		Carlos		ftobi19
+288.wav		Carlos		ftobi16
+289.wav		Carlos		ftobi18
+290.wav		Carlos		ftobi17
+291.wav		Carlos		ftobi14
+292.wav		Carlos		ftobi13
+293.wav		Carlos		ftobi9
+294.wav		Carlos		ftobi8
+295.wav		Carlos		ftobi7
+296.wav		Carlos		ftobi4
+297.wav		Carlos		ftobi3
+298.wav		Carlos		ftobi2
+299.wav		Carlos		ftobi1
+300.wav		Carlos		ftobi23
+301.wav		Carlos		ftobi15
+302.wav		Arthur		gevangenis
+303.wav		Arthur		bom
+304.wav		Arthur		fiets hangen
+305.wav		Arthur		fotos H%
+306.wav		Lu		boot
+307.wav		Arthur		geval
+308.wav		Arthur		geval2
+309.wav		Arthur		niet leuk
+310.wav		Arthur		huiswerk
+311.wav		Arthur		mobieltje
+312.wav		Arthur		papapa
+313.wav		Arthur		rekening H%
+314.wav		Arthur		nieuwe vissen2
+315.wav		Arthur		Soestdijk
+316.wav		Arthur		koninginnedag
+317.wav		Arthur		kunst
+318.wav		Carlos		gtobi32
+319.wav		Carlos		gtobi28
+320.wav		Carlos		gtobi29
+321.wav		Carlos		gtobi31
+322.wav		Carlos		gtobi17
+323.wav		Carlos		gtobi20
+324.wav		Carlos		gtobi2
+325.wav		Carlos		gtobi8
+326.wav		Carlos		gtobi1
+327.wav		Carlos		gtobi3
+328.wav		Carlos		gtobi4
+329.wav		Carlos		gtobi5
+330.wav		Carlos		gtobi6
+331.wav		Carlos		gtobi7
+332.wav		Carlos		gtobi9
+333.wav		Carlos		gtobi10
+334.wav		Carlos		gtobi11
+335.wav		Carlos		gtobi13
+336.wav		Carlos		gtobi14
+337.wav		Carlos		gtobi15
+338.wav		Carlos		gtobi16
+339.wav		Carlos		gtobi18
+340.wav		Carlos		gtobi19
+341.wav		Carlos		gtobi21
+342.wav		Carlos		gtobi22
+343.wav		Carlos		gtobi23
+344.wav		Carlos		gtobi24
+345.wav		Carlos		gtobi26
+346.wav		Carlos		gtobi27
+347.wav		Carlos		gtobi25
+348.wav		Carlos		gtobi30
+349.wav		Carlos		gtobi33
+350.wav		Carlos		gtobi34
+351.wav		Carlos		gtobi41
+352.wav		Carlos		gtobi50
+353.wav		Carlos		gtobi35
+354.wav		Carlos		gtobi36
+355.wav		Carlos		gtobi37
+356.wav		Carlos		gtobi38
+357.wav		Carlos		gtobi46
+358.wav		Carlos		gtobi39
+359.wav		Carlos		gtobi40
+360.wav		Carlos		gtobi44
+361.wav		Carlos		gtobi43
+362.wav		Carlos		gtobi42
+363.wav		Carlos		gtobi51
+364.wav		Carlos		meegaan
+365.wav		Carlos		marie1
+366.wav		Carlos		marie2
+367.wav		Carlos		gtobi17g
+368.wav		Carlos		tobimeloenen
+369.wav		Carlos		todilogisch
+370.wav		Carlos		todilogisch2
+371.wav		Carlos		todilonen
+372.wav		Carlos		todimeloen2
+373.wav		Carlos		todikeukedoor3
+

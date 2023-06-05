@@ -1,7 +1,7 @@
 {
     "items": [
         {
-            "sentence": "[](%L) [Fietsen]0 is in 't  [hele]0 park [verboden]0 [](L%)",
+            "sentence": "[](%L) [Fietsen]0 [is] [in] 't [hele]0 [park] [verboden]0 [](L%)",
             "key": [
                 "H*",
                 "!H*",
@@ -13,7 +13,7 @@
             "textgrid": "1C-1.TextGrid"
         },
         {
-            "sentence": "[](%L) [Fietsen]0 is in 't  [hele]0 park [verboden]0 [](L%)",
+            "sentence": "[](%L) [Fietsen]0 [is] [in] 't [hele]0 [park] [verboden]0 [](L%)",
             "key": [
                 "H*L",
                 "!H*L",
@@ -25,7 +25,7 @@
             "textgrid": "1C-2.TextGrid"
         },
         {
-            "sentence": "[](%L) Dat  moet  je  [straks]0  maar  even  [over]0  doen  [](L%)",
+            "sentence": "[](%L) [Dat] [moet] [je] [straks]0 [maar] [even] [over]0 [doen] [](L%)",
             "key": [
                 "H*L",
                 "H*L"
@@ -36,7 +36,7 @@
             "textgrid": "1C-3.TextGrid"
         },
         {
-            "sentence": "[](%L) Dat  moet  je  [straks]0  maar  even  [over]0  doen  [](L%)",
+            "sentence": "[](%L) [Dat] [moet] [je] [straks]0 [maar] [even] [over]0 [doen] [](L%)",
             "key": [
                 "H*",
                 "!H*L"
@@ -47,11 +47,11 @@
             "textgrid": "1C-4.TextGrid"
         },
         {
-            "sentence": "[](%L) [Waar]0  wil  [Marina]0  haar  [mandoline]0  verkopen [](L%)",
+            "sentence": "[](%L) [Waar]0 [wil] [Marina]0 [haar] [mandoline]0 [verkopen] [](L%)",
             "key": [
                 "H*",
-                "∅",
-                "∅"
+                "\u2205",
+                "\u2205"
             ],
             "contour": "1C-5.png",
             "audio": "1C-5.mp3",
@@ -59,7 +59,7 @@
             "textgrid": "1C-5.TextGrid"
         },
         {
-            "sentence": "[](%L) Je  bent  ook  wel  [nieuwsgierig]0  van  wat  [maken]0  ze d'rvan [](L%)",
+            "sentence": "[](%L) [Je] [bent] [ook] [wel] [nieuwsgierig]0 [van] [wat] [maken]0 [ze] [d'rvan] [](L%)",
             "key": [
                 "H*L",
                 "H*L"
@@ -73,7 +73,7 @@
             "sentence": "[](%L) [zij]0 [heeft]0 [eendjes]0 [](L%)",
             "key": [
                 "H*L",
-                "∅",
+                "\u2205",
                 "H*L"
             ],
             "contour": "1C-7.png",
@@ -82,7 +82,7 @@
             "textgrid": "1C-7.TextGrid"
         },
         {
-            "sentence": "[](%L)  de  [kerk]0 laat  je  nog  [even]0  [rechts]0  liggen [](L%)",
+            "sentence": "[](%L) [de] [kerk]0 [laat] [je] [nog] [even]0 [rechts]0 [liggen] [](L%)",
             "key": [
                 "H*",
                 "!H*L"
@@ -93,7 +93,7 @@
             "textgrid": "1C-8.TextGrid"
         },
         {
-            "sentence": "[](%L) ik  heb  [eerst]0  heb  ik  een  [boom]0  en  een  [fabriek]0 [](L%)",
+            "sentence": "[](%L) [ik] [heb] [eerst]0 [heb] [ik] [een] [boom]0 [en] [een] [fabriek]0 [](L%)",
             "key": [
                 "H*L",
                 "H*L",
@@ -105,10 +105,10 @@
             "textgrid": "1C-9.TextGrid"
         },
         {
-            "sentence": "[](%L) je  gaat  [rechts]  [langs de]  [fiets] [](L%)",
+            "sentence": "[](%L) [je] [gaat] [rechts] [langs [de]] [fiets] [](L%)",
             "key": [
                 "H*",
-                "∅",
+                "\u2205",
                 "!H*L"
             ],
             "contour": "1C-10.png",
@@ -117,9 +117,9 @@
             "textgrid": "1C-10.TextGrid"
         },
         {
-            "sentence": "[](%L) je  [blijft]0  [rechts]0  van  het  [huis]0  [](L%)",
+            "sentence": "[](%L) [je] [blijft]0 [rechts]0 [van] [het] [huis]0 [](L%)",
             "key": [
-                "∅",
+                "\u2205",
                 "H*",
                 "!H*L"
             ],
@@ -129,7 +129,7 @@
             "textgrid": "1C-11.TextGrid"
         },
         {
-            "sentence": "[](%L) en dat [betreft]0 dan vooral [mensen]0 die  [geraakt]0  zijn  door [rondvliegend]0  [glas]0 [](L%)",
+            "sentence": "[](%L) [en] [dat] [betreft]0 [dan] [vooral] [mensen]0 [die] [geraakt]0 [zijn] [door] [rondvliegend]0 [glas]0 [](L%)",
             "key": [
                 "!H*L",
                 "!H*L",
@@ -155,7 +155,7 @@
             ],
             [
                 "H*LH",
-                "∅"
+                "\u2205"
             ]
         ]
     ]

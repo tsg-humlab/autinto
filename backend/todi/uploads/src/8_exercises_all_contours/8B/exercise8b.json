@@ -1,12 +1,12 @@
 {
     "items": [
         {
-            "sentence": "[]2 [Rene]0 heeft nog [vlees]0 [over]0 []1",
+            "sentence": "[]2 [Rene]0 [heeft] [nog] [vlees]0 [over]0 []1",
             "key": [
                 "%L",
                 "H*L",
                 "H*",
-                "∅",
+                "\u2205",
                 "H%"
             ],
             "contour": "8B-1.png",
@@ -15,11 +15,11 @@
             "textgrid": "8B-1.TextGrid"
         },
         {
-            "sentence": "[]2 [Wil]0 ik [niet]0 []1",
+            "sentence": "[]2 [Wil]0 [ik] [niet]0 []1",
             "key": [
                 "%L",
                 "L*",
-                "∅",
+                "\u2205",
                 "H%"
             ],
             "contour": "8B-2.png",
@@ -28,7 +28,7 @@
             "textgrid": "8B-2.TextGrid"
         },
         {
-            "sentence": "[]2 Ze liggen [niet]0 over elkaar [heen]0 []1 []2 maar je legt 'm gewoon d'r [boven]0 [tegenaan]0 []1",
+            "sentence": "[]2 [Ze] [liggen] [niet]0 [over] [elkaar] [heen]0 []1 []2 [maar] [je] [legt] 'm [gewoon] [d'r] [boven]0 [tegenaan]0 []1",
             "key": [
                 "%L",
                 "H*L",
@@ -45,18 +45,18 @@
             "textgrid": "8B-3.TextGrid"
         },
         {
-            "sentence": "[]2 En je moet [niet]0 telkens [poeh]0 [zeggen]0 []1 [zei]3 [juffrouw]0 [van]0 [der]0 [keuken]0 []1 []2 [dat]0 is [onbeleefd]0 []1",
+            "sentence": "[]2 [En] [je] [moet] [niet]0 [telkens] [poeh]0 [zeggen]0 []1 [zei]3 [juffrouw]0 [van]0 [der]0 [keuken]0 []1 []2 [dat]0 [is] [onbeleefd]0 []1",
             "key": [
                 "%L",
                 "H*",
                 "!H*L",
-                "∅",
+                "\u2205",
                 "L%",
                 "L",
-                "∅",
-                "∅",
-                "∅",
-                "∅",
+                "\u2205",
+                "\u2205",
+                "\u2205",
+                "\u2205",
                 "L%",
                 "%L",
                 "H*L",
@@ -69,7 +69,7 @@
             "textgrid": "8B-4.TextGrid"
         },
         {
-            "sentence": "[]2 De [hele]0 [kudde]0 is daarbij [omgekomen]0 []1",
+            "sentence": "[]2 [De] [hele]0 [kudde]0 [is] [daarbij] [omgekomen]0 []1",
             "key": [
                 "%L",
                 "H*",
@@ -83,12 +83,12 @@
             "textgrid": "8B-5.TextGrid"
         },
         {
-            "sentence": "[]2 Toen er [werd]0 [afgefloten]0 was de [stand]0 nog [steeds]0 [gelijk]0 []1",
+            "sentence": "[]2 [Toen] [er] [werd]0 [afgefloten]0 [was] [de] [stand]0 [nog] [steeds]0 [gelijk]0 []1",
             "key": [
                 "%L",
-                "∅",
+                "\u2205",
                 "H*L",
-                "∅",
+                "\u2205",
                 "H*",
                 "!H*L",
                 "L%"
@@ -99,7 +99,7 @@
             "textgrid": "8B-6.TextGrid"
         },
         {
-            "sentence": "[]2 Ik loop [altijd]0 [heen en]0 [weer]0 over de [trap]0 []1 [](P) []2 [dag en]0 [nacht]0 []1",
+            "sentence": "[]2 [Ik] [loop] [altijd]0 [heen [en]0] [weer]0 [over] [de] [trap]0 []1 [](P) []2 [dag [en]0] [nacht]0 []1",
             "key": [
                 "%L",
                 "H*",
@@ -118,11 +118,11 @@
             "textgrid": "8B-7.TextGrid"
         },
         {
-            "sentence": "[]2 Moet je [Oma]0 die dan niet [geven]0 []1",
+            "sentence": "[]2 [Moet] [je] [Oma]0 [die] [dan] [niet] [geven]0 []1",
             "key": [
                 "%L",
                 "L*HL",
-                "∅",
+                "\u2205",
                 "L%"
             ],
             "contour": "8B-8.png",
@@ -131,11 +131,11 @@
             "textgrid": "8B-8.TextGrid"
         },
         {
-            "sentence": "[]2 Waar [hebben]0 we het nou helemaal [over]0 []1",
+            "sentence": "[]2 [Waar] [hebben]0 [we] [het] [nou] [helemaal] [over]0 []1",
             "key": [
                 "%L",
                 "H*L",
-                "∅",
+                "\u2205",
                 "%"
             ],
             "contour": "8B-9.png",
@@ -144,7 +144,7 @@
             "textgrid": "8B-9.TextGrid"
         },
         {
-            "sentence": "[]2 Dat moet je [straks]0 maar even [overdoen]0 []1",
+            "sentence": "[]2 [Dat] [moet] [je] [straks]0 [maar] [even] [overdoen]0 []1",
             "key": [
                 "%L",
                 "H*L",
@@ -157,10 +157,10 @@
             "textgrid": "8B-10.TextGrid"
         },
         {
-            "sentence": "[]2 [Dus]0 zagen ze [af]0 van verdere [deelname]0 []1",
+            "sentence": "[]2 [Dus]0 [zagen] [ze] [af]0 [van] [verdere] [deelname]0 []1",
             "key": [
                 "%HL",
-                "∅",
+                "\u2205",
                 "L*H",
                 "H*L",
                 "L%"
@@ -171,11 +171,11 @@
             "textgrid": "8B-11.TextGrid"
         },
         {
-            "sentence": "[]2 Zijn er [meloenen]0 te [veel]0 []1",
+            "sentence": "[]2 [Zijn] [er] [meloenen]0 [te] [veel]0 []1",
             "key": [
                 "%L",
                 "L*HL",
-                "∅",
+                "\u2205",
                 "L%"
             ],
             "contour": "8B-12.png",
@@ -207,7 +207,7 @@
                 "H*!H"
             ],
             [
-                "∅"
+                "\u2205"
             ]
         ],
         [
@@ -217,7 +217,7 @@
             ],
             [
                 "%",
-                "∅"
+                "\u2205"
             ]
         ],
         [
@@ -227,7 +227,7 @@
             ],
             [
                 "%HL",
-                "∅"
+                "\u2205"
             ]
         ],
         [
@@ -236,7 +236,7 @@
                 "H"
             ],
             [
-                "∅"
+                "\u2205"
             ]
         ]
     ]
