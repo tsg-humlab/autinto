@@ -46,6 +46,12 @@ class Interval:
     def scale(self, scalar):
         return self.start + scalar * self.duration
 
+def Duration(start_time: timedelta, end_time: timedelta) -> timedelta:
+    """
+    Slightly shorter syntax for creating an interval, then asking for
+    its duration.
+    """
+    return Interval(start_time, end_time).duration
 
 
 @dataclass

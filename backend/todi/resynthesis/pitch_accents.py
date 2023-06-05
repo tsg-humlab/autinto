@@ -6,13 +6,6 @@ import re
 from resynthesis.types import Milliseconds, FrequencyPoint, Interval
 from resynthesis.abstract_pitch_accents import AbstractWord, AbstractInitialBoundary, AbstractFinalBoundary
 
-def duration(start, end):
-    """
-    Slightly shorter syntax for creating an interval, then asking for
-    its duration.
-    """
-    return Interval(start, end).duration
-
 class Tone(Enum):
     """
     Helper class for the pitch accents. It is simply used to store a
@@ -145,7 +138,7 @@ class Word(AbstractWord):
         # starts) within 360 milliseconds, L2 and L3 are placed
         # according to the available space from the VP start to the
         # boundary.
-        if duration(self.vp.end, self.next_boundary) < Milliseconds(360):
+        if Duration(self.vp.end, self.next_boundary) < Milliseconds(360):
             # define a new interval from VP start to next boundary
             start_to_next_boundary = Interval(self.vp.start, self.next_boundary)
             # then place points 3% and 30% into this interval
@@ -186,7 +179,7 @@ class Word(AbstractWord):
         # TODO downstep
 
         # Cases are split the same way they were in decode_primary_low().
-        if duration(self.vp.end, self.next_boundary) < Milliseconds(360):
+        if Duration(self.vp.end, self.next_boundary) < Milliseconds(360):
             # If time is short it is again dependent on the interval
             # from VP start to the next boundary.
             start_to_next_boundary = Interval(self.vp.start, self.next_boundary)
@@ -555,7 +548,7 @@ class FinalBoundary(AbstractFinalBoundary):
         match self.last_word.name:
             case 'L*':
                 # If there is not enough time, don't create extra points
-                if duration(self.last_word.vp.end, self.ip.end) < Milliseconds(350):
+                if Duration(self.last_word.vp.end, self.ip.end) < Milliseconds(350):
                     return
 
                 # Otherwise, create two points:
@@ -573,7 +566,7 @@ class FinalBoundary(AbstractFinalBoundary):
 
             case 'H*' | '!H*':
                 # If there is not enough time, don't create extra points
-                if duration(self.last_word.vp.end, self.ip.end) < Milliseconds(350):
+                if Duration(self.last_word.vp.end, self.ip.end) < Milliseconds(350):
                     return
 
                 # Otherwise, create two points:
@@ -594,7 +587,7 @@ class FinalBoundary(AbstractFinalBoundary):
                 # points, depending on available time.
                 make_h2 = False
 
-                if duration(point_list[-1].time, self.ip.end) < Milliseconds(200):
+                if Duration(point_list[-1].time, self.ip.end) < Milliseconds(200):
                     time_h1 = point_list[-1].time + Milliseconds(50)
                 else:
                     time_h1 = point_list[-1].time + Milliseconds(100)
