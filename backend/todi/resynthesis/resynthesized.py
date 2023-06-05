@@ -119,23 +119,26 @@ class ResynthesizedPhrase:
         self.ips: list[ResynthesizedIntonationalPhrase] = []
         self.textgrid = phrase.textgrid
 
-        #check the gender and set default values accordingly
-        gender = self.textgrid.getFirst('words')[0].mark
-        match gender:
-            case 'm':
-                if 'fr' not in kwargs:
-                    kwargs['fr'] = 70
-                if 'n' not in kwargs:
-                    kwargs['n'] = 70
-                if 'w' not in kwargs:
-                    kwargs['w'] = 110
-            case 'v':
-                if 'fr' not in kwargs:
-                    kwargs['fr'] = 95
-                if 'n' not in kwargs:
-                    kwargs['n'] = 120
-                if 'w' not in kwargs:
-                    kwargs['w'] = 190
+        try:
+            #check the gender and set default values accordingly
+            gender = self.textgrid.getFirst('words')[0].mark
+            match gender:
+                case 'm':
+                    if 'fr' not in kwargs:
+                        kwargs['fr'] = 70
+                    if 'n' not in kwargs:
+                        kwargs['n'] = 70
+                    if 'w' not in kwargs:
+                        kwargs['w'] = 110
+                case 'v':
+                    if 'fr' not in kwargs:
+                        kwargs['fr'] = 95
+                    if 'n' not in kwargs:
+                        kwargs['n'] = 120
+                    if 'w' not in kwargs:
+                        kwargs['w'] = 190
+        except Exception:
+            pass
 
         #set remaining default values if neccessary.
         self.vars = ResynthesizeVariables(**kwargs)
