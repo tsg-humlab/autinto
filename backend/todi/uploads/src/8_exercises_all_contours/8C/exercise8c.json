@@ -1,11 +1,11 @@
 {
     "items": [
         {
-            "sentence": "[]2 [Het] [leukste]0 [onderdeel]0 [vond] [ik] [eigenlijk] [het] [lesgeven]0 []1",
+            "sentence": "[]0 [Het] [leukste]1 [onderdeel]1 [vond] [ik] [eigenlijk] [het] [lesgeven]1 []2",
             "key": [
                 "%L",
                 "H*",
-                "\u2205",
+                "∅",
                 "!H*L",
                 "L%"
             ],
@@ -15,14 +15,14 @@
             "textgrid": "8C-1.TextGrid"
         },
         {
-            "sentence": "[]2 [Examenwerk]0 [is] [niet]0 [het] [allerberoerdste]0 [om] [na]0 [te] [kijken]0 []1",
+            "sentence": "[]0 [Examenwerk]1 [is] [niet]1 [het] [allerberoerdste]1 [om] [na]1 [te] [kijken]1 []2",
             "key": [
                 "%L",
                 "H*L",
                 "H*L",
                 "H*L",
                 "H*L",
-                "\u2205",
+                "∅",
                 "L%"
             ],
             "contour": "8C-2.png",
@@ -31,15 +31,15 @@
             "textgrid": "8C-2.TextGrid"
         },
         {
-            "sentence": "[]2 [Dat] [ze] [dus] [zich] [minder]0 [goed]0 [kunnen] [concentreren]0 []1 []2 [waar] [zou 'm]0 [dat] [dan] [in] [zitten]0 []1",
+            "sentence": "[]0 [Dat] [ze] [dus] [zich] [minder]1 [goed]1 [kunnen] [concentreren]1 []2 []0 [waar] [zou 'm]1 [dat] [dan] [in] [zitten]1 []2",
             "key": [
                 "%L",
                 "H*L",
-                "\u2205",
+                "∅",
                 "H*L",
                 "L%",
                 "%L",
-                "\u2205",
+                "∅",
                 "H*",
                 "H%"
             ],
@@ -49,7 +49,7 @@
             "textgrid": "8C-3.TextGrid"
         },
         {
-            "sentence": "[]2 [Dan]0 [gaat] 't [je] [toch]0 [wel] [boeien]0 []1",
+            "sentence": "[]0 [Dan]1 [gaat 't] [je] [toch]1 [wel] [boeien]1 []2",
             "key": [
                 "%L",
                 "H*L",
@@ -63,7 +63,7 @@
             "textgrid": "8C-4.TextGrid"
         },
         {
-            "sentence": "[]2 [Nou] [dat] [wordt] [haast]0 [onmenselijk]0 []1",
+            "sentence": "[]0 [Nou] [dat] [wordt] [haast]1 [onmenselijk]1 []2",
             "key": [
                 "%L",
                 "H*L",
@@ -76,17 +76,17 @@
             "textgrid": "8C-5.TextGrid"
         },
         {
-            "sentence": "[]2 [Ja]0 [hoe] [zeg] [je] [dat] [je] [morgenavond]0 [met] [je] [neefje]0 [om]0 [half]0 [tien]0 [naar] [de] [bioscoop]0 [wil]0 []1",
+            "sentence": "[]0 [Ja]1 [hoe] [zeg je] [dat je] [morgenavond]1 [met je] [neefje]1 [om]1 [half]1 [tien]1 [naar de] [bioscoop]1 [wil]1 []2",
             "key": [
                 "%L",
-                "\u2205",
+                "∅",
                 "H*L",
                 "H*L",
-                "\u2205",
+                "∅",
                 "H*L",
-                "\u2205",
+                "∅",
                 "H*L",
-                "\u2205",
+                "∅",
                 "L%"
             ],
             "contour": "8C-6.png",
@@ -95,10 +95,10 @@
             "textgrid": "8C-6.TextGrid"
         },
         {
-            "sentence": "[]2 [Ik [weet]0] [niet] [of] [ik] [dat] [kan]0 []1",
+            "sentence": "[]0 [Ik weet]1 [niet] [of ik] [dat] [kan]1 []2",
             "key": [
                 "%L",
-                "\u2205",
+                "∅",
                 "H*L",
                 "%"
             ],
@@ -108,7 +108,7 @@
             "textgrid": "8C-7.TextGrid"
         },
         {
-            "sentence": "[]2 [Dus] [die] [ene]0 [wil] [natuurlijk] [die] [armband]0 []1 []2 [en] [die] [ander]0 [wil] [die] [collier]0 []1",
+            "sentence": "[]0 [Dus] [die] [ene]1 [wil] [natuurlijk] [die] [armband]1 []2 []0 [en] [die] [ander]1 [wil] [die] [collier]1 []2",
             "key": [
                 "%L",
                 "H*L",
@@ -125,7 +125,7 @@
             "textgrid": "8C-8.TextGrid"
         },
         {
-            "sentence": "[]2 [Hai]0 [ik] [ben] [moe]0 []1",
+            "sentence": "[]0 [Hai]1 [ik] [ben] [moe]1 []2",
             "key": [
                 "%L",
                 "H*L",
@@ -138,7 +138,7 @@
             "textgrid": "8C-9.TextGrid"
         },
         {
-            "sentence": "[]2 [Maar] [toch]0 []1 []2 [als] [ik] [dat] [zie]0 []1 []2 [dan] [denk] [ik] [ja]0 []1 []2 [dat] [is] [toch]0 [wel] [heel] [goed]0 []1",
+            "sentence": "[]0 [Maar] [toch]1 []2 []0 [als] [ik] [dat] [zie]1 []2 []0 [dan] [denk] [ik] [ja]1 []2 []0 [dat is] [toch]1 [wel] [heel] [goed]1 []2",
             "key": [
                 "%L",
                 "H*",
@@ -160,13 +160,13 @@
             "textgrid": "8C-10.TextGrid"
         },
         {
-            "sentence": "[]2 [Zeg] [maar] [net] [zo] [groot]0 [als] [dat] [kristal]0 [dat] [ik] [zelf]0 [heb]0 []1",
+            "sentence": "[]0 [Zeg] [maar] [net zo] [groot]1 [als] [dat] [kristal]1 [dat] [ik] [zelf]1 [heb]1 []2",
             "key": [
                 "%L",
-                "\u2205",
-                "\u2205",
+                "∅",
+                "∅",
                 "H*L",
-                "\u2205",
+                "∅",
                 "L%"
             ],
             "contour": "8C-11.png",
@@ -175,7 +175,7 @@
             "textgrid": "8C-11.TextGrid"
         },
         {
-            "sentence": "[]2 [Ze] [heeft] [grote]0 [belangstelling]0 [voor] [kunst]0 []1 [](P) []2 [en] [bezoekt]0 [regelmatig]0 [exposities]0 [en] [voorstellingen]0 []1",
+            "sentence": "[]0 [Ze] [heeft] [grote]1 [belangstelling]1 [voor] [kunst]1 []2 [](P) []0 [en] [bezoekt]1 [regelmatig]1 [exposities]1 [en] [voorstellingen]1 []2",
             "key": [
                 "%L",
                 "H*L",
@@ -197,49 +197,20 @@
     ],
     "choices": [
         [
-            [
-                "H*L",
-                "!H*L"
-            ],
-            [
-                "H*",
-                "!H*"
-            ],
-            [
-                "H*LH",
-                "L*HL"
-            ],
-            [
-                "L*!HL",
-                "L*"
-            ],
-            [
-                "L*H",
-                "H*!H"
-            ],
-            [
-                "\u2205"
-            ]
+            ["%L", "%H"],
+	    ["%HL"]
         ],
         [
-            [
-                "L%",
-                "H%"
-            ],
-            [
-                "%",
-                "\u2205"
-            ]
+            ["H*L", "!H*L"],
+	    ["H*", "!H*"],
+	    ["H*LH", "L*HL"],
+	    ["L*!HL", "L*"],
+	    ["L*H", "H*!H"],
+	    ["∅"]
         ],
         [
-            [
-                "%L",
-                "%H"
-            ],
-            [
-                "%HL",
-                "\u2205"
-            ]
+            ["L%", "H%"],
+	    ["%"]
         ]
     ]
 }

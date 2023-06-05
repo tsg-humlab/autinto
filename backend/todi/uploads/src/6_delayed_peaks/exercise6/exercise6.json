@@ -12,7 +12,7 @@
             "textgrid": "6-1.TextGrid"
         },
         {
-            "sentence": "[](%L) [Zijn] [er] [meloenen]0 [teveel] []1",
+            "sentence": "[](%L) [Zijn er] [meloenen]0 [teveel] []1",
             "key": [
                 "L*HL",
                 "L%"
@@ -34,7 +34,7 @@
             "textgrid": "6-3.TextGrid"
         },
         {
-            "sentence": "[](%L) 't [Is] 'n [beetje]0 [vreemd]0 []1 []2 [maar] [wel]0 [lekker]0 []1",
+            "sentence": "[](%L) ['t Is 'n] [beetje]0 [vreemd]0 []1 []2 [maar] [wel]0 [lekker]0 []1",
             "key": [
                 "L*H",
                 "L*H",
@@ -72,7 +72,7 @@
             "textgrid": "6-6.TextGrid"
         },
         {
-            "sentence": "[](%H) [Gaan] [de] [lonen]0 [omlaag] []1",
+            "sentence": "[](%H) [Gaan de] [lonen]0 [omlaag] []1",
             "key": [
                 "L*H",
                 "%"
@@ -106,7 +106,7 @@
             "textgrid": "6-9.TextGrid"
         },
         {
-            "sentence": "[](%L) [Wij]0 [zitten] [thuis] [altijd]0 [op] [de] [tafel] []1",
+            "sentence": "[](%L) [Wij]0 [zitten] [thuis] [altijd]0 [op de] [tafel] []1",
             "key": [
                 "H*L",
                 "L*HL",
@@ -129,7 +129,7 @@
             "textgrid": "6-11.TextGrid"
         },
         {
-            "sentence": "[](%L) 'k [vind] 't [helemaal] [niet] [leuk]0 [om] [dit] [te] [doen] []1",
+            "sentence": "[](%L) ['k vind 't] [helemaal] [niet] [leuk]0 [om] [dit] [te] [doen] []1",
             "key": [
                 "L*HL",
                 "L%"
@@ -142,45 +142,19 @@
     ],
     "choices": [
         [
-            [
-                "H*L",
-                "!H*L"
-            ],
-            [
-                "H*",
-                "!H*"
-            ],
-            [
-                "H*LH",
-                "L*HL"
-            ],
-            [
-                "L*",
-                "L*H"
-            ],
-            [
-                "\u2205"
-            ]
+            ["H*L", "!H*L"],
+	    ["H*", "!H*"],
+	    ["H*LH", "L*HL"],
+	    ["L*", "L*H"],
+	    ["∅"]
         ],
         [
-            [
-                "L%",
-                "H%"
-            ],
-            [
-                "%",
-                "\u2205"
-            ]
+            ["L%", "H%"],
+	    ["%"]
         ],
         [
-            [
-                "%L",
-                "%H"
-            ],
-            [
-                "%HL",
-                "\u2205"
-            ]
+            ["%L", "%H"],
+	    ["%HL"]
         ]
     ]
 }

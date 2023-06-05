@@ -4,8 +4,8 @@
             "sentence": "[](%L) [Doe] [nou] [maar] [gewoon]0 []1 []2 [zoals] [Willem](!H*L) [](L%)",
             "key": [
                 "H*",
-                "\u2205",
-                "\u2205"
+                "∅",
+                "∅"
             ],
             "contour": "2-1.png",
             "audio": "2-1.mp3",
@@ -16,9 +16,8 @@
             "sentence": "[](%L) [En] [nu]0 [wou] [ik] [ermee] [eh]1 [](P) []2 [ophouden](!H*L) [](L%)",
             "key": [
                 "H*",
-                "\u2205",
-                "P",
-                "\u2205"
+                "∅",
+                "∅"
             ],
             "contour": "2-2.png",
             "audio": "2-2.mp3",
@@ -37,7 +36,7 @@
             "textgrid": "2-3.TextGrid"
         },
         {
-            "sentence": "[](%L) [Waar] [het] [gele](H*L) [begint] []1 []2 [dat](H*) [is] [woestij]0 [](L%)",
+            "sentence": "[](%L) [Waar] [het] [gele](H*L) [begint] []1 []2 [dat](H*) [is] [woestijn]0 [](L%)",
             "key": [
                 "H%",
                 "%L",
@@ -49,17 +48,14 @@
             "textgrid": "2-4.TextGrid"
         },
         {
-            "sentence": "[](%L) [Misschien](H*L) []1 [](P) []2 [weegt](!H*L) [dat] []1 [](P) []2 [nog](!H*L) [wel] []1 [](P) []2 [zwaarder](H*L) [](L%)",
+            "sentence": "[](%L) [Misschien](H*L) []1 [](P) []2 [weegt](H*L) [dat] []1 [](P) []2 [nog] [wel] []1 [](P) []2 [zwaarder](H*L) [](L%)",
             "key": [
-                "\u2205",
-                "P",
-                "\u2205",
-                "\u2205",
-                "P",
-                "\u2205",
-                "\u2205",
-                "P",
-                "\u2205"
+                "∅",
+                "∅",
+                "∅",
+                "∅",
+                "∅",
+                "∅"
             ],
             "contour": "2-5.png",
             "audio": "2-5.mp3",
@@ -78,7 +74,7 @@
             "textgrid": "2-6.TextGrid"
         },
         {
-            "sentence": "[](%L) [Ik] [zie] 'n [pannenset](H*L) []1 []2 [of] [in] [ieder] [geval] [een] [keukenuitrusting](H*L) [](L%)",
+            "sentence": "[](%L) [Ik] [zie 'n] [pannenset](H*L) []1 []2 [of in] [ieder] [geval] [een] [keukenuitrusting](H*L) [](L%)",
             "key": [
                 "L%",
                 "%L"
@@ -100,7 +96,7 @@
             "textgrid": "2-8.TextGrid"
         },
         {
-            "sentence": "[](%L) [Ik] [ben] [bijzonder](H*L) [blij](H*L) []1 []2 [dat] [U] [zo] [vriendelijk](H*L) [bent] [](L%)",
+            "sentence": "[](%L) [Ik] [ben] [bijzonder](H*L) [blij](H*L) []1 []2 [dat] [U] [zo] [vriendelijk](H*L) [bent] [](H%)",
             "key": [
                 "H%",
                 "%L"
@@ -114,7 +110,6 @@
             "sentence": "[](%L) [In] [Vierhouten](H*L) []1 [](P) []2 [dat] [ligt] [op] [de] [Veluwe](H*L) [](H%)",
             "key": [
                 "H%",
-                "P",
                 "%L"
             ],
             "contour": "2-10.png",
@@ -123,7 +118,7 @@
             "textgrid": "2-10.TextGrid"
         },
         {
-            "sentence": "[](%L) [Is] [al] [meer](H*L) [bekend] []1 []2 [over] [het] [aantal](H*L) [slachtoffers](H*L) [](H%)",
+            "sentence": "[](%L) [Is al] [meer](H*L) [bekend](H*L) []1 []2 [over] [het] [aantal](H*L) [slachtoffers](H*L) [](H%)",
             "key": [
                 "%",
                 "%L"
@@ -134,7 +129,7 @@
             "textgrid": "2-11.TextGrid"
         },
         {
-            "sentence": "[](%L) [Illegalen](H*L) []1 [](P) []2 [vindt-ie](H*L) []1 [](P) []2 [moeten] [minstens](H*L) [het] [minimum-]](H*L) [loon](!H*L) [verdienen] [](L%)",
+            "sentence": "[](%L) [Illegalen](H*L) []1 [](P) []2 [vindt-ie](H*L) []1 [](P) []2 [moeten] [minstens](H*L) [het] [minimum-](H*L) [loon](!H*L) [verdienen] [](L%)",
             "key": [
                 "%",
                 "%L",
@@ -149,38 +144,17 @@
     ],
     "choices": [
         [
-            [
-                "H*L",
-                "!H*L"
-            ],
-            [
-                "H*",
-                "!H*"
-            ],
-            [
-                "H*LH",
-                "\u2205"
-            ]
+            ["H*L", "!H*L"],
+	    ["H*", "!H*"],
+	    ["H*LH", "∅"]
         ],
         [
-            [
-                "L%",
-                "H%"
-            ],
-            [
-                "%",
-                "\u2205"
-            ]
+            ["L%", "H%"],
+	    ["%"]
         ],
         [
-            [
-                "%L",
-                "%H"
-            ],
-            [
-                "%HL",
-                "\u2205"
-            ]
+            ["%L", "%H"],
+	    ["%HL"]
         ]
     ]
 }

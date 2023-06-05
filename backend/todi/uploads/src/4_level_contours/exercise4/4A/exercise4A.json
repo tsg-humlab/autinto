@@ -28,7 +28,8 @@
             "key": [
                 "H*",
                 "%",
-                "%L"
+                "%L",
+                "H*L"
             ],
             "contour": "4A-3.png",
             "audio": "4A-3.mp3",
@@ -36,7 +37,7 @@
             "textgrid": "4A-3.TextGrid"
         },
         {
-            "sentence": "[](%L) [Aan] [alle]1 [plezier]1 [komt] 'n [eind]1 []2",
+            "sentence": "[](%L) [Aan] [alle]1 [plezier]1 [komt 'n] [eind]1 []2",
             "key": [
                 "H*",
                 "!H*",
@@ -62,7 +63,7 @@
             "textgrid": "4A-5.TextGrid"
         },
         {
-            "sentence": "[](%L) [Toen-ie] 't [aan] [z'n] [baas]1 [verteld] [had] []2 []0 [bedacht-ie] [dat] 't [niet]1 [zo'n] [handige] [zet]1 [was] [](L%)",
+            "sentence": "[](%L) [Toen-ie 't] [aan z'n] [baas]1 [verteld] [had] []2 []0 [bedacht-ie] [dat 't] [niet]1 [zo'n] [handige] [zet]1 [was] [](L%)",
             "key": [
                 "H*",
                 "%",
@@ -154,38 +155,17 @@
     ],
     "choices": [
         [
-            [
-                "%L",
-                "%H"
-            ],
-            [
-                "%HL",
-                "\u2205"
-            ]
+            ["%L", "%H"],
+	    ["%HL"]
         ],
         [
-            [
-                "H*L",
-                "!H*L"
-            ],
-            [
-                "H*",
-                "!H*"
-            ],
-            [
-                "H*LH",
-                "\u2205"
-            ]
+            ["H*L", "!H*L"],
+	    ["H*", "!H*"],
+	    ["H*LH", "∅"]
         ],
         [
-            [
-                "L%",
-                "H%"
-            ],
-            [
-                "%",
-                "\u2205"
-            ]
+            ["L%", "H%"],
+	    ["%"]
         ]
     ]
 }

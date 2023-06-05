@@ -21,7 +21,7 @@
             "textgrid": "3A-2.TextGrid"
         },
         {
-            "sentence": "[]0 [Om] 's [te] [kijken] [hoe] 't [er] [in] [de] [natuur](H*L) [uitziet] [al] [die] [sneeuw] [](L%)",
+            "sentence": "[]0 [Om 's] [te] [kijken] [hoe 't] [er] [in] [de] [natuur](H*L) [uitziet] [al] [die] [sneeuw] [](L%)",
             "key": [
                 "%HL"
             ],
@@ -64,7 +64,7 @@
             "sentence": "[]0 [Van] [oude](H*L) [mensen](H*) [](H%) []0 [en] [dingen](!H*) [die] [voorbij](!H*L) [gaan] [](L%)",
             "key": [
                 "%L",
-                "H%"
+                "%H"
             ],
             "contour": "3A-7.png",
             "audio": "3A-7.mp3",
@@ -112,7 +112,7 @@
             "textgrid": "3A-11.TextGrid"
         },
         {
-            "sentence": "[]0 [Bedenk] [jij](!H*L) [nou] [maar] 's [een] [paar] [zinnetjes] [](H%)",
+            "sentence": "[]0 [Bedenk] [jij](!H*L) [nou] [maar 's] [een] [paar] [zinnetjes] [](H%)",
             "key": [
                 "%H"
             ],
@@ -124,14 +124,8 @@
     ],
     "choices": [
         [
-            [
-                "%L",
-                "%H"
-            ],
-            [
-                "%HL",
-                "\u2205"
-            ]
+            ["%L", "%H"],
+	    ["%HL"]
         ]
     ]
 }

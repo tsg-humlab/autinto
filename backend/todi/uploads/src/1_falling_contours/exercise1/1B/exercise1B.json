@@ -101,7 +101,7 @@
             "textgrid": "1B-10.TextGrid"
         },
         {
-            "sentence": "[](%L) [Hoe] [gaat](H*L) 't [met] [jullie?] []0",
+            "sentence": "[](%L) [Hoe] [gaat](H*L) ['t] [met] [jullie?] []0",
             "key": [
                 "H%"
             ],
@@ -123,15 +123,9 @@
     ],
     "choices": [
         [
-            [
-                "L%"
-            ],
-            [
-                "H%"
-            ],
-            [
-                "%"
-            ]
+            ["L%"],
+	    ["H%"],
+	    ["%"]
         ]
     ]
 }

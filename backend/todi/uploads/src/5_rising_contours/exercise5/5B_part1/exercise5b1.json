@@ -1,7 +1,7 @@
 {
     "items": [
         {
-            "sentence": "[]2 [D'r] [staan]0 [daar] [geen] [auto's] []1",
+            "sentence": "[]0 [D'r] [staan]1 [daar] [geen] [auto's] []2",
             "key": [
                 "%L",
                 "H*L",
@@ -13,7 +13,7 @@
             "textgrid": "5B-1.TextGrid"
         },
         {
-            "sentence": "[](%L) [Het] [leeft]0 []1 []2 [het] [is] [natuurlijk]0 []1 []2 't [ademt]0 []1",
+            "sentence": "[](%L) [Het] [leeft]1 []2 []0 [het] [is] [natuurlijk]1 []2 []0 ['t] [ademt]1 []2",
             "key": [
                 "L*H",
                 "H%",
@@ -30,7 +30,7 @@
             "textgrid": "5B-2.TextGrid"
         },
         {
-            "sentence": "[](%L) [Hij] [is] [bang] [dat] [de] [echte]0 [schuldigen] []1 []2 [buiten] [schot]0 [blijven] []1",
+            "sentence": "[](%L) [Hij] [is] [bang] [dat] [de] [echte]1 [schuldigen] []2 []0 [buiten] [schot]1 [blijven] []2",
             "key": [
                 "H*L",
                 "H%",
@@ -44,7 +44,7 @@
             "textgrid": "5B-3.TextGrid"
         },
         {
-            "sentence": "[](%L) [Het] [koninklijk]0 [gezin]0 []1 []2 [woonde]0 [op] [paleis] [Soestdijk]0 [in] [Baarn]0 []1",
+            "sentence": "[](%L) [Het] [koninklijk]1 [gezin]1 []2 []0 [woonde]1 [op] [paleis] [Soestdijk]1 [in] [Baarn]1 []2",
             "key": [
                 "H*L",
                 "H*",
@@ -61,7 +61,7 @@
             "textgrid": "5B-4.TextGrid"
         },
         {
-            "sentence": "[](%L) [Dan] [verkoop] [je] [toch] [gewoon] [de] [boot]0 []1",
+            "sentence": "[](%L) [Dan] [verkoop je] [toch] [gewoon] [de] [boot]1 []2",
             "key": [
                 "H*L",
                 "H%"
@@ -72,11 +72,11 @@
             "textgrid": "5B-5.TextGrid"
         },
         {
-            "sentence": "[](%L) [Als] 't [water] [tot] [hier]0 [komt]0 []1 [](P) []2 [dan]0 [moet] [je] [hozen]0 []1",
+            "sentence": "[](%L) [Als 't] [water] [tot] [hier]1 [komt]1 []2 [](P) []0 [dan]1 [moet je] [hozen]1 []2",
             "key": [
                 "H*",
+                "∅",
                 "%",
-                "P",
                 "%L",
                 "L*H",
                 "!H*L",
@@ -88,7 +88,7 @@
             "textgrid": "5B-6.TextGrid"
         },
         {
-            "sentence": "[](%L) [D'r] [is] [geen] [enkele]0 [dag] [dat] [alles] [lukt]0 []1",
+            "sentence": "[](%L) [D'r is] [geen] [enkele]1 [dag] [dat] [alles] [lukt]1 []2",
             "key": [
                 "L*H",
                 "H*L",
@@ -100,7 +100,7 @@
             "textgrid": "5B-7.TextGrid"
         },
         {
-            "sentence": "[](%L) [En] [niet]0 [de] [platgetreden] [paden]0 []1",
+            "sentence": "[](%L) [En] [niet]1 [de] [platgetreden] [paden]1 []2",
             "key": [
                 "H*",
                 "!H*L",
@@ -112,7 +112,7 @@
             "textgrid": "5B-8.TextGrid"
         },
         {
-            "sentence": "[](%L) [Of] [in] [een] [cafe]0 []1 [](%L) [waar] [niemand](H*L) [is]0 [op] [dat] [ogenblik] []1",
+            "sentence": "[](%L) [Of] [in een] [cafe]1 []2 [](%L) [waar] [niemand](H*L) [is]1 [op] [dat] [ogenblik] []2",
             "key": [
                 "L*H",
                 "H%",
@@ -125,7 +125,7 @@
             "textgrid": "5B-9.TextGrid"
         },
         {
-            "sentence": "[](%L) [Waar] [als] [je] [bij] [een] [hek]0 [komt] []1",
+            "sentence": "[](%L) [Waar] [als] [je] [bij] [een] [hek]1 [komt] []2",
             "key": [
                 "H*",
                 "H%"
@@ -136,7 +136,7 @@
             "textgrid": "5B-10.TextGrid"
         },
         {
-            "sentence": "[](%H) [Voorzitter] [Lodewijk]0 [de] [Waal]0 []1",
+            "sentence": "[](%H) [Voorzitter] [Lodewijk]1 [de] [Waal]1 []2",
             "key": [
                 "H*L",
                 "H*",
@@ -148,7 +148,7 @@
             "textgrid": "5B-11.TextGrid"
         },
         {
-            "sentence": "[](%L) [Probeer]0 [er] [maar] [aan] [de] [linkerkant]0 [langs]0 [te] [komen] []1",
+            "sentence": "[](%L) [Probeer]1 [er] [maar] [aan] [de] [linkerkant]1 [langs]1 [te] [komen] []2",
             "key": [
                 "H*L",
                 "H*L",
@@ -163,45 +163,19 @@
     ],
     "choices": [
         [
-            [
-                "H*L",
-                "!H*L"
-            ],
-            [
-                "H*",
-                "!H*"
-            ],
-            [
-                "H*LH",
-                "L*"
-            ],
-            [
-                "L*H",
-                "H*!H"
-            ],
-            [
-                "\u2205"
-            ]
+            ["%L", "%H"],
+	    ["%HL"]
         ],
         [
-            [
-                "L%",
-                "H%"
-            ],
-            [
-                "%",
-                "\u2205"
-            ]
+            ["H*L", "!H*L"],
+	    ["H*", "!H*"],
+	    ["H*LH", "L*"],
+	    ["L*H", "H*!H"],
+	    ["∅"]
         ],
         [
-            [
-                "%L",
-                "%H"
-            ],
-            [
-                "%HL",
-                "\u2205"
-            ]
+            ["L%", "H%"],
+	    ["%"]
         ]
     ]
 }

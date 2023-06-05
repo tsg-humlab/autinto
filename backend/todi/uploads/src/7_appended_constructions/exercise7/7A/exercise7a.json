@@ -1,14 +1,14 @@
 {
     "items": [
         {
-            "sentence": "[]2 [Maar] [ook]0 [een] [beetje]0 [in] [het] [kader]0 [van] [gewoon] [met] [taal]0 [omgaan]0 [he] []1",
+            "sentence": "[]0 [Maar] [ook]1 [een] [beetje]1 [in het] [kader]1 [van] [gewoon] [met] [taal]1 [omgaan]1 [he] []2",
             "key": [
                 "%L",
                 "H*L",
-                "\u2205",
-                "\u2205",
+                "∅",
+                "∅",
                 "H*L",
-                "\u2205",
+                "∅",
                 "H%"
             ],
             "contour": "7A-1.png",
@@ -17,11 +17,11 @@
             "textgrid": "7A-1.TextGrid"
         },
         {
-            "sentence": "[]2 [Heb] [je] [die] [uitgenodigd]0 [die] [kwast]0 []1",
+            "sentence": "[]0 [Heb] [je] [die] [uitgenodigd]1 [die] [kwast]1 []2",
             "key": [
                 "%L",
                 "H*L",
-                "\u2205",
+                "∅",
                 "L%"
             ],
             "contour": "7A-2.png",
@@ -30,7 +30,7 @@
             "textgrid": "7A-2.TextGrid"
         },
         {
-            "sentence": "[]2 [Ja] 't [was] [een] [soort] [monopolie]0 [was] 't []1",
+            "sentence": "[]0 [Ja] ['t was] [een] [soort] [monopolie]1 [was 't] []2",
             "key": [
                 "%L",
                 "H*L",
@@ -42,11 +42,11 @@
             "textgrid": "7A-3.TextGrid"
         },
         {
-            "sentence": "[]2 [Wil] [je] [die] [nog] [zien]0 [die] [Jantien]0 []1",
+            "sentence": "[]0 [Wil] [je] [die] [nog] [zien]1 [die] [Jantien]1 []2",
             "key": [
                 "%L",
                 "H*",
-                "\u2205",
+                "∅",
                 "H%"
             ],
             "contour": "7A-4.png",
@@ -55,13 +55,13 @@
             "textgrid": "7A-4.TextGrid"
         },
         {
-            "sentence": "[]2 [Je] [ging]0 [een] [stukje]0 [](P) [pison]0 [spelen]0 [he] []1",
+            "sentence": "[]0 [Je] [ging]1 [een] [stukje]1 [](P) [pison]1 [spelen]1 [he] []2",
             "key": [
                 "%L",
                 "H*L",
-                "\u2205",
+                "∅",
                 "H*L",
-                "\u2205",
+                "∅",
                 "H%"
             ],
             "contour": "7A-5.png",
@@ -70,7 +70,7 @@
             "textgrid": "7A-5.TextGrid"
         },
         {
-            "sentence": "[]2 [EH] [Patrick]0 []1",
+            "sentence": "[]0 [EH] [Patrick]1 []2",
             "key": [
                 "%L",
                 "H*L",
@@ -82,12 +82,12 @@
             "textgrid": "7A-6.TextGrid"
         },
         {
-            "sentence": "[]2 [Sta]0 [nou] [even] [stil]0 [voor] [de] [verandering]0 []1",
+            "sentence": "[]0 [Sta]1 [nou] [even] [stil]1 [voor] [de] [verandering]1 []2",
             "key": [
                 "%L",
                 "H*L",
                 "H*L",
-                "\u2205",
+                "∅",
                 "L%"
             ],
             "contour": "7A-7.png",
@@ -96,12 +96,12 @@
             "textgrid": "7A-7.TextGrid"
         },
         {
-            "sentence": "[]2 [Mag [ik]0] [je] [naam]0 [opschrijven]0, [bla] [bla] [bla] []1",
+            "sentence": "[]0 [Mag ik]1 [je] [naam]1 [opschrijven,]1 [bla bla bla] []2",
             "key": [
                 "%L",
-                "\u2205",
+                "∅",
                 "H*L",
-                "\u2205",
+                "∅",
                 "L%"
             ],
             "contour": "7A-8.png",
@@ -110,7 +110,7 @@
             "textgrid": "7A-8.TextGrid"
         },
         {
-            "sentence": "[]2 [Die]0 [komt] [wel] [een] [keer] [terug]0 [dacht] [ik] [zo] []1",
+            "sentence": "[]0 [Die]1 [komt] [wel] [een] [keer] [terug]1 [dacht] [ik] [zo] []2",
             "key": [
                 "%L",
                 "H*L",
@@ -123,11 +123,11 @@
             "textgrid": "7A-9.TextGrid"
         },
         {
-            "sentence": "[]2 [Doen]0 [we] [toch]0 []1",
+            "sentence": "[]0 [Doen]1 [we] [toch]1 []2",
             "key": [
                 "%L",
                 "H*L",
-                "\u2205",
+                "∅",
                 "H%"
             ],
             "contour": "7A-10.png",
@@ -136,11 +136,11 @@
             "textgrid": "7A-10.TextGrid"
         },
         {
-            "sentence": "[]2 [Grappig]0 [hoor]0 []1",
+            "sentence": "[]0 [Grappig]1 [hoor]1 []2",
             "key": [
                 "%L",
                 "L*HL",
-                "\u2205",
+                "∅",
                 "H%"
             ],
             "contour": "7A-11.png",
@@ -149,11 +149,11 @@
             "textgrid": "7A-11.TextGrid"
         },
         {
-            "sentence": "[]2 [Of-ik-dat-het] [liefste]0 [hoor]0 []1",
+            "sentence": "[]0 [Of-ik] [dat-het] [liefste]1 [hoor]1 []2",
             "key": [
                 "%L",
                 "H*L",
-                "\u2205",
+                "∅",
                 "H%"
             ],
             "contour": "7A-12.png",
@@ -164,49 +164,20 @@
     ],
     "choices": [
         [
-            [
-                "H*L",
-                "!H*L"
-            ],
-            [
-                "H*",
-                "!H*"
-            ],
-            [
-                "H*LH",
-                "L*HL"
-            ],
-            [
-                "L*!HL",
-                "L*"
-            ],
-            [
-                "L*H",
-                "H*!H"
-            ],
-            [
-                "\u2205"
-            ]
+            ["%L", "%H"],
+	    ["%HL"]
         ],
         [
-            [
-                "L%",
-                "H%"
-            ],
-            [
-                "%",
-                "\u2205"
-            ]
+            ["H*L", "!H*L"],
+	    ["H*", "!H*"],
+	    ["H*LH", "L*HL"],
+	    ["L*!HL", "L*"],
+	    ["L*H", "H*!H"],
+	    ["∅"]
         ],
         [
-            [
-                "%L",
-                "%H"
-            ],
-            [
-                "%HL",
-                "\u2205"
-            ]
+            ["L%", "H%"],
+	    ["%"]
         ]
     ]
 }
