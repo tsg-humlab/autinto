@@ -23,3 +23,6 @@ python3 manage.py runserver
 
 ## Setting up the SFTP server
 To set up the SFTP server, follow [this](https://www.techrepublic.com/article/how-to-set-up-an-sftp-server-on-linux/) tutorial and use the uploads folder as directory for the server. Change users and permissions the way you like. You can then connect to it over SSH by either using a client like [filezilla](https://filezilla-project.org/) or by using the `sftp` command.
+
+## Setting up Nginx
+To set up Nginx, follow [this](https://uwsgi-docs.readthedocs.io/en/latest/tutorials/Django_and_nginx.html) tutorial and use the todi folder as Django project and the corresponding paths on your system. Also uWSGI is needed but that is explained in the tutorial.
