@@ -35,6 +35,11 @@ function App({ id = '' }) {
   }, [])
 
   useEffect(() => {
+    setShowResynthesisContour(false)
+    setResynthesisData(null)
+  }, [selectedItem])
+
+  useEffect(() => {
     fetchExercise(id).then((data) => {
       // TODO: Validate data!
       const spec = readSpecification(data)
