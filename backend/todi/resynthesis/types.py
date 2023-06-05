@@ -2,15 +2,15 @@ from datetime import timedelta
 from dataclasses import dataclass
 
 def Seconds(seconds: float):
-	"""
-	Return timedelta object with seconds
-	"""
+    """
+    Return timedelta object with seconds
+    """
     return timedelta(seconds=seconds)
 
 def Milliseconds(milliseconds: int):
-	"""
-	Return timedelta object with milliseconds
-	"""
+    """
+    Return timedelta object with milliseconds
+    """
     # used to be a type hence we give the function an upper case name. (same for Seconds for consistency).
     return timedelta(milliseconds=milliseconds)
 
@@ -22,9 +22,9 @@ Scalar = float
 
 @dataclass
 class Interval:
-	"""
-	An interval is a duration of time with a start_time and end_time.
-	"""
+    """
+    An interval is a duration of time with a start_time and end_time.
+    """
     start_time: timedelta
     end_time:   timedelta
 
@@ -68,9 +68,9 @@ def Duration(start_time: timedelta, end_time: timedelta) -> timedelta:
 
 @dataclass
 class FrequencyRange:
-	"""
-	A FrequencyRange is a range with a low freqeuency and width (meaning the difference between low and high frequency).
-	"""
+    """
+    A FrequencyRange is a range with a low freqeuency and width (meaning the difference between low and high frequency).
+    """
     _low: Frequency
     _width: FrequencyDiff
 
@@ -95,9 +95,9 @@ class FrequencyRange:
 
 @dataclass
 class FrequencyPoint:
-	"""
-	A FrequencyPoint has a label a frequency and a time (where it is on the interval).
-	"""
+    """
+    A FrequencyPoint has a label a frequency and a time (where it is on the interval).
+    """
     label: str
     freq: Frequency
     time: timedelta
@@ -110,10 +110,10 @@ class AddTime:
 
 @dataclass
 class ResynthesizeVariables:	
-	"""
-	Here we define important variables that are used in the resynthesis rules.
-	"""
-	to_time: timedelta = Milliseconds(90)
+    """
+    Here we define important variables that are used in the resynthesis rules.
+    """
+    to_time: timedelta = Milliseconds(90)
     from_time: timedelta = Milliseconds(100)
     star_time: Scalar = 0.3
 
