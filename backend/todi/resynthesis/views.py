@@ -1,3 +1,4 @@
+import math
 import datetime
 import os
 import json
@@ -7,6 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 
 from . import resynthesize
+from .types import Milliseconds
 
 static_directory = os.path.realpath(os.path.join(os.path.dirname(__file__), os.pardir, 'static'))
 assert os.path.isdir(static_directory), "ERROR: COULDN'T FIND STATIC DIRECTORY"
@@ -23,21 +25,37 @@ def handle(request):
 
         kwargs = {}
         if 'dp' in request.POST:
-            kwargs['phrasal_downstep'] = float(request.POST['dp'])
+            dp = float(request.POST['dp'])
+            if not math.isnan(dp):
+                kwargs['phrasal_downstep'] = dp
         if 'da' in request.POST:
-            kwargs['accentual_downstep'] = float(request.POST['da'])
+            da = float(request.POST['da'])
+            if not math.isnan(da):
+                kwargs['accentual_downstep'] = da
         if 'FROMTIME' in request.POST:
-            kwargs['from_time'] = datetime.timedelta(milliseconds=float(request.POST['FROMTIME']))
+            from_time = float(request.POST['FROMTIME'])
+            if not math.isnan(from_time):
+                kwargs['from_time'] = Milliseconds(from_time)
         if 'TOTIME' in request.POST:
-            kwargs['to_time'] = datetime.timedelta(milliseconds=float(request.POST['TOTIME']))
+            to_time = float(request.POST['TOTIME'])
+            if not math.isnan(to_time):
+                kwargs['to_time'] = Milliseconds(to_time)
         if 'STARTIME' in request.POST:
-            kwargs['star_time'] = float(request.POST['STARTIME'])
+            star_time = float(request.POST['STARTIME'])
+            if not math.isnan(star_time):
+                kwargs['star_time'] = star_time
         if 'Fr' in request.POST:
-            kwargs['fr'] = float(request.POST['Fr'])
+            fr = float(request.POST['Fr'])
+            if not math.isnan(fr):
+                kwargs['fr'] = fr
         if 'N' in request.POST:
-            kwargs['n'] = float(request.POST['N'])
+            n = float(request.POST['N'])
+            if not math.isnan(n):
+                kwargs['n'] = n
         if 'W' in request.POST:
-            kwargs['w'] = float(request.POST['W'])
+            w = float(request.POST['W'])
+            if not math.isnan(w):
+                kwargs['w'] = w
 
         sentence = json.loads(sentence)
 
