@@ -1,11 +1,12 @@
 .App {
   font-size: 1.2em;
+	margin: 1em 0;
 }
 
 .text {
   text-align: center;
 	/* position: relative; */
-	/* margin-bottom: .5em; */
+	margin-bottom: .5em;
 }
 
 .annotatable {
