@@ -20,6 +20,26 @@ def handle(request):
         wav_filename = request.POST['wav']
         textgrid_filename = request.POST['TextGrid']
 
+        kwargs = {}
+        if 'dp' in request.POST:
+            kwargs['phrasal_downstep'] = float(request.POST['dp'])
+        if 'da' in request.POST:
+            kwargs['accentual_downstep'] = float(request.POST['da'])
+        if 'FROMTIME' in request.POST:
+            kwargs['from_time'] = float(request.POST['FROMTIME'])
+        if 'TOTIME' in request.POST:
+            kwargs['to_time'] = float(request.POST['TOTIME'])
+        if 'STARTIME' in request.POST:
+            kwargs['star_time'] = float(request.POST['STARTIME'])
+        if 'Fr' in request.POST:
+            kwargs['fr'] = float(request.POST['Fr'])
+        if 'N' in request.POST:
+            kwargs['n'] = float(request.POST['N'])
+        if 'W' in request.POST:
+            kwargs['w'] = float(request.POST['W'])
+
+        print(kwargs)
+
         sentence = json.loads(sentence)
 
         wav_path = os.path.realpath(os.path.join(static_directory, wav_filename))
@@ -28,7 +48,7 @@ def handle(request):
         if os.path.commonpath([static_directory, wav_path, textgrid_path]) != static_directory:
             raise Exception
 
-        (audio, img) = resynthesize(sentence, textgrid_path, wav_path)
+        (audio, img) = resynthesize(sentence, textgrid_path, wav_path, **kwargs)
 
         audio = base64.b64encode(audio).decode('ascii')
         img = img.decode('utf-8')
