@@ -21,9 +21,6 @@ def handle(request):
         textgrid_filename = request.POST['TextGrid']
 
         sentence = json.loads(sentence)
-        for (i,item) in enumerate(sentence):
-            if item is None:
-                sentence[i] = '---'
 
         wav_path = os.path.realpath(os.path.join(static_directory, wav_filename))
         textgrid_path = os.path.realpath(os.path.join(static_directory, textgrid_filename))
