@@ -1,7 +1,7 @@
 {
     "items": [
         {
-            "sentence": "[]0 Gaan de [lonen]1 omlaag []2",
+            "sentence": "[]0 [Gaan] [de] [lonen]1 [omlaag] []2",
             "key": [
                 "%H",
                 "H*",
@@ -13,7 +13,7 @@
             "textgrid": "4A-1.TextGrid"
         },
         {
-            "sentence": "[](%L)  Waar  [rook]1  is []2  [](%L) is [vuur](H*L) [](L%)",
+            "sentence": "[](%L) [Waar] [rook]1 [is] []2 [](%L) [is] [vuur](H*L) [](L%)",
             "key": [
                 "H*",
                 "%"
@@ -24,7 +24,7 @@
             "textgrid": "4A-2.TextGrid"
         },
         {
-            "sentence": "[](%L) Deze [dag]1 []2 []0 wordt  in  [Nederland](H*L)  [gevierd](H*L)  als  [koninginnedag]1 [](L%)",
+            "sentence": "[](%L) [Deze] [dag]1 []2 []0 [wordt] [in] [Nederland](H*L) [gevierd](H*L) [als] [koninginnedag]1 [](L%)",
             "key": [
                 "H*",
                 "%",
@@ -36,7 +36,7 @@
             "textgrid": "4A-3.TextGrid"
         },
         {
-            "sentence": "[](%L) Aan  [alle]1  [plezier]1  komt 'n  [eind]1 []2",
+            "sentence": "[](%L) [Aan] [alle]1 [plezier]1 [komt] 'n [eind]1 []2",
             "key": [
                 "H*",
                 "!H*",
@@ -49,7 +49,7 @@
             "textgrid": "4A-4.TextGrid"
         },
         {
-            "sentence": "[]0 Ze  zijn  [heel]1  [zacht]1 []2",
+            "sentence": "[]0 [Ze] [zijn] [heel]1 [zacht]1 []2",
             "key": [
                 "%L",
                 "H*",
@@ -62,7 +62,7 @@
             "textgrid": "4A-5.TextGrid"
         },
         {
-            "sentence": "[](%L) Toen-ie 't aan z'n  [baas]1  verteld had []2 []0 bedacht-ie  dat 't [niet]1  zo'n handige  [zet]1 was [](L%)",
+            "sentence": "[](%L) [Toen-ie] 't [aan] [z'n] [baas]1 [verteld] [had] []2 []0 [bedacht-ie] [dat] 't [niet]1 [zo'n] [handige] [zet]1 [was] [](L%)",
             "key": [
                 "H*",
                 "%",
@@ -76,7 +76,7 @@
             "textgrid": "4A-6.TextGrid"
         },
         {
-            "sentence": "[](%L) Er  [staan]1  me  daar  een  hoop  mensen  te  wachten  []2",
+            "sentence": "[](%L) [Er] [staan]1 [me] [daar] [een] [hoop] [mensen] [te] [wachten] []2",
             "key": [
                 "H*",
                 "%"
@@ -87,7 +87,7 @@
             "textgrid": "4A-7.TextGrid"
         },
         {
-            "sentence": "[](%L) Iets  voorbij [Hengelo]1 []2",
+            "sentence": "[](%L) [Iets] [voorbij] [Hengelo]1 []2",
             "key": [
                 "H*L",
                 "H%"
@@ -98,7 +98,7 @@
             "textgrid": "4A-8.TextGrid"
         },
         {
-            "sentence": "[]0 Dat  vind  ik [erg]1 [leuk]1 []2",
+            "sentence": "[]0 [Dat] [vind] [ik] [erg]1 [leuk]1 []2",
             "key": [
                 "%L",
                 "H*",
@@ -111,7 +111,7 @@
             "textgrid": "4A-9.TextGrid"
         },
         {
-            "sentence": "[](%L) Ik  [zit]1  in  een  [klas]1 []2 []0 met  [vijfentwintig]1  [kinderen]1 [](L%)",
+            "sentence": "[](%L) [Ik] [zit]1 [in] [een] [klas]1 []2 []0 [met] [vijfentwintig]1 [kinderen]1 [](L%)",
             "key": [
                 "H*L",
                 "H*",
@@ -126,7 +126,7 @@
             "textgrid": "4A-10.TextGrid"
         },
         {
-            "sentence": "[](%L) Hij  wil  er  [altijd]1  een  [slaatje]1  uit  slaan   []2",
+            "sentence": "[](%L) [Hij] [wil] [er] [altijd]1 [een] [slaatje]1 [uit] [slaan] []2",
             "key": [
                 "H*L",
                 "H*",
@@ -138,7 +138,7 @@
             "textgrid": "4A-11.TextGrid"
         },
         {
-            "sentence": "[](%L) [Nu]1  wil  ik  [nooit]1  meer  van  [die]1  man  iets  [kopen]1 []2",
+            "sentence": "[](%L) [Nu]1 [wil] [ik] [nooit]1 [meer] [van] [die]1 [man] [iets] [kopen]1 []2",
             "key": [
                 "H*L",
                 "!H*L",
@@ -160,7 +160,7 @@
             ],
             [
                 "%HL",
-                "∅"
+                "\u2205"
             ]
         ],
         [
@@ -174,7 +174,7 @@
             ],
             [
                 "H*LH",
-                "∅"
+                "\u2205"
             ]
         ],
         [
@@ -184,7 +184,7 @@
             ],
             [
                 "%",
-                "∅"
+                "\u2205"
             ]
         ]
     ]
