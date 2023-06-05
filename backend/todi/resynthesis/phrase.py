@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+
 import textgrid as tg
 
 from resynthesis.types import Seconds, Interval

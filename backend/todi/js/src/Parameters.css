@@ -1,0 +1,25 @@
+.settings-container {
+	margin-top: 1em;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 10px;
+	background-color: #eeeeee;
+	border-radius: 10px;
+	padding: .5em;
+}
+
+.settings-container div {
+	width: fit-content;
+	margin: 0 auto;
+}
+
+.settings-container label {
+	display: block;
+	text-align: right;
+	padding-right: 1em;
+	justify-items: center;
+}
+
+.settings-container label input {
+	width: 3em;
+}

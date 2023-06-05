@@ -8,6 +8,7 @@ import React, {
 import * as R from 'ramda'
 import './App.css'
 import Annotatable from './Annotatable'
+import Parameters from "./Parameters"
 import { readSpecification } from './specification.js'
 import { illegalInputHandling } from './validate.js'
 
@@ -26,10 +27,17 @@ function App({ id = '' }) {
   const [exerciseData, setExerciseData] = useState(null)
   const [annotations, setAnnotations] = useState(null)
   const [selectedItem, setSelectedItem] = useState(0)
+  const [customSettingsEnabled, setCustomSettingsEnabled] = useState(false)
+  const [parameterSettings, setParameterSettings] = useState({ starTime: null, toTime: null, fromTime: null, Fr: null, N: null, W: null, DA: null, DP: null })
 
   const swiperRef = useCallback((ref) => {
     ref.swiper.on('activeIndexChange', (e) => setSelectedItem(e.activeIndex))
   }, [])
+
+  useEffect(() => {
+    setShowResynthesisContour(false)
+    setResynthesisData(null)
+  }, [selectedItem])
 
   useEffect(() => {
     fetchExercise(id).then((data) => {
@@ -105,7 +113,6 @@ function App({ id = '' }) {
       )
     )(blocks)
 
-    console.log(R.reject(R.isNil, marks), longKey)
     const error = illegalInputHandling(R.reject(R.isNil, marks), longKey)
     if (error) {
       alert(error)
@@ -117,6 +124,35 @@ function App({ id = '' }) {
     formData.append('wav', `${directory}/wav/${wav}`)
     formData.append('TextGrid', `${directory}/TextGrid/${textgrid}`)
 
+    if (customSettingsEnabled) {
+      const { starTime, toTime, fromTime, Fr, N, W, DA, DP } = parameterSettings
+      if (DP !== null && R.test(/^\d+(\.\d*)?$/, DP)) {
+        formData.append('dp', String(DP))
+      }
+      if (DA !== null && R.test(/^\d+(\.\d*)?$/, DA)) {
+        formData.append('da', String(DA))
+      }
+      if (R.is(Number, fromTime)) {
+        formData.append('FROMTIME', String(fromTime))
+      }
+      if (R.is(Number, toTime)) {
+        formData.append('TOTIME', String(toTime))
+      }
+      if (starTime !== null && R.test(/^\d+(\.\d*)?$/, starTime)) {
+        formData.append('STARTIME', String(starTime))
+      }
+      if (R.is(Number, Fr)) {
+        formData.append('Fr', String(Fr))
+      }
+      if (R.is(Number, N)) {
+        formData.append('N', String(N))
+      }
+      if (R.is(Number, W)) {
+        formData.append('W', String(W))
+      }
+    }
+
+    setResynthesisData(null)
     fetch('/resynthesize/', {
       method: 'POST',
       body: formData,
@@ -185,7 +221,13 @@ function App({ id = '' }) {
         >
           {showResynthesisContour ? 'Hide' : 'Show'} resynthesis contour
         </button>
+        <button onClick={() => setCustomSettingsEnabled(b => !b)}>
+          {customSettingsEnabled ? "Disable" : "Enable"} custom parameters
+        </button>
       </div>
+      { customSettingsEnabled &&
+      <Parameters settings={parameterSettings} onChangeSettings={setParameterSettings} />
+      }
       <img
         src={
           exerciseData !== null && selectedItem !== null

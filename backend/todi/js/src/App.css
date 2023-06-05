@@ -1,11 +1,12 @@
 .App {
   font-size: 1.2em;
+	margin: 1em 0;
 }
 
 .text {
   text-align: center;
 	/* position: relative; */
-	/* margin-bottom: .5em; */
+	margin-bottom: .5em;
 }
 
 .annotatable {
@@ -100,4 +101,26 @@
 
 swiper-container {
   overflow: visible !important;
+}
+
+table {
+	background-color: #eeeeee;
+}
+
+table td {
+	padding: 1px 5px;
+	background-color: #eeeeee;
+	border: none;
+}
+
+td > img {
+	max-width: unset !important;
+}
+
+.audio-example {
+	background-color: #f5f5f5;
+	width: fit-content;
+	padding: 10px 10px;
+	margin: 10px 10px;
+	border-radius: 10px;
 }
