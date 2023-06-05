@@ -4,7 +4,7 @@ This folder contain the code to both the mdbook (`uploads/`) containing the cour
 ## Dependencies
 You need to install both [mdbook](https://rust-lang.github.io/mdBook/guide/installation.html) (either prepackaged or built from source) and [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
-Run `npm install` to install all necessary javascript dependencies.
+Run `npm install` in `js/` to install all necessary javascript dependencies.
 
 To install all necessary Python dependencies run `pip install -r requirements.txt`
 
