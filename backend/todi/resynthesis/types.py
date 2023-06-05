@@ -2,18 +2,29 @@ from datetime import timedelta
 from dataclasses import dataclass
 
 def Seconds(seconds: float):
+	"""
+	Return timedelta object with seconds
+	"""
     return timedelta(seconds=seconds)
 
 def Milliseconds(milliseconds: int):
-    # used to be a type
+	"""
+	Return timedelta object with milliseconds
+	"""
+    # used to be a type hence we give the function an upper case name. (same for Seconds for consistency).
     return timedelta(milliseconds=milliseconds)
 
+#here we set the types
 Frequency = int # in Hz
 FrequencyDiff = Frequency
 Scalar = float
 
+
 @dataclass
 class Interval:
+	"""
+	An interval is a duration of time with a start_time and end_time.
+	"""
     start_time: timedelta
     end_time:   timedelta
 
@@ -44,12 +55,16 @@ class Interval:
 
 
     def scale(self, scalar):
+		# Here we define the meaning of scale in the case of time.
         return self.start + scalar * self.duration
 
 
 
 @dataclass
 class FrequencyRange:
+	"""
+	A FrequencyRange is a range with a low freqeuency and width (meaning the difference between low and high frequency).
+	"""
     _low: Frequency
     _width: FrequencyDiff
 
@@ -58,6 +73,7 @@ class FrequencyRange:
         self._width = freq_high - freq_low
 
     def scale(self, scalar: float) -> Frequency:
+		# Here we define the meaning of scale in the case of frequency.
         return self.low + scalar * self.width
 
     @property
@@ -73,14 +89,20 @@ class FrequencyRange:
 
 @dataclass
 class FrequencyPoint:
+	"""
+	A FrequencyPoint has a label a frequency and a time (where it is on the interval).
+	"""
     label: str
     freq: Frequency
     time: timedelta
 
 
 @dataclass
-class ResynthesizeVariables:
-    to_time: timedelta = Milliseconds(90)
+class ResynthesizeVariables:	
+	"""
+	Here we define important variables that are used in the resynthesis rules.
+	"""
+	to_time: timedelta = Milliseconds(90)
     from_time: timedelta = Milliseconds(100)
     star_time: Scalar = 0.3
 

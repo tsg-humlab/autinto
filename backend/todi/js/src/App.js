@@ -9,6 +9,7 @@ import * as R from 'ramda'
 import './App.css'
 import Annotatable from './Annotatable'
 import { readSpecification } from './specification.js'
+import { illegalInputHandling } from './validate.js'
 
 import { register } from 'swiper/element/bundle'
 
@@ -86,15 +87,32 @@ function App({ id = '' }) {
   }
 
   function resynthesize() {
-    const { wav, textgrid, blocks } = exerciseData[selectedItem]
+    const { wav, textgrid, blocks, key } = exerciseData[selectedItem]
     const directory = R.nth(-2, location.pathname.split('/'))
-    const formData = new FormData()
     const marks = R.pipe(
       R.reject(R.is(String)),
       R.map(({ choices, index }) =>
         index !== null ? annotations[selectedItem][index] : choices
       )
     )(blocks)
+
+    // The key merged with the preset choices.
+    const longKey = R.pipe(
+      R.reject(R.is(String)),
+      R.reject(({ choices }) => choices === null),
+      R.map(({ choices, index }) =>
+        index !== null ? key[index] : choices
+      )
+    )(blocks)
+
+    console.log(R.reject(R.isNil, marks), longKey)
+    const error = illegalInputHandling(R.reject(R.isNil, marks), longKey)
+    if (error) {
+      alert(error)
+      return
+    }
+
+    const formData = new FormData()
     formData.append('sentence', JSON.stringify(marks))
     formData.append('wav', `${directory}/wav/${wav}`)
     formData.append('TextGrid', `${directory}/TextGrid/${textgrid}`)
