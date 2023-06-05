@@ -17,3 +17,6 @@ The full html build can then be found under `static/`.
 ```
 python3 manage.py runserver
 ```
+
+## Setting up the SFTP server
+To set up the SFTP server, follow [this](https://www.techrepublic.com/article/how-to-set-up-an-sftp-server-on-linux/) tutorial and use the uploads folder as directory for the server. Change users and permissions the way you like. You can then connect to it over SSH by either using a client like [filezilla](https://filezilla-project.org/) or by using the `sftp` command.
