@@ -12,6 +12,9 @@ from resynthesis.types import Frequency, FrequencyPoint
 
 @dataclass
 class AbstractWord(ABC):
+    """
+    AbstractWord contains functions and attributes that hold for all words and this can be used even if you wanted to use other words.
+    """
     name: str
     _parent: ResynthesizedIntonationalPhrase
     _index: int
@@ -103,6 +106,9 @@ class AbstractWord(ABC):
 
 @dataclass
 class AbstractInitialBoundary(ABC):
+    """
+    Contains functions and attributes that are used for all initial boundaries even if you wanted to use other ones.
+    """
     name: str
     _parent: ResynthesizedIntonationalPhrase
 
@@ -142,6 +148,9 @@ class AbstractInitialBoundary(ABC):
 
 @dataclass
 class AbstractFinalBoundary(ABC):
+    """
+    Containts functions and attributes that are used for all final boundaries even if you wanted to use other ones.
+    """
     name: str
     _parent: ResynthesizedIntonationalPhrase
 
