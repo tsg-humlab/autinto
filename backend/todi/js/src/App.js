@@ -35,6 +35,11 @@ function App({ id = '' }) {
   }, [])
 
   useEffect(() => {
+    setShowResynthesisContour(false)
+    setResynthesisData(null)
+  }, [selectedItem])
+
+  useEffect(() => {
     fetchExercise(id).then((data) => {
       // TODO: Validate data!
       const spec = readSpecification(data)
@@ -133,7 +138,7 @@ function App({ id = '' }) {
       if (R.is(Number, toTime)) {
         formData.append('TOTIME', String(toTime))
       }
-      if (R.is(Number, starTime)) {
+      if (starTime !== null && R.test(/^\d+(\.\d*)?$/, starTime)) {
         formData.append('STARTIME', String(starTime))
       }
       if (R.is(Number, Fr)) {
