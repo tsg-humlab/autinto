@@ -117,7 +117,13 @@ Marks left every: 1, 50, "yes", "yes", "no"
 
 selectObject: textgrid
 Select inner viewport: 0.0, 5.5, 1.6, 2.6 + 0.25*num_tiers
-Draw: 0.0, 0.0, "yes", "no", "yes"
+Draw: 0.0, 0.0, "yes", "no", "no"
+# ^ don't write the timescale, because the max time is slightly off in the case of final lengthening.
+# It doesn't matter for the appearance, because the difference is milliseconds, but the difference in
+# max times doesn't look nice
+
+# That also removes the box, so we have to draw it again:
+Draw inner box
 
 Select inner viewport: 0.0, 5.5, 0.0, 2.6 + 0.25*num_tiers
 Save as PDF file: output_image$

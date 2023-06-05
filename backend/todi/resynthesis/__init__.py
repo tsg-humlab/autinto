@@ -37,12 +37,13 @@ def send_to_praat(audio_filename, resynthesized_textgrid):
     # praat script is in same folder as this file, so we find that
     # folder and then the script:
     resynthesis_dir = os.path.dirname(__file__)
+    praat_exec = os.path.join(resynthesis_dir, 'praat_nogui')
     praat_script = os.path.join(resynthesis_dir, 'resynth.praat')
 
     resynthesized_textgrid.write(tg_tmp)
 	
 	# Here we make the actual call to praat
-    subprocess.run(['praat',
+    subprocess.run([praat_exec,
                     '--run',
                     praat_script,
                     audio_filename,

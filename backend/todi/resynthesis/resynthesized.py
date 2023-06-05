@@ -199,8 +199,6 @@ class ResynthesizedPhrase:
                 # Praat uses 'duration' instead of speed, which is its inverse
                 speed_inverse = point.new_interval.duration / point.old_interval.duration
 
-                print("new length: {}".format(textgrid.maxTime + (point.new_interval.duration - point.old_interval.duration).total_seconds()))
-
                 # We add four points: an original speed at the start and
                 # end of the intervals, and the new speed just in between that
                 duration_tier.addPoint(tg.Point(point.old_interval.start.total_seconds(), str(speed_inverse)))
