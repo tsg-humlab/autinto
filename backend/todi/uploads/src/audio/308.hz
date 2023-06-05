@@ -1,0 +1,189 @@
+File type = "ooTextFile"
+Object class = "PitchTier"
+
+xmin = 0 
+xmax = 3.0718125 
+points: size = 61 
+points [1]:
+    time = 0.10590625 
+    value = 122.736285843358 
+points [2]:
+    time = 0.12590625 
+    value = 115.840557896387 
+points [3]:
+    time = 0.14590625 
+    value = 110.889100769045 
+points [4]:
+    time = 0.16590625 
+    value = 107.413484066439 
+points [5]:
+    time = 0.18590625 
+    value = 105.641860608282 
+points [6]:
+    time = 0.20590625 
+    value = 102.943663352635 
+points [7]:
+    time = 0.22590625 
+    value = 99.4546796175883 
+points [8]:
+    time = 0.24590625 
+    value = 96.5468669779341 
+points [9]:
+    time = 0.26590625 
+    value = 94.9684650983682 
+points [10]:
+    time = 0.28590625 
+    value = 93.8058110139774 
+points [11]:
+    time = 0.30590625 
+    value = 92.0440285277037 
+points [12]:
+    time = 0.32590625 
+    value = 88.5903420541626 
+points [13]:
+    time = 0.34590625 
+    value = 88.4324594907964 
+points [14]:
+    time = 0.36590625 
+    value = 89.9042089296103 
+points [15]:
+    time = 0.38590625 
+    value = 91.1483351349588 
+points [16]:
+    time = 0.40590625 
+    value = 95.9652313376581 
+points [17]:
+    time = 0.42590625 
+    value = 98.1205822152162 
+points [18]:
+    time = 0.44590625 
+    value = 99.7107263159118 
+points [19]:
+    time = 0.46590625 
+    value = 101.009059424482 
+points [20]:
+    time = 0.48590625 
+    value = 104.378324158216 
+points [21]:
+    time = 0.50590625 
+    value = 109.487854366596 
+points [22]:
+    time = 0.52590625 
+    value = 109.898986848198 
+points [23]:
+    time = 0.54590625 
+    value = 107.127952371802 
+points [24]:
+    time = 0.56590625 
+    value = 102.947356915122 
+points [25]:
+    time = 0.58590625 
+    value = 100.428522805415 
+points [26]:
+    time = 0.68590625 
+    value = 135.807242304945 
+points [27]:
+    time = 0.70590625 
+    value = 151.339174142018 
+points [28]:
+    time = 0.72590625 
+    value = 156.290325268787 
+points [29]:
+    time = 0.74590625 
+    value = 148.718473026547 
+points [30]:
+    time = 0.76590625 
+    value = 124.017206382431 
+points [31]:
+    time = 0.78590625 
+    value = 123.054042410551 
+points [32]:
+    time = 0.84590625 
+    value = 111.74701002812 
+points [33]:
+    time = 0.90590625 
+    value = 126.413384620025 
+points [34]:
+    time = 0.92590625 
+    value = 142.702317693459 
+points [35]:
+    time = 0.94590625 
+    value = 143.842421289706 
+points [36]:
+    time = 0.96590625 
+    value = 143.38613029344 
+points [37]:
+    time = 0.98590625 
+    value = 143.25212670426 
+points [38]:
+    time = 1.00590625 
+    value = 142.02266693725 
+points [39]:
+    time = 1.02590625 
+    value = 142.707225518467 
+points [40]:
+    time = 1.14590625 
+    value = 121.201806537432 
+points [41]:
+    time = 1.16590625 
+    value = 109.067809990453 
+points [42]:
+    time = 1.18590625 
+    value = 101.445249846348 
+points [43]:
+    time = 1.20590625 
+    value = 92.7720387109963 
+points [44]:
+    time = 1.26590625 
+    value = 109.489210970827 
+points [45]:
+    time = 1.28590625 
+    value = 107.67839292616 
+points [46]:
+    time = 1.30590625 
+    value = 104.638714152253 
+points [47]:
+    time = 1.32590625 
+    value = 98.0188991267544 
+points [48]:
+    time = 1.60590625 
+    value = 107.02271693532 
+points [49]:
+    time = 1.62590625 
+    value = 101.904589216538 
+points [50]:
+    time = 1.64590625 
+    value = 96.8199409601846 
+points [51]:
+    time = 1.66590625 
+    value = 94.2744639600348 
+points [52]:
+    time = 1.68590625 
+    value = 92.0188553522498 
+points [53]:
+    time = 1.70590625 
+    value = 91.1997237247841 
+points [54]:
+    time = 1.72590625 
+    value = 90.8135833711111 
+points [55]:
+    time = 1.74590625 
+    value = 89.4032721675155 
+points [56]:
+    time = 1.76590625 
+    value = 88.1263451452558 
+points [57]:
+    time = 1.78590625 
+    value = 88.5612226734481 
+points [58]:
+    time = 1.80590625 
+    value = 93.4066816459917 
+points [59]:
+    time = 1.82590625 
+    value = 91.5067249531149 
+points [60]:
+    time = 1.84590625 
+    value = 83.655254857182 
+points [61]:
+    time = 1.86590625 
+    value = 75.8957025822769 
