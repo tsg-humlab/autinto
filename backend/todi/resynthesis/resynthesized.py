@@ -56,6 +56,10 @@ class ResynthesizedIntonationalPhrase:
         self.parent._frequency_range = self.frequency_range
 
     @property
+    def vars(self) -> ResynthesizedVariables:
+        return self.parent.vars
+
+    @property
     def start(self):
         return self.ip.start_time
     @property
@@ -70,8 +74,8 @@ class ResynthesizedIntonationalPhrase:
             return self.parent.frequency_range
 
     def downstep(self, scalar):
-        freq_low = self.parent.vars.fr + scalar*(self.frequency_range.low - self.parent.vars.fr)
-        freq_high = self.parent.vars.fr + scalar*(self.frequency_range.high - self.parent.vars.fr)
+        freq_low = self.vars.fr + scalar*(self.frequency_range.low - self.vars.fr)
+        freq_high = self.vars.fr + scalar*(self.frequency_range.high - self.vars.fr)
         self._frequency_range = FrequencyRange(freq_low, freq_high)
 
     def reset_downstep(self):
