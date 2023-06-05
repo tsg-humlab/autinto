@@ -405,6 +405,7 @@ class InitialBoundary(AbstractInitialBoundary):
     first_target_tone: Tone
     second_target_tone: Tone
     has_downstep: bool
+    is_unaccented: bool
 
     def decode(self, point_list):
         """
@@ -419,18 +420,28 @@ class InitialBoundary(AbstractInitialBoundary):
 
         # Then decode the targets.
         self.decode_first_target(point_list)
-        self.decode_second_target(point_list)
+        if not self.is_unaccented:
+            self.decode_second_target(point_list)
 
     def decode_first_target(self, point_list):
         """Creates a first target."""
 
-        match self.first_target_tone:
-            case Tone.LOW:
-                label = 'LB1'
-                freq = self.scale_frequency(0.30)
-            case Tone.HIGH:
-                label = 'HB1'
-                freq = self.scale_frequency(0.85)
+        if self.is_unaccented:
+            match self.first_target_tone:
+                case Tone.LOW:
+                    label = 'l1'
+                    freq = self.scale_frequency(0.15)
+                case Tone.HIGH:
+                    label = 'h1'
+                    freq = self.scale_frequency(0.6)
+        else:
+            match self.first_target_tone:
+                case Tone.LOW:
+                    label = 'LB1'
+                    freq = self.scale_frequency(0.30)
+                case Tone.HIGH:
+                    label = 'HB1'
+                    freq = self.scale_frequency(0.85)
 
         first_target = FrequencyPoint(
             label = label,
@@ -489,7 +500,7 @@ class InitialBoundary(AbstractInitialBoundary):
         """
 
         # Create a nice error for unrecognised words.
-        if name not in ['%L', '%H', '%HL', '!%L', '!%H', '!%HL']:
+        if name not in ['%L', '%H', '%HL', '!%L', '!%H', '!%HL', 'H', 'L']:
             raise ValueError("'{}' is not a valid initial boundary.".format(name))
 
         if name[0] == '!':
@@ -499,15 +510,22 @@ class InitialBoundary(AbstractInitialBoundary):
         else:
             self.has_downstep = False
 
-        # The first tone is decided by the character directly after the
-        # '%' sign, which is always the second character, since we
-        # removed the '!' if it existed.
-        self.first_target_tone = Tone(name[1])
+        if name in {'H', 'L'}:
+            self.is_unaccented = True
+            self.first_target_tone = Tone(name)
+        else:
+            self.is_unaccented = False
 
-        # The second target tone is decided by the final character.
-        # For words '%L', '%H', '!%H', this means that the first and
-        # second tone will be the same.
-        self.second_target_tone = Tone(name[-1])
+
+            # The first tone is decided by the character directly after the
+            # '%' sign, which is always the second character, since we
+            # removed the '!' if it existed.
+            self.first_target_tone = Tone(name[1])
+
+            # The second target tone is decided by the final character.
+            # For words '%L', '%H', '!%H', this means that the first and
+            # second tone will be the same.
+            self.second_target_tone = Tone(name[-1])
 
 
 class FinalBoundary(AbstractFinalBoundary):
@@ -524,8 +542,8 @@ class FinalBoundary(AbstractFinalBoundary):
         Decode the final boundary into frequency points and put them in
         point_list.
         """
-
-        self.decode_nuclear_rise_and_spread(point_list)
+        if not self.ip.initial_boundary.is_unaccented:
+            self.decode_nuclear_rise_and_spread(point_list)
         self.decode_final_boundary(point_list)
 
     def decode_nuclear_rise_and_spread(self, point_list):
@@ -618,18 +636,21 @@ class FinalBoundary(AbstractFinalBoundary):
                 freq = self.scale_frequency(1.0) # TODO handle downstep
             case '%':
                 label = 'ME'
-                match self.last_word.name:
-                    case 'H*L' | '!H*L' | 'L*HL' | 'L*!HL':
-                        freq = self.scale_frequency(0.40)
-                    case 'H*' | '!H*' | 'L*H':
-                        freq = self.scale_frequency(0.60)
-                    case 'L*':
-                        freq = self.scale_frequency(0.20)
-                    case _:
-                        # This case should not happen. For stability
-                        # we will simply not create an ME point, instead
-                        # of raising an error.
-                        return
+                if not self.ip.words:
+                    freq = self.scale_frequency(0.40)
+                else:
+                    match self.last_word.name:
+                        case 'H*L' | '!H*L' | 'L*HL' | 'L*!HL':
+                            freq = self.scale_frequency(0.40)
+                        case 'H*' | '!H*' | 'L*H':
+                            freq = self.scale_frequency(0.60)
+                        case 'L*':
+                            freq = self.scale_frequency(0.20)
+                        case _:
+                            # This case should not happen. For stability
+                            # we will simply not create an ME point, instead
+                            # of raising an error.
+                            return
 
         point = FrequencyPoint(
             label = label,
