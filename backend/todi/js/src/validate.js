@@ -58,14 +58,11 @@ function checkEmptyMedial(filledAnnotations) {
     let annotation = filledAnnotations[i]
     if (i != 0 && i != size - 1) {
       if (
-        annotation != '' ||
-        annotation.charAt(0) != '%' ||
-        annotation.charAt(annotation.length - 1) != '%' ||
-        annotation.slice(0, 2) != '!%'
+        annotation != ''
       ) {
-        return true
+        return false
       }
     }
   }
-  return false
+  return true
 }
