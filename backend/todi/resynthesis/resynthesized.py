@@ -27,7 +27,7 @@ class ResynthesizedIntonationalPhrase:
         self.parent = parent
         
         str_initial_boundary = sentence.popleft()
-        sentence = self.checkUnaccented(str_initial_boundary, sentence)
+        self.checkUnaccented(str_initial_boundary, sentence)
         self.initial_boundary = InitialBoundary(str_initial_boundary, self)
 
         
@@ -99,8 +99,26 @@ class ResynthesizedPhrase:
 
     def __init__(self, phrase: Phrase, sentence: list[str], **kwargs):
         self.ips: list[ResynthesizedIntonationalPhrase] = []
-        self.vars = ResynthesizeVariables(**kwargs)
         self.textgrid = phrase.textgrid
+
+        gender = self.textgrid.getFirst('words')[0].mark
+        match gender:
+            case 'm':
+                if 'fr' not in kwargs:
+                    kwargs['fr'] = 70
+                if 'n' not in kwargs:
+                    kwargs['n'] = 70
+                if 'w' not in kwargs:
+                    kwargs['w'] = 110
+            case 'v':
+                if 'fr' not in kwargs:
+                    kwargs['fr'] = 95
+                if 'n' not in kwargs:
+                    kwargs['n'] = 120
+                if 'w' not in kwargs:
+                    kwargs['w'] = 190
+
+        self.vars = ResynthesizeVariables(**kwargs)
 
         sentence = deque(sentence)
         for phrase_ip in phrase.ips:
@@ -150,8 +168,6 @@ class ResynthesizedPhrase:
         return self._frequency_range
 
     def downstep(self, scalar):
-        print(self.frequency_range.scale(0.5))
         freq_low = self.vars.fr + scalar*(self.frequency_range.low - self.vars.fr)
         freq_high = self.vars.fr + scalar*(self.frequency_range.high - self.vars.fr)
         self._frequency_range = FrequencyRange(freq_low, freq_high)
-        print(self.frequency_range.scale(0.5))
