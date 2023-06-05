@@ -25,8 +25,13 @@ class ResynthesizedIntonationalPhrase:
     def __init__(self, phrase_ip: IntonationalPhrase, sentence: deque[str], parent: ResynthesizedPhrase):
         self.ip = phrase_ip
         self.parent = parent
+        
         str_initial_boundary = sentence.popleft()
+        sentence = self.checkUnaccented(str_initial_boundary, sentence)
         self.initial_boundary = InitialBoundary(str_initial_boundary, self)
+
+        
+
 
         self.words: list[Word] = []
         for voiced_portion in phrase_ip.vps:
@@ -80,6 +85,10 @@ class ResynthesizedIntonationalPhrase:
 
     def reset_downstep(self):
         self._frequency_range = None
+    
+    def checkUnaccented(self, str_initial_boundary, sentence):
+        if str_initial_boundary in {"H", "L"}:
+            sentence.insert(0, None)
 
 
 @dataclass
