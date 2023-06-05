@@ -3,15 +3,8 @@ from enum import Enum
 from typing import Optional
 import re
 
-from resynthesis.types import Milliseconds, FrequencyPoint, Interval
+from resynthesis.types import Seconds, Milliseconds, FrequencyPoint, Interval, Duration, AddTime
 from resynthesis.abstract_pitch_accents import AbstractWord, AbstractInitialBoundary, AbstractFinalBoundary
-
-def duration(start, end):
-    """
-    Slightly shorter syntax for creating an interval, then asking for
-    its duration.
-    """
-    return Interval(start, end).duration
 
 class Tone(Enum):
     """
@@ -107,7 +100,6 @@ class Word(AbstractWord):
                 # downstep is applied only to the IP, and in the
                 # FinalBoundary handling, any remaining downsteps are
                 # applied to the phrase.
-                print('downstepping')
                 self.ip.downstep(0.7)
 
             case Tone.HIGH:
@@ -145,7 +137,7 @@ class Word(AbstractWord):
         # starts) within 360 milliseconds, L2 and L3 are placed
         # according to the available space from the VP start to the
         # boundary.
-        if duration(self.vp.end, self.next_boundary) < Milliseconds(360):
+        if Duration(self.vp.end, self.next_boundary) < Milliseconds(360):
             # define a new interval from VP start to next boundary
             start_to_next_boundary = Interval(self.vp.start, self.next_boundary)
             # then place points 3% and 30% into this interval
@@ -186,7 +178,7 @@ class Word(AbstractWord):
         # TODO downstep
 
         # Cases are split the same way they were in decode_primary_low().
-        if duration(self.vp.end, self.next_boundary) < Milliseconds(360):
+        if Duration(self.vp.end, self.next_boundary) < Milliseconds(360):
             # If time is short it is again dependent on the interval
             # from VP start to the next boundary.
             start_to_next_boundary = Interval(self.vp.start, self.next_boundary)
@@ -405,7 +397,6 @@ class InitialBoundary(AbstractInitialBoundary):
     first_target_tone: Tone
     second_target_tone: Tone
     has_downstep: bool
-    is_unaccented: bool
 
     def decode(self, point_list):
         """
@@ -420,13 +411,13 @@ class InitialBoundary(AbstractInitialBoundary):
 
         # Then decode the targets.
         self.decode_first_target(point_list)
-        if not self.is_unaccented:
+        if not self.ip.unaccented:
             self.decode_second_target(point_list)
 
     def decode_first_target(self, point_list):
         """Creates a first target."""
 
-        if self.is_unaccented:
+        if self.ip.unaccented:
             match self.first_target_tone:
                 case Tone.LOW:
                     label = 'l1'
@@ -511,10 +502,10 @@ class InitialBoundary(AbstractInitialBoundary):
             self.has_downstep = False
 
         if name in {'H', 'L'}:
-            self.is_unaccented = True
+            self.ip.unaccented = True
             self.first_target_tone = Tone(name)
         else:
-            self.is_unaccented = False
+            self.ip.unaccented = False
 
 
             # The first tone is decided by the character directly after the
@@ -542,9 +533,41 @@ class FinalBoundary(AbstractFinalBoundary):
         Decode the final boundary into frequency points and put them in
         point_list.
         """
-        if not self.ip.initial_boundary.is_unaccented:
+        if not self.ip.unaccented:
+            self.decode_final_lengthening(point_list)
             self.decode_nuclear_rise_and_spread(point_list)
         self.decode_final_boundary(point_list)
+
+    def decode_final_lengthening(self, point_list):
+        # If there is already time left after the VP, we don't do any
+        # final lengthening
+        if self.last_word.vp.end < self.ip.end:
+            return
+
+        # Otherwise, the time_to_add still depends on the circumstances.
+        if ((self.last_word.name in ['H*L', '!H*L'] and self.name == 'H%')
+            or self.last_word == 'L*H'
+            or (self.last_word == ['L*HL', 'L*!HL'] and self.name in ['L%', '%'])):
+
+            time_to_add = Milliseconds(Seconds(11.5) / self.last_word.vp.duration) - Milliseconds(23)
+
+        elif self.last_word.name in ['L*HL', 'L*!HL'] and self.name == 'H%':
+            time_to_add = Milliseconds(Seconds(15) / self.last_word.vp.duration) - Milliseconds(23)
+
+        # And if none of these are the case, then no final lengthening happens.
+        else:
+            return
+
+        # Also exit if it turns out we're not adding any time
+        if time_to_add <= Milliseconds(0):
+            return
+
+        new_ip_end = self.ip.end + time_to_add
+
+        point_list.append(AddTime(
+            old_interval=self.last_word.vp,
+            new_interval=Interval(self.last_word.vp.start, new_ip_end)
+        ))
 
     def decode_nuclear_rise_and_spread(self, point_list):
         """
@@ -555,7 +578,7 @@ class FinalBoundary(AbstractFinalBoundary):
         match self.last_word.name:
             case 'L*':
                 # If there is not enough time, don't create extra points
-                if duration(self.last_word.vp.end, self.ip.end) < Milliseconds(350):
+                if Duration(self.last_word.vp.end, self.ip.end) < Milliseconds(350):
                     return
 
                 # Otherwise, create two points:
@@ -573,7 +596,7 @@ class FinalBoundary(AbstractFinalBoundary):
 
             case 'H*' | '!H*':
                 # If there is not enough time, don't create extra points
-                if duration(self.last_word.vp.end, self.ip.end) < Milliseconds(350):
+                if Duration(self.last_word.vp.end, self.ip.end) < Milliseconds(350):
                     return
 
                 # Otherwise, create two points:
@@ -594,7 +617,7 @@ class FinalBoundary(AbstractFinalBoundary):
                 # points, depending on available time.
                 make_h2 = False
 
-                if duration(point_list[-1].time, self.ip.end) < Milliseconds(200):
+                if Duration(point_list[-1].time, self.ip.end) < Milliseconds(200):
                     time_h1 = point_list[-1].time + Milliseconds(50)
                 else:
                     time_h1 = point_list[-1].time + Milliseconds(100)
