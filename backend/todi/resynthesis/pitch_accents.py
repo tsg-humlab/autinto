@@ -3,7 +3,7 @@ from enum import Enum
 from typing import Optional
 import re
 
-from resynthesis.types import Milliseconds, FrequencyPoint, Interval
+from resynthesis.types import Seconds, Milliseconds, FrequencyPoint, Interval, Duration, AddTime
 from resynthesis.abstract_pitch_accents import AbstractWord, AbstractInitialBoundary, AbstractFinalBoundary
 
 class Tone(Enum):
@@ -100,7 +100,6 @@ class Word(AbstractWord):
                 # downstep is applied only to the IP, and in the
                 # FinalBoundary handling, any remaining downsteps are
                 # applied to the phrase.
-                print('downstepping')
                 self.ip.downstep(0.7)
 
             case Tone.HIGH:
@@ -398,7 +397,6 @@ class InitialBoundary(AbstractInitialBoundary):
     first_target_tone: Tone
     second_target_tone: Tone
     has_downstep: bool
-    is_unaccented: bool
 
     def decode(self, point_list):
         """
@@ -413,13 +411,13 @@ class InitialBoundary(AbstractInitialBoundary):
 
         # Then decode the targets.
         self.decode_first_target(point_list)
-        if not self.is_unaccented:
+        if not self.ip.unaccented:
             self.decode_second_target(point_list)
 
     def decode_first_target(self, point_list):
         """Creates a first target."""
 
-        if self.is_unaccented:
+        if self.ip.unaccented:
             match self.first_target_tone:
                 case Tone.LOW:
                     label = 'l1'
@@ -504,10 +502,10 @@ class InitialBoundary(AbstractInitialBoundary):
             self.has_downstep = False
 
         if name in {'H', 'L'}:
-            self.is_unaccented = True
+            self.ip.unaccented = True
             self.first_target_tone = Tone(name)
         else:
-            self.is_unaccented = False
+            self.ip.unaccented = False
 
 
             # The first tone is decided by the character directly after the
@@ -535,9 +533,41 @@ class FinalBoundary(AbstractFinalBoundary):
         Decode the final boundary into frequency points and put them in
         point_list.
         """
-        if not self.ip.initial_boundary.is_unaccented:
+        if not self.ip.unaccented:
+            self.decode_final_lengthening(point_list)
             self.decode_nuclear_rise_and_spread(point_list)
         self.decode_final_boundary(point_list)
+
+    def decode_final_lengthening(self, point_list):
+        # If there is already time left after the VP, we don't do any
+        # final lengthening
+        if self.last_word.vp.end < self.ip.end:
+            return
+
+        # Otherwise, the time_to_add still depends on the circumstances.
+        if ((self.last_word.name in ['H*L', '!H*L'] and self.name == 'H%')
+            or self.last_word == 'L*H'
+            or (self.last_word == ['L*HL', 'L*!HL'] and self.name in ['L%', '%'])):
+
+            time_to_add = Milliseconds(Seconds(11.5) / self.last_word.vp.duration) - Milliseconds(23)
+
+        elif self.last_word.name in ['L*HL', 'L*!HL'] and self.name == 'H%':
+            time_to_add = Milliseconds(Seconds(15) / self.last_word.vp.duration) - Milliseconds(23)
+
+        # And if none of these are the case, then no final lengthening happens.
+        else:
+            return
+
+        # Also exit if it turns out we're not adding any time
+        if time_to_add <= Milliseconds(0):
+            return
+
+        new_ip_end = self.ip.end + time_to_add
+
+        point_list.append(AddTime(
+            old_interval=self.last_word.vp,
+            new_interval=Interval(self.last_word.vp.start, new_ip_end)
+        ))
 
     def decode_nuclear_rise_and_spread(self, point_list):
         """

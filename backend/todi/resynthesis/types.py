@@ -83,6 +83,11 @@ class FrequencyPoint:
     freq: Frequency
     time: timedelta
 
+@dataclass
+class AddTime:
+    old_interval: Interval
+    new_interval: Interval
+
 
 @dataclass
 class ResynthesizeVariables:

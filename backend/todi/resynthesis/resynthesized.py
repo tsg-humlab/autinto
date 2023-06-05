@@ -4,12 +4,13 @@ from dataclasses import dataclass
 from collections import deque
 from functools import cached_property
 import copy
+from datetime import timedelta
 
 import textgrid as tg
 
 from resynthesis.phrase import Phrase, IntonationalPhrase
 from resynthesis.pitch_accents import Word, InitialBoundary, FinalBoundary
-from resynthesis.types import ResynthesizeVariables, FrequencyRange
+from resynthesis.types import ResynthesizeVariables, FrequencyRange, FrequencyPoint, AddTime
 
 
 @dataclass
@@ -140,7 +141,7 @@ class ResynthesizedPhrase:
         textgrid = copy.deepcopy(self.textgrid)
 
         # Add word labels
-        word_tier = tg.PointTier('tones', self.textgrid.minTime, self.textgrid.maxTime)
+        word_tier = tg.PointTier('tones', textgrid.minTime, textgrid.maxTime)
         for ip in self.ips:
             word_tier.addPoint(tg.Point(ip.ip.start.total_seconds(), ip.initial_boundary.name))
             for word in ip.words:
@@ -151,14 +152,37 @@ class ResynthesizedPhrase:
         # Generate the new frequency points
         point_list = self.decode()
 
-        target_tier = tg.PointTier('targets', self.textgrid.minTime, self.textgrid.maxTime)
-        frequency_tier = tg.PointTier('ToDI-F0', self.textgrid.minTime, self.textgrid.maxTime)
+        target_tier = tg.PointTier('targets', textgrid.minTime, textgrid.maxTime)
+        frequency_tier = tg.PointTier('ToDI-F0', textgrid.minTime, textgrid.maxTime)
+        duration_tier = tg.PointTier('duration', textgrid.minTime, textgrid.maxTime)
 
-        for frequency_point in point_list:
-            target_tier.addPoint(tg.Point(frequency_point.time.total_seconds(), frequency_point.label))
-            frequency_tier.addPoint(tg.Point(frequency_point.time.total_seconds(), str(int(frequency_point.freq))))
+        for point in point_list:
+            if isinstance(point, FrequencyPoint):
+                target_tier.addPoint(tg.Point(point.time.total_seconds(), point.label))
+                frequency_tier.addPoint(tg.Point(point.time.total_seconds(), str(int(point.freq))))
+            elif isinstance(point, AddTime):
+                # Praat uses 'duration' instead of speed, which is its inverse
+                speed_inverse = point.new_interval.duration / point.old_interval.duration
+
+                # We add four points: an original speed at the start and
+                # end of the intervals, and the new speed just in between that
+                duration_tier.addPoint(tg.Point(point.old_interval.start.total_seconds(), str(speed_inverse)))
+                duration_tier.addPoint(tg.Point(point.old_interval.end.total_seconds(), str(speed_inverse)))
+
+                duration_tier.addPoint(tg.Point(
+                    (point.old_interval.start - timedelta(microseconds=1)).total_seconds(),
+                    '1'
+                ))
+                duration_tier.addPoint(tg.Point(
+                    (point.old_interval.end + timedelta(microseconds=1)).total_seconds(),
+                    '1'
+                ))
+
         textgrid.append(target_tier)
         textgrid.append(frequency_tier)
+        # If any durations were changed, then add the tier:
+        if duration_tier:
+            textgrid.append(duration_tier)
 
         return textgrid
 
