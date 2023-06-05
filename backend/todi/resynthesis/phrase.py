@@ -5,9 +5,9 @@ from resynthesis.types import Seconds, Interval
 
 @dataclass
 class VoicedPortion(Interval):
-	"""
-	A VoicedPortion (vp) is an interval with a start_time and an end_time.
-	"""
+    """
+    A VoicedPortion (vp) is an interval with a start_time and an end_time.
+    """
     def __init__(self, textgrid_vp):
         start_time = Seconds(textgrid_vp.minTime)
         end_time = Seconds(textgrid_vp.maxTime)
@@ -16,9 +16,9 @@ class VoicedPortion(Interval):
 
 @dataclass
 class IntonationalPhrase(Interval):
-	"""
-	An IntonationalPhrase (ip) is an interval with a start_time and end_time that consists of VoicedPortions (vp's).
-	"""
+    """
+    An IntonationalPhrase (ip) is an interval with a start_time and end_time that consists of VoicedPortions (vp's).
+    """
     vps: list[VoicedPortion]
 
     def __init__(self, textgrid_ip, vps):
@@ -31,9 +31,9 @@ class IntonationalPhrase(Interval):
 
 @dataclass
 class Phrase(Interval):
-	"""
-	A phrase is an interval with a start_time and end_time that is divided in IntentionalPhrases (ip's) and it is also expressed as a textgrid.
-	"""
+    """
+    A phrase is an interval with a start_time and end_time that is divided in IntentionalPhrases (ip's) and it is also expressed as a textgrid.
+    """
     ips: list[IntonationalPhrase]
     textgrid: tg.TextGrid
 

@@ -38,8 +38,6 @@ def handle(request):
         if 'W' in request.POST:
             kwargs['w'] = float(request.POST['W'])
 
-        print(kwargs)
-
         sentence = json.loads(sentence)
 
         wav_path = os.path.realpath(os.path.join(static_directory, wav_filename))

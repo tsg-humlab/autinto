@@ -37,15 +37,16 @@ num_tiers = Get number of tiers
 for i from 1 to num_tiers
 	tier_name$ = Get tier name: i
 	if tier_name$ == "ToDI-F0"
-		tier = i
-
-		# Ugly way to "break" from a for loop :P
-		i = 999
+		textgrid_tier_pitch = i
+	elsif tier_name$ == "duration"
+		textgrid_tier_duration = i
 	endif
 endfor
-if not variableExists("tier")
+# A pitch tier must exist
+if not variableExists("textgrid_tier_pitch")
 	exitScript: "`ToDI-F0' tier not found."
 endif
+# Duration tier is optional, so we don't check here
 
 
 # Now we create the Pitch Tier from that, which we will use to replace the
@@ -55,11 +56,11 @@ pitch_tier = Create PitchTier: "pitch tier", start_time, end_time
 
 max_freq = 0
 selectObject: textgrid
-num_pitch_points = Get number of points: tier
+num_pitch_points = Get number of points: textgrid_tier_pitch
 for point from 1 to num_pitch_points
 	selectObject: textgrid
-	point_time  = Get time of point:  tier, point
-	point_freq$ = Get label of point: tier, point
+	point_time  = Get time of point:  textgrid_tier_pitch, point
+	point_freq$ = Get label of point: textgrid_tier_pitch, point
 	point_freq  = number(point_freq$)
 
 	max_freq = max(max_freq, point_freq)
@@ -68,10 +69,29 @@ for point from 1 to num_pitch_points
 	Add point: point_time, point_freq
 endfor
 
-
-
 selectObject: manipulation, pitch_tier
 Replace pitch tier
+
+
+# Now we check if we have a duration tier
+if variableExists("textgrid_tier_duration")
+	# We'll create a Duration Tier as well
+	duration_tier = Create DurationTier: "duration_tier", start_time, end_time
+	selectObject: textgrid
+	num_duration_points = Get number of points: textgrid_tier_duration
+	for point from 1 to num_duration_points
+		selectObject: textgrid
+		point_time = Get time of point: textgrid_tier_duration, point
+		point_speed$ = Get label of point: textgrid_tier_duration, point
+		point_speed = number(point_speed$)
+
+		selectObject: duration_tier
+		Add point: point_time, point_speed
+	endfor
+
+	selectObject: manipulation, duration_tier
+	Replace duration tier
+endif
 
 selectObject: manipulation
 resynthesis = Get resynthesis (overlap-add)
