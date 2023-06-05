@@ -27,7 +27,7 @@ function App({ id = '' }) {
   const [annotations, setAnnotations] = useState(null)
   const [selectedItem, setSelectedItem] = useState(0)
   const [customSettingsEnabled, setCustomSettingsEnabled] = useState(false)
-  const [parameterSettings, setParameterSettings] = useState({ starTime: 0.09, toTime: 0.10, fromTime: 0.30, Fr: 70, N: 70, W: 110, DA: 0.7, DP: 0.9 })
+  const [parameterSettings, setParameterSettings] = useState({ starTime: null, toTime: null, fromTime: null, Fr: null, N: null, W: null, DA: null, DP: null })
 
   const swiperRef = useCallback((ref) => {
     ref.swiper.on('activeIndexChange', (e) => setSelectedItem(e.activeIndex))
@@ -101,6 +101,34 @@ function App({ id = '' }) {
     formData.append('sentence', JSON.stringify(marks))
     formData.append('wav', `${directory}/wav/${wav}`)
     formData.append('TextGrid', `${directory}/TextGrid/${textgrid}`)
+
+    if (customSettingsEnabled) {
+      const { starTime, toTime, fromTime, Fr, N, W, DA, DP } = parameterSettings
+      if (R.is(Number, DP)) {
+        formData.append('dp', String(DP))
+      }
+      if (R.is(Number, DA)) {
+        formData.append('da', String(DA))
+      }
+      if (R.is(Number, fromTime)) {
+        formData.append('FROMTIME', String(fromTime))
+      }
+      if (R.is(Number, toTime)) {
+        formData.append('TOTIME', String(toTime))
+      }
+      if (R.is(Number, starTime)) {
+        formData.append('STARTIME', String(starTime))
+      }
+      if (R.is(Number, Fr)) {
+        formData.append('Fr', String(Fr))
+      }
+      if (R.is(Number, N)) {
+        formData.append('N', String(N))
+      }
+      if (R.is(Number, W)) {
+        formData.append('W', String(W))
+      }
+    }
 
     fetch('/resynthesize/', {
       method: 'POST',
