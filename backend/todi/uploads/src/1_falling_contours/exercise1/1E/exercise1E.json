@@ -1,13 +1,12 @@
 {
     "items": [
         {
-            "sentence": "[](%L) [Onze]0  [poes]0  moet  wat  [eten]0  [hebben]0 []1",
+            "sentence": "[](%L) [Onze]0 [poes]0 [moet] [wat] [eten]0 [hebben]0 []1",
             "key": [
-                "%L",
                 "∅",
                 "H*L",
                 "H*L",
-                "∅",
+                "\u2205",
                 "L%"
             ],
             "contour": "1E-1.png",
@@ -16,9 +15,8 @@
             "textgrid": "1E-1.TextGrid"
         },
         {
-            "sentence": "[](%L) Ze zijn [heel]0 [zacht]0 []1",
+            "sentence": "[](%L) [Ze] [zijn] [heel]0 [zacht]0 []1",
             "key": [
-                "%L",
                 "H*",
                 "!H*L",
                 "L%"
@@ -29,9 +27,8 @@
             "textgrid": "1E-2.TextGrid"
         },
         {
-            "sentence": "[](%L) Op  de  [trap]0  had  ze  [weer]0  het  [gevoel]0 dat er  [iemand]0  achter  haar  [aankwam]0  []1",
+            "sentence": "[](%L) [Op] [de] [trap]0 [had] [ze] [weer]0 [het] [gevoel]0 [dat] [er] [iemand]0 [achter] [haar] [aankwam]0 []1",
             "key": [
-                "%L",
                 "H*L",
                 "!H*L",
                 "!H*L",
@@ -45,12 +42,11 @@
             "textgrid": "1E-3.TextGrid"
         },
         {
-            "sentence": "[](%L) U  hoeft  immers  [geen]0  [belasting]0  te  [betalen]0 []1",
+            "sentence": "[](%L) [U] [hoeft] [immers] [geen]0 [belasting]0 [te] [betalen]0 []1",
             "key": [
-                "%L",
                 "∅",
                 "H*L",
-                "∅",
+                "\u2205",
                 "H%"
             ],
             "contour": "1E-4.png",
@@ -59,12 +55,11 @@
             "textgrid": "1E-4.TextGrid"
         },
         {
-            "sentence": "[](%L) Maar  [waarom]0  vraag je  [mij]0  in het [bijzonder]0 []1",
+            "sentence": "[](%L) [Maar] [waarom]0 [vraag] [je] [mij]0 [in] [het] [bijzonder]0 []1",
             "key": [
-                "%L",
                 "∅",
                 "H*L",
-                "∅",
+                "\u2205",
                 "L%"
             ],
             "contour": "1E-5.png",
@@ -73,12 +68,11 @@
             "textgrid": "1E-5.TextGrid"
         },
         {
-            "sentence": "[](%L) [Fietsen]0  is  in  't  [hele]0  [park]0 [verboden]0 []1",
+            "sentence": "[](%L) [Fietsen]0 [is] [in] 't [hele]0 [park]0 [verboden]0 []1",
             "key": [
-                "%L",
                 "H*L",
                 "!H*L",
-                "∅",
+                "\u2205",
                 "!H*L",
                 "L%"
             ],
@@ -88,12 +82,11 @@
             "textgrid": "1E-6.TextGrid"
         },
         {
-            "sentence": "[](%L) D'r  [moet]0  nog  maar 'ns  over  [gepraat]0  [worden]0  []1",
+            "sentence": "[](%L) [D'r] [moet]0 [nog] [maar] 'ns [over] [gepraat]0 [worden]0 []1",
             "key": [
-                "%L",
                 "∅",
                 "H*L",
-                "∅",
+                "\u2205",
                 "%"
             ],
             "contour": "1E-7.png",
@@ -102,12 +95,11 @@
             "textgrid": "1E-7.TextGrid"
         },
         {
-            "sentence": "[](%L) Bij  [oma]0  kun  je de  [hele]0  [tijd]0  [taartjes]0  eten []1",
+            "sentence": "[](%L) [Bij] [oma]0 [kun] [je] [de] [hele]0 [tijd]0 [taartjes]0 [eten] []1",
             "key": [
-                "%L",
                 "H*",
                 "!H",
-                "∅",
+                "\u2205",
                 "!H*L",
                 "L%"
             ],
@@ -117,12 +109,11 @@
             "textgrid": "1E-8.TextGrid"
         },
         {
-            "sentence": "[](%L) Hoe  [ver]0  [ben]0  je  met  de  [verjaardag]0  van  [Arnoutje]0 []1",
+            "sentence": "[](%L) [Hoe] [ver]0 [ben]0 [je] [met] [de] [verjaardag]0 [van] [Arnoutje]0 []1",
             "key": [
-                "%L",
                 "∅",
                 "H*L",
-                "∅",
+                "\u2205",
                 "H*L",
                 "%"
             ],
@@ -132,12 +123,11 @@
             "textgrid": "1E-9.TextGrid"
         },
         {
-            "sentence": "[](%L)  Ze  [helpen]0  om  haar [billetjes]0  [prachtig]0  [droog]0  te houden  []1",
+            "sentence": "[](%L) [Ze] [helpen]0 [om] [haar] [billetjes]0 [prachtig]0 [droog]0 [te] [houden] []1",
             "key": [
-                "%L",
                 "H*L",
-                "∅",
-                "∅",
+                "\u2205",
+                "\u2205",
                 "H*L",
                 "%"
             ],
@@ -147,9 +137,8 @@
             "textgrid": "1E-10.TextGrid"
         },
         {
-            "sentence": "[](%L) De  [meesten]0  waren [heel]0 [slecht]0  daarop [voorbereid]0 []1",
+            "sentence": "[](%L) [De] [meesten]0 [waren] [heel]0 [slecht]0 [daarop] [voorbereid]0 []1",
             "key": [
-                "%L",
                 "H*L",
                 "h*",
                 "!H*",
@@ -162,13 +151,12 @@
             "textgrid": "1E-11.TextGrid"
         },
         {
-            "sentence": "[](%L) Van  [dat]0 [soort]0  [dingen]0  heb  ik  [geen]0 [verstand]0 []1",
+            "sentence": "[](%L) [Van] [dat]0 [soort]0 [dingen]0 [heb] [ik] [geen]0 [verstand]0 []1",
             "key": [
-                "%L",
                 "H*LH",
-                "∅",
-                "∅",
-                "∅",
+                "\u2205",
+                "\u2205",
+                "\u2205",
                 "H*L",
                 "L%"
             ],
@@ -190,7 +178,7 @@
             ],
             [
                 "H*LH",
-                "∅"
+                "\u2205"
             ]
         ],
         [
@@ -200,7 +188,7 @@
             ],
             [
                 "%",
-                "∅"
+                "\u2205"
             ]
         ]
     ]

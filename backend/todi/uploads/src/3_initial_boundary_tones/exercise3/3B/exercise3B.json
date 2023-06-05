@@ -1,7 +1,7 @@
 {
     "items": [
         {
-            "sentence": "[]0 [Rene]1  heeft  nog  [vlees]1  over []2",
+            "sentence": "[]0 [Rene]1 [heeft] [nog] [vlees]1 [over] []2",
             "key": [
                 "%L",
                 "H*",
@@ -14,7 +14,7 @@
             "textgrid": "3B-1.TextGrid"
         },
         {
-            "sentence": "[]0 Maar  [ja]1 []2 []0  jij  [wil]1  me  nooit  zien []2",
+            "sentence": "[]0 [Maar] [ja]1 []2 []0 [jij] [wil]1 [me] [nooit] [zien] []2",
             "key": [
                 "%L",
                 "H*L",
@@ -26,7 +26,7 @@
             "textgrid": "3B-2.TextGrid"
         },
         {
-            "sentence": "[]0 [Ach]1 er is [toch]1  niks []2 []0  ik  [verzin]1  alleen maar  dat er  iets is []2",
+            "sentence": "[]0 [Ach]1 [er] [is] [toch]1 [niks] []2 []0 [ik] [verzin]1 [alleen] [maar] [dat] [er] [iets] [is] []2",
             "key": [
                 "%L",
                 "H*L",
@@ -42,7 +42,7 @@
             "textgrid": "3B-3.TextGrid"
         },
         {
-            "sentence": "[]0 Als 't  water  tot  [hier]1 komt []0 []2 dan  [moet]1  [je]1  hozen []2",
+            "sentence": "[]0 [Als] 't [water] [tot] [hier]1 [komt] []0 []2 [dan] [moet]1 [je]1 [hozen] []2",
             "key": [
                 "%L",
                 "H*L",
@@ -58,7 +58,7 @@
             "textgrid": "3B-4.TextGrid"
         },
         {
-            "sentence": "[]0 Als 't  [water]1  tot  hier komt []2 []0 dan  [moet]1  [je]1  hozen []2",
+            "sentence": "[]0 [Als] 't [water]1 [tot] [hier] [komt] []2 []0 [dan] [moet]1 [je]1 [hozen] []2",
             "key": [
                 "%L",
                 "H*L",
@@ -74,7 +74,7 @@
             "textgrid": "3B-5.TextGrid"
         },
         {
-            "sentence": "[]0 Ik  moest  bij  [dit]1  boek []0 []2  zo  erg  [huilen]1  []2",
+            "sentence": "[]0 [Ik] [moest] [bij] [dit]1 [boek] []0 []2 [zo] [erg] [huilen]1 []2",
             "key": [
                 "%L",
                 "H*L",
@@ -89,7 +89,7 @@
             "textgrid": "3B-6.TextGrid"
         },
         {
-            "sentence": "[]0 Ze  zitten  toch  ook  in  [dierentuinen]1 []2",
+            "sentence": "[]0 [Ze] [zitten] [toch] [ook] [in] [dierentuinen]1 []2",
             "key": [
                 "%L",
                 "H*L",
@@ -101,7 +101,7 @@
             "textgrid": "3B-7.TextGrid"
         },
         {
-            "sentence": "[]0 Ik heb  wel  wat  dingetjes [gepland]1 []2 []0 die ik  eigenlijk [af]1  wil  maken []2",
+            "sentence": "[]0 [Ik] [heb] [wel] [wat] [dingetjes] [gepland]1 []2 []0 [die] [ik] [eigenlijk] [af]1 [wil] [maken] []2",
             "key": [
                 "%L",
                 "H*L",
@@ -116,7 +116,7 @@
             "textgrid": "3B-8.TextGrid"
         },
         {
-            "sentence": "[]0 Je [hoeft]1  niet  zo  te  [schrikken]1 []2 []0  ik  doe  helemaal  [niks]1 []2",
+            "sentence": "[]0 [Je] [hoeft]1 [niet] [zo] [te] [schrikken]1 []2 []0 [ik] [doe] [helemaal] [niks]1 []2",
             "key": [
                 "%L",
                 "H*L",
@@ -132,7 +132,7 @@
             "textgrid": "3B-9.TextGrid"
         },
         {
-            "sentence": "[]0  [Dan]1  gaat 't  je [toch]1  wel  [boeien]1 []2",
+            "sentence": "[]0 [Dan]1 [gaat] 't [je] [toch]1 [wel] [boeien]1 []2",
             "key": [
                 "%L",
                 "H*L",
@@ -146,7 +146,7 @@
             "textgrid": "3A-10.TextGrid"
         },
         {
-            "sentence": "[]0 'k weet  niet  eens  of ik  dat [kan]1 []2",
+            "sentence": "[]0 'k [weet] [niet] [eens] [of] [ik] [dat] [kan]1 []2",
             "key": [
                 "%L",
                 "H*L",
@@ -158,7 +158,7 @@
             "textgrid": "3B-11.TextGrid"
         },
         {
-            "sentence": "[]0 Ja  ik  vond  dat  je  het  [echt]1  goed  [gedaan]1 hebt  []2",
+            "sentence": "[]0 [Ja] [ik] [vond] [dat] [je] [het] [echt]1 [goed] [gedaan]1 [hebt] []2",
             "key": [
                 "%H",
                 "H*",
@@ -179,7 +179,7 @@
             ],
             [
                 "%HL",
-                "∅"
+                "\u2205"
             ]
         ],
         [
@@ -192,7 +192,7 @@
                 "!H*"
             ],
             [
-                "∅"
+                "\u2205"
             ]
         ],
         [
@@ -202,7 +202,7 @@
             ],
             [
                 "%",
-                "∅"
+                "\u2205"
             ]
         ]
     ]
