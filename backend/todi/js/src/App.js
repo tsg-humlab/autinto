@@ -122,10 +122,10 @@ function App({ id = '' }) {
 
     if (customSettingsEnabled) {
       const { starTime, toTime, fromTime, Fr, N, W, DA, DP } = parameterSettings
-      if (R.is(Number, DP)) {
+      if (DP !== null && !isNaN(DP)) {
         formData.append('dp', String(DP))
       }
-      if (R.is(Number, DA)) {
+      if (DA !== null && !isNaN(DA)) {
         formData.append('da', String(DA))
       }
       if (R.is(Number, fromTime)) {

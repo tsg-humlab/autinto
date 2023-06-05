@@ -29,10 +29,10 @@ export default function Parameters({settings, onChangeSettings}) {
           W <input type="number" value={W} onChange={e => onChangeSettings(R.assoc('W', e.target.valueAsNumber))}/>
         </label>
         <label>
-          DA <input type="number" value={DA} onChange={e => onChangeSettings(R.assoc('DA', e.target.valueAsNumber))}/>
+          DA <input type="number" step="any" value={DA} onChange={e => onChangeSettings(R.assoc('DA', e.target.value))}/>
         </label>
         <label>
-          DP <input type="number" value={DP} onChange={e => onChangeSettings(R.assoc('DP', e.target.valueAsNumber))}/>
+          DP <input type="number" step="any" value={DP} onChange={e => onChangeSettings(R.assoc('DP', e.target.value))}/>
         </label>
       </div>
     </div>
