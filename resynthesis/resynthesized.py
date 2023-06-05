@@ -86,7 +86,7 @@ class ResynthesizedPhrase:
 
     def __init__(self, phrase: Phrase, sentence: list[str], **kwargs):
         self.ips: list[ResynthesizedIntonationalPhrase] = []
-        self.vars = ResynthesizeVariables()
+        self.vars = ResynthesizeVariables(**kwargs)
         self.textgrid = phrase.textgrid
 
         sentence = deque(sentence)

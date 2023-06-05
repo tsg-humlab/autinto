@@ -90,10 +90,3 @@ class ResynthesizeVariables:
     fr: Frequency = 95
     n:  Frequency = 120
     w:  FrequencyDiff = 190
-
-    #def __init__(self, kwargs):
-        #for key in self.__dataclass_fields__.keys():
-            #try:
-                #self.__dict__[key] = kwargs[key]
-            #except Exception:
-                #pass
