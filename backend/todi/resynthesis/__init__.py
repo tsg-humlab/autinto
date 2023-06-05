@@ -9,7 +9,7 @@ import textgrid as tg
 
 def resynthesize(sentence, textgrid_filename, audio_filename, **kwargs):
     phrase = Phrase(textgrid_filename)
-    resynth_phrase = ResynthesizedPhrase(phrase, sentence)
+    resynth_phrase = ResynthesizedPhrase(phrase, sentence, **kwargs)
     resynth_textgrid = resynth_phrase.decode_into_textgrid()
 
     (new_audio, pdf_image) = send_to_praat(audio_filename, resynth_textgrid)
