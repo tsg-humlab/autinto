@@ -108,7 +108,6 @@ function App({ id = '' }) {
       )
     )(blocks)
 
-    console.log(R.reject(R.isNil, marks), longKey)
     const error = illegalInputHandling(R.reject(R.isNil, marks), longKey)
     if (error) {
       alert(error)
@@ -122,10 +121,10 @@ function App({ id = '' }) {
 
     if (customSettingsEnabled) {
       const { starTime, toTime, fromTime, Fr, N, W, DA, DP } = parameterSettings
-      if (DP !== null && !isNaN(DP)) {
+      if (DP !== null && R.test(/^\d+(\.\d*)?$/, DP)) {
         formData.append('dp', String(DP))
       }
-      if (DA !== null && !isNaN(DA)) {
+      if (DA !== null && R.test(/^\d+(\.\d*)?$/, DA)) {
         formData.append('da', String(DA))
       }
       if (R.is(Number, fromTime)) {
@@ -148,6 +147,7 @@ function App({ id = '' }) {
       }
     }
 
+    setResynthesisData(null)
     fetch('/resynthesize/', {
       method: 'POST',
       body: formData,
