@@ -64,7 +64,7 @@ test('One item specification', () => {
         { text: 'Willem', choices: '!H*L', index: null },
         { text: '', choices: 'L%', index: null },
       ],
-      key: ['H*', '∅', '∅'],
+      key: ['H*', '', ''],
       contour: '2-1.png',
       audio: '2-1.mp3',
       wav: '2-1.wav',
