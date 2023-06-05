@@ -121,7 +121,7 @@ class ResynthesizedPhrase:
 
         try:
             #check the gender and set default values accordingly
-            gender = self.textgrid.getFirst('words')[0].mark
+            gender = self.textgrid[0][0].mark
             match gender:
                 case 'm':
                     if 'fr' not in kwargs:
@@ -198,6 +198,8 @@ class ResynthesizedPhrase:
             elif isinstance(point, AddTime):
                 # Praat uses 'duration' instead of speed, which is its inverse
                 speed_inverse = point.new_interval.duration / point.old_interval.duration
+
+                print("new length: {}".format(textgrid.maxTime + (point.new_interval.duration - point.old_interval.duration).total_seconds()))
 
                 # We add four points: an original speed at the start and
                 # end of the intervals, and the new speed just in between that
