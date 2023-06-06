@@ -5,6 +5,17 @@ Praat version 6.2.
 
 When installing, be sure to put the **nogui** version of Praat in this folder, with the name `praat_nogui`. See [this file](https://github.com/praat/praat/releases/download/v6.3.10/praat6310_linux64nogui.tar.gz).
 
+# Running from Python
+
+This folder works as a package. To test it from the command line, go up one folder, and do:
+
+```python
+from resynthesis import resynthesize
+(audio, svg) = resynthesize(['%L', None, 'H*L', None, None, None, None, None, 'L%'],
+                            'static/1_falling_contours/TextGrid/1A-1.TextGrid',
+                            'static/1_falling_contours/wav/1A-1.wav')
+```
+
 # Making a web request
 
 Should work by making a POST request to http://{server}/resynthesize/, with three body elements:
