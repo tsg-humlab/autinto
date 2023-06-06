@@ -522,6 +522,7 @@ class InitialBoundary(AbstractInitialBoundary):
         if name in {'H', 'L'}:
             self.ip.unaccented = True
             self.first_target_tone = Tone(name)
+            self.has_downstep = False
         else:
             self.ip.unaccented = False
 
