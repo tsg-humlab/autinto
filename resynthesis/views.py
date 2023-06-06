@@ -11,7 +11,7 @@ from . import resynthesize
 from .types import Milliseconds
 
 static_directory = os.path.realpath(os.path.join(os.path.dirname(__file__), os.pardir, 'static'))
-assert os.path.isdir(static_directory), "ERROR: COULDN'T FIND STATIC DIRECTORY"
+assert os.path.isdir(static_directory), "ERROR: COULDN'T FIND STATIC DIRECTORY AT {}".format(static_directory)
 
 @csrf_exempt
 def handle(request):
