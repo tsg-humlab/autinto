@@ -1,0 +1,10 @@
+Django:
+
+Login page: <domain>/admin/login
+Credentials:
+	Username: todi-admin
+	Password: todi12345
+This will bring you to the admin page where at the top the password can be changed. Other than that, we don't use it for anything. The only use of the Django admin is to prevent that everyone can rebuild the website. You have to be logged in to do that.
+
+Rebuild page: <domain>/static/rebuild_website.html
+If you click on the "Rebuild HTML" button, all webpages are regenerated using the files in the 'uploads' folder. After this, you will be redirected to a page confirming that the website is rebuild. If you are not logged in, you will be redirected to the login page. Once you have logged in, the website will be rebuild and you will be redirected to the page confirming that the website is rebuild.
