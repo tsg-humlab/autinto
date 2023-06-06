@@ -59,8 +59,8 @@ def send_to_praat(audio_filename, resynthesized_textgrid):
 
     # write the textgrid to a temp file:
     resynthesized_textgrid.write(tg_tmp)
-	
-	# Here we make the actual call to praat
+
+    # Here we make the actual call to praat
     subprocess.run([praat_exec,
                     '--run',
                     praat_script,
@@ -70,7 +70,7 @@ def send_to_praat(audio_filename, resynthesized_textgrid):
                     pdf_tmp],
                    timeout=10) # seconds
 
-	# We open the temp files so we can return the contents
+    # We open the temp files so we can return the contents
     # Named pipes were used originally instead of files, but had trouble
     # with hanging unpredictably.
     with open(wav_tmp, 'rb') as f:
