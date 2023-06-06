@@ -11,10 +11,10 @@ def Milliseconds(milliseconds: int):
     """
     Return timedelta object with milliseconds
     """
-    # used to be a type hence we give the function an upper case name. (same for Seconds for consistency).
+    # used to be a type; hence the upper case name. (same for Seconds for consistency)
     return timedelta(milliseconds=milliseconds)
 
-#here we set the types
+
 Frequency = int # in Hz
 FrequencyDiff = Frequency
 Scalar = float
@@ -23,7 +23,7 @@ Scalar = float
 @dataclass
 class Interval:
     """
-    An interval is a duration of time with a start_time and end_time.
+    An Interval is a duration of time with a start_time and end_time.
     """
     start_time: timedelta
     end_time:   timedelta
@@ -60,7 +60,7 @@ class Interval:
 
 def Duration(start_time: timedelta, end_time: timedelta) -> timedelta:
     """
-    Slightly shorter syntax for creating an interval, then asking for
+    Slightly shorter syntax for creating an Interval and then asking for
     its duration.
     """
     return Interval(start_time, end_time).duration
@@ -69,8 +69,11 @@ def Duration(start_time: timedelta, end_time: timedelta) -> timedelta:
 @dataclass
 class FrequencyRange:
     """
-    A FrequencyRange is a range with a low freqeuency and width (meaning the difference between low and high frequency).
+    A FrequencyRange stores the low and high frequency bounds, and is
+    used to scale new FrequencyPoints in the decoding/resynthesizing
+    process.
     """
+
     _low: Frequency
     _width: FrequencyDiff
 
@@ -79,7 +82,7 @@ class FrequencyRange:
         self._width = freq_high - freq_low
 
     def scale(self, scalar: float) -> Frequency:
-		# Here we define the meaning of scale in the case of frequency.
+        """Get a frequency in the range [low, high]"""
         return self.low + scalar * self.width
 
     @property
@@ -96,14 +99,25 @@ class FrequencyRange:
 @dataclass
 class FrequencyPoint:
     """
-    A FrequencyPoint has a label a frequency and a time (where it is on the interval).
+    A FrequencyPoint has a label, a frequency, and a time.
     """
+
     label: str
     freq: Frequency
     time: timedelta
 
+
 @dataclass
 class AddTime:
+    """
+    AddTime is used for the final lengthening. It defines an existing
+    interval, and the times the interval should be changed to.
+
+    (Note that the lengthening only listens to the *duration* of the
+     new_interval, so attempting to reposition the start time will not
+     work.)
+    """
+
     old_interval: Interval
     new_interval: Interval
 
@@ -111,8 +125,10 @@ class AddTime:
 @dataclass
 class ResynthesizeVariables:	
     """
-    Here we define important variables that are used in the resynthesis rules.
+    Here we define global variables that are used in the resynthesis
+    rules.
     """
+
     to_time: timedelta = Milliseconds(90)
     from_time: timedelta = Milliseconds(100)
     star_time: Scalar = 0.3
