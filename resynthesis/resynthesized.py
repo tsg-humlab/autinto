@@ -15,12 +15,19 @@ from resynthesis.types import ResynthesizeVariables, FrequencyRange, FrequencyPo
 
 @dataclass
 class ResynthesizedIntonationalPhrase:
+    """
+    A part of the ResynthesizedPhrase, this class represents an IP to be
+    resynthesized. It stores the pitch accents in an IP of the resynthesis
+    request, and the VoicedPortions of those pitch accents.
+    """
+
     ip: IntonationalPhrase
     parent: ResynthesizedPhrase
 
     initial_boundary: InitialBoundary
     words: list[Word]
     final_boundary: FinalBoundary
+
     _frequency_range: FrequencyRange
 
     def __init__(self, phrase_ip: IntonationalPhrase, sentence: deque[str], parent: ResynthesizedPhrase):
@@ -32,7 +39,7 @@ class ResynthesizedIntonationalPhrase:
         
         #Set the initial boundary and do extra processing for unaccented ip's
         str_initial_boundary = sentence.popleft()
-        self.checkUnaccented(str_initial_boundary, sentence)
+        self.fix_unaccented(str_initial_boundary, sentence)
         self.initial_boundary = InitialBoundary(str_initial_boundary, self)
         
 
@@ -100,9 +107,18 @@ class ResynthesizedIntonationalPhrase:
     
     #Check if there is a unaccented ip, if this is the case, we set it as an initial boundary and add an empty word
     #to keep our vp indexing consistent.
-    def checkUnaccented(self, str_initial_boundary, sentence):
+    def fix_unaccented(self, str_initial_boundary, sentence):
+        """
+        Checks if the IP is unaccented. If it is, then we get one pitch
+        accent fewer, because the 'L' or 'H' word functions both as an
+        initial boundary and as the first word.
+
+        We handle these pitch accents in the initial boundary, but the
+        program will get confused by having one fewer pitch accent than
+        expected, so we add it back in here.
+        """
         if str_initial_boundary in {"H", "L"}:
-            sentence.insert(0, None)
+            sentence.appendleft(None)
 
 
 @dataclass
