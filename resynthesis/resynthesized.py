@@ -15,12 +15,19 @@ from resynthesis.types import ResynthesizeVariables, FrequencyRange, FrequencyPo
 
 @dataclass
 class ResynthesizedIntonationalPhrase:
+    """
+    A part of the ResynthesizedPhrase, this class represents an IP to be
+    resynthesized. It stores the pitch accents in an IP of the resynthesis
+    request, and the VoicedPortions of those pitch accents.
+    """
+
     ip: IntonationalPhrase
     parent: ResynthesizedPhrase
 
     initial_boundary: InitialBoundary
     words: list[Word]
     final_boundary: FinalBoundary
+
     _frequency_range: FrequencyRange
 
     def __init__(self, phrase_ip: IntonationalPhrase, sentence: deque[str], parent: ResynthesizedPhrase):
@@ -32,7 +39,7 @@ class ResynthesizedIntonationalPhrase:
         
         #Set the initial boundary and do extra processing for unaccented ip's
         str_initial_boundary = sentence.popleft()
-        self.checkUnaccented(str_initial_boundary, sentence)
+        self.fix_unaccented(str_initial_boundary, sentence)
         self.initial_boundary = InitialBoundary(str_initial_boundary, self)
         
 
@@ -100,23 +107,46 @@ class ResynthesizedIntonationalPhrase:
     
     #Check if there is a unaccented ip, if this is the case, we set it as an initial boundary and add an empty word
     #to keep our vp indexing consistent.
-    def checkUnaccented(self, str_initial_boundary, sentence):
+    def fix_unaccented(self, str_initial_boundary, sentence):
+        """
+        Checks if the IP is unaccented. If it is, then we get one pitch
+        accent fewer, because the 'L' or 'H' word functions both as an
+        initial boundary and as the first word.
+
+        We handle these pitch accents in the initial boundary, but the
+        program will get confused by having one fewer pitch accent than
+        expected, so we add it back in here.
+        """
         if str_initial_boundary in {"H", "L"}:
-            sentence.insert(0, None)
+            sentence.appendleft(None)
 
 
 @dataclass
 class ResynthesizedPhrase:
+    """
+    The ResynthesizedPhrase is called upon by resynthesis.resynthesize
+    to first interpret the pitch accents, and then decode into frequency
+    points to be sent to Praat.
+    """
+
     textgrid: tg.TextGrid
     ips:  list[ResynthesizedIntonationalPhrase]
     vars: ResynthesizeVariables
 
     def __init__(self, phrase: Phrase, sentence: list[str], **kwargs):
-        """We recieve a list of Those parameters that the student has changed, Here we check
-        which values have been declared and which have not, those left empty are updated
-        with the default values"""
+        """
+        ResynthesizedPhrase takes two main arguments:
+          1. phrase: a Phrase, decoded from a TextGrid
+          2. sentence: a list of pitch accents, to be used in resynthesis
+
+        Additionally it uses any extra arguments to create the global
+        ResynthesizeVariables, which allows for overriding Fr, N, W,
+        FROMTIME and so on.
+        """
 
         self.ips: list[ResynthesizedIntonationalPhrase] = []
+
+        # save the textgrid so we can later return a modified one
         self.textgrid = phrase.textgrid
 
         try:
@@ -124,6 +154,8 @@ class ResynthesizedPhrase:
             gender = self.textgrid[0][0].mark
             match gender:
                 case 'm':
+                    # here we are careful not to override user-specified
+                    # parameters
                     if 'fr' not in kwargs:
                         kwargs['fr'] = 70
                     if 'n' not in kwargs:
@@ -138,17 +170,22 @@ class ResynthesizedPhrase:
                     if 'w' not in kwargs:
                         kwargs['w'] = 190
         except Exception:
+            # if for some reason there is no first tier in the textgrid,
+            # then don't modify the variables
             pass
 
-        #set remaining default values if neccessary.
+        # and initialize the global variables
         self.vars = ResynthesizeVariables(**kwargs)
 
         sentence = deque(sentence)
         for phrase_ip in phrase.ips:
+            # the resynthesized IP invocation 'eats' the sentence, so
+            # that each call removes its own pitch accents from the
+            # sentence.
             ip = ResynthesizedIntonationalPhrase(phrase_ip, sentence, self)
             self.ips.append(ip)
 
-        #Set the initial frequencies
+        # Set the initial frequency range
         freq_low = self.vars.fr + self.vars.n - 0.5*self.vars.w
         freq_high = self.vars.fr + self.vars.n + 0.5*self.vars.w
         self._frequency_range = FrequencyRange(freq_low, freq_high)
@@ -157,23 +194,31 @@ class ResynthesizedPhrase:
     
     def decode(self):
         """
-        decode all ResynthesizedIntonationalPhrase, by looping through each of them and calling their own decode function on it.
+        Decode the whole phrase, returning a list of FrequencyTargets and
+        AddTimes. (see `types.py` for their specification)
         """
+
+        # initialise empty list
         point_list = []
         for ip in self.ips:
-
-            #Decode each ResynthesizedIntonationalPhrase
+            # decode each ResynthesizedIntonationalPhrase
             ip.decode(point_list)
         return point_list
 
 
     def decode_into_textgrid(self):
         """
-        Add the word_tier, target_tier and frequency_tiers to the textgrid with their correct corresponding targetlabels, timings and frequency.
+        Decode the whole phrase, returning the modified TextGrid with
+        two or three added tiers: a frequency tier, containing the new
+        pitches for the resynthesized sentence; a target tier,
+        containing the labels that belong to these pitches; and, if any
+        final lengthening happened, a duration tier to store these.
         """
+
+        # copy so that this method could be called again
         textgrid = copy.deepcopy(self.textgrid)
 
-        # Add word labels
+        # Add pitch accent labels
         word_tier = tg.PointTier('tones', textgrid.minTime, textgrid.maxTime)
         for ip in self.ips:
             word_tier.addPoint(tg.Point(ip.ip.start.total_seconds(), ip.initial_boundary.name))
@@ -192,17 +237,37 @@ class ResynthesizedPhrase:
 
         #add the newly generated frequency_points to the target_tier and frequency_tier
         for point in point_list:
+            # This is a little bit of a hack, because the final
+            # lengthening was added later: AddTime points are in the
+            # same list as the FrequencyTargets.
+            # Here we check which of the two each point is, and add it
+            # the TextGrid accordingly.
+
             if isinstance(point, FrequencyPoint):
-                target_tier.addPoint(tg.Point(point.time.total_seconds(), point.label))
-                frequency_tier.addPoint(tg.Point(point.time.total_seconds(), str(int(point.freq))))
+                # For each FrequencyPoint, we simply add the label and
+                # the pitch:
+                target_tier.addPoint(tg.Point(
+                    point.time.total_seconds(), point.label))
+                frequency_tier.addPoint(tg.Point(
+                    point.time.total_seconds(), str(int(point.freq))))
+
             elif isinstance(point, AddTime):
+                # The AddTime needs a little decoding still.
+
                 # Praat uses 'duration' instead of speed, which is its inverse
                 speed_inverse = point.new_interval.duration / point.old_interval.duration
 
                 # We add four points: an original speed at the start and
-                # end of the intervals, and the new speed just in between that
-                duration_tier.addPoint(tg.Point(point.old_interval.start.total_seconds(), str(speed_inverse)))
-                duration_tier.addPoint(tg.Point(point.old_interval.end.total_seconds(), str(speed_inverse)))
+                # end of the intervals, and the new speed just in
+                # between that.
+                duration_tier.addPoint(tg.Point(
+                    point.old_interval.start.total_seconds(),
+                    str(speed_inverse)
+                ))
+                duration_tier.addPoint(tg.Point(
+                    point.old_interval.end.total_seconds(),
+                    str(speed_inverse)
+                ))
 
                 duration_tier.addPoint(tg.Point(
                     (point.old_interval.start - timedelta(microseconds=1)).total_seconds(),
@@ -227,8 +292,8 @@ class ResynthesizedPhrase:
     def frequency_range(self):
         return self._frequency_range
 
-    #Set the frequency values to the downstepped values.
     def downstep(self, scalar):
+        """Set the frequency values to the downstepped values."""
         freq_low = self.vars.fr + scalar*(self.frequency_range.low - self.vars.fr)
         freq_high = self.vars.fr + scalar*(self.frequency_range.high - self.vars.fr)
         self._frequency_range = FrequencyRange(freq_low, freq_high)
