@@ -8,7 +8,7 @@ size = 3
 item []: 
     item [1]:
         class = "IntervalTier" 
-        name = "1" 
+        name = "words" 
         xmin = 0 
         xmax = 1.2952078172802644 
         intervals: size = 7 
@@ -42,7 +42,7 @@ item []:
             text = "" 
     item [2]:
         class = "IntervalTier" 
-        name = "" 
+        name = "IP's" 
         xmin = 0 
         xmax = 1.2952078172802644 
         intervals: size = 3 
@@ -60,7 +60,7 @@ item []:
             text = "" 
     item [3]:
         class = "IntervalTier" 
-        name = "" 
+        name = "vp" 
         xmin = 0 
         xmax = 1.2952078172802644 
         intervals: size = 11 
