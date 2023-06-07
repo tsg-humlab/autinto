@@ -239,10 +239,10 @@ class ResynthesizedPhrase:
         # Add pitch accent labels
         word_tier = tg.PointTier('tones', textgrid.minTime, textgrid.maxTime)
         for ip in self.ips:
-            self.add_point(word_tier, ip.ip.start, ip.initial_boundary.name)
+            self.add_point(word_tier, ip.start, ip.initial_boundary.name)
             for word in ip.words:
                 self.add_point(word_tier, word.vp.start, word.name)
-            self.add_point(word_tier, ip.ip.end, ip.final_boundary.name)
+            self.add_point(word_tier, ip.end, ip.final_boundary.name)
         textgrid.append(word_tier)
 
         # Generate the new frequency points
