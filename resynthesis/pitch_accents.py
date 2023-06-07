@@ -184,8 +184,6 @@ class Word(AbstractWord):
         This rule creates a delayed peak after L*.
         """
 
-        # TODO downstep
-
         # Cases are split the same way they were in decode_primary_low().
         if Duration(self.vp.end, self.next_boundary) < Milliseconds(360):
             # If time is short it is again dependent on the interval
@@ -691,7 +689,7 @@ class FinalBoundary(AbstractFinalBoundary):
                 freq = self.scale_frequency(0.0)
             case 'H%':
                 label = 'HE'
-                freq = self.scale_frequency(1.0) # TODO handle downstep
+                freq = self.scale_frequency(1.0)
             case '%':
                 label = 'ME'
                 if not self.ip.words:
