@@ -21,7 +21,7 @@
 		"start": "concurrently --raw npm:proxy npm:serve-js npm:watch-mdbook",
 		"proxy": "node proxy.js",
 		"serve-js": "PORT=3001 BROWSER=none react-scripts start",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test --env=jsdom --verbose",
     "eject": "react-scripts eject",
     "build-widget": "react-scripts build",
 		"watch-mdbook": "cd ../uploads && mdbook watch --dest-dir ../static",

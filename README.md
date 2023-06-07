@@ -29,5 +29,5 @@ To set up the SFTP server, follow [this](https://www.techrepublic.com/article/ho
 ## Setting up Nginx
 To set up Nginx, follow [this](https://uwsgi-docs.readthedocs.io/en/latest/tutorials/Django_and_nginx.html) tutorial and use the todi folder as Django project and the corresponding paths on your system. Also uWSGI is needed but that is explained in the tutorial.
 
-## Changing error rulesset 
-In the valdiate.js script, you can change the rules and the error messages the user gets depending on their input when they click on "resynthesize"
+## Error messages frontend 
+In the valdiate.js script, you can change the rules and the error messages the user gets depending on their input when they click on "resynthesize". Using the combination of the key and the filled annotations (which are arrays that do not include the by-default filled-in annotations), a rule can be made. 
