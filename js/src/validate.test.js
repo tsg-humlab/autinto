@@ -25,13 +25,13 @@ test('Toelichting labels !%L, !%H, !%HL: these only appear at the beginning of a
   )
 })
 test('A final boundary tone is required.', () => {
-  const error = illegalInputHandling(['%L', '', ''], ['%L', '', ''])
+  const error = illegalInputHandling(['%L', '', ''], ['%L', '', 'H%'])
 
   expect(error).toEqual('A final boundary tone is required.')
 })
 
 test('An initial boundary tone is required.', () => {
-  const error = illegalInputHandling(['', '', 'H%'], ['', '', 'H%'])
+  const error = illegalInputHandling(['', '', 'H%'], ['%L', '', 'H%'])
 
   expect(error).toEqual('An initial boundary tone is required.')
 })
