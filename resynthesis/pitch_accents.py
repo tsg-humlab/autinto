@@ -359,7 +359,10 @@ class Word(AbstractWord):
         This rule creates the rise from L and L* to the next primary
         tone.
         """
-
+        #This case only needs to be handled when it is not the last word in an ip,
+        #if it is the last word, we skip this (thanks to the return) and handle this in final boundary handling.
+        if self.is_last_word:
+            return
         time_preceding_target = point_list[-1].time
         prev_target_to_next = Interval(time_preceding_target, self.next_boundary)
         if prev_target_to_next.duration < 2*self.vars.from_time:
