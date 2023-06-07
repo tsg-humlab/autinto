@@ -72,7 +72,7 @@ item []:
             text = "" 
     item [3]:
         class = "IntervalTier" 
-        name = "VP" 
+        name = "vp" 
         xmin = 0 
         xmax = 2.2365 
         intervals: size = 17 
