@@ -13,7 +13,7 @@ export function illegalInputHandling(filledAnnotations, key) {
       return 'A final boundary tone is required.'
     } else if (
       i == 0 &&
-      (annotation == '!%L' || annotation == '!%H' || annotation == '%HL')
+      (annotation == '!%L' || annotation == '!%H' || annotation == '!%HL')
     ) {
       return 'Toelichting labels !%L, !%H, !%HL: these only appear at the beginning of a second IP'
     } else if (annotation == '' && (key[i] == 'L' || key[i] == 'H')) {
