@@ -16,13 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from filebrowser.sites import site
 from django.conf.urls import include
 from . import views
 
 urlpatterns = [
-    path('admin/filebrowser/', site.urls),
-    path('grappelli/', include('grappelli.urls')),
     path('admin/', admin.site.urls),
     path('rebuild-html/', views.rebuild_html),
     path('resynthesize/', include('resynthesis.urls')),
