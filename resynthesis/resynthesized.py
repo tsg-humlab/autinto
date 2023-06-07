@@ -60,9 +60,9 @@ class ResynthesizedIntonationalPhrase(Interval):
             
             #Set the final boundary.
             str_final_boundary = sentence.popleft()
-            if str_final_boundary is None:
+            if not str_final_boundary:
                 empty_initial_boundary = sentence.popleft()
-                if empty_initial_boundary is not None:
+                if empty_initial_boundary:
                     raise ValueError("Expected empty initial boundary, but found {}".format(empty_initial_boundary))
                 
                 ip = phrase_ip.pop(0)
