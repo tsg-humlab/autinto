@@ -78,7 +78,7 @@ class ResynthesizedIntonationalPhrase:
 
     #these @property defenitions are used to more easily retrieve properties from a previous type within this class.
     @property
-    def vars(self) -> ResynthesizedVariables:
+    def vars(self) -> ResynthesizeVariables:
         return self.parent.vars
 
     @property
