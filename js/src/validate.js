@@ -7,7 +7,7 @@ export function illegalInputHandling(filledAnnotations, key) {
       if (H_star_lh(filledAnnotations, i)) {
         return 'H*LH is a prenuclear pitch accent, meaning that another pitch accent needs to follow in the IP.'
       }
-    } else if (key[i].charAt(0)=='%' && key[i].charAt(0)=='!' && annotation == '') {
+    } else if ((key[i].charAt(0)=='%' || key[i].charAt(0)=='!') && annotation == '') {
       return 'An initial boundary tone is required.'
     } else if (key[i].slice(-1)=='%' && annotation == '') {
       return 'A final boundary tone is required.'
