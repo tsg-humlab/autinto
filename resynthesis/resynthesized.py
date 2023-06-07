@@ -221,10 +221,10 @@ class ResynthesizedPhrase:
         # Add pitch accent labels
         word_tier = tg.PointTier('tones', textgrid.minTime, textgrid.maxTime)
         for ip in self.ips:
-            word_tier.addPoint(tg.Point(ip.ip.start.total_seconds(), ip.initial_boundary.name))
+            self.add_point(word_tier, ip.ip.start, ip.initial_boundary.name)
             for word in ip.words:
-                word_tier.addPoint(tg.Point(word.vp.start.total_seconds(), word.name))
-            word_tier.addPoint(tg.Point(ip.ip.end.total_seconds(), ip.final_boundary.name))
+                self.add_point(word_tier, word.vp.start, word.name)
+            self.add_point(word_tier, ip.ip.end, ip.final_boundary.name)
         textgrid.append(word_tier)
 
         # Generate the new frequency points
@@ -246,10 +246,8 @@ class ResynthesizedPhrase:
             if isinstance(point, FrequencyPoint):
                 # For each FrequencyPoint, we simply add the label and
                 # the pitch:
-                target_tier.addPoint(tg.Point(
-                    point.time.total_seconds(), point.label))
-                frequency_tier.addPoint(tg.Point(
-                    point.time.total_seconds(), str(int(point.freq))))
+                self.add_point(target_tier, point.time, point.label)
+                self.add_point(frequency_tier, point.time, str(int(point.freq)))
 
             elif isinstance(point, AddTime):
                 # The AddTime needs a little decoding still.
@@ -260,23 +258,17 @@ class ResynthesizedPhrase:
                 # We add four points: an original speed at the start and
                 # end of the intervals, and the new speed just in
                 # between that.
-                duration_tier.addPoint(tg.Point(
-                    point.old_interval.start.total_seconds(),
-                    str(speed_inverse)
-                ))
-                duration_tier.addPoint(tg.Point(
-                    point.old_interval.end.total_seconds(),
-                    str(speed_inverse)
-                ))
+                self.add_point(duration_tier, point.old_interval.start, str(speed_inverse))
+                self.add_point(duration_tier, point.old_interval.end, str(speed_inverse))
 
-                duration_tier.addPoint(tg.Point(
-                    (point.old_interval.start - timedelta(microseconds=1)).total_seconds(),
-                    '1'
-                ))
-                duration_tier.addPoint(tg.Point(
-                    (point.old_interval.end + timedelta(microseconds=1)).total_seconds(),
-                    '1'
-                ))
+                self.add_point(duration_tier,
+                          point.old_interval.start - timedelta(microseconds=1),
+                          '1'
+                )
+                self.add_point(duration_tier,
+                          point.old_interval.end + timedelta(microseconds=1),
+                          '1'
+                )
 
         #add tier to textgrid
         textgrid.append(target_tier)
@@ -286,6 +278,22 @@ class ResynthesizedPhrase:
             textgrid.append(duration_tier)
 
         return textgrid
+
+    def add_point(self, tier, time, label):
+        orig_time = time
+
+        while True:
+            try:
+                tier.addPoint(tg.Point(time.total_seconds(), label))
+                break
+            except ValueError as e:
+                # If there is already a point there, add a microsecond and try
+                # again
+                time += timedelta(microseconds=1)
+
+                if time > orig_time + timedelta(microseconds=100):
+                    # If it keeps failing, raise the error anyway
+                    raise e
 
 
     @property
