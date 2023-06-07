@@ -30,7 +30,7 @@ export function illegalInputHandling(filledAnnotations, key) {
       }
     }
   }
-  if (checkEmptyMedial(filledAnnotations)) {
+  if (checkEmptyMedial(filledAnnotations,key)) {
     return 'Minimally one pitch accent is required.'
   }
 
@@ -51,11 +51,14 @@ function H_star_lh(filledAnnotations, index) {
   }
 }
 
-function checkEmptyMedial(filledAnnotations) {
+function checkEmptyMedial(filledAnnotations,key) {
   let size = filledAnnotations.length
-
+  let keyWithPA = false
   for (let i = 0; i < size; i++) {
     let annotation = filledAnnotations[i]
+    if (key[i].slice(-1) != '%' && key[i].charAt(0) != '%'){
+      keyWithPA = true
+    }
     if (i != 0 && i != size - 1) {
       if (
         annotation != ''
@@ -64,5 +67,5 @@ function checkEmptyMedial(filledAnnotations) {
       }
     }
   }
-  return true
+  return keyWithPA
 }
