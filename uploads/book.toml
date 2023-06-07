@@ -8,6 +8,7 @@ title = "Transcription of Dutch intonation"
 [output.html]
 additional-js = ["additional-files/main.js", "playsound.js"]
 additional-css = ["additional-files/main.css"]
+no-section-label = true
 
 [build]
 build-dir = "./build"
