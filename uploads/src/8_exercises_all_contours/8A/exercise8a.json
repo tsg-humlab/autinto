@@ -1,0 +1,190 @@
+{
+    "items": [
+        {
+            "sentence": "[]0 [Maar] [hier]1 [hoeven] [we 't] [niet] [te] [proberen]1 []2",
+            "key": [
+                "%L",
+                "H*LH",
+                "H*L",
+                "L%"
+            ],
+            "contour": "8A-1.png",
+            "audio": "8A-1.mp3",
+            "wav": "8A-1.wav",
+            "textgrid": "8A-1.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Nee]1 []2 [](P) [zei]3 [meneer] [van] [de] [Brandelaar] []2",
+            "key": [
+                "%L",
+                "H*L",
+                "L%",
+                "L",
+                "L%"
+            ],
+            "contour": "8A-2.png",
+            "audio": "8A-2.mp3",
+            "wav": "8A-2.wav",
+            "textgrid": "8A-2.TextGrid"
+        },
+        {
+            "sentence": "[]0 [De] [eerste]1 [der] [Mohanikanen]1 []2",
+            "key": [
+                "%L",
+                "L*H",
+                "!H*",
+                "%"
+            ],
+            "contour": "8A-3.png",
+            "audio": "8A-3.mp3",
+            "wav": "8A-3.wav",
+            "textgrid": "8A-3.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Maar] [dat] [is] [uberhaupt]1 [niet 't] [geval]1 []2",
+            "key": [
+                "%L",
+                "H*L",
+                "∅",
+                "L%"
+            ],
+            "contour": "8A-4.png",
+            "audio": "8A-4.mp3",
+            "wav": "8A-4.wav",
+            "textgrid": "8A-4.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Even] [over] [iets] [anders]1 [dan 't] [werk] []2 [](P) []0 [heeft u] [zelf] [hobbies]1 []2",
+            "key": [
+                "%L",
+                "H*",
+                "H%",
+                "%L",
+                "H*",
+                "H%"
+            ],
+            "contour": "8A-5.png",
+            "audio": "8A-5.mp3",
+            "wav": "8A-5.wav",
+            "textgrid": "8A-5.TextGrid"
+        },
+        {
+            "sentence": "[]0 ['t Is] [zeer]1 [interessant]1 []2",
+            "key": [
+                "%L",
+                "H*",
+                "!H*L",
+                "L%"
+            ],
+            "contour": "8A-6.png",
+            "audio": "8A-6.mp3",
+            "wav": "8A-6.wav",
+            "textgrid": "8A-6.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Ja] [ik] [vond] [dat je het] [echt]1 [goed]1 [gedaan]1 [hebt] []2",
+            "key": [
+                "%L",
+                "H*",
+                "∅",
+                "!H*L",
+                "L%"
+            ],
+            "contour": "8A-7.png",
+            "audio": "8A-7.mp3",
+            "wav": "8A-7.wav",
+            "textgrid": "8A-7.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [Stom]1 [](L%) [](%L) [dat] [ik] [daar]1 [niet] [aan] [gedacht]1 [heb] [](L%)",
+            "key": [
+                "H*L",
+                "H*L",
+                "H*L"
+            ],
+            "contour": "8A-8.png",
+            "audio": "8A-8.mp3",
+            "wav": "8A-8.wav",
+            "textgrid": "8A-8.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Ze] [lopen] [helemaal]1 [de] [keuken]1 [door] []2",
+            "key": [
+                "%L",
+                "H*",
+                "H*",
+                "%"
+            ],
+            "contour": "8A-9.png",
+            "audio": "8A-9.mp3",
+            "wav": "8A-9.wav",
+            "textgrid": "8A-9.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Wat] [heb] [ik]1 [nou]1 [aan] [m'n] [fiets]1 [hangen] []2",
+            "key": [
+                "%L",
+                "∅",
+                "L*HL",
+                "∅",
+                "L%"
+            ],
+            "contour": "8A-10.png",
+            "audio": "8A-10.mp3",
+            "wav": "8A-10.wav",
+            "textgrid": "8A-10.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Is] [er] [geen]1 [tafelkleedje]1 []2",
+            "key": [
+                "%L",
+                "∅",
+                "H*",
+                "H%"
+            ],
+            "contour": "8A-11.png",
+            "audio": "8A-11.mp3",
+            "wav": "8A-11.wav",
+            "textgrid": "8A-11.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Ga] [direct]1 [naar] [de] [gevangenis]1 []2 []0 [ga] [niet]1 [langs] [af]1 []2",
+            "key": [
+                "%L",
+                "H*L",
+                "L*H",
+                "%",
+                "%L",
+                "H*L",
+                "L*H",
+                "%"
+            ],
+            "contour": "8A-12.png",
+            "audio": "8A-12.mp3",
+            "wav": "8A-12.wav",
+            "textgrid": "8A-12.TextGrid"
+        }
+    ],
+    "choices": [
+        [
+            ["%L", "%H"],
+	    ["%HL", "∅"]
+        ],
+        [
+            ["H*L", "!H*L"],
+	    ["H*", "!H*"],
+	    ["H*LH", "L*HL"],
+	    ["L*!HL", "L*"],
+	    ["L*H", "H*!H"],
+	    ["∅"]
+        ],
+        [
+            ["L%", "H%"],
+	    ["%", "∅"]
+        ],
+        [
+            ["L", "H"],
+	    ["∅"]
+        ]
+    ]
+}

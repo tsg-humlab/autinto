@@ -1,0 +1,193 @@
+{
+    "items": [
+        {
+            "sentence": "[]0 [Zijn] [er] [meloenen]1 [teveel]1 []2",
+            "key": [
+                "%HL",
+                "L*H",
+                "∅",
+                "H%"
+            ],
+            "contour": "5C-1.png",
+            "audio": "5C-1.mp3",
+            "wav": "5C-1.wav",
+            "textgrid": "5C-1.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Zijn] [je] [foto's]1 [al] [afgedrukt]1 []2",
+            "key": [
+                "%H",
+                "H*L",
+                "∅",
+                "H%"
+            ],
+            "contour": "5C-2.png",
+            "audio": "5C-2.mp3",
+            "wav": "5C-2.wav",
+            "textgrid": "5C-2.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Misschien] [is] [nu] [wel] [ieder]1 [uur]1 [belangrijk]1 []2",
+            "key": [
+                "%HL",
+                "H*",
+                "∅",
+                "H*L",
+                "%"
+            ],
+            "contour": "5C-3.png",
+            "audio": "5C-3.mp3",
+            "wav": "5C-3.wav",
+            "textgrid": "5C-3.TextGrid"
+        },
+        {
+            "sentence": "[]0 [En] [nu]1 [is-ie] [weer]1 [rood]1 []2",
+            "key": [
+                "%L",
+                "L*H",
+                "∅",
+                "H*L",
+                "L%"
+            ],
+            "contour": "5C-4.png",
+            "audio": "5C-4.mp3",
+            "wav": "5C-4.wav",
+            "textgrid": "5C-4.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Gaan] [de] [lonen]1 [omlaag]1 []2",
+            "key": [
+                "%H",
+                "!H*L",
+                "∅",
+                "L%"
+            ],
+            "contour": "5C-5.png",
+            "audio": "5C-5.mp3",
+            "wav": "5C-5.wav",
+            "textgrid": "5C-5.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Wil] [je] [je] [mandoline]1 [verkopen]1 []2",
+            "key": [
+                "%H",
+                "H*",
+                "∅",
+                "H%"
+            ],
+            "contour": "5C-6.png",
+            "audio": "5C-6.mp3",
+            "wav": "5C-6.wav",
+            "textgrid": "5C-6.TextGrid"
+        },
+        {
+            "sentence": "[]0 [D'r] [moet]1 [nog] [maar's] [over] [gepraat]1 [worden]1 []2",
+            "key": [
+                "%H",
+                "H*",
+                "!H*L",
+                "∅",
+                "L%"
+            ],
+            "contour": "5C-7.png",
+            "audio": "5C-7.mp3",
+            "wav": "5C-7.wav",
+            "textgrid": "5C-7.TextGrid"
+        },
+        {
+            "sentence": "[]0 ['t Heeft] [toch]1 [allemaal] [geen] [zin] [op] [die]1 [manier]1 []2",
+            "key": [
+                "%L",
+                "H*L",
+                "∅",
+                "∅",
+                "L%"
+            ],
+            "contour": "5C-8.png",
+            "audio": "5C-8.mp3",
+            "wav": "5C-8.wav",
+            "textgrid": "5C-8.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Ze] [helpen]1 [om] [haar] [billetjes]1 [prachtig]1 [droog]1 [te houden] []2",
+            "key": [
+                "%H",
+                "H*L",
+                "∅",
+                "∅",
+                "H*L",
+                "%"
+            ],
+            "contour": "5C-9.png",
+            "audio": "5C-9.mp3",
+            "wav": "5C-9.wav",
+            "textgrid": "5C-9.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Als 't] [water]1 [komt]1 []2 []0 [dan]1 [piep]1 [je] [wel] [anders]1 []2",
+            "key": [
+                "%L",
+                "H*",
+                "∅",
+                "%",
+                "%L",
+                "L*H",
+                "∅",
+                "!H*L",
+                "L%"
+            ],
+            "contour": "5C-10.png",
+            "audio": "5C-10.mp3",
+            "wav": "5C-10.wav",
+            "textgrid": "5C-10.TextGrid"
+        },
+        {
+            "sentence": "[]0 [En] [is] [je] [kat]1 [nog] [teruggekomen]1 []2",
+            "key": [
+                "%L",
+                "H*L",
+                "∅",
+                "H%"
+            ],
+            "contour": "5C-11.png",
+            "audio": "5C-11.mp3",
+            "wav": "5C-11.wav",
+            "textgrid": "5C-11.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Als 't] [water]1 [komt]1 []2 []0 [dan]1 [piep]1 [je] [wel] [anders]1 []2",
+            "key": [
+                "%L",
+                "H*L",
+                "∅",
+                "H%",
+                "%L",
+                "L*H",
+                "∅",
+                "H*L",
+                "L%"
+            ],
+            "contour": "5C-12.png",
+            "audio": "5C-12.mp3",
+            "wav": "5C-12.wav",
+            "textgrid": "5C-12.TextGrid"
+        }
+    ],
+    "choices": [
+        [
+            ["%L", "%H"],
+	    ["%HL", "∅"]
+        ],
+        [
+            ["H*L", "!H*L"],
+	    ["H*", "!H*"],
+	    ["H*LH", "L*"],
+	    ["L*H", "H*!H"],
+	    ["∅"]
+        ],
+        [
+            ["L%", "H%"],
+	    ["%", "∅"]
+        ]
+    ]
+}

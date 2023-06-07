@@ -1,0 +1,183 @@
+{
+    "items": [
+        {
+            "sentence": "[]0 [Maar] [ook]1 [een] [beetje]1 [in het] [kader]1 [van] [gewoon] [met] [taal]1 [omgaan]1 [he] []2",
+            "key": [
+                "%L",
+                "H*L",
+                "∅",
+                "∅",
+                "H*L",
+                "∅",
+                "H%"
+            ],
+            "contour": "7A-1.png",
+            "audio": "7A-1.mp3",
+            "wav": "7A-1.wav",
+            "textgrid": "7A-1.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Heb] [je] [die] [uitgenodigd]1 [die] [kwast]1 []2",
+            "key": [
+                "%L",
+                "H*L",
+                "∅",
+                "L%"
+            ],
+            "contour": "7A-2.png",
+            "audio": "7A-2.mp3",
+            "wav": "7A-2.wav",
+            "textgrid": "7A-2.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Ja] ['t was] [een] [soort] [monopolie]1 [was 't] []2",
+            "key": [
+                "%L",
+                "H*L",
+                "%"
+            ],
+            "contour": "7A-3.png",
+            "audio": "7A-3.mp3",
+            "wav": "7A-3.wav",
+            "textgrid": "7A-3.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Wil] [je] [die] [nog] [zien]1 [die] [Jantien]1 []2",
+            "key": [
+                "%L",
+                "H*",
+                "∅",
+                "H%"
+            ],
+            "contour": "7A-4.png",
+            "audio": "7A-4.mp3",
+            "wav": "7A-4.wav",
+            "textgrid": "7A-4.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Je] [ging]1 [een] [stukje]1 [](P) [pison]1 [spelen]1 [he] []2",
+            "key": [
+                "%L",
+                "H*L",
+                "∅",
+                "H*L",
+                "∅",
+                "H%"
+            ],
+            "contour": "7A-5.png",
+            "audio": "7A-5.mp3",
+            "wav": "7A-5.wav",
+            "textgrid": "7A-5.TextGrid"
+        },
+        {
+            "sentence": "[]0 [EH] [Patrick]1 []2",
+            "key": [
+                "%L",
+                "H*L",
+                "H%"
+            ],
+            "contour": "7A-6.png",
+            "audio": "7A-6.mp3",
+            "wav": "7A-6.wav",
+            "textgrid": "7A-6.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Sta]1 [nou] [even] [stil]1 [voor] [de] [verandering]1 []2",
+            "key": [
+                "%L",
+                "H*L",
+                "H*L",
+                "∅",
+                "L%"
+            ],
+            "contour": "7A-7.png",
+            "audio": "7A-7.mp3",
+            "wav": "7A-7.wav",
+            "textgrid": "7A-7.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Mag ik]1 [je] [naam]1 [opschrijven,]1 [bla bla bla] []2",
+            "key": [
+                "%L",
+                "∅",
+                "H*L",
+                "∅",
+                "L%"
+            ],
+            "contour": "7A-8.png",
+            "audio": "7A-8.mp3",
+            "wav": "7A-8.wav",
+            "textgrid": "7A-8.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Die]1 [komt] [wel] [een] [keer] [terug]1 [dacht] [ik] [zo] []2",
+            "key": [
+                "%L",
+                "H*L",
+                "H*L",
+                "L%"
+            ],
+            "contour": "7A-9.png",
+            "audio": "7A-9.mp3",
+            "wav": "7A-9.wav",
+            "textgrid": "7A-9.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Doen]1 [we] [toch]1 []2",
+            "key": [
+                "%L",
+                "H*L",
+                "∅",
+                "H%"
+            ],
+            "contour": "7A-10.png",
+            "audio": "7A-10.mp3",
+            "wav": "7A-10.wav",
+            "textgrid": "7A-10.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Grappig]1 [hoor]1 []2",
+            "key": [
+                "%L",
+                "L*HL",
+                "∅",
+                "H%"
+            ],
+            "contour": "7A-11.png",
+            "audio": "7A-11.mp3",
+            "wav": "7A-11.wav",
+            "textgrid": "7A-11.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Of-ik] [dat-het] [liefste]1 [hoor]1 []2",
+            "key": [
+                "%L",
+                "H*L",
+                "∅",
+                "H%"
+            ],
+            "contour": "7A-12.png",
+            "audio": "7A-12.mp3",
+            "wav": "7A-12.wav",
+            "textgrid": "7A-12.TextGrid"
+        }
+    ],
+    "choices": [
+        [
+            ["%L", "%H"],
+	    ["%HL", "∅"]
+        ],
+        [
+            ["H*L", "!H*L"],
+	    ["H*", "!H*"],
+	    ["H*LH", "L*HL"],
+	    ["L*!HL", "L*"],
+	    ["L*H", "H*!H"],
+	    ["∅"]
+        ],
+        [
+            ["L%", "H%"],
+	    ["%", "∅"]
+        ]
+    ]
+}

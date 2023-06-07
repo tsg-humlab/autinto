@@ -1,0 +1,209 @@
+{
+    "items": [
+        {
+            "sentence": "[]0 [Rene]1 [heeft] [nog] [vlees]1 [over]1 []2",
+            "key": [
+                "%L",
+                "H*L",
+                "H*",
+                "∅",
+                "H%"
+            ],
+            "contour": "8B-1.png",
+            "audio": "8B-1.mp3",
+            "wav": "8B-1.wav",
+            "textgrid": "8B-1.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Wil]1 [ik] [niet]1 []2",
+            "key": [
+                "%L",
+                "L*",
+                "∅",
+                "H%"
+            ],
+            "contour": "8B-2.png",
+            "audio": "8B-2.mp3",
+            "wav": "8B-2.wav",
+            "textgrid": "8B-2.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Ze] [liggen] [niet]1 [over] [elkaar] [heen]1 []2 []0 [maar] [je] [legt 'm] [gewoon] [d'r] [boven]1 [tegenaan]1 []2",
+            "key": [
+                "%L",
+                "H*L",
+                "H*",
+                "H%",
+                "%H",
+                "H*",
+                "!H*L",
+                "L%"
+            ],
+            "contour": "8B-3.png",
+            "audio": "8B-3.mp3",
+            "wav": "8B-3.wav",
+            "textgrid": "8B-3.TextGrid"
+        },
+        {
+            "sentence": "[]0 [En] [je] [moet] [niet]1 [telkens] [poeh]1 [zeggen]1 []2 [zei]3 [juffrouw]1 [van]1 [der]1 [keuken]1 []2 []0 [dat]1 [is] [onbeleefd]1 []2",
+            "key": [
+                "%L",
+                "H*",
+                "!H*L",
+                "∅",
+                "L%",
+                "L",
+                "∅",
+                "∅",
+                "∅",
+                "∅",
+                "L%",
+                "%L",
+                "H*L",
+                "L*HL",
+                "%"
+            ],
+            "contour": "8B-4.png",
+            "audio": "8B-4.mp3",
+            "wav": "8B-4.wav",
+            "textgrid": "8B-4.TextGrid"
+        },
+        {
+            "sentence": "[]0 [De] [hele]1 [kudde]1 [is] [daarbij] [omgekomen]1 []2",
+            "key": [
+                "%L",
+                "H*",
+                "!H*",
+                "!H*L",
+                "L%"
+            ],
+            "contour": "8B-5.png",
+            "audio": "8B-5.mp3",
+            "wav": "8B-5.wav",
+            "textgrid": "8B-5.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Toen] [er] [werd]1 [afgefloten]1 [was] [de] [stand]1 [nog] [steeds]1 [gelijk]1 []2",
+            "key": [
+                "%L",
+                "∅",
+                "H*L",
+                "∅",
+                "H*",
+                "!H*L",
+                "L%"
+            ],
+            "contour": "8B-6.png",
+            "audio": "8B-6.mp3",
+            "wav": "8B-6.wav",
+            "textgrid": "8B-6.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Ik] [loop] [altijd]1 [heen en]1 [weer]1 [over de] [trap]1 []2 [](P) []0 [dag en]1 [nacht]1 []2",
+            "key": [
+                "%L",
+                "H*",
+                "!H*",
+                "!H*",
+                "!H*L",
+                "L%",
+                "%L",
+                "H*L",
+                "L*!HL",
+                "%"
+            ],
+            "contour": "8B-7.png",
+            "audio": "8B-7.mp3",
+            "wav": "8B-7.wav",
+            "textgrid": "8B-7.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Moet] [je] [Oma]1 [die] [dan] [niet] [geven]1 []2",
+            "key": [
+                "%L",
+                "L*HL",
+                "∅",
+                "L%"
+            ],
+            "contour": "8B-8.png",
+            "audio": "8B-8.mp3",
+            "wav": "8B-8.wav",
+            "textgrid": "8B-8.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Waar] [hebben]1 [we] [het] [nou] [helemaal] [over]1 []2",
+            "key": [
+                "%L",
+                "H*L",
+                "∅",
+                "%"
+            ],
+            "contour": "8B-9.png",
+            "audio": "8B-9.mp3",
+            "wav": "8B-9.wav",
+            "textgrid": "8B-9.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Dat] [moet je] [straks]1 [maar] [even] [overdoen]1 []2",
+            "key": [
+                "%L",
+                "H*L",
+                "H*L",
+                "L%"
+            ],
+            "contour": "8B-10.png",
+            "audio": "8B-10.mp3",
+            "wav": "8B-10.wav",
+            "textgrid": "8B-10.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Dus]1 [zagen] [ze] [af]1 [van] [verdere] [deelname]1 []2",
+            "key": [
+                "%HL",
+                "∅",
+                "L*H",
+                "H*L",
+                "L%"
+            ],
+            "contour": "8B-11.png",
+            "audio": "8B-11.mp3",
+            "wav": "8B-11.wav",
+            "textgrid": "8B-11.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Zijn] [er] [meloenen]1 [te veel]1 []2",
+            "key": [
+                "%L",
+                "L*HL",
+                "∅",
+                "L%"
+            ],
+            "contour": "8B-12.png",
+            "audio": "8B-12.mp3",
+            "wav": "8B-12.wav",
+            "textgrid": "8B-12.TextGrid"
+        }
+    ],
+    "choices": [
+        [
+            ["%L", "%H"],
+	    ["%HL", "∅"]
+        ],
+        [
+            ["H*L", "!H*L"],
+	    ["H*", "!H*"],
+	    ["H*LH", "L*HL"],
+	    ["L*!HL", "L*"],
+	    ["L*H", "H*!H"],
+	    ["∅"]
+        ],
+        [
+            ["L%", "H%"],
+	    ["%", "∅"]
+        ],
+        [
+            ["L", "H"],
+	    ["∅"]
+        ]
+    ]
+}

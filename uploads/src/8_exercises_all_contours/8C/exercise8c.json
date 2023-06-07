@@ -1,0 +1,216 @@
+{
+    "items": [
+        {
+            "sentence": "[]0 [Het] [leukste]1 [onderdeel]1 [vond] [ik] [eigenlijk] [het] [lesgeven]1 []2",
+            "key": [
+                "%L",
+                "H*",
+                "∅",
+                "!H*L",
+                "L%"
+            ],
+            "contour": "8C-1.png",
+            "audio": "8C-1.mp3",
+            "wav": "8C-1.wav",
+            "textgrid": "8C-1.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Examenwerk]1 [is] [niet]1 [het] [allerberoerdste]1 [om] [na]1 [te] [kijken]1 []2",
+            "key": [
+                "%L",
+                "H*L",
+                "H*L",
+                "H*L",
+                "H*L",
+                "∅",
+                "L%"
+            ],
+            "contour": "8C-2.png",
+            "audio": "8C-2.mp3",
+            "wav": "8C-2.wav",
+            "textgrid": "8C-2.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Dat] [ze] [dus] [zich] [minder]1 [goed]1 [kunnen] [concentreren]1 []2 []0 [waar] [zou 'm]1 [dat] [dan] [in] [zitten]1 []2",
+            "key": [
+                "%L",
+                "H*L",
+                "∅",
+                "H*L",
+                "L%",
+                "%L",
+                "∅",
+                "H*",
+                "H%"
+            ],
+            "contour": "8C-3.png",
+            "audio": "8C-3.mp3",
+            "wav": "8C-3.wav",
+            "textgrid": "8C-3.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Dan]1 [gaat 't] [je] [toch]1 [wel] [boeien]1 []2",
+            "key": [
+                "%L",
+                "H*L",
+                "H*L",
+                "H*L",
+                "L%"
+            ],
+            "contour": "8C-4.png",
+            "audio": "8C-4.mp3",
+            "wav": "8C-4.wav",
+            "textgrid": "8C-4.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Nou] [dat] [wordt] [haast]1 [onmenselijk]1 []2",
+            "key": [
+                "%L",
+                "H*L",
+                "H*L",
+                "%"
+            ],
+            "contour": "8C-5.png",
+            "audio": "8C-5.mp3",
+            "wav": "8C-5.wav",
+            "textgrid": "8C-5.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Ja]1 [hoe] [zeg je] [dat je] [morgenavond]1 [met je] [neefje]1 [om]1 [half]1 [tien]1 [naar de] [bioscoop]1 [wil]1 []2",
+            "key": [
+                "%L",
+                "∅",
+                "H*L",
+                "H*L",
+                "∅",
+                "H*L",
+                "∅",
+                "H*L",
+                "∅",
+                "L%"
+            ],
+            "contour": "8C-6.png",
+            "audio": "8C-6.mp3",
+            "wav": "8C-6.wav",
+            "textgrid": "8C-6.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Ik weet]1 [niet] [of ik] [dat] [kan]1 []2",
+            "key": [
+                "%L",
+                "∅",
+                "H*L",
+                "%"
+            ],
+            "contour": "8C-7.png",
+            "audio": "8C-7.mp3",
+            "wav": "8C-7.wav",
+            "textgrid": "8C-7.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Dus] [die] [ene]1 [wil] [natuurlijk] [die] [armband]1 []2 []0 [en] [die] [ander]1 [wil] [die] [collier]1 []2",
+            "key": [
+                "%L",
+                "H*L",
+                "H*L",
+                "H%",
+                "%L",
+                "H*L",
+                "H*L",
+                "L%"
+            ],
+            "contour": "8C-8.png",
+            "audio": "8C-8.mp3",
+            "wav": "8C-8.wav",
+            "textgrid": "8C-8.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Hai]1 [ik] [ben] [moe]1 []2",
+            "key": [
+                "%L",
+                "H*L",
+                "H*L",
+                "%"
+            ],
+            "contour": "8C-9.png",
+            "audio": "8C-9.mp3",
+            "wav": "8C-9.wav",
+            "textgrid": "8C-9.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Maar] [toch]1 []2 []0 [als] [ik] [dat] [zie]1 []2 []0 [dan] [denk] [ik] [ja]1 []2 []0 [dat is] [toch]1 [wel] [heel] [goed]1 []2",
+            "key": [
+                "%L",
+                "H*",
+                "H%",
+                "%L",
+                "H*",
+                "H%",
+                "%H",
+                "H*L",
+                "L%",
+                "%L",
+                "H*",
+                "!H*L",
+                "L%"
+            ],
+            "contour": "8C-10.png",
+            "audio": "8C-10.mp3",
+            "wav": "8C-10.wav",
+            "textgrid": "8C-10.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Zeg] [maar] [net zo] [groot]1 [als] [dat] [kristal]1 [dat] [ik] [zelf]1 [heb]1 []2",
+            "key": [
+                "%L",
+                "∅",
+                "∅",
+                "H*L",
+                "∅",
+                "L%"
+            ],
+            "contour": "8C-11.png",
+            "audio": "8C-11.mp3",
+            "wav": "8C-11.wav",
+            "textgrid": "8C-11.TextGrid"
+        },
+        {
+            "sentence": "[]0 [Ze] [heeft] [grote]1 [belangstelling]1 [voor] [kunst]1 []2 [](P) []0 [en] [bezoekt]1 [regelmatig]1 [exposities]1 [en] [voorstellingen]1 []2",
+            "key": [
+                "%L",
+                "H*L",
+                "!H*L",
+                "H*",
+                "%",
+                "%L",
+                "H*L",
+                "!H*L",
+                "H*",
+                "H*L",
+                "L%"
+            ],
+            "contour": "8C-12.png",
+            "audio": "8C-12.mp3",
+            "wav": "8C-12.wav",
+            "textgrid": "8C-12.TextGrid"
+        }
+    ],
+    "choices": [
+        [
+            ["%L", "%H"],
+	    ["%HL"]
+        ],
+        [
+            ["H*L", "!H*L"],
+	    ["H*", "!H*"],
+	    ["H*LH", "L*HL"],
+	    ["L*!HL", "L*"],
+	    ["L*H", "H*!H"],
+	    ["∅"]
+        ],
+        [
+            ["L%", "H%"],
+	    ["%"]
+        ]
+    ]
+}

@@ -1,0 +1,154 @@
+{
+    "items": [
+        {
+            "sentence": "[](%L) [Fietsen]0 [is] [in] ['t] [hele]0 [park] [verboden]0 [](L%)",
+            "key": [
+                "H*",
+                "!H*",
+                "!H*L"
+            ],
+            "contour": "1C-1.png",
+            "audio": "1C-1.mp3",
+            "wav": "1C-1.wav",
+            "textgrid": "1C-1.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [Fietsen]0 [is] [in] ['t] [hele]0 [park] [verboden]0 [](L%)",
+            "key": [
+                "H*L",
+                "!H*L",
+                "!H*L"
+            ],
+            "contour": "1C-2.png",
+            "audio": "1C-2.mp3",
+            "wav": "1C-2.wav",
+            "textgrid": "1C-2.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [Dat] [moet] [je] [straks]0 [maar] [even] [over]0 [doen] [](%)",
+            "key": [
+                "H*L",
+                "H*L"
+            ],
+            "contour": "1C-3.png",
+            "audio": "1C-3.mp3",
+            "wav": "1C-3.wav",
+            "textgrid": "1C-3.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [Dat] [moet] [je] [straks]0 [maar] [even] [over]0 [doen] [](L%)",
+            "key": [
+                "H*",
+                "!H*L"
+            ],
+            "contour": "1C-4.png",
+            "audio": "1C-4.mp3",
+            "wav": "1C-4.wav",
+            "textgrid": "1C-4.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [Waar]0 [wil] [Marina]0 [haar] [mandoline]0 [verkopen] [](L%)",
+            "key": [
+                "H*L",
+                "∅",
+                "∅"
+            ],
+            "contour": "1C-5.png",
+            "audio": "1C-5.mp3",
+            "wav": "1C-5.wav",
+            "textgrid": "1C-5.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [Je] [bent] [ook] [wel] [nieuwsgierig]0 [van] [wat] [maken]0 [ze] [d'rvan] [](L%)",
+            "key": [
+                "H*L",
+                "H*L"
+            ],
+            "contour": "1C-6.png",
+            "audio": "1C-6.mp3",
+            "wav": "1C-6.wav",
+            "textgrid": "1C-6.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [zij]0 [heeft]0 [eendjes]0 [](L%)",
+            "key": [
+                "H*L",
+                "∅",
+                "H*L"
+            ],
+            "contour": "1C-7.png",
+            "audio": "1C-7.mp3",
+            "wav": "1C-7.wav",
+            "textgrid": "1C-7.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [de] [kerk]0 [laat] [je] [nog] [even]0 [rechts]0 [liggen] [](L%)",
+            "key": [
+                "H*",
+                "∅",
+                "!H*L"
+            ],
+            "contour": "1C-8.png",
+            "audio": "1C-8.mp3",
+            "wav": "1C-8.wav",
+            "textgrid": "1C-8.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [ik] [heb] [eerst]0 [heb] [ik] [een] [boom]0 [en] [een] [fabriek]0 [](L%)",
+            "key": [
+                "H*L",
+                "H*L",
+                "!H*L"
+            ],
+            "contour": "1C-9.png",
+            "audio": "1C-9.mp3",
+            "wav": "1C-9.wav",
+            "textgrid": "1C-9.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [je] [gaat] [rechts]0 [langs de]0 [fiets]0 [](L%)",
+            "key": [
+                "H*",
+                "∅",
+                "!H*L"
+            ],
+            "contour": "1C-10.png",
+            "audio": "1C-10.mp3",
+            "wav": "1C-10.wav",
+            "textgrid": "1C-10.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [je] [blijft]0 [rechts]0 [van] [het] [huis]0 [](L%)",
+            "key": [
+                "∅",
+                "H*",
+                "!H*L"
+            ],
+            "contour": "1C-11.png",
+            "audio": "1C-11.mp3",
+            "wav": "1C-11.wav",
+            "textgrid": "1C-11.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [en] [dat] [betreft]0 [dan] [vooral] [mensen]0 [die] [geraakt]0 [zijn] [door] [rondvliegend]0 [glas]0 [](L%)",
+            "key": [
+                "H*L",
+                "H*L",
+                "H*L",
+                "H*L",
+                "H*L"
+            ],
+            "contour": "1C-12.png",
+            "audio": "1C-12.mp3",
+            "wav": "1C-12.wav",
+            "textgrid": "1C-12.TextGrid"
+        }
+    ],
+    "choices": [
+        [
+            ["H*L", "!H*L"],
+	    ["H*", "!H*"],
+	    ["H*LH", "∅"]
+        ]
+    ]
+}
