@@ -5,7 +5,7 @@ export function illegalInputHandling(filledAnnotations, key) {
     let annotation = filledAnnotations[i]
     if (annotation == 'H*LH') {
       if (H_star_lh(filledAnnotations, i)) {
-        return 'H*LH is a prenuclear pitch accent, meaning that another pitch accent needs to	follow in the IP.'
+        return 'H*LH is a prenuclear pitch accent, meaning that another pitch accent needs to follow in the IP.'
       }
     } else if (i == 0 && annotation == '') {
       return 'An initial boundary tone is required.'
