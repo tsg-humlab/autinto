@@ -161,7 +161,7 @@
             "textgrid": "3B-11.TextGrid"
         },
         {
-            "sentence": "[]0 [Ja] [ik] [vond] [dat] [je] [het] [echt]1 [goed] [gedaan]1 [hebt] []2",
+            "sentence": "[]0 [Ja] [ik] [vond] [dat] [je het] [echt]1 [goed] [gedaan]1 [hebt] []2",
             "key": [
                 "%L",
                 "H*",

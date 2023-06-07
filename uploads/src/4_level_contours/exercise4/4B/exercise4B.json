@@ -92,7 +92,7 @@
             "textgrid": "4B-7.TextGrid"
         },
         {
-            "sentence": "[](%L) [Als het] [water]0 [tot] [hier]0 [komt] [](H%) [](%L) [dan]0 [moet je]0 [hozen]0 [](L%)",
+            "sentence": "[](%L) [Als het] [water]0 [tot] [hier]0 [komt] [](H%) [](%L) [dan]0 [moet] [je]0 [hozen]0 [](L%)",
             "key": [
                 "H*L",
                 "∅",
@@ -106,7 +106,7 @@
             "textgrid": "4B-8.TextGrid"
         },
         {
-            "sentence": "[](%L) [Daar] [gaan] [de] [Rijke]0 [](%) [](%L) [Meulenmeester]0 [](%) [](%L) [en] [Versmissen]0 [](%) []((%L) [door] [de] [derde]0 [bocht]0 [](%)",
+            "sentence": "[](%L) [Daar] [gaan] [de] [Rijke]0 [](%) [](%L) [Meulenmeester]0 [](%) [](%L) [en] [Versmissen]0 [](%) [](%L) [door] [de] [derde]0 [bocht]0 [](%)",
             "key": [
                 "H*",
                 "H*",

@@ -177,7 +177,12 @@ class ResynthesizedPhrase:
         # and initialize the global variables
         self.vars = ResynthesizeVariables(**kwargs)
 
+        self.removeP(sentence)
+
         sentence = deque(sentence)
+
+        
+
         for phrase_ip in phrase.ips:
             # the resynthesized IP invocation 'eats' the sentence, so
             # that each call removes its own pitch accents from the
@@ -189,6 +194,12 @@ class ResynthesizedPhrase:
         freq_low = self.vars.fr + self.vars.n - 0.5*self.vars.w
         freq_high = self.vars.fr + self.vars.n + 0.5*self.vars.w
         self._frequency_range = FrequencyRange(freq_low, freq_high)
+
+
+    def removeP(self, sentence):
+        for (i, word) in enumerate(sentence):
+            if word in ["P"]:
+                sentence.pop(i)
 
 
     
