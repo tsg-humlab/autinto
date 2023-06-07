@@ -10,18 +10,17 @@ import textgrid as tg
 
 from resynthesis.phrase import Phrase, IntonationalPhrase
 from resynthesis.pitch_accents import Word, InitialBoundary, FinalBoundary
-from resynthesis.types import ResynthesizeVariables, FrequencyRange, FrequencyPoint, AddTime
+from resynthesis.types import ResynthesizeVariables, FrequencyRange, FrequencyPoint, AddTime, Interval
 
 
 @dataclass
-class ResynthesizedIntonationalPhrase:
+class ResynthesizedIntonationalPhrase(Interval):
     """
     A part of the ResynthesizedPhrase, this class represents an IP to be
     resynthesized. It stores the pitch accents in an IP of the resynthesis
     request, and the VoicedPortions of those pitch accents.
     """
 
-    ip: IntonationalPhrase
     parent: ResynthesizedPhrase
 
     initial_boundary: InitialBoundary
@@ -30,12 +29,14 @@ class ResynthesizedIntonationalPhrase:
 
     _frequency_range: FrequencyRange
 
-    def __init__(self, phrase_ip: IntonationalPhrase, sentence: deque[str], parent: ResynthesizedPhrase):
+    def __init__(self, phrase_ip: list[IntonationalPhrase], sentence: deque[str], parent: ResynthesizedPhrase):
         """ In this function, we create a ResynthesisedIntonationalPhrase,
          It consists of an initial boundary, all the words with a pitchaccent, and a final boundary """
         
-        self.ip = phrase_ip
         self.parent = parent
+
+        ip = phrase_ip.pop(0)
+        start_time = ip.start
         
         #Set the initial boundary and do extra processing for unaccented ip's
         str_initial_boundary = sentence.popleft()
@@ -43,22 +44,36 @@ class ResynthesizedIntonationalPhrase:
         self.initial_boundary = InitialBoundary(str_initial_boundary, self)
         
 
-        
-
-        #add all words with pitch accent to a list
         self.words: list[Word] = []
-        for voiced_portion in phrase_ip.vps:
-            str_word = sentence.popleft()
-            if str_word:
-                word = Word(str_word,
-                            self,
-                            len(self.words),
-                            voiced_portion)
-                self.words.append(word)
         
-        #Set the final boundary.
-        str_final_boundary = sentence.popleft()
-        self.final_boundary = FinalBoundary(str_final_boundary, self)
+        done = False
+        while not done:
+            #add all words with pitch accent to a list
+            for voiced_portion in ip.vps:
+                str_word = sentence.popleft()
+                if str_word:
+                    word = Word(str_word,
+                                self,
+                                len(self.words),
+                                voiced_portion)
+                    self.words.append(word)
+            
+            #Set the final boundary.
+            str_final_boundary = sentence.popleft()
+            if str_final_boundary is None:
+                empty_initial_boundary = sentence.popleft()
+                if empty_initial_boundary is not None:
+                    raise ValueError("Expected empty initial boundary, but found {}".format(empty_initial_boundary))
+                
+                ip = phrase_ip.pop(0)
+            else:
+                self.final_boundary = FinalBoundary(str_final_boundary, self)
+                done = True
+            
+
+
+
+   
 
         # We only set this when the decoding starts
         self._frequency_range = None
@@ -80,13 +95,6 @@ class ResynthesizedIntonationalPhrase:
     @property
     def vars(self) -> ResynthesizeVariables:
         return self.parent.vars
-
-    @property
-    def start(self):
-        return self.ip.start_time
-    @property
-    def end(self):
-        return self.ip.end_time
 
     @property
     def frequency_range(self):
@@ -182,12 +190,11 @@ class ResynthesizedPhrase:
         sentence = deque(sentence)
 
         
-
-        for phrase_ip in phrase.ips:
+        while phrase.ips:
             # the resynthesized IP invocation 'eats' the sentence, so
             # that each call removes its own pitch accents from the
             # sentence.
-            ip = ResynthesizedIntonationalPhrase(phrase_ip, sentence, self)
+            ip = ResynthesizedIntonationalPhrase(phrase.ips, sentence, self)
             self.ips.append(ip)
 
         # Set the initial frequency range
