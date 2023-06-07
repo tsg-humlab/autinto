@@ -67,9 +67,11 @@ class ResynthesizedIntonationalPhrase(Interval):
                 
                 ip = phrase_ip.pop(0)
             else:
+                end_time = ip.end
                 self.final_boundary = FinalBoundary(str_final_boundary, self)
                 done = True
-            
+        
+        super().__init__(start_time, end_time)
 
 
 
