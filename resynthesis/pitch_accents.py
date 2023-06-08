@@ -177,6 +177,28 @@ class Word(AbstractWord):
         point_list.append(point_L2)
         point_list.append(point_L3)
 
+        # In the case 'L*' as a final word, if there is enough time, two more
+        # points are created.
+            # no middle & final tone, so word is 'L*'
+        if (self.middle_tone == None and self.final_tone == None
+            and self.is_last_word
+            # and more than 350 milliseconds to IP end
+            and Duration(self.vp.end, self.ip.end) >= Milliseconds(350)):
+
+            # L4 appears 8 milliseconds after L3
+            point_L4 = FrequencyPoint(
+                label = 'L4',
+                freq = self.scale_frequency(0.2),
+                time = time_L3 + Milliseconds(8))
+            # l2 appears TOTIME before the IP end
+            point_l2 = FrequencyPoint(
+                label = 'l2',
+                freq = self.scale_frequency(0.2),
+                time = self.ip.end - self.vars.to_time)
+
+            point_list.append(point_L4)
+            point_list.append(point_l2)
+
 
     def decode_middle_high(self, point_list):
         """
@@ -240,10 +262,32 @@ class Word(AbstractWord):
         point_list.append(point_H1)
         point_list.append(point_H2)
 
+        # In the case 'H*' as a final word, if there is enough time, two more
+        # points are created.
+            # if no middle & final tone, so if word is 'H*'
+        if (self.middle_tone == None and self.final_tone == None
+            and self.is_last_word
+            # and more than 350 milliseconds to IP end
+            and Duration(self.vp.end, self.ip.end) >= Milliseconds(350)):
+
+            # H3 appears 8 milliseconds after H2
+            point_H3 = FrequencyPoint(
+                label = 'H3',
+                freq = self.scale_frequency(0.67),
+                time = time_H2 + Milliseconds(8))
+            # h2 appears TOTIME before the IP end
+            point_h2 = FrequencyPoint(
+                label = 'h2',
+                freq = self.scale_frequency(0.67),
+                time = self.ip.end - self.vars.to_time)
+
+            point_list.append(point_H3)
+            point_list.append(point_h2)
+
 
     def decode_middle_low(self, point_list):
         """
-        PRENUCLEAR RISE
+        PRENUCLEAR FALL-RISE
         This rule creates  the fall from H* in H*LH.
         """
 
@@ -352,15 +396,52 @@ class Word(AbstractWord):
 
 
     def decode_final_high(self, point_list):
+        if self.is_last_word:
+            self.decode_nuclear_rise(point_list)
+        else:
+            self.decode_pre_nuclear_rise(point_list)
+
+    def decode_nuclear_rise(self, point_list):
         """
-        PRE-NUCLEAR FALLRISE
+        NUCLEAR RISE
+        """
+
+        # With a last word L*H, we create one or two extra
+        # points, depending on available time.
+        make_h2 = False
+
+        if Duration(point_list[-1].time, self.ip.end) < 2*self.vars.from_time:
+            time_h1 = point_list[-1].time + 0.5*self.vars.to_time
+        else:
+            time_h1 = point_list[-1].time + self.vars.from_time
+            time_h2 = self.ip.end - self.vars.to_time
+            if time_h1 != time_h2:
+                # Praat does not like multiple points on the same
+                # millisecond, and as these are the same frequency
+                # anyway, we can simply drop the second if it would
+                # otherwise cause conflicts.
+                make_h2 = True
+
+        point_h1 = FrequencyPoint(
+            label = 'h1',
+            freq = self.scale_frequency(0.60),
+            time = time_h1)
+        point_list.append(point_h1)
+
+        if make_h2:
+            point_h2 = FrequencyPoint(
+                label = 'h2',
+                freq = self.scale_frequency(0.60),
+                time = time_h2)
+            point_list.append(point_h2)
+
+    def decode_pre_nuclear_rise(self, point_list):
+        """
+        PRE-NUCLEAR RISE
         This rule creates the rise from L and L* to the next primary
         tone.
         """
-        #This case only needs to be handled when it is not the last word in an ip,
-        #if it is the last word, we skip this (thanks to the return) and handle this in final boundary handling.
-        if self.is_last_word:
-            return
+
         time_preceding_target = point_list[-1].time
         prev_target_to_next = Interval(time_preceding_target, self.next_boundary)
         if prev_target_to_next.duration < 2*self.vars.from_time:
@@ -563,9 +644,9 @@ class FinalBoundary(AbstractFinalBoundary):
 
         if not self.ip.unaccented:
             self.decode_final_lengthening(point_list)
-            self.decode_nuclear_rise_and_spread(point_list)
 
         self.decode_final_boundary(point_list)
+
 
     def decode_final_lengthening(self, point_list):
         # If there is already time left after the VP, we don't do any
@@ -604,83 +685,6 @@ class FinalBoundary(AbstractFinalBoundary):
             old_interval=self.last_word.vp,
             new_interval=Interval(self.last_word.vp.start, new_ip_end)
         ))
-
-    def decode_nuclear_rise_and_spread(self, point_list):
-        """
-        If the last word in the IP was 'L*', 'H*', '!H*', or 'L*H', then
-        one or two extra points are created to spread the final tone.
-        """
-
-        match self.last_word.name:
-            case 'L*':
-                # If there is not enough time, don't create extra points
-                if Duration(self.last_word.vp.end, self.ip.end) < Milliseconds(350):
-                    return
-
-                # Otherwise, create two points:
-                point_L4 = FrequencyPoint(
-                    label = 'L4',
-                    freq = self.scale_frequency(0.2),
-                    time = point_list[-1].time + Milliseconds(8))
-                point_l2 = FrequencyPoint(
-                    label = 'l2',
-                    freq = self.scale_frequency(0.2),
-                    time = self.ip.end - self.vars.to_time)
-
-                point_list.append(point_L4)
-                point_list.append(point_l2)
-
-            case 'H*' | '!H*':
-                # If there is not enough time, don't create extra points
-                if Duration(self.last_word.vp.end, self.ip.end) < Milliseconds(350):
-                    return
-
-                # Otherwise, create two points:
-                point_H3 = FrequencyPoint(
-                    label = 'H3',
-                    freq = self.scale_frequency(0.67),
-                    time = point_list[-1].time + Milliseconds(8))
-                point_h2 = FrequencyPoint(
-                    label = 'h2',
-                    freq = self.scale_frequency(0.67),
-                    time = self.ip.end - self.vars.to_time)
-
-                point_list.append(point_H3)
-                point_list.append(point_h2)
-
-            case 'L*H':
-                # With a last word L*H, we create one or two extra
-                # points, depending on available time.
-                make_h2 = False
-
-                if Duration(point_list[-1].time, self.ip.end) < 2*self.vars.from_time:
-                    time_h1 = point_list[-1].time + 0.5*self.vars.to_time
-                else:
-                    time_h1 = point_list[-1].time + self.vars.from_time
-                    time_h2 = self.ip.end - self.vars.to_time
-                    if time_h1 != time_h2:
-                        # Praat does not like multiple points on the same
-                        # millisecond, and as these are the same frequency
-                        # anyway, we can simply drop the second if it would
-                        # otherwise cause conflicts.
-                        make_h2 = True
-
-                point_h1 = FrequencyPoint(
-                    label = 'h1',
-                    freq = self.scale_frequency(0.60),
-                    time = time_h1)
-                point_list.append(point_h1)
-
-                if make_h2:
-                    point_h2 = FrequencyPoint(
-                        label = 'h2',
-                        freq = self.scale_frequency(0.60),
-                        time = time_h2)
-                    point_list.append(point_h2)
-
-            # For any other words, no final lengthening happens.
-            case _:
-                pass
 
 
     def decode_final_boundary(self, point_list):
