@@ -202,8 +202,8 @@ function App({ id = '' }) {
             </swiper-slide>
           ))}
       </swiper-container>
-      <div className="button-container ml-3">
-        <button className="btn btn-primary mt-3 pl-1" onClick={playAudio}>
+      <div className="button-container">
+        <button onClick={playAudio}>
           Play
         </button>
         <button onClick={toggleContour}>
