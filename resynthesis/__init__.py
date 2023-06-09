@@ -1,3 +1,9 @@
+"""
+The resynthesis module determines new frequency targets for the
+resynthesized sentence, and duration changes, and uses Praat to perform
+resynthesis.
+"""
+
 import os.path
 import subprocess
 import time

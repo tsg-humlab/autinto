@@ -1,3 +1,8 @@
+"""
+The Types module defines some functions and classes that are used in
+many of the other modules.
+"""
+
 from datetime import timedelta
 from dataclasses import dataclass
 
@@ -30,10 +35,14 @@ class Interval:
 
     @property
     def start(self):
+        """Alias for start_time; 'self.vp.start_time' felt too long."""
         return self.start_time
+
     @property
     def end(self):
+        """Alias for end_time."""
         return self.end_time
+
     @property
     def duration(self):
         return self.end - self.start
@@ -55,14 +64,24 @@ class Interval:
 
 
     def scale(self, scalar):
-		# Here we define the meaning of scale in the case of time.
+        """
+        Interval.scale(x) returns a time scaled 'x' into an interval.
+
+        For example, scale(0.0) will return the start of the interval,
+        scale(0.5) will return the point precisely in the middle, and
+        scale(1.0) will return the end of the interval.
+        """
+
         return self.start + scalar * self.duration
 
 def Duration(start_time: timedelta, end_time: timedelta) -> timedelta:
     """
-    Slightly shorter syntax for creating an Interval and then asking for
+    Slightly shorter syntax for creating an Interval, and then asking for
     its duration.
+
+    Essentially syntax suger for (end_time - start_time).
     """
+
     return Interval(start_time, end_time).duration
 
 
@@ -96,10 +115,14 @@ class FrequencyRange:
         return self._width
 
 
+# The following two classes are the ones that can be put into point_list
+# during decoding.
+
 @dataclass
 class FrequencyPoint:
     """
-    A FrequencyPoint has a label, a frequency, and a time.
+    A FrequencyPoint has a label, a frequency, and a time. It creates a
+    point for Praat resynthesis.
     """
 
     label: str
@@ -111,7 +134,7 @@ class FrequencyPoint:
 class AddTime:
     """
     AddTime is used for the final lengthening. It defines an existing
-    interval, and the times the interval should be changed to.
+    interval, and the interval that it should change to.
 
     (Note that the lengthening only listens to the *duration* of the
      new_interval, so attempting to reposition the start time will not
@@ -122,12 +145,32 @@ class AddTime:
     new_interval: Interval
 
 
+# The following class contains the custom parameters that can a user may
+# change.
+
 @dataclass
 class ResynthesizeVariables:	
     """
-    Here we define global variables that are used in the resynthesis
-    rules.
+    The global variables that are used in the resynthesis rules.
     """
+
+    # In `views.py`, the web request is translated into the format defined
+    # here below, which is then passed to the ResynthesizedPhrase in
+    # `resynthesized.py`. This will then add the frequencies for any gender
+    # it finds in the TextGrid, if the user did not specify any values,
+    # and will leave all other options blank.
+    #
+    # Those will then be initialised to the default values defined here.
+    #
+    # To change the default values, edit them right here. Note that the
+    # default frequencies will be overridden if a gender label was found
+    # in the TextGrid; to alter those default values, edit the __init__()
+    # method of ResynthesizeVariables in `resynthesized.py`.
+    #
+    # Lastly, to add more default variables, or to remove some, you will
+    # have to add or remove them here, and also change the translation
+    # of the web request into these variables in `views.py`.
+
 
     to_time: timedelta = Milliseconds(90)
     from_time: timedelta = Milliseconds(100)
