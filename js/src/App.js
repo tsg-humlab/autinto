@@ -157,8 +157,15 @@ function App({ id = '' }) {
       method: 'POST',
       body: formData,
     })
-      .then((r) => r.json())
+      .then((r) => {
+        if (r.ok) {
+          return r.json()
+        } else {
+          return Promise.reject('Resynthesis failed')
+        }
+      })
       .then(setResynthesisData)
+      .catch(alert)
   }
 
   return (
