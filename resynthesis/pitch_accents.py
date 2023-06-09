@@ -342,7 +342,7 @@ class Word(AbstractWord):
 
         # If the final boundary is %, no points are created for this tone,
         # and the method returns early.
-        if self.final_boundary == '%':
+        if self.final_boundary.name == '%':
             return
 
         # Otherwise, one or two points are created. We make a variable

@@ -1,6 +1,10 @@
 # TODI Frontend
 This folder contain the code to both the mdbook (`uploads/`) containing the course text content and the exercise widget source code (`js/`).
 
+## Structure
+
+For more information on the Resynthesis module, which handles resynthesis web requests, look at the README in [`resynthesis/`](resynthesis/)
+
 ## Dependencies
 You need to install both [mdbook](https://rust-lang.github.io/mdBook/guide/installation.html) (either prepackaged or built from source) and [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
