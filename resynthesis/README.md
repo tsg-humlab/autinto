@@ -12,7 +12,7 @@ Those files should be enough to perform most changes; in particular, editing `pi
 
 ### Complete overview
 
-This is a Django module; `admin.py`, `apps.py`, `models.py`, `tests.py`, `urls.py`, and `views.py` were all created by Django. Most of these files don’t contain anything, with two exceptions: `urls.py`, which points to `views.py`, and `views.py`, which handles the web request and calls the actual resynthesis.
+This is a Django subpackage; `admin.py`, `apps.py`, `models.py`, `tests.py`, `urls.py`, and `views.py` were all created by Django. Most of these files don’t contain anything, with two exceptions: `urls.py`, which points to `views.py`, and `views.py`, which handles the web request and calls the actual resynthesis.
 
 That leaves `__init__.py`, `abstract_pitch_accents.py`, `phrase.py`, `pitch_accents.py`, `resynthesized.py`, `resynth.praat`, and `types.py` as the files performing the actual resynthesis. They each contain docstrings and comments about what goes on inside them, but here’s a quick reference for what they all do:
 
@@ -24,14 +24,14 @@ That leaves `__init__.py`, `abstract_pitch_accents.py`, `phrase.py`, `pitch_acce
 | [`resynthesized.py`](resynthesized.py) | This file contains the classes `ResynthesizedPhrase` and `ResynthesizedIntonationalPhrase`. A `ResynthesizedPhrase` is essentially a combination of a `Phrase` (created from a TextGrid) and a user-inputted sentence. The creation of the frequency targets is then performed by calling `decode()` on this `ResynthesizedPhrase`. |
 | [`types.py`](types.py) | <p>This file defines some features that many other files use, like the `Milliseconds` function, and the `Interval` class. <p>Also in here are the global variables: they are contained in `ResynthesizeVariables`, which includes FROMTIME, STARTIME, Fr, N, W, and others. Their default values can be modified here, but note that the default frequencies are overridden by gender somewhere else; this is further explained in `types.py`. |
 | [`__init__.py`](__init__.py) | Here the `resynthesize()` function is defined, which calls everything else, and thus performs the entire resynthesis (including calling Praat and generating a new audio file & image). Sending the modified TextGrid to Praat is also done here, as is converting the returned PDF file into an SVG that can be displayed as an image in the webbrowser. If you want to trace the entire program flow (excluding the web request), this is where to start. |
-| [`views.py`](views.py) | `views.py` transforms the input from a POST request into a format that the module will understand, and transforms the module’s output back into a JSON file that the client will read. If you want to trace the entire program flow *in*cluding the web request, this is where to start. |
+| [`views.py`](views.py) | `views.py` transforms the input from a POST request into a format that the package will understand, and transforms the package’s output back into a JSON file that the client will read. If you want to trace the entire program flow *in*cluding the web request, this is where to start. |
 | [`resynth.praat`](resynth.praat) | This is the Praat script that is used for the actual resynthesis. Hopefully this will never need to be changed, but it performs the creation of the new WAV file and the creation of the contour image as a PDF file. |
 
 ## Running this code
 
 ### Running from Python
 
-This folder works as a Python module. To test it from the command line, go up to the root folder of this project, and do:
+This folder works as a Python package. To test it from the command line, go up to the root folder of this project, and do:
 
 ```python
 from resynthesis import resynthesize
