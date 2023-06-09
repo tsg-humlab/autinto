@@ -157,8 +157,15 @@ function App({ id = '' }) {
       method: 'POST',
       body: formData,
     })
-      .then((r) => r.json())
+      .then((r) => {
+        if (r.ok) {
+          return r.json()
+        } else {
+          return Promise.reject('Resynthesis failed')
+        }
+      })
       .then(setResynthesisData)
+      .catch(alert)
   }
 
   return (
@@ -202,8 +209,8 @@ function App({ id = '' }) {
             </swiper-slide>
           ))}
       </swiper-container>
-      <div className="button-container ml-3">
-        <button className="btn btn-primary mt-3 pl-1" onClick={playAudio}>
+      <div className="button-container">
+        <button onClick={playAudio}>
           Play
         </button>
         <button onClick={toggleContour}>
