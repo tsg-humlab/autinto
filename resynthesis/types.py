@@ -1,3 +1,8 @@
+"""
+The Types module defines some functions and classes that are used in
+many of the other modules.
+"""
+
 from datetime import timedelta
 from dataclasses import dataclass
 

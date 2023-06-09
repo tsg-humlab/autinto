@@ -1,3 +1,13 @@
+"""
+Defines AbstractPitchAccent, AbstractWord, AbstractInitialBoundary, and
+AbstractFinalBoundary.
+
+They implement a few features that are useful to every pitch accent
+(initial boundaries, words, and final boundaries), and specifies the
+decode() and from_name() method that all pitch accents must
+implement.
+"""
+
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
@@ -15,10 +25,20 @@ class AbstractPitchAccent(ABC):
     """
     Class that all pitch accents derive from.
 
-    It implements a few features that are useful to every pitch accent
-    (initial boundaries, words, and final boundaries), and specifies the
-    decode() and from_name() method that all pitch accents must
-    implement.
+    They provide functionality, and specify that every pitch accent must
+    implement at least these two methods: decode() and from_name().
+
+    from_name() is an initializing
+    method, and any logic that is to be executed on creation of the accent
+    happpens here. The accent may validate that the input is legal, and can
+    deconstruct it into new variables that may help in decoding.
+
+    Be careful not to override the __init__() method without calling the
+    abstract accent's __init__(), because from_name() is called there.
+
+    decode(point_list) is the method in which the accent is further
+    interpreted and FrequencyPoint and AddTime objects are added to
+    point_list, which will modify the actual audio.
     """
 
     name: str
