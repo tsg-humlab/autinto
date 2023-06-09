@@ -89,14 +89,16 @@
   padding-left: 3em;
 	position: relative;
 	margin-top: 0;
+	display: grid;
+	grid-template-rows: repeat(2, 1fr);
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 5px;
 }
 
 .button-container > button {
-  border-radius: 10px;
-  border: 1px solid gray;
-  margin: 0 0.2em;
-  font-size: 0.6em;
-  padding: 7px;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.7em;
 }
 
 swiper-container {
