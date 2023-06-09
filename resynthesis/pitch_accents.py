@@ -1,3 +1,14 @@
+"""
+The concrete implementation of Pitch Accents is defined here. The rest
+of the program requires three classes here: Word, InitialBoundary, and
+FinalBoundary. These each implement a decode() function, which create
+'FrequencyPoint's and 'AddTime's (defined in types.py) that change the
+audio file.
+
+The three classes all derive from their Abstract versions defined in
+abstract_pitch_accents.py.
+"""
+
 from dataclasses import dataclass
 from enum import Enum
 from typing import Optional
@@ -342,7 +353,7 @@ class Word(AbstractWord):
 
         # If the final boundary is %, no points are created for this tone,
         # and the method returns early.
-        if self.final_boundary == '%':
+        if self.final_boundary.name == '%':
             return
 
         # Otherwise, one or two points are created. We make a variable
