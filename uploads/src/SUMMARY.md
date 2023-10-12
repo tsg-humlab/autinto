@@ -36,6 +36,8 @@
         - [4.1.1 Level tone](./4_level_contours/4_1_1.md)
         - [4.1.2 Vocative chant](./4_level_contours/4_1_2.md)
         - [4.1.3 'Scathing' intonation](./4_level_contours/4_1_3.md)
+            - [4.1.3.1 Exercise 4A](./4_level_contours/4_1_3_1.md)
+            - [4.1.3.2 Exercise 4B](./4_level_contours/4_1_3_2.md)
 - [5. Rising contours]()
     - [5.1 Types of rises](./5_rising_contours/5_1.md)
     - [5.2 High rise](./5_rising_contours/5_2.md)
