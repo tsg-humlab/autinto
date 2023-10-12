@@ -29,6 +29,8 @@
     - [3.1 Low preheads](./3_initial_boundary_tones/3_1.md)
     - [3.2 High preheads](./3_initial_boundary_tones/3_2.md)
     - [3.3 Falling preheads](./3_initial_boundary_tones/3_3.md)
+        - [3.3.1 Exercise 3A](./3_initial_boundary_tones/3_3_1.md)
+        - [3.3.2 Exercise 3B](./3_initial_boundary_tones/3_3_2.md)
 - [4. Level contours]()
     - [4.1 Types of level contours](./4_level_contours/4_1.md)
         - [4.1.1 Level tone](./4_level_contours/4_1_1.md)
