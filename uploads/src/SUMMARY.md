@@ -54,6 +54,7 @@
         - [5.5.2 Singleton L*](./5_rising_contours/5_5_2.md)
             - [5.5.2.1 Exercise 5C](./5_rising_contours/5_5_2_1.md)
 - [6. Delayed peaks](./6_delayed_peaks/6.md)
+    - [6.1 Exercise 6](./6_delayed_peaks/6.1.md)
 - [7. Appended constructions](./7_appended_constructions/7_0.md)
     - [7.1 Tagged constructions](./7_appended_constructions/7_1.md)
     - [7.2 Unaccented IPs](./7_appended_constructions/7_2.md)
