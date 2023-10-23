@@ -57,5 +57,7 @@
     - [6.1 Exercise 6](./6_delayed_peaks/6.1.md)
 - [7. Appended constructions](./7_appended_constructions/7_0.md)
     - [7.1 Tagged constructions](./7_appended_constructions/7_1.md)
+        - [7.1.1 Exercise 7A](./7_appended_constructions/7_1_1.md)
     - [7.2 Unaccented IPs](./7_appended_constructions/7_2.md)
+        - [7.2.1 Exercise 7B](./7_appended_constructions/7_2_1.md)
 - [8. Exercises All Contours](./8_exercises_all_contours/8.md)
