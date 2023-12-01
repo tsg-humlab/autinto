@@ -1,4 +1,5 @@
 **/__pycache__/
 static/
+assets/
 _versions/
 db.sqlite3
