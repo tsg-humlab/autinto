@@ -50,17 +50,14 @@
             "textgrid": "4A-4.TextGrid"
         },
         {
-            "sentence": "[]0 [Ze] [zijn] [heel]1 [zacht]1 []2",
+            "sentence": "[]0 [De] [partij](L*) [weet](L*) [wat] [ze] [doet](L*) [](L%)",
             "key": [
-                "%L",
-                "H*",
-                "!H*L",
-                "L%"
+                "%L"
             ],
-            "contour": "4A-5.png",
-            "audio": "4A-5.mp3",
-            "wav": "4A-5.wav",
-            "textgrid": "4A-5.TextGrid"
+            "contour": "3A-6.png",
+            "audio": "3A-6.mp3",
+            "wav": "3A-6.wav",
+            "textgrid": "3A-6.TextGrid"
         },
         {
             "sentence": "[](%L) [Toen-ie 't] [aan z'n] [baas]1 [verteld] [had] []2 []0 [bedacht-ie] [dat 't] [niet]1 [zo'n] [handige] [zet]1 [was] [](L%)",
