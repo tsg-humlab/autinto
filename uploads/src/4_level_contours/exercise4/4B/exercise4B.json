@@ -28,13 +28,18 @@
             "wav": "4B-2.wav",
             "textgrid": "4B-2.TextGrid"
         },
-        {
-            "sentence": "[](%L) [Is die]0 [rekening]0 [al] [betaald]0 [](H%)",
+         {
+            "sentence": "[](%L) [De] [partij]0 [weet]0 [wat] [ze] [doet]0 [](L%)",
             "key": [
-                "∅",
-                "H*L",
-                "∅"
+                "L*",
+		"L*",
+		"L*"
             ],
+            "contour": "3A-6.png",
+            "audio": "3A-6.mp3",
+            "wav": "3A-6.wav",
+            "textgrid": "3A-6.TextGrid"
+        },
             "contour": "4B-3.png",
             "audio": "4B-3.mp3",
             "wav": "4B-3.wav",
@@ -171,7 +176,7 @@
             ["H*L", "!H*L"],
 	    ["H*", "!H*"],
 	    ["H*LH", "L*"],
-	    ["H*!H", "∅"]
+	    ["∅"]
         ]
     ]
 }
