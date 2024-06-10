@@ -51,9 +51,9 @@
             "textgrid": "3A-5.TextGrid"
         },
         {
-            "sentence": "[]0 [De] [partij](L*) [weet](L*) [wat] [ze] [doet](L*) [](L%)",
+            "sentence": "[]0 [D'r moet] [nog maar 's] [over] [gepraat](H*L) [worden] [](L%)",
             "key": [
-                "%L"
+                "%HL"
             ],
             "contour": "3A-6.png",
             "audio": "3A-6.mp3",
