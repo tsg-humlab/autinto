@@ -172,7 +172,7 @@ class ResynthesizeVariables:
     # of the web request into these variables in `views.py`.
 
 
-    to_time: timedelta = Milliseconds(90)
+    to_time: timedelta = Milliseconds(130)
     from_time: timedelta = Milliseconds(100)
     star_time: Scalar = 0.3
 
