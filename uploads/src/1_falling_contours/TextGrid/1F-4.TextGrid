@@ -1,0 +1,126 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 2.456938775510204 
+tiers? <exists> 
+size = 3 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "Mary" 
+        xmin = 0 
+        xmax = 2.456938775510204 
+        intervals: size = 5 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.1464251409610299 
+            text = "" 
+        intervals [2]:
+            xmin = 0.1464251409610299 
+            xmax = 1.146786387496789 
+            text = "ipi" 
+        intervals [3]:
+            xmin = 1.146786387496789 
+            xmax = 1.1555253489852295 
+            text = "" 
+        intervals [4]:
+            xmin = 1.1555253489852295 
+            xmax = 2.3511537940531766 
+            text = "ipf" 
+        intervals [5]:
+            xmin = 2.3511537940531766 
+            xmax = 2.456938775510204 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "John" 
+        xmin = 0 
+        xmax = 2.456938775510204 
+        intervals: size = 9 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.1464251409610299 
+            text = "" 
+        intervals [2]:
+            xmin = 0.1464251409610299 
+            xmax = 0.25005754769623684 
+            text = "Aan" 
+        intervals [3]:
+            xmin = 0.25005754769623684 
+            xmax = 0.7011633181906669 
+            text = "staande" 
+        intervals [4]:
+            xmin = 0.7011633181906669 
+            xmax = 1.1555253489852295 
+            text = "dinsdag" 
+        intervals [5]:
+            xmin = 1.1555253489852295 
+            xmax = 1.3209257506267083 
+            text = "of" 
+        intervals [6]:
+            xmin = 1.3209257506267083 
+            xmax = 1.7049752579395339 
+            text = "dinsdag" 
+        intervals [7]:
+            xmin = 1.7049752579395339 
+            xmax = 1.9813283425667523 
+            text = "jongst" 
+        intervals [8]:
+            xmin = 1.9813283425667523 
+            xmax = 2.3511537940531766 
+            text = "leden" 
+        intervals [9]:
+            xmin = 2.3511537940531766 
+            xmax = 2.456938775510204 
+            text = "" 
+    item [3]:
+        class = "IntervalTier" 
+        name = "bell" 
+        xmin = 0 
+        xmax = 2.456938775510204 
+        intervals: size = 11 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.1464251409610299 
+            text = "" 
+        intervals [2]:
+            xmin = 0.1464251409610299 
+            xmax = 0.25005754769623684 
+            text = "vp" 
+        intervals [3]:
+            xmin = 0.25005754769623684 
+            xmax = 0.432938265464249 
+            text = "" 
+        intervals [4]:
+            xmin = 0.432938265464249 
+            xmax = 0.6402030789346629 
+            text = "vp" 
+        intervals [5]:
+            xmin = 0.6402030789346629 
+            xmax = 0.7458674936450699 
+            text = "" 
+        intervals [6]:
+            xmin = 0.7458674936450699 
+            xmax = 0.9043641157106805 
+            text = "vp" 
+        intervals [7]:
+            xmin = 0.9043641157106805 
+            xmax = 1.7578074652947375 
+            text = "" 
+        intervals [8]:
+            xmin = 1.7578074652947375 
+            xmax = 1.8533118401291437 
+            text = "vp" 
+        intervals [9]:
+            xmin = 1.8533118401291437 
+            xmax = 2.018635166490789 
+            text = "" 
+        intervals [10]:
+            xmin = 2.018635166490789 
+            xmax = 2.15302694962687 
+            text = "vp" 
+        intervals [11]:
+            xmin = 2.15302694962687 
+            xmax = 2.456938775510204 
+            text = "" 

@@ -1,0 +1,170 @@
+{
+    "items": [
+        {
+            "sentence": "[](%L) [Mee]0 [stal]0 [wil 't] [wel] [lukken]0 [](L%)1",
+            "key": [
+                "H*L",
+                "∅",
+                "!H*L"
+            ],
+            "contour": "1F-1.png",
+            "audio": "1F-1.mp3",
+            "wav": "1F-1.wav",
+            "textgrid": "1F-1.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [Al]0 [tijd]0 [zit-ie met z'n] [krukje]0 [te] [wiebelen]0 [](%)",
+            "key": [
+                  "∅",
+                "H*L",
+                 "∅",
+                 "∅"
+            ],
+            "contour": "1F-2.png",
+            "audio": "1F-2.mp3",
+            "wav": "1F-2.wav",
+            "textgrid": "1F-2.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [Wat 'n] [rare,] [hoefijzer]0[vormige]0 [huizen]0.[](%L)",                
+            "key": [
+                "H*L",
+                 "∅",
+                 "!H*L"
+            ],
+            "contour": "1F-3.png",
+            "audio": "1F-3.mp3",
+            "wav": "1F-3.wav",
+            "textgrid": "1F-3.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [Aan]0[staande]0 [dinsdag]0 [%]1 [L%]2 [of] [dinsdag]0 [jongst]0[leden]0 [](L%)",
+   			"key": [
+                 "∅",
+                "H*L", 
+                "∅",
+                "∅",
+                "∅",
+                "!H*L"
+            ],
+            "contour": "1F-4.png",
+            "audio": "1F-4.mp3",
+            "wav": "1F-4.wav",
+            "textgrid": "1F-4.TextGrid"
+        },
+       {
+            "sentence": "[](%L) [Je hebt een] [u]  [nieke]0 [kans](!H*] [](%)  [](L%) [om] [Noord-]0[Europa]0 [te] [bezoeken]0 [](L%)",
+            "key": [
+                "H*L",
+                "H*L",
+                "H*L",
+                "∅"
+            ],
+            "contour": "1F-5.png",
+            "audio": "1F-5.mp3",
+            "wav": "1F-5.wav",
+            "textgrid": "1F-5.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [die] [chocolade]0[-bruine]0 [schoenen](H*) [](%) [](%L) [trek ik] [graag]0 [aan]0 [](L%)",
+            "key": [
+               "H*L",
+               "∅",
+               "H*",
+               "!H*L"
+            ],
+            "contour": "1F-6.png",
+            "audio": "1F-6.mp3",
+            "wav": "1F-6.wav",
+            "textgrid": "1F-6.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [Aan]0[staande]0 [donderdag]0 [](%) [](%L)  gaat ’t wel]0 [door](∅) [[(L%)",
+            "key": [
+                "H*L",           
+                "∅",
+                "H*L",
+                "H*L"
+            ],
+            "contour": "1F-7.png",
+            "audio": "1F-7.mp3",
+            "wav": "1F-7.wav",
+            "textgrid": "1F-7.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [Die] [licht-][bruine]0 [schoenen]0  []1 [](L%) [vind ik] [minder]0 [dan die] [grijze]0 [](L%)",
+            "key": [
+                "H*L",
+                "∅",
+                "H%",
+                "H*",
+                "!H*L"
+            ],
+            "contour": "1F-8.png",
+            "audio": "1F-8.mp3",
+            "wav": "1F-8.wav",
+            "textgrid": "1F-8.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [Iede]0[reen]0 [weet nu wel] [wat ’r van ze] [verwacht]0 [wordt] [](%)",
+            "key": [
+                "∅",
+                "H*L",
+                "∅"
+            ],
+            "contour": "1F-9.png",
+            "audio": "1F-9.mp3",
+            "wav": "1F-9.wav",
+            "textgrid": "1F-9.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [Verder]0 [wilden we nog] [Noord-]0[Europese]0 [adviseurs]0 [](L%)",
+             "key": [
+             	"H*L",
+             	"H*L",
+             	"∅",
+             	"H*L"
+            ],
+            "contour": "1F-10.png",
+            "audio": "1F-10.mp3",
+            "wav": "1F-10.wav",
+            "textgrid": "1F-10.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [Donker]0[blauw]0 [lijkt me] [hiervoor] [goed]0 [](L%)",
+            "key": [
+                "∅",
+                "H*LH",
+                "H*L"
+            ],
+            "contour": "1F-11.png",
+            "audio": "1F-11.mp3",
+            "wav": "1F-11.wav",
+            "textgrid": "1F-11.TextGrid"
+        },
+        {
+            "sentence": "[](%L) [Iede]0[reen]0 [weet] [wat je in] [zulke]0 [situaties]0 [moet] [doen]0 [](L%)",
+            "key": [
+                "H*L",
+                "∅",
+                "H*",
+                "!H*L"
+             ],
+            "contour": "1F-12.png",
+            "audio": "1F-12.mp3",
+            "wav": "1F-12.wav",
+            "textgrid": "1F-12.TextGrid"
+        }
+    ],
+    "choices": [
+        [
+            ["H*L", "!H*L"],
+	    ["H*", "!H*"],
+	    ["H*LH", "∅"]
+        ],
+           [
+            ["L%", "H%"],
+	    ["%"]
+        ]
+    ]
+}

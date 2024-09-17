@@ -1,0 +1,130 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 2.8183673469387753 
+tiers? <exists> 
+size = 3 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "ip" 
+        xmin = 0 
+        xmax = 2.8183673469387753 
+        intervals: size = 5 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.15222811604206646 
+            text = "" 
+        intervals [2]:
+            xmin = 0.15222811604206646 
+            xmax = 1.6314748492202005 
+            text = "ipi" 
+        intervals [3]:
+            xmin = 1.6314748492202005 
+            xmax = 1.6522605176020946 
+            text = "" 
+        intervals [4]:
+            xmin = 1.6522605176020946 
+            xmax = 2.7019367708877495 
+            text = "ipf" 
+        intervals [5]:
+            xmin = 2.7019367708877495 
+            xmax = 2.8183673469387753 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "word" 
+        xmin = 0 
+        xmax = 2.8183673469387753 
+        intervals: size = 10 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.15222811604206646 
+            text = "" 
+        intervals [2]:
+            xmin = 0.15222811604206646 
+            xmax = 0.22359133238076076 
+            text = "Die" 
+        intervals [3]:
+            xmin = 0.22359133238076076 
+            xmax = 0.8880187943741273 
+            text = "chocolade" 
+        intervals [4]:
+            xmin = 0.8880187943741273 
+            xmax = 1.234339829249643 
+            text = "bruine" 
+        intervals [5]:
+            xmin = 1.234339829249643 
+            xmax = 1.6314748492202005 
+            text = "schoenen" 
+        intervals [6]:
+            xmin = 1.6314748492202005 
+            xmax = 1.6522605176020946 
+            text = "" 
+        intervals [7]:
+            xmin = 1.6522605176020946 
+            xmax = 2.0437239387944346 
+            text = "trek ik" 
+        intervals [8]:
+            xmin = 2.0437239387944346 
+            xmax = 2.286223403249866 
+            text = "graag" 
+        intervals [9]:
+            xmin = 2.286223403249866 
+            xmax = 2.7019367708877495 
+            text = "aan" 
+        intervals [10]:
+            xmin = 2.7019367708877495 
+            xmax = 2.8183673469387753 
+            text = "" 
+    item [3]:
+        class = "IntervalTier" 
+        name = "vl" 
+        xmin = 0 
+        xmax = 2.8183673469387753 
+        intervals: size = 11 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.6199056546346849 
+            text = "" 
+        intervals [2]:
+            xmin = 0.6199056546346849 
+            xmax = 0.7931195578171362 
+            text = "vp" 
+        intervals [3]:
+            xmin = 0.7931195578171362 
+            xmax = 0.9940476855087798 
+            text = "" 
+        intervals [4]:
+            xmin = 0.9940476855087798 
+            xmax = 1.1222259738637936 
+            text = "vp" 
+        intervals [5]:
+            xmin = 1.1222259738637936 
+            xmax = 1.3889753847647686 
+            text = "" 
+        intervals [6]:
+            xmin = 1.3889753847647686 
+            xmax = 1.5344750634380278 
+            text = "vp" 
+        intervals [7]:
+            xmin = 1.5344750634380278 
+            xmax = 2.094975664511659 
+            text = "" 
+        intervals [8]:
+            xmin = 2.094975664511659 
+            xmax = 2.270243916441406 
+            text = "vp" 
+        intervals [9]:
+            xmin = 2.270243916441406 
+            xmax = 2.286223403249866 
+            text = "" 
+        intervals [10]:
+            xmin = 2.286223403249866 
+            xmax = 2.7019367708877495 
+            text = "vp" 
+        intervals [11]:
+            xmin = 2.7019367708877495 
+            xmax = 2.8183673469387753 
+            text = "" 

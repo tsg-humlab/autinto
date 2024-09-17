@@ -1,0 +1,126 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 2.425873015873016 
+tiers? <exists> 
+size = 3 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "ip" 
+        xmin = 0 
+        xmax = 2.425873015873016 
+        intervals: size = 3 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.07435270023655471 
+            text = "" 
+        intervals [2]:
+            xmin = 0.07435270023655471 
+            xmax = 2.3495140005568134 
+            text = "ipf" 
+        intervals [3]:
+            xmin = 2.3495140005568134 
+            xmax = 2.425873015873016 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "word" 
+        xmin = 0 
+        xmax = 2.425873015873016 
+        intervals: size = 9 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.07435270023655471 
+            text = "" 
+        intervals [2]:
+            xmin = 0.07435270023655471 
+            xmax = 0.4709418192543303 
+            text = "Iedereen" 
+        intervals [3]:
+            xmin = 0.4709418192543303 
+            xmax = 0.6781644706237603 
+            text = "weet" 
+        intervals [4]:
+            xmin = 0.6781644706237603 
+            xmax = 1.0173207876708772 
+            text = "wat je in" 
+        intervals [5]:
+            xmin = 1.0173207876708772 
+            xmax = 1.2861670083436416 
+            text = "zulke" 
+        intervals [6]:
+            xmin = 1.2861670083436416 
+            xmax = 1.9301941489104875 
+            text = "situaties" 
+        intervals [7]:
+            xmin = 1.9301941489104875 
+            xmax = 2.0864081009576467 
+            text = "moet" 
+        intervals [8]:
+            xmin = 2.0864081009576467 
+            xmax = 2.3495140005568134 
+            text = "doen" 
+        intervals [9]:
+            xmin = 2.3495140005568134 
+            xmax = 2.425873015873016 
+            text = "" 
+    item [3]:
+        class = "IntervalTier" 
+        name = "vp" 
+        xmin = 0 
+        xmax = 2.425873015873016 
+        intervals: size = 13 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.07435270023655471 
+            text = "" 
+        intervals [2]:
+            xmin = 0.07435270023655471 
+            xmax = 0.17323332110091652 
+            text = "vp" 
+        intervals [3]:
+            xmin = 0.17323332110091652 
+            xmax = 0.30524883952364884 
+            text = "" 
+        intervals [4]:
+            xmin = 0.30524883952364884 
+            xmax = 0.4709418192543303 
+            text = "vp" 
+        intervals [5]:
+            xmin = 0.4709418192543303 
+            xmax = 0.5094779748613801 
+            text = "" 
+        intervals [6]:
+            xmin = 0.5094779748613801 
+            xmax = 0.6262609334661048 
+            text = "vp" 
+        intervals [7]:
+            xmin = 0.6262609334661048 
+            xmax = 1.077510240060302 
+            text = "" 
+        intervals [8]:
+            xmin = 1.077510240060302 
+            xmax = 1.1677944186444393 
+            text = "vp" 
+        intervals [9]:
+            xmin = 1.1677944186444393 
+            xmax = 1.5911269004500608 
+            text = "" 
+        intervals [10]:
+            xmin = 1.5911269004500608 
+            xmax = 1.709499490149263 
+            text = "vp" 
+        intervals [11]:
+            xmin = 1.709499490149263 
+            xmax = 2.144869862432769 
+            text = "" 
+        intervals [12]:
+            xmin = 2.144869862432769 
+            xmax = 2.3495140005568134 
+            text = "vp" 
+        intervals [13]:
+            xmin = 2.3495140005568134 
+            xmax = 2.425873015873016 
+            text = "" 
