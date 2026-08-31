@@ -1,0 +1,110 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 2.5332879818594103 
+tiers? <exists> 
+size = 3 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "ip" 
+        xmin = 0 
+        xmax = 2.5332879818594103 
+        intervals: size = 3 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.2012589519731811 
+            text = "" 
+        intervals [2]:
+            xmin = 0.2012589519731811 
+            xmax = 2.264984150345209 
+            text = "ipf" 
+        intervals [3]:
+            xmin = 2.264984150345209 
+            xmax = 2.5332879818594103 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "word" 
+        xmin = 0 
+        xmax = 2.5332879818594103 
+        intervals: size = 9 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.2012589519731811 
+            text = "" 
+        intervals [2]:
+            xmin = 0.2012589519731811 
+            xmax = 0.31858749116996643 
+            text = "Iede" 
+        intervals [3]:
+            xmin = 0.31858749116996643 
+            xmax = 0.6475264314180967 
+            text = "reen" 
+        intervals [4]:
+            xmin = 0.6475264314180967 
+            xmax = 0.9932265915514822 
+            text = "weet nu" 
+        intervals [5]:
+            xmin = 0.9932265915514822 
+            xmax = 1.1566484854327188 
+            text = "wel" 
+        intervals [6]:
+            xmin = 1.1566484854327188 
+            xmax = 1.7118638941317923 
+            text = "wat er van ze" 
+        intervals [7]:
+            xmin = 1.7118638941317923 
+            xmax = 2.053373749293864 
+            text = "verwacht" 
+        intervals [8]:
+            xmin = 2.053373749293864 
+            xmax = 2.264984150345209 
+            text = "wordt" 
+        intervals [9]:
+            xmin = 2.264984150345209 
+            xmax = 2.5332879818594103 
+            text = "" 
+    item [3]:
+        class = "IntervalTier" 
+        name = "vp" 
+        xmin = 0 
+        xmax = 2.5332879818594103 
+        intervals: size = 9 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.2012589519731811 
+            text = "" 
+        intervals [2]:
+            xmin = 0.2012589519731811 
+            xmax = 0.28506505139945637 
+            text = "vp" 
+        intervals [3]:
+            xmin = 0.28506505139945637 
+            xmax = 0.4544443380231012 
+            text = "" 
+        intervals [4]:
+            xmin = 0.4544443380231012 
+            xmax = 0.6475264314180967 
+            text = "vp" 
+        intervals [5]:
+            xmin = 0.6475264314180967 
+            xmax = 1.030939336293306 
+            text = "" 
+        intervals [6]:
+            xmin = 1.030939336293306 
+            xmax = 1.1566484854327188 
+            text = "vp" 
+        intervals [7]:
+            xmin = 1.1566484854327188 
+            xmax = 1.860619720613431 
+            text = "" 
+        intervals [8]:
+            xmin = 1.860619720613431 
+            xmax = 1.9779482598102163 
+            text = "vp" 
+        intervals [9]:
+            xmin = 1.9779482598102163 
+            xmax = 2.5332879818594103 
+            text = "" 

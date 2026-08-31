@@ -23,6 +23,7 @@
     - [1.8 Pre-nuclear H*LH](./1_falling_contours/1_8.md)
         - [1.8.1 Exercise 1D](./1_falling_contours/1_8_1.md)
         - [1.8.2 Exercise 1E](./1_falling_contours/1_8_2.md)
+        - [1.8.3 Exercise 1F](./1_falling_contours/1_8_3.md)
 - [2. Pauses](./2_pauses/2.md)
     - [2.1 Exercise 2](./2_pauses/2_1.md)
 - [3. Initial boundary tones]()
