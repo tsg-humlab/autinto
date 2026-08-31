@@ -62,7 +62,7 @@ class Phrase(Interval):
         super().__init__(start_time, end_time)
 
         # We also get the IP and VP tiers from the textgrid .
-        textgrid_ips = self.textgrid.getFirst("IP's")
+        textgrid_ips = self.textgrid.getFirst("IP's") or self.textgrid.getFirst("ip")
         textgrid_vps = self.textgrid.getFirst('vp')
 
         # Then construct each IP and add them to the list.
