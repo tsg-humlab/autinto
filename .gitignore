@@ -3,3 +3,4 @@ static/
 assets/
 _versions/
 db.sqlite3
+.idea/
